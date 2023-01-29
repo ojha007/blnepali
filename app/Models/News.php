@@ -18,13 +18,12 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class News extends Model
 {
     use SoftDeletes;
+    protected $table = 'np_news';
 
     const PUBLISHED = 'Published';
     const UNPUBLISHED = 'Unpublished';
 
     const DRAFT = 'Draft';
-
-    public $table = 'news';
 
     protected $fillable = [
         'title', 'sub_title',
