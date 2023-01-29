@@ -96,4 +96,5 @@
                 - BL Media. All rights reserved.
             </a>
         </div>
+    </div>
 </section>
