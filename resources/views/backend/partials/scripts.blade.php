@@ -24,7 +24,7 @@
         integrity="sha512-T/tUfKSV1bihCnd+MxKD0Hm1uBBroVYBOYSk1knyvQ9VyZJpc/ALb4P0r6ubwVPSGB2GvjeoMAJJImBG12TiaQ=="
         crossorigin="anonymous"></script>
 
-<script src="{{asset('/backend/js/minimal.tree.js')}}" rel="script"></script>
+{{--<script src="{{asset('/backend/js/minimal.tree.js')}}" rel="script"></script>--}}
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.0/moment.min.js"
         integrity="sha512-Izh34nqeeR7/nwthfeE0SI3c8uhFSnqxV0sI9TvTcXiFJkMd6fB644O64BRq2P/LA/+7eRvCw4GmLsXksyTHBg=="
@@ -34,7 +34,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/iCheck/1.0.2/icheck.min.js"
         integrity="sha512-7Wyl8g+OoE03TpphxJr1PTkEbIoBDhYtD57tBnqBi3B4xc0P4+ciV6M3P2hzrpsPOXHcM5dqwe5iLRB61Z3gaQ=="
         crossorigin="anonymous"></script>
-<script src="{{asset('/backend/js/select2.min.js')}}" rel="script"></script>
-<script src="{{asset('/ckeditor/ckeditor.js')}}" rel="script"></script>
-<script src="{{asset('/backend/js/jquery.colorbox-min.js')}}" rel="script"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.2.0/min/dropzone.min.js"></script>
+{{--<script src="{{asset('/backend/js/select2.min.js')}}" rel="script"></script>--}}
+{{--<script src="{{asset('/ckeditor/ckeditor.js')}}" rel="script"></script>--}}
+{{--<script src="{{asset('/backend/js/jquery.colorbox-min.js')}}" rel="script"></script>--}}
+{{--<script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.2.0/min/dropzone.min.js"></script>--}}

@@ -117,15 +117,11 @@
             <div class="form-group">
                 <label for="fieldID4">Banner Picture</label>
                 <div class="input-group">
-                   <span class="input-group-btn btn-flat">
-                     <button
-                         type="button"
-                         onclick="return openElFinder(event, 'feature_image');"
-                         data-inputid="feature_image"
-                         class="btn btn-primary  ">
-                       <i class="fa fa-picture-o"></i> Choose
-                     </button>
-                   </span>
+                     <span class="input-group-btn">
+                         <a id="lfm" data-input="feature_image" data-preview="holder" class="btn btn-primary">
+                           <i class="fa fa-picture-o"></i> Choose
+                         </a>
+                       </span>
                     {{Form::text('image',null,['id'=>'feature_image','class'=>'form-control'])}}
                 </div>
                 <img id="holder" style="margin-top:15px;height:100px;width: 250px;" alt=""
@@ -162,7 +158,21 @@
     </div>
 </div>
 @push('scripts')
-
+    <script src="//cdnjs.cloudflare.com/ajax/libs/ckeditor/4.5.11/ckeditor.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/ckeditor/4.5.11/adapters/jquery.js"></script>
+    <script>
+        var options = {
+            filebrowserImageBrowseUrl: '/filemanager?type=Images',
+            filebrowserImageUploadUrl: '/filemanager/upload?type=Images&_token=',
+            filebrowserBrowseUrl: '/filemanager?type=Files',
+            filebrowserUploadUrl: '/filemanager/upload?type=Files&_token='
+        };
+        CKEDITOR.replace('description', options);
+    </script>
+    <script src="/vendor/laravel-filemanager/js/stand-alone-button.js"></script>
+    <script>
+        $('#lfm').filemanager('image');
+    </script>
 @endpush
 
 
