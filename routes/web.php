@@ -12,4 +12,7 @@ Route::group(['namespace' => 'App\Http\Controllers', 'prefix' => 'bl-secure'], f
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
+Route::get('category/{category}/news/{c_id}', [HomeController::class, 'show'])
+    ->name('category.news.show');
+
 
