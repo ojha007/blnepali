@@ -1,0 +1,21 @@
+.adv{
+  &-widebanner{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 100%;
+    position: relative;
+    @include rem-2Sider(padding,12px,0px);
+
+    a{
+      display: block;
+      max-width: 100%;
+      position: relative;
+    }
+    a img,
+    img{
+      max-width: 100%;
+      position: relative;
+    }
+  }
+}

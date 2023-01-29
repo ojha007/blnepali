@@ -1,0 +1,48 @@
+.header{
+  @extend %fw;
+  background-color: map_get($colors,baseWhite);
+
+  &-top{
+    @extend %fw;
+    background-color: map_get($colors,secondary);
+    color: map_get($colors,baseWhite);
+    @include font-size(12px);
+    font-weight: normal;
+
+
+
+    .social-link{
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      flex-flow: row nowrap;
+      position: relative;
+      @include rem-2Sider(padding,6px,16px);
+      width: auto;
+      border-right: 1px solid darken(map_get($colors,secondary),50%);
+
+      .list-item{
+       @include font-size(12px);
+        font-weight: normal;
+        color: map_get($colors,baseWhite);
+
+        &:not(:first-child){
+          @include rem-size(margin-left,12px);
+        }
+
+        a{
+          @include font-size(20px);
+          color: map_get($colors,baseWhite);
+          display: block;
+          position: relative;
+
+          &:hover,
+          &:focus{
+            color: map_get($colors,primary);
+          }
+        }
+      }
+    }
+
+  }
+}

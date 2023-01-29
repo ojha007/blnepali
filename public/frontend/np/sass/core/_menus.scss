@@ -1,0 +1,52 @@
+.navbar {
+  &--primary{
+    @include fw;
+    background-color: map_get($colors,primary);
+    color: map_get($colors,baseWhite);
+    padding: 0px;
+
+    .navbar-brand{
+      padding: 0px;
+
+      .brand-logo{
+        padding: 0px;
+        @include rem-size(height,50px);
+        @include rem-size(width,100px);
+        position: relative;
+        display: block;
+
+        img{
+          max-width: 100%;
+        }
+      }
+    }
+
+    .navbar-collapse{
+      @include rem-size(padding-right,48px);
+
+      .navbar-nav{
+        .nav-item{
+          .nav-link{
+            @include font-size(16px);
+            font-weight: bold;
+            @include  rem-4Sider(padding,13px,18px,7px, 18px);
+            color: map_get($colors,baseWhite);
+            @include border-radius(0px 0px 4px 4px);
+
+            &.active{
+              background-color: map_get($colors,baseWhite);
+              color: map_get($colors,primary);
+            }
+          }
+          &:first-child{
+            .nav-link{
+              @include font-size(22px);
+              @include rem-4Sider(padding,6px,18px,5px,18px);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+

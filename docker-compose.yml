@@ -1,0 +1,15 @@
+version: '3'
+services:
+  mysql:
+    image: mysql:8
+    container_name: 'bl-mysql'
+    volumes:
+      - './mysql:/var/lib/mysql'
+    environment:
+      MYSQL_ROOT_PASSWORD: root@321
+      MYSQL_DATABASE: bl_nepali
+      MYSQL_USER: user
+      MYSQL_PASSWORD: blnepali@321
+    restart: 'always'
+    ports:
+      - "3306:3306"
