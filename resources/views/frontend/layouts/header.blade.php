@@ -58,7 +58,7 @@
             <div class="collapse navbar-collapse" id="primaryNavContent">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{{route('np.index')}}">
+                        <a class="nav-link active" aria-current="page" href="{{route('index')}}">
                             <i class="fas fa-house-chimney"></i> </a>
                     </li>
                     @foreach($headerCategories as $key=> $category)
