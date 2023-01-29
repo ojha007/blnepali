@@ -48,7 +48,7 @@
                     <ul class="nav nav--listing __2-columnn">
                         @foreach($headerCategories ??[] as $key=> $category)
                             <li class="nav-item">
-                                <a href="{{route('eng.newsByCategory',['slug'=>$category->slug])}}" class="nav-link">
+                                <a href="{{route('newsByCategory',['slug'=>$category->slug])}}" class="nav-link">
                                     {{$category->name}}</a>
                             </li>
                         @endforeach
