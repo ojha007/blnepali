@@ -38,4 +38,26 @@ class CategoryRepository
                 ->get();
         });
     }
+    public function getAllCategoriesIds($slug): array
+    {
+        $toReturn = [];
+
+        $category = DB::table('categories')
+            ->select('id')
+            ->where('slug', '=', $slug)
+            ->first();
+
+        $toReturn[0] = $category->id;
+
+        $subCategories = DB::table('categories')
+            ->select('id')
+            ->where('parent_id', $category->id)
+            ->get()
+            ->map(function ($cat) {
+                return $cat->id;
+            })->toArray();
+
+        return array_merge($toReturn, $subCategories);
+    }
+
 }

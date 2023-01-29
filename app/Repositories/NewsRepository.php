@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 
@@ -161,6 +162,30 @@ class NewsRepository
             ->orderByDesc('np.publish_date')
             ->limit(5)
             ->get();
+    }
+    public function getNewsByCategoryIds(array $ids, $perPage = 20): LengthAwarePaginator
+    {
+        return DB::table('en_news as news')
+            ->select(
+                'news.sub_title',
+                'news.id',
+                'news.title',
+                'news.short_description',
+                'news.description',
+                'news.publish_date',
+                'news.image',
+                'news.image_alt',
+                'c.name as catName',
+                'c.slug as category_slug',
+                'news.c_id',
+                'news.image_description',
+                'news.date_line'
+            )
+            ->join('categories as c', 'news.category_id', '=', 'c.id')
+            ->whereIn('news.category_id', $ids)
+            ->whereNull('news.deleted_at')
+            ->orderByDesc('news.publish_date')
+            ->paginate($perPage);
     }
 
 }

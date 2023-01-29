@@ -9,16 +9,12 @@ use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
-    /**
-     * @var NewsRepository
-     */
     protected NewsRepository $newsRepository;
-    /**
-     * @var CategoryRepository
-     */
+
     protected CategoryRepository $categoryRepository;
 
     protected string $viewPath = 'frontend.';
+
 
     public function __construct(NewsRepository $newsRepository, CategoryRepository $categoryRepository)
     {
@@ -93,4 +89,22 @@ class HomeController extends Controller
             'headerCategories', 'blSpecialNews', 'trendingNews', 'sameCategoryNews'));
 
     }
+
+    public function newsByCategory($slug)
+    {
+        try {
+            $categoryIds = $this->categoryRepository->getAllCategoriesIds($slug);
+
+            $headerCategories = $this->categoryRepository->getFrontPageHeaderCategories(11);
+
+            $news = $this->newsRepository->getNewsByCategoryIds($categoryIds);
+
+            $trendingNews = $this->newsRepository->getTrendingNews(5);
+
+            return view($this->viewPath . 'category.index', compact('headerCategories', 'news', 'trendingNews'));
+        } catch (\Exception $exception) {
+            return redirect()->route('index');
+        }
+    }
+
 }
