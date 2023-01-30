@@ -10,7 +10,11 @@
                         <a href="#">{{$news->title}}</a>
                     </h5>
                     <span class="post_source">
-                         {{$news->guest ?? $news->reporter->name}}
+                         @if($news->guest)
+                            {{$news->guest}}
+                        @elseif($news->reporter)
+                            {{$news->reporter->name}}
+                        @endif
                         {{$news->date_line ? '-' .$news->date_line  :''}}
                     </span>
                 </div>

@@ -25,7 +25,11 @@
                     </h5>
                     <p>{!! Str::limit($news->description ??'',600) !!} </p>
                     <p class="post_source">
-                        {{$news->guest ?? $news->reporter->name}}
+                        @if($news->guest)
+                            {{$news->guest}}
+                        @elseif($news->reporter)
+                            {{$news->reporter->name}}
+                        @endif
                         {{$news->date_line ? '-' .$news->date_line  :''}}
                     </p>
                 </div>
@@ -45,7 +49,11 @@
                             {{$news->title}}</a>
                     </h5>
                     <p class="post_source">
-                        {{$news->guest ?? $news->reporter->name}}
+                        @if($news->guest)
+                            {{$news->guest}}
+                        @elseif($news->reporter)
+                            {{$news->reporter->name}}
+                        @endif
                         {{$news->date_line ? '-' .$news->date_line  :''}}
                     </p>
                 </div>

@@ -20,7 +20,11 @@
                 <div class="post_content">
                     <h5 class="post_title"><a href="#">{{$news->title}} </a></h5>
                     <p class="post_source">
-                        {{$news->guest ?? $news->reporter->name}}
+                        @if($news->guest)
+                            {{$news->guest}}
+                        @else($news->reporter)
+                            {{$news->reporter->name}}
+                        @endif
                         {{$news->date_line ? '-' .$news->date_line  :''}}
                     </p>
 
@@ -40,7 +44,11 @@
                             {{$news->title}}</a>
                     </h5>
                     <p class="post_source">
-                        {{$news->guest ?? $news->reporter->name}}
+                        @if($news->guest)
+                            {{$news->guest}}
+                        @elseif($news->reporter)
+                            {{$news->reporter->name}}
+                        @endif
                         {{$news->date_line ? '-' .$news->date_line  :''}}
                     </p>
                 </div>

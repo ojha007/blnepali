@@ -44,7 +44,11 @@
                                     </span>
                                     <span class="post-by">
                                         <a href="#">
-                                            {{  $news->guest ?? $news->reporter->name}}
+                                            @if($news->guest)
+                                                {{$news->guest}}
+                                            @elseif($news->reporter)
+                                                {{$news->reporter->name}}
+                                            @endif
                                         </a>
                                     </span>
                                 </div>
@@ -124,7 +128,11 @@
                                         </a>
                                     </h5>
                                     <p class="post_source">
-                                        {{$news->author??''}}
+                                        @if($news->guest)
+                                            {{$news->guest}}
+                                        @elseif($news->reporter)
+                                            {{$news->reporter->name}}
+                                        @endif
                                         {{$news->date_line ? '-' .$news->date_line  :''}}
                                     </p>
 
@@ -150,7 +158,11 @@
                                             </a>
                                         </h5>
                                         <p class="post_source">
-                                            {{$news->guest ?? $news->reporter->name}}
+                                            @if($news->guest)
+                                                {{$news->guest}}
+                                            @elseif($news->reporter)
+                                                {{$news->reporter->name}}
+                                            @endif
                                             {{$news->date_line ? '-' .$news->date_line  :''}}</p>
 
                                     </div>

@@ -24,7 +24,11 @@
                         <a href="{{route('category.news.show',['category'=>$news->category->slug,'c_id'=>$news->c_id])}}">
                             {{$news->title??''}}</a></h5>
                     <p class="post_source">
-                        {{$news->guest ?? $news->reporter->name}}
+                        @if($news->guest)
+                            {{$news->guest}}
+                        @elseif($news->reporter)
+                            {{$news->reporter->name}}
+                        @endif
                         {{$news->date_line ? '-' .$news->date_line  :''}}
                     </p>
                 </div>
