@@ -163,9 +163,10 @@ class NewsRepository
             ->limit(5)
             ->get();
     }
+
     public function getNewsByCategoryIds(array $ids, $perPage = 20): LengthAwarePaginator
     {
-        return DB::table('en_news as news')
+        return DB::table('np_news as news')
             ->select(
                 'news.sub_title',
                 'news.id',

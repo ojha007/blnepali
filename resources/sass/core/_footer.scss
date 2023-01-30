@@ -1,0 +1,123 @@
+.page-footer {
+  @include fw;
+  background-color: map_get($colors, tertiary);
+  color: map_get($colors, baseWhite);
+  @include rem-size(margin-top,16px);
+
+  .footer-content {
+    @include fw;
+    @include rem-2Sider(padding, 32px, 0px);
+
+    .brand-logo {
+      @include rem-size(height, 48px);
+      @include rem-size(width, 88px);
+      display: block;
+      position: relative;
+
+      img {
+        position: relative;
+        width: 100%;
+      }
+    }
+
+    .footer-widget{
+      position: relative;
+
+      .widget-title{
+        @include font-size(24px);
+        position: relative;
+        font-family: map_get($fonts,zillaslab-bold);
+        font-weight: bold;
+        text-transform: uppercase;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        flex-flow: row wrap;
+
+        &::after{
+          content: "";
+          flex: 0 25%;
+          border-bottom: 2px solid map_get($colors,baseWhite);
+          @include rem-size(margin-left,12px);
+
+        }
+      }
+
+      .nav--listing{
+        .nav-item{
+          .nav-link{
+            color: map_get($colors,baseWhite);
+
+            &:hover,
+            &:focus{
+              color: map_get($colors,primary);
+              border-color: map_get($colors,primary);
+            }
+          }
+        }
+      }
+
+      .base-form{
+        .input-group{
+          .form-control{
+            background-color: rgba(map_get($colors,baseWhite),0.5);
+            border: 1px solid rgba(map_get($colors,baseWhite),0.8);
+            color: map_get($colors,baseWhite);
+          }
+          .btn-primary{
+            border: 1px solid rgba(map_get($colors,baseWhite),0.8);
+          }
+        }
+      }
+
+      .infoblock{
+        position: relative;
+        width: 100%;
+
+        .block-title{
+          @include font-size(24px);
+          font-weight: bold;
+          padding: 0px;
+        }
+        .block-subTitle{
+          @include font-size(14px);
+          font-weight: normal;
+        }
+
+        .infoList{
+          position: relative;
+          width: 100%;
+
+          .list-item{
+            @include font-size(12px);
+            display: flex;
+            align-items: flex-start;
+            flex-flow: row nowrap;
+
+            label{
+              @include rem-size(padding-right,8px);
+            }
+
+            a{
+              color: map_get($colors,baseWhite);
+
+              &:hover,
+              &:focus{
+                color: map_get($colors,primary);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .footer-copyright {
+    @include rem-2Sider(padding,12px,0px);
+    border-top: 1px solid rgba(map_get($colors,baseWhite),0.5);
+    p {
+      margin: 0px;
+      @include font-size(12px);
+    }
+  }
+}

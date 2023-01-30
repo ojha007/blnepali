@@ -1,0 +1,1745 @@
+@include media-breakpoint-up(xl) {
+  .navbar {
+    &--primary {
+      .navbar-nav {
+        .nav-item {
+          .nav-link {
+            @include font-size(16px);
+            @include rem-4Sider(padding, 13px, 18px, 7px, 18px);
+
+
+            &.active {
+              background-color: map_get($colors, baseWhite);
+              color: map_get($colors, primary);
+            }
+          }
+
+
+          &--home {
+            .nav-link {
+              background-color: map_get($colors, baseWhite);
+              color: map_get($colors, primary);
+              @include font-size(22px);
+              @include rem-4Sider(padding, 6px, 18px, 5px, 18px);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .sticky-xl-top{
+    position: sticky !important;
+  }
+
+  .bl-news {
+    //position: relative;
+    //width: 100%;
+
+    //&--hotScrolling {
+    //  position: relative;
+    //  @include rem-size(padding-top, 16px);
+    //  @include rem-size(padding-bottom, 16px);
+    //  border-bottom: 1px solid map_get($colors, silverGray);
+    //
+    //  .owl-carousel {
+    //    .owl-nav {
+    //      display: flex;
+    //      align-items: center;
+    //      justify-content: space-between;
+    //      position: absolute;
+    //      top: 50%;
+    //      margin: 0px;
+    //      @include transform(translateY(-50%));
+    //      width: 100%;
+    //      z-index: 550;
+    //
+    //      button.owl-prev,
+    //      button.owl-next {
+    //        @include rem-sqSize(24px);
+    //        @include border-radius(100%);
+    //        background-color: map_get($colors, typodim);
+    //        color: map_get($colors, baseWhite);
+    //        margin: 0px;
+    //        opacity: 0.3;
+    //
+    //        &:hover,
+    //        &:focus {
+    //          background-color: map_get($colors, primary);
+    //          opacity: 1;
+    //        }
+    //      }
+    //
+    //    }
+    //
+    //    &:hover,
+    //    &:focus {
+    //      .owl-nav {
+    //        button.owl-prev,
+    //        button.owl-next {
+    //          opacity: 0.75;
+    //
+    //          &:hover,
+    //          &:focus {
+    //            opacity: 1;
+    //          }
+    //        }
+    //      }
+    //    }
+    //  }
+    //}
+
+    &--mainPost {
+      //float: left;
+      //position: relative;
+      //margin-right: calc(-.5 * var(--bs-gutter-x));
+      //margin-left: calc(-.5 * var(--bs-gutter-x));
+      //width: calc(100% + 24px);
+
+
+      .bl-newsPost {
+        //--bl-gutter-y: 1.5rem;
+        //padding-left: calc(var(--bs-gutter-x) * .5);
+        //padding-top: calc(var(--bl-gutter-y) * .5);
+        //padding-right: calc(var(--bs-gutter-x) * .5);
+        //padding-bottom: calc(var(--bl-gutter-y) * .5);
+
+        &--thumbnail {
+          float: left;
+          position: relative;
+          width: 25%;
+          display: flex;
+          flex-flow: column wrap;
+
+          .post_img {
+            @include aspect-ratio(3, 2);
+            width: 100%;
+            flex-shrink: 0;
+
+            a {
+              @include aspect-ratio(3, 2);
+              height: auto;
+              position: absolute;
+
+              img {
+                position: absolute;
+              }
+            }
+          }
+          .post_content {
+            @include rem-size(padding-left, 0px);
+            @include rem-size(padding-top, 10px);
+
+            .post_title {
+              @include font-size(20px);
+
+              a {
+                @include font-size(20px);
+              }
+            }
+
+            p {
+              @include em-calc-size(line-height,20px);
+              @include font-size(16px);
+            }
+
+            .post_source {
+
+            }
+          }
+        }
+      }
+    }
+
+    &--blSpecial {
+      grid-template-columns: repeat(6, 1fr);
+
+      .bl-newsPost--thumbnail {
+
+        .post_img {
+          @include aspect-ratio(3, 2);
+
+          //a {
+          //
+          //
+          //  img {
+          //    height: 100%;
+          //  }
+          //}
+        }
+
+        .post_content {
+          //position: relative;
+          //@include rem-size(padding-top, 12px);
+
+          //.post_title {
+          //  @include font-size(18px);
+          //  @include rem-size(padding-bottom, 10px);
+          //  @include em-calc-size(line-height, 16px);
+          //  color: map_get($colors, baseWhite);
+          //
+          //  a {
+          //    @include font-size(18px);
+          //    color: map_get($colors, baseWhite);
+          //  }
+          //}
+
+
+          //.post_source {
+          //  @include rem-size(margin-top, 4px);
+          //}
+        }
+      }
+    }
+
+    &--smallThumbs {
+      position: relative;
+      display: flex;
+      flex-flow: column wrap;
+
+      .bl-newsPost--small {
+        --bl-gutter-y: 1.5rem;
+        padding-top: calc(var(--bl-gutter-y) * .5);
+        padding-bottom: calc(var(--bl-gutter-y) * .5);
+        align-items: center;
+
+        .post_img {
+          @include rem-sqSize(90px);
+        }
+      }
+    }
+
+    &--verticalThumbs {
+      @include fw;
+
+      .bl-newsPost--thumbnail {
+        .post_content {
+          @include rem-size(padding-top, 8px);
+
+          .post_title {
+            @include font-size(16px);
+            padding: 0px;
+
+            a {
+              @include font-size(16px);
+              padding: 0px;
+            }
+          }
+        }
+
+        &:not(:first-child) {
+          @include rem-2Sider(margin, 24px, 0px);
+        }
+      }
+
+    }
+
+    &--generalNews {
+      grid-template-columns: repeat(3, 1fr);
+
+
+      .bl-newsPost {
+        &--highlightNews {
+          flex-flow: row nowrap;
+          grid-column: 1 / span 3;
+
+          .post_img {
+            width: 65.9%;
+            flex-shrink: 0;
+            order: 1;
+
+            a {
+              @include aspect-ratio(16, 9);
+
+              img {
+                height: auto;
+                width: 100%;
+              }
+            }
+          }
+
+          .post_content {
+
+            .post_title {
+              @include font-size(26px);
+              @include rem-size(padding-bottom, 6px);
+              color: map_get($colors, baseWhite);
+              @include em-calc-size(line-height, 22px);
+
+              a {
+                @include font-size(26px);
+                color: map_get($colors, baseWhite);
+              }
+            }
+
+            p {
+              @include font-size(16px);
+              @include em-calc-size(line-height, 20px);
+              color: rgba(map_get($colors, baseWhite), 0.75);
+            }
+
+            .post_source {
+              @include rem-size(margin-top, 6px);
+            }
+          }
+        }
+
+
+      }
+    }
+
+    &--twoColumner {
+      //display: grid;
+      //@include rem-size(grid-gap, 24px);
+      grid-template-columns: repeat(2, 1fr);
+
+      .bl-newsPost {
+        &--highlightNews {
+          align-items: center;
+          display: flex;
+          flex-flow: column nowrap;
+          justify-content: flex-start;
+          grid-row: 1 / span 4;
+          grid-column: unset;
+
+
+          .post_img {
+
+
+            a {
+              @include aspect-ratio(16, 9);
+
+              img {
+                height: auto;
+                width: 100%;
+              }
+            }
+          }
+
+          .post_content {
+            @include rem-size(padding-top, 12px);
+
+            .post_title {
+              @include font-size(26px);
+              @include rem-size(padding-bottom, 6px);
+              @include em-calc-size(line-height, 20px);
+
+              a {
+                @include font-size(26px);
+                @include em-calc-size(line-height, 20px);
+
+              }
+            }
+
+            p {
+              @include font-size(16px);
+            }
+
+            .post_source {
+              @include rem-size(margin-top, 6px);
+            }
+          }
+        }
+
+        &--columnTopNews {
+          grid-column: unset;
+
+
+          .post_img {
+
+
+            a {
+              @include aspect-ratio(16, 9);
+            }
+          }
+
+          .post_content {
+
+
+            .post_title {
+              @include font-size(26px);
+
+              a {
+                @include font-size(26px);
+              }
+            }
+
+            p {
+              @include em-calc-size(line-height, 20px);
+            }
+
+            .post_source {
+              @include rem-size(margin-top, 6px);
+            }
+          }
+        }
+
+        &--thumbnail {
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+          flex-flow: row nowrap;
+
+          .post_img {
+            @include rem-size(width, 160px);
+            flex-shrink: 0;
+            margin: 0px;
+            @include aspect-ratio(4, 3);
+
+            a {
+
+              align-items: center;
+              justify-content: center;
+              display: flex;
+              overflow: hidden;
+
+              img {
+                height: 100%;
+                width: auto;
+              }
+            }
+          }
+
+          .post_content {
+            flex-grow: 1;
+            @include rem-size(padding-left, 10px);
+            padding-top: 0px;
+
+            .post_title {
+              @include font-size(20px);
+              @include rem-size(padding-bottom, 6px);
+
+              a {
+                @include font-size(20px);
+              }
+            }
+
+            p {
+              @include font-size(16px);
+              @include em-calc-size(line-height, 20px);
+            }
+
+            .post_source {
+              @include rem-size(margin-top, 2px);
+            }
+          }
+        }
+      }
+    }
+
+    &--videoNews {
+      grid-template-columns: repeat(4, 1fr);
+
+      .bl-newsPost {
+        &--topVideo {
+          grid-row: 1 / span 2;
+          grid-column: 1 / span 2;
+
+
+          .post_img {
+
+            a {
+              @include aspect-ratio(1, 1);
+
+              img {
+                height: 100%;
+                width: auto;
+              }
+            }
+          }
+
+          .post_content {
+            position: absolute;
+            @include rem-size(bottom, 8px);
+            @include rem-size(padding,16px);
+
+
+            .post_title {
+              @include font-size(26px);
+              color: map_get($colors, baseWhite);
+
+              a {
+                @include font-size(26px);
+                color: map_get($colors, baseWhite);
+              }
+            }
+
+            p {
+              @include em-calc-size(line-height, 20px);
+            }
+
+            .post_source {
+              @include rem-size(margin-top, 6px);
+              color: map_get($colors, baseWhite);
+            }
+          }
+        }
+
+
+        &--videoThumbnail {
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+          flex-flow: column nowrap;
+
+          .post_img {
+            width: 100%;
+            margin: 0px;
+
+            a {
+              @include aspect-ratio(3, 2);
+              align-items: center;
+              justify-content: center;
+              display: flex;
+              overflow: hidden;
+
+              img {
+                height: 100%;
+                width: auto;
+              }
+            }
+          }
+
+          .post_content {
+            flex-grow: 1;
+            @include rem-size(padding-top, 10px);
+            padding-left: 0px;
+
+            .post_title {
+              @include font-size(20px);
+              @include rem-size(padding-bottom, 6px);
+
+              a {
+                @include font-size(20px);
+              }
+            }
+
+            p {
+              @include em-calc-size(line-height, 20px);
+            }
+
+            .post_source {
+              @include rem-size(margin-top, 2px);
+            }
+          }
+        }
+      }
+    }
+
+    &--trending {
+      background-color: map_get($colors, silverGray-light);
+      position: relative;
+      @include rem-size(margin-top, 18px);
+      width: 100%;
+
+      .post-widgetHeader {
+        background-color: map_get($colors, primary);
+        position: relative;
+        @include rem-size(padding, 12px);
+        width: 100%;
+
+        @each $header in (h1, h2, h3, h4, h5, h6) {
+          #{$header} {
+            @include font-size(24px);
+            color: map_get($colors, baseWhite);
+            padding: 0px;
+            @include em-calc-size(line-height, 18px);
+            font-family: map_get($fonts, zillaslab-bold);
+            font-weight: bold;
+          }
+        }
+      }
+
+      .post-widgetBody {
+        @include fw;
+
+        .trendingNews {
+          @include fw;
+          counter-reset: section;
+
+          .trendingNews-item {
+            display: flex;
+            align-items: center;
+            flex-flow: row wrap;
+            @include fw;
+            @include rem-size(padding, 16px);
+            @include rem-size(padding-left, 64px);
+            @include rem-size(min-height, 40px);
+
+            &:not(:last-child) {
+              border-bottom: 1px dotted map_get($colors, baseWhite);
+            }
+
+            &::before {
+              counter-increment: section;
+              content: counter(section);
+              @include flex_vrc;
+              @include font-size(22px);
+              @include rem-sqSize(40px);
+              background-color: map_get($colors, primary);
+              color: map_get($colors, baseWhite);
+              position: absolute;
+              @include rem-size(left, 12px);
+              @include border-radius(100%);
+              text-align: center;
+              line-height: 1em;
+            }
+
+            .post_title {
+              @include font-size(18px);
+              @include rem-size(padding-bottom, 6px);
+              font-family: map_get($fonts, zillaslab-bold);
+              color: map_get($colors, typoheader);
+              font-weight: bold;
+              @include em-calc-size(line-height, 16px);
+
+              a {
+                @include font-size(18px);
+                font-family: map_get($fonts, zillaslab-bold);
+                color: map_get($colors, typoheader);
+                font-weight: bold;
+                text-decoration: none;
+
+                &:hover,
+                &:focus {
+                  color: map_get($colors, primary);
+                }
+              }
+            }
+
+
+            .post_source {
+              @include font-size(10px, !important);
+              font-weight: bold;
+              color: lighten(map_get($colors, typodim), 15%);
+            }
+
+
+          }
+        }
+      }
+    }
+
+    &Post {
+      &--details {
+        @include fw;
+        @include rem-2Sider(padding, 24px, 0px);
+        @include rem-size(padding-right, 32px);
+
+        .bl-post {
+          &--header {
+            @include fw;
+            @include rem-size(margin-bottom, 16px);
+          }
+
+          &--meta {
+            @include fw;
+
+            .post-meta-item {
+              @include fw;
+
+              //&:not(:first-child){
+              //  @include rem-size(margin-top,8px);
+              //}
+
+              &.cat-labels {
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+
+                .meta-category {
+                  display: block;
+                  @include em-calc-size(line-height, 16px);
+                  background-color: map_get($colors, primary);
+                  color: map_get($colors, baseWhite);
+                  @include font-size(12px);
+                  @include rem-2Sider(padding, 4px, 6px);
+                }
+              }
+
+              &.post-title {
+                @include fw;
+
+                @each $header in (h1, h2, h3, h4, h5, h6) {
+                  #{$header} {
+                    @include font-size(40px);
+                    color: map_get($colors, typoheader);
+                    padding: 0px;
+                    @include em-calc-size(line-height, 22px);
+                    font-family: map_get($fonts, zillaslab-bold);
+                    font-weight: bold;
+                  }
+                }
+              }
+
+              &.meta-reporter {
+                @include fw;
+                @include rem-size(margin-top, 8px);
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                flex-flow: row nowrap;
+
+                .meta-author-info {
+                  display: flex;
+                  align-items: center;
+                  justify-content: flex-start;
+                  flex-flow: row nowrap;
+                  @include rem-size(margin-right, 16px);
+
+                  .has-author-img {
+                    @include rem-sqSize(24px);
+                    @include border-radius(100%);
+                    @include rem-size(margin-right, 4px);
+                    overflow: hidden;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    img {
+                      @include rem-sqSize(24px);
+                      @include border-radius(100%);
+                    }
+                  }
+
+                  .post-by {
+                    display: flex;
+                    align-items: center;
+                    @include font-size(12px);
+
+                    a {
+                      @include font-size(12px);
+                      @include rem-size(padding-left, 4px);
+                      color: map_get($colors, blueDark);
+
+                    }
+                  }
+                }
+
+                .post-date {
+                  @include font-size(12px);
+                  color: map_get($colors, typodim);
+
+                }
+              }
+            }
+          }
+
+          &--banner {
+            @include fw;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-flow: column;
+            margin: 0px;
+
+            .primaryImage {
+              max-width: 100%;
+              position: relative;
+              margin: 0px;
+
+              img {
+                max-width: 100%;
+                position: relative;
+              }
+
+              &-caption {
+                @include fw;
+                @include rem-2Sider(padding, 8px, 16px);
+                align-items: center;
+                text-align: center;
+                @include font-size(12px);
+                color: map_get($colors, typodim);
+              }
+            }
+          }
+        }
+
+        &-story {
+          @include fw;
+          @include rem-size(padding-top, 24px);
+          @include font-size(16px);
+          color: map_get($colors, typodim);
+
+
+          p {
+            @include font-size(16px);
+            color: map_get($colors, typodim);
+          }
+
+          blockquote {
+            position: relative;
+            @include rem-2Sider(margin, 32px, 0px);
+            padding: 0;
+            font: inherit;
+            line-height: inherit;
+            @include rem-size(padding-left, 64px);
+            @include font-size(18px);
+            font-weight: 600;
+            text-align: left;
+            font-style: italic;
+            color: map_get($colors, blueDark);
+
+            &::before {
+              content: "\201c";
+              position: absolute;
+              top: 0;
+              @include rem-size(margin-left, -32px);
+              //margin-left: -.32em;
+              color: map_get($colors, primary);
+              transform: translateX(-100%) translateY(68%) rotate(1deg);
+              font-size: 3em;
+              line-height: .41;
+              font-family: Georgia, Arial, sans-serif;
+              font-style: normal;
+              font-weight: 600;
+            }
+          }
+
+          .storyImage-wrapper {
+            display: flex;
+            flex-flow: column;
+            float: left;
+            max-width: 50%;
+            position: relative;
+            width: auto;
+            vertical-align: top;
+            @include em-calc-size(padding, 15px);
+            @include em-calc-4Sider(margin, 0px, 15px, 15px, 0px);
+            margin-bottom: 0px;
+
+            .storyImage {
+              @include fw;
+
+              a img,
+              img {
+                width: 100%;
+              }
+            }
+
+            .imageCaption {
+              @include em-calc-size(padding-bottom, 0px);
+              @include font-size(12px);
+              @include rem-size(margin-top, 8px);
+            }
+          }
+
+          .newsDetails--content {
+            @include fw;
+
+
+          }
+        }
+      }
+
+      &--reviews {
+        @include fw;
+
+        .reviews-header {
+          @include fw;
+          background-color: map_get($colors, primary);
+          color: map_get($colors, baseWhite);
+          @include rem-2Sider(padding, 16px, 24px);
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          flex-flow: row wrap;
+
+          @each $header in (h1, h2, h3, h4, h5, h6) {
+            #{$header} {
+              @include font-size(22px);
+              color: map_get($colors, baseWhite);
+              font-weight: bold;
+              padding: 0px;
+            }
+          }
+
+          .count-badge {
+            background-color: map_get($colors, primary-dark);
+            border: 2px solid map_get($colors, primary-light);
+            @include border-radius(20px);
+            color: map_get($colors, baseWhite);
+            @include rem-2Sider(padding, 5px, 10px);
+            @include rem-size(margin-left, 12px);
+            @include font-size(16px);
+          }
+        }
+
+        .reviews-body {
+          @include fw;
+
+          .reviewer-login {
+            @include fw;
+            @include rem-size(margin-bottom, 40px);
+            background-color: map_get($colors, smoke);
+            @include rem-2Sider(padding, 32px, 24px);
+
+            .form-text {
+              @include font-size(14px);
+              display: flex;
+              align-items: center;
+              justify-content: flex-start;
+
+              a {
+                display: block;
+                @include rem-size(margin-left, 8px);
+              }
+            }
+
+            .social-login {
+              @include fw;
+              @include rem-size(margin-top, 32px);
+
+              @each $header in (h1, h2, h3, h4, h5, h6) {
+                #{$header} {
+                  @include font-size(14px);
+                  color: map_get($colors, typoheader);
+                  font-weight: bold;
+                  padding: 0px;
+                  display: flex;
+                  align-items: center;
+                  justify-content: flex-start;
+                  flex-flow: row wrap;
+
+                  &::after {
+                    content: "";
+                    flex: 1 1;
+                    border-bottom: 2px solid map_get($colors, typoheader);
+                    @include rem-size(margin-left, 12px);
+                  }
+                }
+              }
+
+            }
+          }
+
+          .review-terms {
+            @include fw;
+            @include rem-size(padding-left, 24px);
+
+            @each $header in (h1, h2, h3, h4, h5, h6) {
+              #{$header} {
+                @include font-size(14px);
+                color: map_get($colors, typoheader);
+                font-weight: bold;
+                padding: 0px;
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                flex-flow: row wrap;
+
+                &::after {
+                  content: "";
+                  flex: 1 1;
+                  border-bottom: 2px solid map_get($colors, typoheader);
+                  @include rem-size(margin-left, 12px);
+                }
+              }
+            }
+
+            .terms-list {
+              @include fw;
+
+              .list-item {
+                position: relative;
+                display: block;
+                @include rem-2Sider(padding, 4px, 0px);
+                color: map_get($colors, typodim);
+                text-decoration: none;
+                @include font-size(14px);
+                @include rem-size(padding-left, 24px);
+
+                &::before {
+                  content: "\f00c";
+                  font-family: map_get($fonts, fa-solid);
+                  position: absolute;
+                  left: 0px;
+                  font-weight: 900;
+                  @include rem-size(top, 8px);
+                }
+              }
+            }
+          }
+
+          .review-lists {
+            background-color: map_get($colors, smoke-light);
+            @include rem-size(padding, 24px);
+            border: 1px solid map_get($colors, silverGray-light);
+
+            .review-items {
+              @include fw;
+              @include rem-2Sider(padding, 16px, 0px);
+              display: flex;
+              align-items: flex-start;
+              justify-content: flex-start;
+              flex-flow: row nowrap;
+
+              &:not(:last-child) {
+                border-bottom: 1px solid map_get($colors, silverGray-light);
+              }
+
+              .reviewer-avatar {
+                @include rem-sqSize(48px);
+                @include border-radius(100%);
+                position: relative;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: map_get($colors, silverSmoke);
+                @include border-radius(100%);
+
+                img {
+                  @include rem-size(width, 48px);
+                  height: 100%;
+                  @include border-radius(100%);
+                }
+              }
+
+              .review-content {
+                flex-grow: 1;
+                @include rem-size(padding-left, 24px);
+
+                .reviewer-name {
+                  @include font-size(16px);
+                  font-weight: bold;
+                  color: map_get($colors, blueDark);
+                  padding: 0px;
+                }
+
+                .review-date-times {
+                  @include font-size(12px);
+                  color: map_get($colors, typodim);
+                  margin: 0px;
+                  display: flex;
+                  flex-flow: row wrap;
+                  align-items: center;
+                  justify-content: flex-start;
+
+                  span {
+                    &:not(:first-child) {
+                      @include rem-size(margin-left, 16px);
+                    }
+                  }
+                }
+
+                .review-text {
+                  @include font-size(14px);
+                  @include rem-size(margin-top, 12px);
+                  color: map_get($colors, typotext);
+                }
+              }
+            }
+          }
+
+          .reviews-meta {
+            @include fw;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            flex-flow: row wrap;
+
+            .meta-item {
+              @include font-size(14px);
+              color: map_get($colors, silverSmoke);
+
+              &:not(:first-child) {
+                @include rem-size(margin-left, 16px);
+              }
+
+              .report {
+                color: map_get($colors, danger);
+              }
+            }
+          }
+        }
+
+      }
+    }
+
+    &--autoFloating {
+      float: left;
+      position: relative;
+      padding: 0px;
+      width: 100%;
+
+      &-wrapper {
+        @include fw;
+      }
+
+      .news-item {
+        float: left;
+        display: inline-block;
+        @include rem-size(padding, 12px);
+        //width: 25%;
+
+        .news-image-holder {
+          //@include responsive-ratio(4, 3);
+          position: relative;
+          margin: 0px;
+
+          .news-image {
+            height: 100%;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            margin: 0px;
+            width: 100%;
+
+            a {
+              display: block;
+              @include flex_hrc;
+              overflow: hidden;
+              height: 100%;
+              width: 100%;
+
+              img {
+                width: 100%;
+                height: auto;
+              }
+            }
+          }
+        }
+
+        .news-content {
+
+          @include rem-size(padding-top, 12px);
+
+
+          @each $header in (h1, h2, h3, h4, h5, h6) {
+            #{$header} {
+              @include em-calc-size(padding-bottom, 0px);
+            }
+          }
+
+          .post_title {
+            font-family: map_get($fonts, zillaslab-bold);
+            color: map_get($colors, typoheader);
+            font-weight: bold;
+            @include em-calc-size(line-height, 16px);
+            @include font-size(20px);
+            @include rem-size(padding-bottom, 6px);
+
+
+            a {
+              font-family: map_get($fonts, zillaslab-bold);
+              color: map_get($colors, typoheader);
+              font-weight: bold;
+              text-decoration: none;
+              @include font-size(20px);
+
+              &:hover,
+              &:focus {
+                color: map_get($colors, primary);
+              }
+            }
+          }
+
+          p {
+            margin: 0px;
+          }
+
+          .time-stamp,
+          .post_source {
+            @include font-size(10px, !important);
+            font-weight: bold;
+            color: #939393;
+            font-family: map_get($fonts, primary);
+          }
+
+          .short-news {
+            display: none;
+          }
+        }
+
+        &.highlight {
+          position: relative;
+          //width: 70%;
+
+          .news-image-holder {
+            .news-image {
+              &::after {
+                content: '';
+                @include gradient-vertical(rgba(map_get($colors, baseWhite), 0), rgba(map_get($colors, baseBlack), 0.8), 50%, 100%);
+                @include em-calc-size(padding, 30px);
+                @include flex_vrc;
+                position: absolute;
+                left: 0px;
+                top: 0px;
+                right: 0px;
+                bottom: 0px;
+              }
+            }
+          }
+
+          .news-content {
+            position: absolute;
+            bottom: 15px;
+            left: 15px;
+            right: 15px;
+            padding: 30px;
+            width: auto;
+            z-index: 550;
+
+            .post_title {
+              @include font-size(32px);
+              color: map_get($colors, baseWhite);
+
+              a {
+                @include font-size(32px);
+                color: map_get($colors, baseWhite);
+              }
+            }
+
+            .short-news {
+              display: block;
+              @include em-calc-size(margin-top, 15px);
+            }
+          }
+        }
+
+        &.spot-highlight {
+          //width: 30%;
+
+          .news-image-holder {
+            //@include responsive-ratio(16, 9);
+            position: relative;
+            margin: 0px;
+
+            .news-image {
+              height: 100%;
+              position: absolute;
+              top: 0px;
+              left: 0px;
+              margin: 0px;
+              width: 100%;
+
+              a {
+                display: block;
+                @include flex_vrc;
+                overflow: hidden;
+                width: 100%;
+
+                img {
+                  height: auto;
+                  width: 100%;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    &--condensed {
+      position: relative;
+      @include rem-size(margin-left, -12px);
+      @include rem-size(margin-right, -12px);
+      display: flex;
+      flex-wrap: wrap;
+      width: calc(100% + 24px);
+
+      .bl-news-condensed-item {
+        position: relative;
+        //width: 20%;
+        padding: 12px;
+
+        .post_img {
+          @include fw;
+
+          a {
+            //@include aspect-ratio(16,9);
+          }
+
+        }
+
+        .post_content {
+          position: relative;
+          @include rem-size(padding-top, 12px);
+
+          .post_title {
+            @include font-size(16px);
+            @include rem-size(padding-bottom, 4px);
+            @include em-calc-size(line-height, 18px);
+
+            a {
+              @include font-size(16px);
+            }
+          }
+
+          p {
+            @include em-calc-size(line-height, 20px);
+            @include font-size(16px);
+          }
+
+          .post_source {
+            @include rem-size(margin-top, 6px);
+          }
+        }
+
+        &--highlight {
+          width: 100%;
+
+
+          .bl-newsPost {
+            display: flex;
+            flex-flow: column nowrap;
+            background-color: map_get($colors, secondary);
+            color: map_get($colors, baseWhite);
+          }
+
+          .post_img {
+            //width: 60%;
+            flex-shrink: 0;
+
+            a {
+              @include aspect-ratio(89,45);
+            }
+          }
+
+          .post_content {
+            flex-grow: 1;
+            @include rem-size(padding, 16px);
+            align-items: center;
+            justify-content: flex-start;
+
+            .post_title {
+              @include font-size(26px);
+              @include rem-size(padding-bottom, 6px);
+              color: map_get($colors, baseWhite);
+              @include em-calc-size(line-height, 22px);
+
+              a {
+                @include font-size(26px);
+                color: map_get($colors, baseWhite);
+              }
+            }
+
+            p {
+              @include em-calc-size(line-height, 20px);
+              color: rgba(map_get($colors, baseWhite), 0.75);
+            }
+
+            .post_source {
+              @include rem-size(margin-top, 6px);
+            }
+          }
+        }
+
+      }
+    }
+
+  }
+
+
+  .news-row {
+    position: relative;
+    @include rem-size(padding-top, 12px);
+    @include rem-size(padding-bottom, 12px);
+    width: 100%;
+  }
+
+  .aside-news-rows {
+    @include fw;
+
+    &:not(:first-child) {
+      @include rem-size(margin-top, 24px);
+    }
+    .bl-news--smallThumbs{
+      flex-flow: column wrap;
+
+      .bl-newsPost{
+        width: 100%;
+      }
+    }
+  }
+
+  .bl-newsHeader {
+    position: relative;
+    @include rem-2Sider(padding, 12px, 0px);
+    width: 100%;
+
+    .header-title {
+      font-family: map_get($fonts, zillaslab-bold);
+      @include font-size(20px);
+      color: map_get($colors, typoheader);
+      font-weight: bold;
+      @include ttu;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      flex-flow: row wrap;
+
+      &::before {
+        background-color: map_get($colors, primary);
+        content: "";
+        @include rem-size(margin-right, 8px);
+        @include rem-size(height, 16px);
+        left: 0px;
+        @include rem-size(width, 12px);
+      }
+
+      &::after {
+        content: "";
+        flex: 1 1;
+        border-bottom: 4px solid map_get($colors, silverSmoke);
+        @include rem-size(margin-left, 16px);
+        @include rem-size(margin-top, 2px);
+      }
+    }
+
+    &.header-center {
+
+      .header-title {
+        font-family: map_get($fonts, zillaslab-bold);
+        text-align: center;
+        justify-content: center;
+        @include font-size(18px);
+        @include rem-size(padding-bottom, 8px);
+        position: relative;
+
+        &::before {
+          display: none;
+        }
+
+        &::after {
+          content: "";
+          position: absolute;
+          background-color: map_get($colors, silverGray);
+          bottom: 0px;
+          left: 0px;
+          height: 1px;
+          width: 100%;
+          flex: 1;
+          border: none;
+          margin: 0px;
+        }
+      }
+    }
+  }
+
+  .bl-newsPost {
+
+
+    .post_img {
+      position: relative;
+      margin: 0px;
+
+      a img,
+      img {
+        position: relative;
+      }
+    }
+
+    .post_content {
+      position: relative;
+
+      .post_title {
+        @include font-size(20px);
+        @include em-calc-size(line-height, 16px);
+
+
+        a {
+          @include font-size(20px);
+
+
+          //&:hover,
+          //&:focus {
+          //  color: map_get($colors, primary);
+          //}
+        }
+      }
+
+      //p {
+      //  @include font-size(14px);
+      //  color: map_get($colors, typotext);
+      //  margin: 0px;
+      //  font-family: map_get($fonts, primary);
+      //}
+
+      //.post_source {
+      //  @include font-size(10px, !important);
+      //  font-weight: bold;
+      //  color: lighten(map_get($colors, typodim), 15%);
+      //}
+    }
+
+
+    &--small {
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+      flex-flow: row nowrap;
+
+      .post_img {
+        @include rem-size(height, 92px);
+        @include rem-size(width, 80px);
+        flex-shrink: 0;
+        margin: 0px;
+
+        a {
+          align-items: center;
+          justify-content: center;
+          display: flex;
+          height: 100%;
+          width: 100%;
+          overflow: hidden;
+
+          img {
+            height: 100%;
+            width: auto;
+          }
+        }
+      }
+
+      .post_content {
+        flex-grow: 1;
+        @include rem-size(padding-left, 10px);
+
+        .post_title {
+          @include font-size(18px);
+          @include rem-size(padding-bottom, 6px);
+
+          a {
+            @include font-size(18px);
+          }
+        }
+
+        p {
+          @include em-calc-size(line-height, 20px);
+        }
+
+        .post_source {
+          @include rem-size(margin-top, 2px);
+        }
+      }
+    }
+
+    &--topStory {
+      width: 50%;
+
+      .post_img {
+        @include aspect-ratio(3, 2);
+
+        a {
+
+
+          img {
+
+          }
+        }
+      }
+
+      .post_content {
+        position: relative;
+        @include rem-size(padding-top, 12px);
+
+        .post_title {
+          @include font-size(24px);
+          @include rem-size(padding-bottom, 10px);
+          @include em-calc-size(line-height, 20px);
+
+          a {
+            @include font-size(24px);
+          }
+        }
+
+        p {
+          @include em-calc-size(line-height, 22px);
+          @include font-size(16px);
+        }
+
+        .post_source {
+          @include rem-size(margin-top, 6px);
+        }
+      }
+
+    }
+
+    &--thumbnail {
+
+      .post_img {
+        @include aspect-ratio(3, 2);
+
+        a {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          object-fit: cover;
+          overflow: hidden;
+
+          img {
+            height: 100%;
+          }
+        }
+      }
+
+      .post_content {
+        position: relative;
+        @include rem-size(padding-top, 12px);
+
+        .post_title {
+          @include font-size(20px);
+          @include rem-size(padding-bottom, 10px);
+          @include em-calc-size(line-height, 18px);
+
+          a {
+            @include font-size(20px);
+          }
+        }
+
+        p {
+          @include em-calc-size(line-height, 20px);
+          @include font-size(16px);
+        }
+
+        .post_source {
+          @include rem-size(margin-top, 6px);
+        }
+      }
+    }
+  }
+
+  .blSpecial-container {
+    position: relative;
+    background-color: map_get($colors, secondary);
+
+    .bl-newsHeader {
+      .header-title {
+        color: map_get($colors, baseWhite);
+      }
+    }
+  }
+
+  .news-reporter-info {
+    @include fw;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-flow: column;
+
+    .reporter-avatar {
+      @include rem-sqSize(120px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      @include border-radius(100%);
+      overflow: hidden;
+      background-color: map_get($colors, smoke);
+
+      img {
+        height: 100%;
+        @include border-radius(100%);
+      }
+    }
+
+    .reporter-info {
+      @include fw;
+      @include rem-size(margin-top, 12px);
+
+      .reporter-title {
+        padding: 0px;
+        @include font-size(16px);
+        font-weight: bold;
+        color: map_get($colors, blueDark);
+        text-align: center;
+      }
+
+      .news-timestamp {
+        @include font-size(12px);
+        text-align: center;
+        color: map_get($colors, typodim);
+      }
+    }
+  }
+
+  .aside-right-seperator {
+    position: relative;
+
+    &::before {
+      content: '';
+      background-color: map_get($colors, silverGray-light);
+      height: 100%;
+      position: absolute;
+      @include rem-size(right, -32px);
+      top: 0px;
+      width: 1px;
+    }
+  }
+
+  .exclusive_highlight {
+    @include rem-size(margin-bottom, 12px);
+
+    .news-banner {
+      //min-height: 450px;
+      //max-height: 550px;
+      margin: 0px;
+      position: relative;
+      //width: 100%;
+      //@include aspect-ratio(21, 9);
+
+      a {
+        display: block;
+        overflow: hidden;
+
+
+        img {
+          height: 100%;
+          width: 100%;
+        }
+
+        &::before {
+          content: '';
+          @include gradient-vertical(rgba(map_get($colors, baseWhite), 0), rgba(map_get($colors, baseBlack), 0.8), 50%, 100%);
+          @include em-calc-size(padding, 30px);
+          @include flex_vrc;
+          position: absolute;
+          left: 0px;
+          top: 0px;
+          right: 0px;
+          bottom: 0px;
+          pointer-events: none;
+        }
+      }
+    }
+
+    .post-content {
+      height: auto;
+      position: absolute;
+      left: 0px;
+      bottom: 30px;
+      @include rem-2Sider(padding, 24px, 12px);
+      width: 100%;
+
+      .post_title {
+        @include font-size(48px);
+        color: map_get($colors, baseWhite);
+        padding-bottom: 5px;
+
+        a {
+          @include font-size(48px);
+          color: map_get($colors, baseWhite);
+          font-family: map_get($fonts, zillaslab-bold);
+
+          &:hover,
+          &:focus {
+            color: lighten(map_get($colors, primary), 30%);
+          }
+        }
+      }
+
+      span {
+        &:not(:first-child) {
+          @include rem-size(margin-left, 12px);
+        }
+      }
+
+      .time-stamp {
+        color: rgba(map_get($colors, baseWhite), 0.85);
+      }
+
+      .post_source {
+        color: rgba(map_get($colors, baseWhite), 0.85);
+      }
+    }
+  }
+}

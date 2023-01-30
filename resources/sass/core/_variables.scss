@@ -1,0 +1,83 @@
+$colors: (
+        'primary': #F06023,
+        'primary-dark': #C73F00,
+        'danger': #F31414,
+        'primary-light': #FFAF8D,
+        'secondary': #222A33,
+        'secondary-dark': #1B2128,
+        'tertiary': #213641,
+        'typoheader': #2D2D2D,
+        'typotext': #222A33,
+        'typodim': #6D6D6D,
+        'baseWhite': #FFFFFF,
+        'silverGray': #C4C4C4,
+        'silverGray-light': #E5E5E5,
+        'silverSmoke': #9FB3C5,
+        'smoke': #f2f2f2,
+        'smoke-light': #FCFCFC,
+        'baseBlack': #000000,
+        'blueDark': #0E4B81
+);
+
+
+$black-shades: (
+        shade-99: lighten(map_get($colors, baseBlack), 99%),
+        shade-98: lighten(map_get($colors, baseBlack), 98%),
+        shade-97: lighten(map_get($colors, baseBlack), 97%),
+        shade-96: lighten(map_get($colors, baseBlack), 96%),
+        shade-95: lighten(map_get($colors, baseBlack), 95%),
+        shade-93: lighten(map_get($colors, baseBlack), 93%),
+        shade-90: lighten(map_get($colors, baseBlack), 90%),
+        shade-85: lighten(map_get($colors, baseBlack), 85%),
+        shade-80: lighten(map_get($colors, baseBlack), 80%),
+        shade-75: lighten(map_get($colors, baseBlack), 75%),
+        shade-70: lighten(map_get($colors, baseBlack), 70%),
+        shade-65: lighten(map_get($colors, baseBlack), 65%),
+        shade-60: lighten(map_get($colors, baseBlack), 60%),
+        shade-55: lighten(map_get($colors, baseBlack), 55%),
+        shade-50: lighten(map_get($colors, baseBlack), 50%),
+        shade-45: lighten(map_get($colors, baseBlack), 45%),
+        shade-40: lighten(map_get($colors, baseBlack), 40%),
+        shade-35: lighten(map_get($colors, baseBlack), 35%),
+        shade-30: lighten(map_get($colors, baseBlack), 30%),
+        shade-25: lighten(map_get($colors, baseBlack), 25%),
+        shade-20: lighten(map_get($colors, baseBlack), 20%),
+        shade-15: lighten(map_get($colors, baseBlack), 15%),
+        shade-10: lighten(map_get($colors, baseBlack), 10%),
+        shade-5: lighten(map_get($colors, baseBlack), 5%),
+);
+
+$base-font-path: "../fonts" !default;
+$fontawesome-path: "../fontawesome/webfonts" !default;
+$fonts: (
+        primary: 'Roboto',
+        zillaslab-regular: 'Zilla Slab',
+        zillaslab-bold: 'Zilla Slab',
+        fa-brands:'Font Awesome 6 Brands Regular',
+        fa-regular: 'Font Awesome 6 Free Regular',
+        fa-solid: 'Font Awesome 6 Free',
+        base-font-size: 16px,
+        base-line-height: 1.4em,
+);
+// Font weight settings
+$fw-light: 300;
+$fw-regular: 400;
+$fw-medium: 500;
+$fw-semibold: 600;
+$fw-bold: 700;
+$fw-law: 900;
+
+
+// Durations
+$fastDuration: .1s !default;
+$mediumDuration: .3s !default;
+$slowDuration: .6s !default;
+
+// Browser Prefixes - Which CSS prefixes should be used?
+$webkit: true !default;
+$moz: false !default;
+$ms: false !default;
+$o: false !default;
+
+
+//Extend

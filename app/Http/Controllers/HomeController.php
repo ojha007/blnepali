@@ -103,6 +103,7 @@ class HomeController extends Controller
 
             return view($this->viewPath . 'category.index', compact('headerCategories', 'news', 'trendingNews'));
         } catch (\Exception $exception) {
+
             return redirect()->route('index');
         }
     }

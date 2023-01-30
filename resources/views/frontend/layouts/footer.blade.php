@@ -13,21 +13,21 @@
                         <h6 class="block-subTitle">Media for all across the globe</h6>
                         <ul class="infoList">
                             <li class="list-item">
-                                <label>{{trans('messages.email')}}:</label>
+                                <label>ईमेल:</label>
                                 <a href="mailto:{{setting('website_email')}}">{{setting('website_email')}}</a>
                             </li>
                             <li class="list-item">
-                                <label>{{trans('messages.contact_number')}}</label>
+                                <label>सम्पर्क नम्बर</label>
                                 {{setting('contact_number')}}
                             </li>
                             @if(setting('registration_number'))
                                 <li class="list-item">
-                                    <label>{{trans('messages.registration_number')}}</label>
+                                    <label>दर्ता नम्बर</label>
                                     {{setting('registration_number')}}
                                 </li>
                             @endif
                             <li class="list-item">
-                                <label>{{trans('messages.address')}}</label>
+                                <label>ठेगाना</label>
                                 {{setting('address')}}
                             </li>
                         </ul>
@@ -37,16 +37,21 @@
                 <div class="col-sm-6 col-md-3 col-lg-2 col-xl-2 col-xxl-2 footer-widget">
                     <h5 class="widget-title">Edition</h5>
                     <ul class="nav nav--listing">
-                        <li class="nav-item"><a href="{{url('/eng')}}" class="nav-link" target="_blank">English</a></li>
-                        <li class="nav-item"><a href="#" class="nav-link">French</a></li>
-                        <li class="nav-item"><a href="{{url('np')}}" class="nav-link" target="_blank">Nepali</a></li>
-                        <li class="nav-item"><a href="{{url('hindi')}}" class="nav-link" target="_blank">Hindi</a></li>
+                        <li class="nav-item">
+                            <a href="/eng" class="nav-link" target="_blank">English</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/" class="nav-link active">Nepali</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/hindi" class="nav-link" target="_blank">Hindi</a>
+                        </li>
                     </ul>
                 </div>
                 <div class="col-sm-6 col-md-3 col-lg-4 col-xl-4 col-xxl-4 footer-widget">
                     <h5 class="widget-title">Categories</h5>
                     <ul class="nav nav--listing __2-columnn">
-                        @foreach($headerCategories ??[] as $key=> $category)
+                        @foreach($headerCategories ?? [] as $key=> $category)
                             <li class="nav-item">
                                 <a href="{{route('newsByCategory',['slug'=>$category->slug])}}" class="nav-link">
                                     {{$category->name}}</a>
@@ -67,21 +72,23 @@
                     <ul class="social-link-circle">
                         <li class="nav-item">
                             <a href="{{setting('facebook')}}" class="nav-link" target="_blank">
-                                <i class="fab fa-facebook-square"></i></a>
+                                <i class="fab fa-facebook-square"></i>
+                            </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{setting('twitter')}}" class="nav-link" target="_blank">
-                                <i class="fab fa-twitter-square"></i></a>
+                                <i class="fab fa-twitter-square"></i>
+                            </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{setting('instagram')}}" class="nav-link"
-                               target="_blank">
-                                <i class="fab fa-instagram"></i></a>
+                            <a href="{{setting('instagram')}}" class="nav-link" target="_blank">
+                                <i class="fab fa-instagram"></i>
+                            </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{setting('youtube')}}"
-                               class="nav-link" target="_blank">
-                                <i class="fab fa-youtube-square"></i></a>
+                            <a href="{{setting('youtube')}}" class="nav-link" target="_blank">
+                                <i class="fab fa-youtube-square"></i>
+                            </a>
                         </li>
                     </ul>
                 </div>

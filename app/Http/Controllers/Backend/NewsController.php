@@ -14,7 +14,6 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
 
-
 class NewsController extends Controller
 {
     protected string $baseRoute = 'cms.news';
@@ -134,7 +133,6 @@ class NewsController extends Controller
 
     public function destroy(Request $request, News $news): RedirectResponse
     {
-        $baseRoute = getBaseRouteByUrl($request);
         try {
             DB::beginTransaction();
 
@@ -148,7 +146,7 @@ class NewsController extends Controller
         } catch (\Exception $exception) {
             DB::rollBack();
             Log::error($exception->getMessage() . '-' . $exception->getTraceAsString());
-            return redirect()->route($baseRoute . '.index')
+            return redirect()->route($this->baseRoute . '.index')
                 ->with('failed', 'Failed to delete news.');
         }
 

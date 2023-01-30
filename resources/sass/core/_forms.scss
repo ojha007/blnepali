@@ -1,0 +1,111 @@
+/*---Expand searchbar--*/
+.expand-search-box {
+  position: absolute;
+  @include rem-size(right, 16px);
+  background: map_get($colors, baseWhite);
+  border: 1px solid map_get($colors,primary);
+  @include rem-size(height, 40px);
+  border-radius: 60px;
+  padding: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* input */
+.expand-search-input {
+  outline: none;
+  border: none;
+  background: none;
+  @include rem-size(height, 30px);
+  padding: 0;
+  color: map_get($colors, typotext);
+  float: left;
+  font-size: 14px;
+  transition: .3s;
+  @include em-calc-size(line-height, 30px);
+  width: 0;
+}
+
+.expand-search-input::placeholder {
+  color: map_get($colors, typodim);
+}
+
+/* icon */
+.expand-search-btn {
+  color: map_get($colors, primary);
+  float: right;
+  @include rem-sqSize(30px);
+  border-radius: 60px;
+  background: map_get($colors, baseWhite);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  transition: .3s;
+}
+
+.expand-search-input:focus,
+.expand-search-input:not(:placeholder-shown) {
+  @include rem-size(width, 240px);
+  @include rem-2Sider(padding, 0px, 6px);
+}
+
+.expand-search-box:hover > .expand-search-input {
+  @include rem-size(width, 240px);
+  @include rem-2Sider(padding, 0px, 6px);
+}
+
+.expand-search-box:hover > .expand-search-btn,
+.expand-search-input:focus + .expand-search-btn,
+.expand-search-input:not(:placeholder-shown) + .expand-search-btn {
+  background: map_get($colors, primary);
+  color: map_get($colors, baseWhite);
+}
+
+/*---Expand searchbar ended--*/
+
+.btn {
+  &-primary {
+    background-color: map_get($colors, primary);
+    border: none;
+
+    &:hover,
+    &:focus {
+      background-color: lighten(map_get($colors, primary), 15%);
+    }
+  }
+
+  &-white {
+    &-outline {
+      border: 1px solid map_get($colors,baseWhite);
+      color: map_get($colors,baseWhite);
+
+      &:hover,
+      &:focus{
+        background-color: map_get($colors,baseWhite);
+        color: map_get($colors,primary);
+      }
+    }
+  }
+}
+
+.base-form {
+  .form-control {
+    @include rem-size(height, 40px);
+  }
+}
+
+.btn-fb-login {
+  background-color: #3B5998;
+  color: white;
+}
+
+.btn-twitter-login {
+  background-color: #55ACEE;
+  color: white;
+}
+
+.btn-google-login {
+  background-color: #dd4b39;
+  color: white;
+}

@@ -30,22 +30,22 @@
         <meta content="" property="fb:pages"/>
         <meta content="" property="fb:admins"/>
     @endif
-    <link rel="stylesheet" href="{{asset('frontend/np/bootstrap/css/bootstrap.css')}}" type="text/css"/>
-    <link rel="stylesheet" href="{{asset('frontend/np/fontawesome/css/all.css')}}" type="text/css"/>
-    <link rel="stylesheet" href="{{asset('frontend/np/owl-carousel/css/owl.carousel.css')}}" type="text/css"/>
-    <link rel="stylesheet" href="{{asset('frontend/np/owl-carousel/css/owl.theme.default.css')}}" type="text/css"/>
-    <link rel="stylesheet" href="{{asset('frontend/np/css/language-switcher.css')}}" type="text/css"/>
-    <link rel="stylesheet" href="{{asset('frontend/np/css/main.css')}}" type="text/css"/>
+    <link rel="stylesheet" href="{{asset('frontend/bootstrap/css/bootstrap.css')}}" type="text/css"/>
+    <link rel="stylesheet" href="{{asset('frontend/fontawesome/css/all.css')}}" type="text/css"/>
+    <link rel="stylesheet" href="{{asset('frontend/owl-carousel/css/owl.carousel.css')}}" type="text/css"/>
+    <link rel="stylesheet" href="{{asset('frontend/owl-carousel/css/owl.theme.default.css')}}" type="text/css"/>
+    <link rel="stylesheet" href="{{asset('frontend/css/language-switcher.css')}}" type="text/css"/>
+    <link rel="stylesheet" href="{{asset('frontend/css/main.css')}}" type="text/css"/>
 </head>
 <body>
 @include('frontend.layouts.header')
 @yield('content')
 @include('frontend.layouts.footer')
-<script type="text/javascript" src="{{asset('frontend/np/js/jquery-3.6.0.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('frontend/np/bootstrap/js/bootstrap.bundle.js')}}"></script>
-<script type="text/javascript" src="{{asset('frontend/np/js/library/language-switcher.js')}}"></script>
-<script type="text/javascript" src="{{asset('frontend/np/owl-carousel/js/owl.carousel.js')}}"></script>
-<script type="text/javascript" src="{{asset('frontend/np/js/library/loadScript.js')}}"></script>
+<script type="text/javascript" src="{{asset('frontend/js/jquery-3.6.0.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('frontend/bootstrap/js/bootstrap.bundle.js')}}"></script>
+<script type="text/javascript" src="{{asset('frontend/js/library/language-switcher.js')}}"></script>
+<script type="text/javascript" src="{{asset('frontend/owl-carousel/js/owl.carousel.js')}}"></script>
+<script type="text/javascript" src="{{asset('frontend/js/library/loadScript.js')}}"></script>
 
 </body>
 </html>
