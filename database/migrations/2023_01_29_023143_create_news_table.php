@@ -22,6 +22,7 @@ class CreateNewsTable extends Migration
             $table->foreignId('category_id')
                 ->references('id')
                 ->on('categories');
+
             $table->unique(['category_id', 'c_id']);
 
             $table->mediumText('sub_title')->nullable();

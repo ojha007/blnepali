@@ -8,6 +8,7 @@ use App\Models\Reporter;
 use App\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
+
 class NewsFactory extends Factory
 {
     protected $model = News::class;
@@ -16,7 +17,7 @@ class NewsFactory extends Factory
     {
         return [
             'title' => $this->faker->text,
-            'c_id' => 1,
+            'c_id' => $this->faker->numerify('##'),
             'category_id' => Category::factory()->create(),
             'sub_title' => $this->faker->text,
             'reporter_id' => Reporter::factory()->create(),

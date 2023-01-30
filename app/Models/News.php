@@ -6,7 +6,6 @@ use App\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 
@@ -46,7 +45,7 @@ class News extends Model
         'image',
         'image_description',
     ];
-    protected $with = ['categories'];
+    protected $with = ['category'];
 
     protected $casts = [
         'publish_date' => 'datetime:Y-m-d\TH:i'
@@ -68,7 +67,6 @@ class News extends Model
 
     public static function selectNewsStatus(): array
     {
-
         $publishStatuses = [];
         foreach (News::publishStatus() as $status) {
             $publishStatuses[$status] = $status;
@@ -81,9 +79,9 @@ class News extends Model
         return $this->belongsTo(Reporter::class);
     }
 
-    public function category(): BelongsToMany
+    public function category(): BelongsTo
     {
-        return $this->belongsToMany(Category::class, 'news_categories');
+        return $this->belongsTo(Category::class);
     }
 
     public function createdBy(): BelongsTo

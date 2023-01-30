@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Category;
 use App\Models\News;
 use Illuminate\Database\Seeder;
 
@@ -10,7 +11,8 @@ class NewsSeeder extends Seeder
     public function run()
     {
         News::factory()
-            ->count(100)
+            ->count(50)
+            ->has(Category::factory()->count(10))
             ->create();
     }
 }
