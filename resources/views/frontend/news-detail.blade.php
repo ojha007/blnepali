@@ -86,17 +86,17 @@
                                             <h5 class="header-title">Related News</h5>
                                         </div>
                                         <div class="bl-news bl-news--verticalThumbs">
-                                            @foreach($sameCategoryNews as $key=>$news)
+                                            @foreach($sameCategoryNews as $key=>$ne)
                                                 <div class="bl-newsPost bl-newsPost--thumbnail">
                                                     <figure class="post_img">
-                                                        <a href="{{route('category.news.show',[$news->category->slug,$news->c_id])}}">
-                                                            <img src="{{$news->image}}" alt=""/>
+                                                        <a href="{{route('category.news.show',[$ne->category->slug,$news->c_id])}}">
+                                                            <img src="{{$ne->image}}" alt=""/>
                                                         </a>
                                                     </figure>
                                                     <div class="post_content">
                                                         <h5 class="post_title">
-                                                            <a href="{{route('category.news.show',[$news->category->slug,$news->c_id])}}">
-                                                                {{$news->title}}
+                                                            <a href="{{route('category.news.show',[$ne->category->slug,$news->c_id])}}">
+                                                                {{$ne->title}}
                                                             </a>
                                                         </h5>
                                                     </div>
@@ -184,5 +184,4 @@
             </div>
         </div>
     </section>
-    @dd($news)
 @endsection
