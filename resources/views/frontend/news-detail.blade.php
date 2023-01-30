@@ -89,13 +89,13 @@
                                             @foreach($sameCategoryNews as $key=>$ne)
                                                 <div class="bl-newsPost bl-newsPost--thumbnail">
                                                     <figure class="post_img">
-                                                        <a href="{{route('category.news.show',[$ne->category->slug,$news->c_id])}}">
+                                                        <a href="{{route('category.news.show',[$ne->category->slug,$ne->c_id])}}">
                                                             <img src="{{$ne->image}}" alt=""/>
                                                         </a>
                                                     </figure>
                                                     <div class="post_content">
                                                         <h5 class="post_title">
-                                                            <a href="{{route('category.news.show',[$ne->category->slug,$news->c_id])}}">
+                                                            <a href="{{route('category.news.show',[$ne->category->slug,$ne->c_id])}}">
                                                                 {{$ne->title}}
                                                             </a>
                                                         </h5>
