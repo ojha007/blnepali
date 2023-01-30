@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * @method static where(array $where)
@@ -16,6 +18,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  */
 class Reporter extends Model
 {
+    use SoftDeletes, HasFactory;
+
     protected $table = 'reporters';
 
     protected $guarded = [];

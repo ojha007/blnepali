@@ -13,7 +13,7 @@ class CreateNewsTable extends Migration
      */
     public function up()
     {
-        Schema::create('news', function (Blueprint $table) {
+        Schema::create('np_news', function (Blueprint $table) {
             $table->id();
 
             $table->mediumText('title');
@@ -25,6 +25,7 @@ class CreateNewsTable extends Migration
             $table->unique(['category_id', 'c_id']);
 
             $table->mediumText('sub_title')->nullable();
+            $table->string('guest')->nullable();
 
             $table->unsignedBigInteger('reporter_id')->nullable();
             $table->foreign('reporter_id')->references('id')
