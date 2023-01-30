@@ -41,7 +41,7 @@ class NewsController extends Controller
             ->pluck('name', 'id')
             ->toArray();
 
-        $news = News::with(['reporter:name,id', 'updatedBy:user_name,id', 'createdBy:user_name,id', 'category:name,id'])
+        $news = News::with(['reporter:name,id', 'updatedBy:user_name,id', 'createdBy:user_name,id', 'category:name,id,slug'])
             ->orderByDesc('publish_date')
             ->when($is_special, function ($query) {
                 $query->where('is_special', true);

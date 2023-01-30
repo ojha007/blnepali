@@ -91,7 +91,7 @@
                                     {{$news->id}}
                                 </td>
                                 <td class="col-md-5">
-                                    <a href="{{route('news.show',[$news->category->slug,$news->c_id])}}"
+                                    <a href="{{route('category.news.show',['category'=>$news->category->slug,'c_id'=>$news->c_id])}}"
                                        target="_blank">
                                         {{$news->title}}
                                     </a>

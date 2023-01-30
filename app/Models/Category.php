@@ -5,6 +5,7 @@ namespace App\Models;
 use Database\Factories\CategoryFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -33,9 +34,9 @@ class Category extends Model
         return $this->hasMany(Category::class, 'parent_id', 'id');
     }
 
-    public function position(): HasOne
+    public function position(): BelongsTo
     {
-        return $this->hasOne(CategoryPosition::class);
+        return $this->belongsTo(CategoryPosition::class);
     }
 
     protected static function newFactory(): CategoryFactory

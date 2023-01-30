@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use Database\Factories\CategoryFactory;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -15,6 +16,8 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             UserSeeder::class,
+            CategorySeeder::class,
+            CategorySeeder::class,
             NewsSeeder::class
         ]);
     }
