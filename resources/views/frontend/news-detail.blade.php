@@ -24,6 +24,7 @@
 @endsection
 
 @section('content')
+    @dd($news)
     <section class="container">
         <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-9 col-xl-9 col-xxl-9">
@@ -39,8 +40,14 @@
                             <div class="post-meta-item meta-reporter">
                                 <div class="meta-author-info">
                                     <span class="has-author-img">
-                                        <img src="{{$news->reporter->image ?? asset('frontend/images/blLogo.png') }}"
-                                             alt="{{$news->guest ?? $news->reporter->name }}">
+                                        @if($news->guest)
+                                            <img src="{{ asset('frontend/images/blLogo.png') }}"
+                                                 alt="{{$news->guest}}">
+                                        @elseif($news->reporter)
+                                            <img
+                                                src="{{ $news->reporter->image ?? asset('frontend/images/blLogo.png') }}"
+                                                alt="{{$news->reporter->name}}">
+                                        @endif
                                     </span>
                                     <span class="post-by">
                                         <a href="#">
@@ -55,9 +62,9 @@
                                 <div class="post-date">
                                     {{\Carbon\Carbon::parse($news->publish_date)->format('Y m d H:i A')}}
                                 </div>
-                                 <div class="w-auto ms-auto">
+                                <div class="w-auto ms-auto">
 
-                                 </div>
+                                </div>
                             </div>
 
                         </div>
