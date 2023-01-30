@@ -22,7 +22,7 @@
                     <p class="post_source">
                         @if($news->guest)
                             {{$news->guest}}
-                        @else($news->reporter)
+                        @elseif($news->reporter)
                             {{$news->reporter->name}}
                         @endif
                         {{$news->date_line ? '-' .$news->date_line  :''}}
