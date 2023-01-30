@@ -33,8 +33,8 @@
     @endif
     <link rel="stylesheet" href="{{asset('frontend/bootstrap/css/bootstrap.css')}}" type="text/css"/>
     <link rel="stylesheet" href="{{asset('frontend/fontawesome/css/all.css')}}" type="text/css"/>
-    <link rel="stylesheet" href="{{asset('frontend/owl-carousel/css/owl.carousel.css')}}" type="text/css"/>
-    <link rel="stylesheet" href="{{asset('frontend/owl-carousel/css/owl.theme.default.css')}}" type="text/css"/>
+    <link rel="stylesheet" href="{{asset('frontend/owlcarousel/css/owl.carousel.css')}}" type="text/css"/>
+    <link rel="stylesheet" href="{{asset('frontend/owlcarousel/css/owl.theme.default.css')}}" type="text/css"/>
     <link rel="stylesheet" href="{{asset('frontend/css/language-switcher.css')}}" type="text/css"/>
     <link rel="stylesheet" href="{{asset('frontend/css/main.css')}}" type="text/css"/>
 </head>
@@ -45,7 +45,7 @@
 <script type="text/javascript" src="{{asset('frontend/js/jquery-3.6.0.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('frontend/bootstrap/js/bootstrap.bundle.js')}}"></script>
 <script type="text/javascript" src="{{asset('frontend/js/library/language-switcher.js')}}"></script>
-<script type="text/javascript" src="{{asset('frontend/owl-carousel/js/owl.carousel.js')}}"></script>
+<script type="text/javascript" src="{{asset('frontend/owlcarousel/js/owl.carousel.js')}}"></script>
 <script type="text/javascript" src="{{asset('frontend/js/library/loadScript.js')}}"></script>
 
 </body>

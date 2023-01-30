@@ -53,7 +53,11 @@
                                     </span>
                                 </div>
                                 <div class="post-date">
-                                    {{\Carbon\Carbon::parse($news->publish_date)->format('Y m d H:i A')}}</div>
+                                    {{\Carbon\Carbon::parse($news->publish_date)->format('Y m d H:i A')}}
+                                </div>
+                                 <div class="w-auto ms-auto">
+
+                                 </div>
                             </div>
 
                         </div>
@@ -172,9 +176,6 @@
                     </div>
                 </div>
             </div>
-            <section class="news-details">
-
-            </section>
         </div>
     </section>
 @endsection
