@@ -184,4 +184,5 @@
             </div>
         </div>
     </section>
+    {{$news->description}}
 @endsection
