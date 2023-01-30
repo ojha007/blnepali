@@ -184,5 +184,5 @@
             </div>
         </div>
     </section>
-    {{$news->description}}
+    @dd($news->description)
 @endsection

@@ -24,29 +24,13 @@ class News extends Model
     protected $table = 'np_news';
 
     const PUBLISHED = 'Published';
+
     const UNPUBLISHED = 'Unpublished';
 
     const DRAFT = 'Draft';
 
-    protected $fillable = [
-        'title', 'sub_title',
-        'guest',
-        'reporter_id',
-        'slug',
-        'is_special',
-        'is_anchor',
-        'date_line',
-        'description',
-        'short_description',
-        'view_count',
-        'external_url',
-        'video_url',
-        'publish_date', 'expiry_date',
-        'image_alt', 'is_active',
-        'is_recommended',
-        'image',
-        'image_description',
-    ];
+    protected $guarded = [];
+
     protected $with = ['category'];
 
     protected $casts = [
