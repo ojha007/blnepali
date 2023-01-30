@@ -32,7 +32,7 @@
                                                     {{$item->title}}
                                                 </a>
                                             </h5>
-                                            <p>{{$item->short_description}}</p>
+                                            <p>{!! $item->short_description !!}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -47,7 +47,7 @@
                                         <div class="post_content">
                                             <h5 class="post_title">
                                                 <a href="{{route('category.news.show',['category'=>$item->category->slug,'c_id'=>$item->c_id])}}">
-                                                    {{$item->title}}
+                                                    {!! $item->title !!}
                                                 </a>
                                             </h5>
                                         </div>
@@ -55,7 +55,7 @@
                                 </div>
                             @endif
                         @endforeach
-                        {{$news->links()}}
+                        {{$news->links('vendor.pagination.custom')}}
                     </div>
                 </div>
             </div>
