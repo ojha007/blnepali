@@ -109,7 +109,7 @@
                             </div>
                             <div class="col-sm-12 col-md-8 col-lg-9 col-xl-9 col-xxl-9 ps-5">
                                 <div class="w-100 mb-4 newsDetails--content">
-                                    {{$news->description}}
+                                    {!! $news->description !!}
                                 </div>
                             </div>
 
