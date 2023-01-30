@@ -13,6 +13,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static where(string $string, bool $true)
  * @method static count()
  * @method static create(array $attributes)
+ * @method  static whereIsAnchor(boolean $value)
+ * @method static select(string[] $array)
  * @property int|mixed|string|null $deleted_by
  */
 class News extends Model

@@ -1,27 +1,34 @@
 @extends('frontend.layouts.master')
+@section('title')
+    @if(!$news->isEmpty())
+        {{$news->first()->category->name}}
+    @else
+        Breaknlinks
+    @endif
+@endsection
 @section('content')
     <section class="container">
         <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-9 col-xl-9 col-xxl-9">
                 <div class="news-row">
-                    @if($news && count($news))
+                    @if(!$news->isEmpty())
                         <div class="bl-newsHeader">
-                            <h5 class="header-title">{{$news->first()->catName}}</h5>
+                            <h5 class="header-title">{{$news->first()->category->name}}</h5>
                         </div>
                     @endif
                     <div class="bl-news bl-news--condensed">
-                        @foreach($news ?? [] as $key=>$item)
+                        @foreach($news as $key=>$item)
                             @if($key === 0)
                                 <div class="bl-news-condensed-item bl-news-condensed-item--highlight">
                                     <div class="bl-newsPost">
                                         <figure class="post_img">
-                                            <a href="{{route('category.news.show',['category'=>$item->category_slug,'c_id'=>$item->c_id])}}">
+                                            <a href="{{route('category.news.show',['category'=>$item->category->slug,'c_id'=>$item->c_id])}}">
                                                 <img src="{{$item->image}}" alt="{{$item->image_description}}"/>
                                             </a>
                                         </figure>
                                         <div class="post_content">
                                             <h5 class="post_title">
-                                                <a href="{{route('category.news.show',['category'=>$item->category_slug,'c_id'=>$item->c_id])}}">
+                                                <a href="{{route('category.news.show',['category'=>$item->category->slug,'c_id'=>$item->c_id])}}">
                                                     {{$item->title}}
                                                 </a>
                                             </h5>
@@ -33,13 +40,13 @@
                                 <div class="bl-news-condensed-item">
                                     <div class="bl-newsPost">
                                         <figure class="post_img">
-                                            <a href="{{route('category.news.show',['category'=>$item->category_slug,'c_id'=>$item->c_id])}}">
+                                            <a href="{{route('category.news.show',['category'=>$item->category->slug,'c_id'=>$item->c_id])}}">
                                                 <img src="{{$item->image}}" alt="{{$item->image_description}}"/>
                                             </a>
                                         </figure>
                                         <div class="post_content">
                                             <h5 class="post_title">
-                                                <a href="{{route('category.news.show',['category'=>$item->category_slug,'c_id'=>$item->c_id])}}">
+                                                <a href="{{route('category.news.show',['category'=>$item->category->slug,'c_id'=>$item->c_id])}}">
                                                     {{$item->title}}
                                                 </a>
                                             </h5>
@@ -65,12 +72,12 @@
                                 @foreach($trendingNews ?? [] as $news)
                                     <div class="trendingNews-item">
                                         <h5 class="post_title">
-                                            <a href="{{route('category.news.show',['category'=>$news->category_slug,'c_id'=>$news->c_id])}}">
+                                            <a href="{{route('category.news.show',['category'=>$news->category->slug,'c_id'=>$news->c_id])}}">
                                                 {{$news->title}}</a>
                                         </h5>
                                         <span
                                             class="post_source">
-                                            {{$news->guest ?? $news->reporter}}
+                                            {{$news->guest ?? $news->reporter->name}}
                                             {{$news->date_line ? '- '. $news->date_line : ''}}
                                         </span>
                                     </div>

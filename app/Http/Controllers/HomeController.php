@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 
+use App\Models\News;
 use App\Repositories\CategoryRepository;
 use App\Repositories\NewsRepository;
 use Illuminate\Support\Facades\DB;
@@ -67,21 +68,21 @@ class HomeController extends Controller
             ->select('id')
             ->where('slug', '=', $category)
             ->first()->id;
+        if (!$catId) return redirect('/');
 
-        $news = DB::table('np_news as ne')
-            ->select('ne.id', 'ne.title', 'ne.image', 'c.name as category', 'ne.publish_date', 'ne.image_alt',
-                'rp.image as reporter_img', 'ne.slug as ne_slug', 'c.name as category',
-                'date_line', 'ne.description', 'guest', 'rp.name as reporter')
-            ->leftJoin('reporters as rp', 'ne.reporter_id', '=', 'rp.id')
-            ->join('categories as c', function ($q) use ($catId) {
-                $q->on('c.id', '=', 'ne.category_id')
-                    ->where('c.id', '=', $catId);
-            })
+        $news = News::with(['category:name,id,slug', 'reporter:name,id'])
+            ->select([
+                'title', 'short_description', 'guest', 'image_description', 'description',
+                'date_line', 'id', 'c_id', 'image', 'image_alt', 'category_id', 'reporter_id'
+            ])
+            ->where('category_id', $catId)
             ->where('c_id', '=', $cId)
+            ->orderByDesc('publish_date')
             ->first();
 
         $headerCategories = $this->categoryRepository->getFrontPageHeaderCategories(11);
-        $blSpecialNews = $this->newsRepository->getBlSpecialNews(6);
+        $blSpecialNews = $this->newsRepository->getBlSpecialNews(5);
+
         $trendingNews = $this->newsRepository->getTrendingNews(5);
         $sameCategoryNews = $this->newsRepository->sameCategoryNews($catId, $news->id);
 

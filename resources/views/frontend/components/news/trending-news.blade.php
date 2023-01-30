@@ -10,7 +10,7 @@
                         <a href="#">{{$news->title}}</a>
                     </h5>
                     <span class="post_source">
-                        {{$news->reporter ?? $news->guest}}
+                         {{$news->guest ?? $news->reporter->name}}
                         {{$news->date_line ? '-' .$news->date_line  :''}}
                     </span>
                 </div>

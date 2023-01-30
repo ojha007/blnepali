@@ -35,7 +35,7 @@
                 </div>
 
                 <div class="col-sm-6 col-md-3 col-lg-2 col-xl-2 col-xxl-2 footer-widget">
-                    <h5 class="widget-title">Edition</h5>
+                    <h5 class="widget-title">अन्य संस्करण</h5>
                     <ul class="nav nav--listing">
                         <li class="nav-item">
                             <a href="/eng" class="nav-link" target="_blank">English</a>
@@ -49,7 +49,7 @@
                     </ul>
                 </div>
                 <div class="col-sm-6 col-md-3 col-lg-4 col-xl-4 col-xxl-4 footer-widget">
-                    <h5 class="widget-title">Categories</h5>
+                    <h5 class="widget-title">अन्य श्रेणी</h5>
                     <ul class="nav nav--listing __2-columnn">
                         @foreach($headerCategories ?? [] as $key=> $category)
                             <li class="nav-item">

@@ -7,12 +7,13 @@
     <meta name="title" content="Media for all across the globe">
     <meta name="description" content="Media for all across the globe">
     <meta name="keywords" content="{{ isset($allCategories)? $allCategories->implode(','):''}}">
-    @yield('title')
-    <title>
-        {{setting('slogan')}}
-    </title>
-    @isset($news)
-        @stack('meta')
+    @hasSection('title')
+        <title>@yield('title')</title>
+    @else
+        <title> {{setting('slogan')}}</title>
+    @endif
+    @hasSection('meta')
+        @yield('meta')
     @else
         <meta name="twitter:card" content="summary_large_image"/>
         <meta name="twitter:url" content="https://breaknlinks.com/nepali"/>
