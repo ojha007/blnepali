@@ -24,7 +24,6 @@
 @endsection
 
 @section('content')
-    @dd($news)
     <section class="container">
         <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-9 col-xl-9 col-xxl-9">

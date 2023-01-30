@@ -70,7 +70,7 @@ class HomeController extends Controller
             ->first()->id;
         if (!$catId) return redirect('/');
 
-        $news = News::with(['category:name,id,slug', 'reporter:name,id'])
+        $news = News::with(['category:name,id,slug', 'reporter:name,id,image'])
             ->select([
                 'title', 'short_description', 'guest', 'image_description', 'description',
                 'date_line', 'id', 'c_id', 'image', 'image_alt', 'category_id', 'reporter_id'
