@@ -55,9 +55,9 @@
                                 </div>
                             @endif
                         @endforeach
-                        <div class="flex justify-content-center">
-                            {{$news->links('vendor.pagination.custom')}}
-                        </div>
+                    </div>
+                    <div class="flex justify-content-center mt-5">
+                        {{$news->links('vendor.pagination.custom')}}
                     </div>
                 </div>
             </div>
