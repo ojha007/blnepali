@@ -1,9 +1,12 @@
 <div class="bl-newsHeader">
-    <h5 class="header-title">{{$order5News->first()->category??'अर्थ'}}</h5>
+    <h5 class="header-title">
+        @if(!$order5News->isEmpty())
+            {{$order5News->first()->category->name}}
+        @endif
+    </h5>
 </div>
 
 <div class="bl-news bl-news--twoColumner">
-    <!--repeatable item with condition-->
     @foreach($order5News as $key=> $news)
 
         @if($key < 2)

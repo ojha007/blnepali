@@ -1,5 +1,9 @@
 <div class="bl-newsHeader">
-    <h5 class="header-title">{{$order8News->first()->category ?? 'ब्लग'}}</h5>
+    <h5 class="header-title">
+        @if(!$order8News->isEmpty())
+            {{$order8News->first()->category->name}}
+        @endif
+    </h5>
 </div>
 <div class="bl-news bl-news--smallThumbs">
     <!--repeatable items-->

@@ -1,5 +1,9 @@
 <div class="bl-newsHeader">
-    <h5 class="header-title">{{$order2News->first()->category??'Second CateGoryNews'}}</h5>
+    <h5 class="header-title">
+        @if(!$order2News->isEmpty())
+            {{$order2News->first()->category->name}}
+        @endif
+    </h5>
 </div>
 <div class="bl-news bl-news--generalNews">
     @foreach($order2News as $key=> $news)

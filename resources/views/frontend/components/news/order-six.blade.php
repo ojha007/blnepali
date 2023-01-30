@@ -1,6 +1,11 @@
 <div class="bl-newsHeader">
-    <h5 class="header-title">{{$order6News->first()->category ??'विचार/विश्लेषण'}}</h5>
+    <h5 class="header-title">
+        @if(!$order6News->isEmpty())
+            {{$order6News->first()->category->name}}
+        @endif
+    </h5>
 </div>
+
 <div class="bl-news bl-news--smallThumbs">
     <!--repeatable items-->
     @foreach($order6News as $news)

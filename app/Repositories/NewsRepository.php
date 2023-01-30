@@ -84,7 +84,8 @@ class NewsRepository
 
     public function sameCategoryNews($catId, $except): Collection
     {
-        return News::select(['title', 'date_line', 'c_id', 'image'])
+        return News::with('category:name,id,slug')
+            ->select(['title', 'date_line', 'c_id', 'image', 'category_id'])
             ->where('category_id', '=', $catId)
             ->where('id', '!=', $except)
             ->where('is_special', '=', 1)
