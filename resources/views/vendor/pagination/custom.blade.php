@@ -5,12 +5,12 @@
                 {{-- Previous Page Link --}}
                 @if ($paginator->onFirstPage())
                     <li class="page-item disabled" aria-disabled="true" aria-label="@lang('pagination.previous')">
-                        <span class="page-link" aria-hidden="true">{{trans('messages.previous')}}</span>
+                        <span class="page-link" aria-hidden="true">{{trans('pagination.previous')}}</span>
                     </li>
                 @else
                     <li class="page-item">
                         <a class="page-link" href="{{ $paginator->previousPageUrl() }}" rel="prev"
-                           aria-label="@lang('pagination.previous')">{{trans('messages.previous')}}</a>
+                           aria-label="@lang('pagination.previous')">{{trans('pagination.previous')}}</a>
                     </li>
                 @endif
                 {{-- Pagination Elements --}}
