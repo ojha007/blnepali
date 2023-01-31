@@ -27,8 +27,8 @@ class ArchiveNewsController extends Controller
     public function show($id)
     {
         try {
-            $news = DB::table('news')
-                ->select(['news.id', 'n.title', 'n.slug', 'n.sub_title', 'n.short_description',
+            $news = DB::table('news as n')
+                ->select(['n.id', 'n.title', 'n.slug', 'n.sub_title', 'n.short_description',
                     'n.description', 'r.name as reporter_name', 'g.name as guest_name',
                     'r.image as reporter_image', 'g.slug as guest_slug', 'g.image as guest_image',
                     'r.slug as reporter_slug', 'n.image_description', 'n.external_url',
