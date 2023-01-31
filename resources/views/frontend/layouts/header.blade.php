@@ -54,13 +54,13 @@
     <nav class="navbar navbar-expand-lg navbar--primary">
         <div class="container-fluid align-items-start">
             <div class="navbar-brand">
-                <a href="/" class="brand-logo">
+                <a href="{{route('index')}}" class="brand-logo">
                     <img src="{{asset('frontend/images/blLogo.png')}}" alt="Bl media Logo"/>
                 </a>
             </div>
             <ul class="navbar-nav">
                 <li class="nav-item nav-item--home">
-                    <a class="nav-link" aria-current="page" href="/"><i
+                    <a class="nav-link" aria-current="page" href="{{route('index')}}"><i
                             class="fas fa-house-chimney"></i> </a>
                 </li>
             </ul>
