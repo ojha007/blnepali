@@ -24,7 +24,11 @@
                                 </h5>
                                 <p>{!! $news->short_description!!}</p>
                                 <p class="post_source">
-                                    {{$news->guest ?? $news->reporter->name}}
+                                    @if($news->guest)
+                                        {{$news->guest}}
+                                    @elseif($news->reporter)
+                                        {{$news->reporter->name}}
+                                    @endif
                                     {{$news->date_line ? '-' .$news->date_line  :''}}
                                 </p>
                             </div>
@@ -46,7 +50,11 @@
                                 </h5>
                                 <p>{!! \Illuminate\Support\Str::limit($news->short_description,50) !!}</p>
                                 <p class="post_source">
-                                    {{$news->guest ?? $news->reporter->name}}
+                                    @if($news->guest)
+                                        {{$news->guest}}
+                                    @elseif($news->reporter)
+                                        {{$news->reporter->name}}
+                                    @endif
                                     {{$news->date_line ? '-' .$news->date_line  :''}}
                                 </p>
                             </div>
