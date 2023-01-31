@@ -65,7 +65,7 @@
                         </figure>
 
                         <div class="primaryImage-caption">
-                            {{ $news->img_description ?? $news->img_alt }}
+                            {{ $news->image_description ?? $news->image_alt }}
                         </div>
                     </div>
                     <div class="bl-newsPost--details-story">
