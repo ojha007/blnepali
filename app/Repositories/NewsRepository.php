@@ -88,7 +88,6 @@ class NewsRepository
             ->select(['title', 'date_line', 'c_id', 'image', 'category_id'])
             ->where('category_id', '=', $catId)
             ->where('id', '!=', $except)
-            ->where('is_special', '=', 1)
             ->orderByDesc('publish_date')
             ->limit(5)
             ->get();
