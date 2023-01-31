@@ -171,7 +171,7 @@
     </script>
     <script src="{{url('/vendor/laravel-filemanager/js/stand-alone-button.js')}}"></script>
     <script>
-        $('#lfm').filemanager('image');
+        $('#lfm').filemanager('image', {prefix: '{{url('/filemanager')}}'});
     </script>
 @endpush
 
