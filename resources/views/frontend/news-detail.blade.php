@@ -71,7 +71,7 @@
                     <div class="bl-post--banner">
                         <figure class="primaryImage">
                             @if($news->video_url)
-                            {{$news->video_url}}
+                            {!! $news->video_url !!}
                             @else
                                 <img src="{{$news->image}}" alt="BlMedia"/>
                             @endif
