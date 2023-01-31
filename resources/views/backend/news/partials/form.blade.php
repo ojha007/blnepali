@@ -162,10 +162,10 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/ckeditor/4.5.11/adapters/jquery.js"></script>
     <script>
         var options = {
-            filebrowserImageBrowseUrl: '/filemanager?type=Images',
-            filebrowserImageUploadUrl: '/filemanager/upload?type=Images&_token=',
-            filebrowserBrowseUrl: '/filemanager?type=Files',
-            filebrowserUploadUrl: '/filemanager/upload?type=Files&_token='
+            filebrowserImageBrowseUrl: '{{url('/filemanager?type=Images')}}',
+            filebrowserImageUploadUrl: '{{url('/filemanager/upload?type=Images&_token=')}}',
+            filebrowserBrowseUrl: '{{url('/filemanager?type=Files')}}',
+            filebrowserUploadUrl: '{{url('/filemanager/upload?type=Files&_token=')}}'
         };
         CKEDITOR.replace('description', options);
     </script>
