@@ -70,7 +70,14 @@
                     </div>
                     <div class="bl-post--banner">
                         <figure class="primaryImage">
-                            <img src="{{$news->image}}" alt="BlMedia"/>
+                            @if($news->video_url)
+                                <iframe width="560" height="315" src="{{$news->video_url}}"
+                                        title="YouTube video player" frameborder="0"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                        allowfullscreen=""></iframe>
+                            @else
+                                <img src="{{$news->image}}" alt="BlMedia"/>
+                            @endif
                         </figure>
 
                         <div class="primaryImage-caption">
