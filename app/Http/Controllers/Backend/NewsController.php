@@ -6,6 +6,7 @@ use App\Http\Requests\NewsRequest;
 use App\Models\Category;
 use App\Models\News;
 use App\Models\Reporter;
+use Dflydev\DotAccessData\Data;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
@@ -100,6 +101,7 @@ class NewsController extends Controller
     public function update(NewsRequest $request, News $news): RedirectResponse
     {
         $attributes = $request->validated();
+        $attributes['updated_by'] = auth()->id();
 
         $news->update($attributes);
 
@@ -119,6 +121,8 @@ class NewsController extends Controller
                 ->groupBy('category_id')
                 ->max('c_id');
             $attributes['c_id'] = ($max ?? 0) + 1;
+            $attributes['created_by'] = auth()->id();
+
             News::create($attributes);
 
             return redirect()->route($this->baseRoute . '.index')
@@ -131,20 +135,16 @@ class NewsController extends Controller
         }
     }
 
-    public function destroy(Request $request, News $news): RedirectResponse
+    public function destroy(News $news): RedirectResponse
     {
         try {
-            DB::beginTransaction();
 
             $news->deleted_by = Auth::id();
             $news->delete();
 
-            DB::commit();
-
             return redirect()->route($this->baseRoute . '.index')
                 ->with('success', 'News Deleted SuccessFully');
         } catch (\Exception $exception) {
-            DB::rollBack();
             Log::error($exception->getMessage() . '-' . $exception->getTraceAsString());
             return redirect()->route($this->baseRoute . '.index')
                 ->with('failed', 'Failed to delete news.');

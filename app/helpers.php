@@ -7,6 +7,7 @@
 function spanByStatus($status): string
 {
     switch (strtolower($status)) {
+        case 'active':
         case 'yes':
         case '1':
             $labelClass = 'label-success';

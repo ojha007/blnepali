@@ -6,7 +6,6 @@
     List of News
 @stop
 @section('content')
-    @include('backend.partials.errors')
     <div class="row">
         <div class="col-xs-12">
             <div class="box box-default ">
@@ -151,7 +150,7 @@
                                     {{$news->publish_date}}
                                 </td>
                                 <td>
-                                    {!! spanByStatus($news->is_active,'1') !!}
+                                    {!! spanByStatus($news->status) !!}
                                 </td>
                                 <td>
                                     @if($trashed )
@@ -181,7 +180,7 @@
                         @endforeach
                         </tbody>
                     </table>
-                    {{$allNews->links()}}
+                    {{$allNews->links('vendor.pagination.custom')}}
                 </div>
                 <!-- /.box-body -->
             </div>

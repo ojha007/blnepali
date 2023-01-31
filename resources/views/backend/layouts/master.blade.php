@@ -62,6 +62,7 @@
             </h1>
         </section>
         <section class="content container-fluid" id="app">
+            @include('backend.partials.errors')
             @yield('content')
         </section>
     </div>

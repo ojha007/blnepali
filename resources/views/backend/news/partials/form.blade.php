@@ -149,6 +149,11 @@
             <div class="form-group  {{$errors->has('is_special') ?'has-error':''}} ">
                 @include('backend.partials.toggle-button',['value'=>'is_special','checked'=> $news->is_special ?? 0])
             </div>
+            <div class="form-group  {{$errors->has('status') ? 'has-error':''}} ">
+                {!! Form::select('status', ['active'=>'Active','draft'=>'Draft'], null,
+                                        ['class' => 'form-control  select2', 'style'=>'width:100%;']) !!}
+
+            </div>
         </div>
         <div class="box-footer">
             <button type="submit" class="btn btn-primary  btn-block pull-right btn-flat" id="submitBtn">
