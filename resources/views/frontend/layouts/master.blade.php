@@ -10,7 +10,7 @@
     @hasSection('title')
         <title>@yield('title')</title>
     @else
-        <title> {{setting('slogan')}}</title>
+        <title> {{setting('slogan') ?? 'Media for all across the globe'}}</title>
     @endif
     @hasSection('meta')
         @yield('meta')
