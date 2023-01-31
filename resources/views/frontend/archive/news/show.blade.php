@@ -40,7 +40,7 @@
                                         @elseif($news->reporter_name)
                                             <img
                                                 src="{{ $news->reporter_image}}"
-                                                alt="{{$reporter_name}}">
+                                                alt="{{$news->reporter_name}}">
                                         @endif
                                     </span>
                                     <span class="post-by">
