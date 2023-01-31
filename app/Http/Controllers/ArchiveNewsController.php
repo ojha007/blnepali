@@ -53,7 +53,7 @@ class ArchiveNewsController extends Controller
 
             $trendingNews = $this->newsRepository->getTrendingNews(5);
 
-            return view($this->viewPath . 'index', compact('headerCategories', 'news', 'trendingNews'));
+            return view($this->viewPath . 'show', compact('headerCategories', 'news', 'trendingNews'));
         } catch (\Exception $exception) {
             dd($exception);
             Log::error($exception->getMessage() . '---' . $exception->getTraceAsString());
