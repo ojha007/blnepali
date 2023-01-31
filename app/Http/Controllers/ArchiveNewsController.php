@@ -16,7 +16,7 @@ class ArchiveNewsController extends Controller
 
     protected CategoryRepository $categoryRepository;
 
-    protected string $viewPath = 'archive.news.';
+    protected string $viewPath = 'frontend.archive.news.';
 
     public function __construct(NewsRepository $newsRepository, CategoryRepository $categoryRepository)
     {
