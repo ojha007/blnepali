@@ -169,7 +169,7 @@
         };
         CKEDITOR.replace('description', options);
     </script>
-    <script src="/vendor/laravel-filemanager/js/stand-alone-button.js"></script>
+    <script src="{{url('/vendor/laravel-filemanager/js/stand-alone-button.js')}}"></script>
     <script>
         $('#lfm').filemanager('image');
     </script>
