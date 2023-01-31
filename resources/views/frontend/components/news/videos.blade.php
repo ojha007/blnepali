@@ -10,8 +10,8 @@
                         @if($key ==0)
                             <div class="bl-newsPost bl-newsPost--topVideo">
                                 <figure class="post_img">
-                                    <a href="#">
-                                        <img src="{{$news->image}}" alt=""/>
+                                    <a href="{{route('category.news.show',['category'=>$news->category->slug,'c_id'=>$news->c_id])}}">
+                                        <img src="{{$news->image}}" alt="Blmedia"/>
                                     </a>
                                 </figure>
                                 <div class="post_content">
