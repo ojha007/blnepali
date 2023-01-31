@@ -62,7 +62,7 @@
                                     {{\Carbon\Carbon::parse($news->publish_date)->format('Y m d H:i A')}}
                                 </div>
                                 <div class="w-auto ms-auto">
-
+                                    <div class="sharethis-inline-share-buttons"></div>
                                 </div>
                             </div>
 

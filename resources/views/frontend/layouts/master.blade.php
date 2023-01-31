@@ -47,6 +47,8 @@
 <script type="text/javascript" src="{{asset('frontend/js/library/language-switcher.js')}}"></script>
 <script type="text/javascript" src="{{asset('frontend/owlcarousel/js/owl.carousel.js')}}"></script>
 <script type="text/javascript" src="{{asset('frontend/js/library/loadScript.js')}}"></script>
-
+<script type='text/javascript'
+        src='https://platform-api.sharethis.com/js/sharethis.js#property=628fa698b2339200190e6254&product=sop'
+        async='async'></script>
 </body>
 </html>
