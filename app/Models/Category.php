@@ -15,7 +15,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static pluck(string $value, string $key)
  * @method static create(array $attributes)
  * @method static whereNull(string $string)
- * @method static select(string $string, string $string1)
+ * @method static select($column)
  * @method static count()
  */
 class Category extends Model

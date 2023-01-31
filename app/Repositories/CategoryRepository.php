@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use App\Models\Category;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 
@@ -36,26 +37,43 @@ class CategoryRepository
 
     }
 
-    public function getAllCategoriesIds($slug): array
+    public function getCategoryIdsBySlug($slug): array
     {
-        $toReturn = [];
-
         $category = DB::table('categories')
             ->select('id')
             ->where('slug', '=', $slug)
             ->first();
 
-        $toReturn[0] = $category->id;
+        if (!$category) return [];
 
-        $subCategories = DB::table('categories')
+        $subCategoriesIds = $this->getSubCategoriesId($category->id);
+
+        return array_merge($subCategoriesIds, [$category->id]);
+    }
+
+    private function getSubCategoriesId($parentId): array
+    {
+        return DB::table('categories')
             ->select('id')
-            ->where('parent_id', $category->id)
+            ->where('parent_id', $parentId)
             ->get()
             ->map(function ($cat) {
                 return $cat->id;
             })->toArray();
+    }
 
-        return array_merge($toReturn, $subCategories);
+    public function getCategoriesIdsById($id): array
+    {
+        $category = DB::table('categories')
+            ->select('id')
+            ->where('id', '=', $id)
+            ->first();
+
+        if (!$category) return [];
+
+        $subCategoriesIds = $this->getSubCategoriesId($category->id);
+
+        return array_merge($subCategoriesIds, [$category->id]);
     }
 
 }

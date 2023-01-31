@@ -1,10 +1,12 @@
 <?php
 
+use App\Http\Controllers\ArchiveNewsController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('index');
+Route::get('news/{id}', [ArchiveNewsController::class, 'show'])->name('news.show');
 
 Route::group(['namespace' => 'App\Http\Controllers', 'prefix' => 'bl-secure'], function () {
     Auth::routes();

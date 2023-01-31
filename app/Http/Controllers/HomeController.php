@@ -95,7 +95,7 @@ class HomeController extends Controller
     public function newsByCategory($slug)
     {
         try {
-            $categoryIds = $this->categoryRepository->getAllCategoriesIds($slug);
+            $categoryIds = $this->categoryRepository->getCategoryIdsBySlug($slug);
 
             $headerCategories = $this->categoryRepository->getFrontPageHeaderCategories(11);
 
