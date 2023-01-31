@@ -46,14 +46,16 @@ class ArchiveNewsController extends Controller
                 return redirect()->route('index');
             }
 
-            $categoryIds = (new CategoryRepository())->getCategoriesIdsById($news->category_id);
             $headerCategories = $this->categoryRepository->getFrontPageHeaderCategories(11);
 
-            $news = $this->newsRepository->getNewsByCategoryIds($categoryIds);
+            $blSpecialNews = $this->newsRepository->getBlSpecialNews(5);
 
             $trendingNews = $this->newsRepository->getTrendingNews(5);
 
-            return view($this->viewPath . 'show', compact('headerCategories', 'news', 'trendingNews'));
+            $sameCategoryNews = $this->newsRepository->sameCategoryNews($news->category_id, $news->id);
+
+            return view($this->viewPath . 'show', compact('headerCategories', 'news',
+                'trendingNews', 'sameCategoryNews', 'blSpecialNews'));
         } catch (\Exception $exception) {
             dd($exception);
             Log::error($exception->getMessage() . '---' . $exception->getTraceAsString());
