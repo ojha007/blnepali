@@ -178,7 +178,6 @@
                                                 {{$news->reporter->name}}
                                             @endif
                                             {{$news->date_line ? '-' .$news->date_line  :''}}</p>
-
                                     </div>
                                 @endforeach
                             </div>

@@ -6,17 +6,19 @@ use App\Http\Requests\NewsRequest;
 use App\Models\Category;
 use App\Models\News;
 use App\Models\Reporter;
-use Dflydev\DotAccessData\Data;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Str;
+use Spatie\LaravelImageOptimizer\Facades\ImageOptimizer;
 
 
 class NewsController extends Controller
 {
+
     protected string $baseRoute = 'cms.news';
 
     protected string $viewPath = 'backend.news.';
@@ -128,7 +130,7 @@ class NewsController extends Controller
             return redirect()->route($this->baseRoute . '.index')
                 ->with('success', 'News Created SuccessFully');
         } catch (\Throwable $exception) {
-            Log::error($exception->getMessage() . '-' . $exception->getTraceAsString());
+           Log::error($exception->getMessage() . '-' . $exception->getTraceAsString());
             DB::rollBack();
             return redirect()->back()->withInput()
                 ->with('failed', 'Failed to create News');

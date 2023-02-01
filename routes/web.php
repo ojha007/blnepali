@@ -20,6 +20,6 @@ Route::get('category/{category}/news/{c_id}', [HomeController::class, 'show'])
     ->name('category.news.show');
 
 
-Route::group(['prefix' => 'filemanager', 'middleware' => ['web', 'auth']], function () {
+Route::group(['prefix' => 'filemanager', 'middleware' => ['web', 'auth', 'optimizeImages']], function () {
     \UniSharp\LaravelFilemanager\Lfm::routes();
 });
