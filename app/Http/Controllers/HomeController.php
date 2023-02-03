@@ -29,19 +29,23 @@ class HomeController extends Controller
         $bodyCategories = $this->categoryRepository->getFrontPageBodyCategories(10);
 
         $categories = [];
-        $order1News = $this->newsRepository->getNewsByOrderId(1, 10);
-        $order2News = $this->newsRepository->getNewsByOrderId(2, 4);
-        $order3News = $this->newsRepository->getNewsByOrderId(24, 10);
-        $order4News = $this->newsRepository->getNewsByOrderId(29, 4);
-        $order5News = $this->newsRepository->getNewsByOrderId(4, 4);
-        $order6News = $this->newsRepository->getNewsByOrderId(11, 4);
-        $order7News = $this->newsRepository->getNewsByOrderId(22, 4);
-        $order8News = $this->newsRepository->getNewsByOrderId(26, 6);
+
         $anchorNews = $this->newsRepository->getAnchorNews();
         $trendingNews = $this->newsRepository->getTrendingNews(5);
         $blSpecialNews = $this->newsRepository->getBlSpecialNews(6);
         $breakingNews = $this->newsRepository->getBreakingNews(6);
         $videoNews = $this->newsRepository->getNewsByOrderId(7, 5);
+
+
+        $order1News = $this->newsRepository->getNewsByOrderId(1, 10);
+        $order2News = $this->newsRepository->getNewsByOrderId(2, 4);
+        $order3News = $this->newsRepository->getNewsByOrderId(35, 10);
+        $order4News = $this->newsRepository->getNewsByOrderId(4, 4);
+        $order5News = $this->newsRepository->getNewsByOrderId(22, 4);
+        $order6News = $this->newsRepository->getNewsByOrderId(11, 4);
+        $order7News = $this->newsRepository->getNewsByOrderId(9, 4);
+        $order8News = $this->newsRepository->getNewsByOrderId(26, 6);
+
 
         return view($this->viewPath . 'index', compact(
             'order1News',
