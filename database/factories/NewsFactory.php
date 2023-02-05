@@ -25,12 +25,13 @@ class NewsFactory extends Factory
             'is_special' => $this->faker->boolean,
             'image' => $this->faker->imageUrl,
             'image_description' => $this->faker->word,
-            'publish_date' => now()->subHours($this->faker->numerify('#')),
+            'publish_date' => now()->subHours($this->faker->numerify('#'))->format('Y-m-d\TH:i'),
             'short_description' => $this->faker->word,
             'description' => $this->faker->text,
             'slug' => $this->faker->slug,
             'created_by' => User::factory()->create(),
             'date_line' => $this->faker->address,
+//            'status' => 'active'
         ];
     }
 }

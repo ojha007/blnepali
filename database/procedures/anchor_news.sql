@@ -15,9 +15,3 @@ where is_anchor = 1
   and np.deleted_at is null
 ORDER BY publish_date DESC
 LIMIT 5;
-
-
-
-
-
-

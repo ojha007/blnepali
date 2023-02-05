@@ -16,13 +16,14 @@ class NewsObserver
     public function created(News $news)
     {
         if ($news->is_anchor)
-            DB::select(file_get_contents(database_path('procedures/anchor_news.sq')));
+//            dd(file_get_contents(database_path('procedures/anchor_news.sql')));
+            DB::unprepared(file_get_contents(database_path('procedures/anchor_news.sql')));
 
         if ($news->is_special)
-            DB::select(file_get_contents(database_path('procedures/special_news.sq')));
+            DB::unprepared(file_get_contents(database_path('procedures/special_news.sql')));
 
         if ($news->category->is_video) {
-            DB::select(file_get_contents(database_path('procedures/video_news.sq')));
+            DB::unprepared(file_get_contents(database_path('procedures/video_news.sql')));
         }
     }
 
@@ -35,13 +36,13 @@ class NewsObserver
     public function updated(News $news)
     {
         if ($news->is_anchor)
-            DB::select(file_get_contents(database_path('procedures/anchor_news.sq')));
+            DB::unprepared(file_get_contents(database_path('procedures/anchor_news.sql')));
 
         if ($news->is_special)
-            DB::select(file_get_contents(database_path('procedures/special_news.sq')));
+            DB::unprepared(file_get_contents(database_path('procedures/special_news.sql')));
 
         if ($news->category->is_video) {
-            DB::select(file_get_contents(database_path('procedures/video_news.sq')));
+            DB::unprepared(file_get_contents(database_path('procedures/video_news.sql')));
         }
     }
 

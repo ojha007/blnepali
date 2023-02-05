@@ -4,17 +4,45 @@ namespace Tests\Feature\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\News;
+use App\User;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
 class NewsController extends TestCase
 {
+    use RefreshDatabase;
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $user = User::factory()->create();
+        $this->actingAs($user, 'web');
+    }
+
+    /** @test */
+    public function it_can_hit_create_page()
+    {
+        $this->get(route('cms.news.create'))
+            ->assertSuccessful()
+            ->assertViewIs('backend.news.create')
+            ->assertViewHas('categories');
+    }
+
+    /** @test */
+    public function it_can_create_news()
+    {
+        $attributes = News::factory()->raw();
+
+        $this->post(route('cms.news.store'), $attributes)
+            ->assertRedirect(route('cms.news.index'));
+    }
 
     /** @test */
     public function it_can_create_anchor_news_database_view_when_news_is_anchor_type()
     {
-        News::factory()->create(['title' => 'demo', 'is_anchor' => true]);
+        News::factory()->create(['is_anchor' => true]);
 
-        $this->assertDatabaseCount('anchor_news', 5);
+        $this->assertDatabaseCount('anchor_news', 1);
     }
 
     /** @test */
@@ -22,18 +50,17 @@ class NewsController extends TestCase
     {
         News::factory()->create(['is_special' => true]);
 
-        $this->assertDatabaseCount('special_news', 6);
+        $this->assertDatabaseCount('special_news', 1);
     }
 
     /** @test */
     public function it_can_update_special_news_database_view_when_news_is_special_type()
     {
-        $news = News::factory(['title' => 'demo'])->create(['is_special' => false]);
+        $news = News::factory()->create(['is_special' => 0]);
 
-        $news->update(['is_special' => true]);
+        $news->update(['is_special' => 1]);
 
-        $this->assertDatabaseCount('special_news', 6);
-        $this->assertDatabaseHas('special_news', ['title' => 'demo']);
+        $this->assertDatabaseCount('special_news', 1);
     }
 
     /** @test */

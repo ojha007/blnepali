@@ -14,6 +14,3 @@ where is_special = 1
   and np.deleted_at is null
 ORDER BY publish_date DESC
 LIMIT 6;
-
-
-
