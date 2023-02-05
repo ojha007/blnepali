@@ -2,7 +2,6 @@
 
 namespace App\Repositories;
 
-use App\Models\Category;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 

@@ -5,6 +5,8 @@ namespace App\Repositories;
 use App\Models\News;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\DB;
+
 
 class NewsRepository
 {
@@ -55,31 +57,19 @@ class NewsRepository
             ->get();
     }
 
-    public function getAnchorNews($limit = 5): Collection
+    public function getAnchorNews(): Collection
     {
-
-        return News::with('category:id,slug,name', 'reporter:name,id')
-            ->select([
-                'title', 'short_description', 'guest', 'image_description',
-                'date_line', 'id', 'c_id', 'image', 'image_alt', 'category_id', 'reporter_id'
-            ])
-            ->where('is_anchor', '=', 1)
-            ->orderByDesc('publish_date')
-            ->limit($limit)
-            ->get();
+        return DB::table('anchor_news')->get();
     }
 
-    public function getBlSpecialNews($limit): Collection
+    public function getVideosNews(): Collection
     {
-        return News::with('category:name,id,slug', 'reporter:name,id')
-            ->select([
-                'title', 'short_description', 'guest', 'image_description',
-                'date_line', 'id', 'c_id', 'image', 'image_alt', 'category_id', 'reporter_id'
-            ])
-            ->where('is_special', '=', 1)
-            ->orderByDesc('publish_date')
-            ->limit($limit)
-            ->get();
+        return DB::table('videos_news')->get();
+    }
+
+    public function getBlSpecialNews(): Collection
+    {
+        return DB::table('special_news')->get();
     }
 
     public function sameCategoryNews($catId, $except): Collection

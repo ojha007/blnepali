@@ -25,7 +25,7 @@ class NewsFactory extends Factory
             'is_special' => $this->faker->boolean,
             'image' => $this->faker->imageUrl,
             'image_description' => $this->faker->word,
-            'publish_date' => $this->faker->dateTime(),
+            'publish_date' => now()->subHours($this->faker->numerify('#')),
             'short_description' => $this->faker->word,
             'description' => $this->faker->text,
             'slug' => $this->faker->slug,

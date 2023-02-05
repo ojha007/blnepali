@@ -12,8 +12,6 @@ use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Str;
-use Spatie\LaravelImageOptimizer\Facades\ImageOptimizer;
 
 
 class NewsController extends Controller
@@ -103,6 +101,7 @@ class NewsController extends Controller
     public function update(NewsRequest $request, News $news): RedirectResponse
     {
         $attributes = $request->validated();
+
         $attributes['updated_by'] = auth()->id();
 
         $news->update($attributes);
@@ -110,8 +109,6 @@ class NewsController extends Controller
         return redirect()
             ->route($this->baseRoute . '.index')
             ->with('success', 'News Updated SuccessFully');
-
-
     }
 
     public function store(NewsRequest $request): RedirectResponse
@@ -122,6 +119,7 @@ class NewsController extends Controller
                 ->where('category_id', '=', $attributes['category_id'])
                 ->groupBy('category_id')
                 ->max('c_id');
+
             $attributes['c_id'] = ($max ?? 0) + 1;
             $attributes['created_by'] = auth()->id();
 
@@ -130,7 +128,8 @@ class NewsController extends Controller
             return redirect()->route($this->baseRoute . '.index')
                 ->with('success', 'News Created SuccessFully');
         } catch (\Throwable $exception) {
-           Log::error($exception->getMessage() . '-' . $exception->getTraceAsString());
+
+            Log::error($exception->getMessage() . '-' . $exception->getTraceAsString());
             DB::rollBack();
             return redirect()->back()->withInput()
                 ->with('failed', 'Failed to create News');
@@ -151,6 +150,5 @@ class NewsController extends Controller
             return redirect()->route($this->baseRoute . '.index')
                 ->with('failed', 'Failed to delete news.');
         }
-
     }
 }

@@ -17,6 +17,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static whereNull(string $string)
  * @method static select($column)
  * @method static count()
+ * @property boolean $is_video
  */
 class Category extends Model
 {

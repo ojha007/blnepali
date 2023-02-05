@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\User;
+use Illuminate\Database\Eloquent\Concerns\HasEvents;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -15,11 +16,14 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static create(array $attributes)
  * @method  static whereIsAnchor(boolean $value)
  * @method static select(string[] $array)
- * @property int|mixed|string|null $deleted_by
+ * @property int|null $deleted_by
+ * @property boolean $is_anchor
+ * @property boolean $is_special
+ * @property Category $category
  */
 class News extends Model
 {
-    use SoftDeletes, HasFactory;
+    use SoftDeletes, HasFactory, HasEvents;
 
     protected $table = 'np_news';
 

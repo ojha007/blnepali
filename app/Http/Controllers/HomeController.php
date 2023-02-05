@@ -31,11 +31,13 @@ class HomeController extends Controller
         $categories = [];
 
         $anchorNews = $this->newsRepository->getAnchorNews();
-        $trendingNews = $this->newsRepository->getTrendingNews(5);
-        $blSpecialNews = $this->newsRepository->getBlSpecialNews(6);
-        $breakingNews = $this->newsRepository->getBreakingNews(6);
-        $videoNews = $this->newsRepository->getNewsByOrderId(7, 5);
 
+        $trendingNews = $this->newsRepository->getTrendingNews(5);
+
+        $blSpecialNews = $this->newsRepository->getBlSpecialNews();
+
+        $breakingNews = $this->newsRepository->getBreakingNews(6);
+        $videoNews = $this->newsRepository->getVideosNews();
 
         $order1News = $this->newsRepository->getNewsByOrderId(1, 10);
         $order2News = $this->newsRepository->getNewsByOrderId(2, 4);
@@ -86,7 +88,7 @@ class HomeController extends Controller
             ->first();
 
         $headerCategories = $this->categoryRepository->getFrontPageHeaderCategories(11);
-        $blSpecialNews = $this->newsRepository->getBlSpecialNews(5);
+        $blSpecialNews = $this->newsRepository->getBlSpecialNews();
 
         $trendingNews = $this->newsRepository->getTrendingNews(5);
         $sameCategoryNews = $this->newsRepository->sameCategoryNews($catId, $news->id);
