@@ -1,4 +1,5 @@
-CREATE OR REPLACE VIEW videos_news
+CREATE
+OR REPLACE VIEW videos_news
 AS
 SELECT title,
        guest,
@@ -12,5 +13,5 @@ FROM np_news np
          JOIN categories c ON c.id = np.category_id and c.is_video = 1
          JOIN reporters r ON np.reporter_id = r.id
 where np.deleted_at is null
-ORDER BY publish_date DESC
-LIMIT 5;
+  and np.status = 'active'
+ORDER BY publish_date DESC LIMIT 5;
