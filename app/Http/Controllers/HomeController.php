@@ -37,6 +37,7 @@ class HomeController extends Controller
         $blSpecialNews = $this->newsRepository->getBlSpecialNews();
 
         $breakingNews = $this->newsRepository->getBreakingNews(6);
+
         $videoNews = $this->newsRepository->getVideosNews();
 
         $order1News = $this->newsRepository->getNewsByOrderId(1, 10);
