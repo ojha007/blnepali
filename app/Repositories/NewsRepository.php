@@ -48,7 +48,7 @@ class NewsRepository
     {
         return DB::table('np_news as np')
             ->select(['title', 'c_id', 'image', 'c.slug as category_slug'])
-            ->join('category as c', 'c.id', '=', 'np.category_id')
+            ->join('categories as c', 'c.id', '=', 'np.category_id')
             ->where('np.is_breaking', '=', 1)
             ->orderByDesc('publish_date')
             ->limit($limit)
