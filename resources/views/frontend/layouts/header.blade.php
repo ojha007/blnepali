@@ -25,6 +25,11 @@
                                 <i class="fab fa-youtube-square"></i>
                             </a>
                         </li>
+                        <li>
+                            |
+                            <a href="https://breaknlinks.com/nepali/preeti-to-unicode" target="_blank">
+                                <i class="fa fa-keyboard"></i>&nbsp;युनिकोड</a>
+                        </li>
                     </ul>
                     <div class="news-lang">
                         <div class="language-picker js-language-picker" data-trigger-class="btn btn--subtle">
