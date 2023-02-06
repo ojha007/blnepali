@@ -25,7 +25,7 @@
                                 <i class="fab fa-youtube-square"></i>
                             </a>
                         </li>
-                        |
+                        &nbsp;|
                         <li class="list-item">
                             <a href="https://breaknlinks.com/nepali/preeti-to-unicode" target="_blank">
                                 <i class="fa fa-keyboard"></i>&nbsp;युनिकोड</a>
