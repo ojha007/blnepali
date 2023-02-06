@@ -12,7 +12,7 @@ return [
 	| Supported: "json", "database"
 	|
 	*/
-	'store' => 'json',
+	'store' => 'database',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -51,12 +51,12 @@ return [
     | If you want all setting calls to go through Laravel's cache system.
     |
     */
-	'enableCache' => false,
+	'enableCache' => true,
 	// Whether to reset the cache when changing a setting.
 	'forgetCacheByWrite' => true,
 	// TTL in seconds.
-	'cacheTtl' => 15,
-    
+	'cacheTtl' => 150000,
+
     /*
     |--------------------------------------------------------------------------
     | Default Settings
