@@ -50,28 +50,28 @@
                 </li>
             </ul>
         </li>
-        <li class="treeview {{request()->routeIs('cms.categories.*') ? 'active':''}}">
-            <a href="#">
-                <i class="fa fa-files-o"></i>
-                <span>News Category</span>
-                <span class="pull-right-container">
-                 <i class="fa fa-angle-left pull-right"></i>
-                </span>
-            </a>
-            <ul class="treeview-menu">
-                <li class="{{request()->routeIs('cms.categories.index') ? 'active': ''}}">
-                    <a href="{{route('cms.categories.index')}}">
-                        <i class="fa fa-circle-o"></i>
-                        All Category
-                    </a></li>
-                <li class="{{request()->routeIs('cms.categories.create') ?'active':'' }}">
-                    <a href="{{route('cms.categories.create')}}">
-                        <i class="fa fa-circle-o"></i>
-                        Add Category
-                    </a>
-                </li>
-            </ul>
-        </li>
+{{--        <li class="treeview {{request()->routeIs('cms.categories.*') ? 'active':''}}">--}}
+{{--            <a href="#">--}}
+{{--                <i class="fa fa-files-o"></i>--}}
+{{--                <span>News Category</span>--}}
+{{--                <span class="pull-right-container">--}}
+{{--                 <i class="fa fa-angle-left pull-right"></i>--}}
+{{--                </span>--}}
+{{--            </a>--}}
+{{--            <ul class="treeview-menu">--}}
+{{--                <li class="{{request()->routeIs('cms.categories.index') ? 'active': ''}}">--}}
+{{--                    <a href="{{route('cms.categories.index')}}">--}}
+{{--                        <i class="fa fa-circle-o"></i>--}}
+{{--                        All Category--}}
+{{--                    </a></li>--}}
+{{--                <li class="{{request()->routeIs('cms.categories.create') ?'active':'' }}">--}}
+{{--                    <a href="{{route('cms.categories.create')}}">--}}
+{{--                        <i class="fa fa-circle-o"></i>--}}
+{{--                        Add Category--}}
+{{--                    </a>--}}
+{{--                </li>--}}
+{{--            </ul>--}}
+{{--        </li>--}}
 
         <li class="treeview {{request()->routeIs('cms.reporters.*') ? 'active':''}}">
             <a href="#">
