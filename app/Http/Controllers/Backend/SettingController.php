@@ -13,11 +13,11 @@ class SettingController extends Controller
     /**
      * @var string
      */
-    protected $routePrefix = 'settings';
+    protected string $routePrefix = 'settings';
     /**
      * @var string
      */
-    protected $viewPath = 'backend::setting.';
+    protected string $viewPath = 'backend::setting.';
 
 
     public function index()
