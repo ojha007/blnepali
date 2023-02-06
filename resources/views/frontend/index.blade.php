@@ -2,7 +2,7 @@
 @section('content')
 
     <!--Hot carousel news-->
-{{--    @include('frontend.components.carousel-news')--}}
+    @include('frontend.components.carousel-news')
     <!--ended Hot carousel news-->
 
     <!--BL Top post news anchor news-->
