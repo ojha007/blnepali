@@ -47,7 +47,7 @@ class NewsRepository
     public function getBreakingNews($limit): Collection
     {
         return DB::table('np_news as np')
-            ->select(['title', 'c_id', 'image', 'c.slug as category_slug'])
+            ->select(['np.title', 'c_id', 'np.image', 'c.slug as category_slug'])
             ->join('categories as c', 'c.id', '=', 'np.category_id')
             ->where('np.is_breaking', '=', 1)
             ->orderByDesc('publish_date')
