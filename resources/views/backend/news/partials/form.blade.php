@@ -142,12 +142,21 @@
                 <label for="short_description" class="required"> <b>Short description </b></label>
                 {{Form::textarea('short_description' ,null,['class'=>'form-control','rows'=>'5','cols'=>'10','placeholder'=>'Enter sub description'])}}
             </div>
-            <div class="form-group  {{$errors->has('is_anchor') ?'has-error':''}}">
-                @include('backend.partials.toggle-button',['value'=>'is_anchor','checked'=>$news->is_anchor ?? 0])
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group {{$errors->has('is_anchor') ?'has-error':''}}">
+                        @include('backend.partials.toggle-button',['value'=>'is_anchor','checked'=>$news->is_anchor ?? 0])
 
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group  {{$errors->has('is_special') ?'has-error':''}} ">
+                        @include('backend.partials.toggle-button',['value'=>'is_special','checked'=> $news->is_special ?? 0])
+                    </div>
+                </div>
             </div>
-            <div class="form-group  {{$errors->has('is_special') ?'has-error':''}} ">
-                @include('backend.partials.toggle-button',['value'=>'is_special','checked'=> $news->is_special ?? 0])
+            <div class="form-group  {{$errors->has('is_breaking') ?'has-error':''}} ">
+                @include('backend.partials.toggle-button',['value'=>'is_breaking','title'=>'Breaking News','checked'=> $news->is_urgent ?? 0])
             </div>
             <div class="form-group  {{$errors->has('status') ? 'has-error':''}} ">
                 {!! Form::select('status', ['active'=>'Active','draft'=>'Draft'], null,

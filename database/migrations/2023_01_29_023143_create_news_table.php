@@ -59,6 +59,10 @@ class CreateNewsTable extends Migration
                 ->nullable()
                 ->references('id')
                 ->on('users');
+            $table->boolean('is_breaking')->default(false);
+
+            $table->enum('status', ['active', 'draft'])->default('active');
+
             $table->timestamps();
             $table->softDeletes();
 
