@@ -78,6 +78,7 @@
                                         </div>
                                         <div class="bl-news bl-news--verticalThumbs">
                                             @foreach($sameCategoryNews as $key=>$ne)
+                                                @dd($ne)
                                                 <div class="bl-newsPost bl-newsPost--thumbnail">
                                                     <figure class="post_img">
                                                         <a href="{{route('category.news.show',[$ne->category->slug,$ne->c_id])}}">

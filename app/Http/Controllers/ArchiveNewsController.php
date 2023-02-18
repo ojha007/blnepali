@@ -57,7 +57,6 @@ class ArchiveNewsController extends Controller
             return view($this->viewPath . 'show', compact('headerCategories', 'news',
                 'trendingNews', 'sameCategoryNews', 'blSpecialNews'));
         } catch (\Exception $exception) {
-            dd($exception);
             Log::error($exception->getMessage() . '---' . $exception->getTraceAsString());
             return redirect()->route('index');
         }
