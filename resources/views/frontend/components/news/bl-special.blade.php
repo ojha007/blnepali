@@ -1,4 +1,4 @@
-<section class="container blSpecial-container">
+<section class="container-fluid container-xxl blSpecial-container">
     <div class="row">
         <div class="news-row">
             <div class="bl-newsHeader">

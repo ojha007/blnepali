@@ -63,7 +63,7 @@
             </div>
             <div class="col-sm-12 col-md-12 col-lg-3 col-xl-3 col-xxl-3 pt-4">
 
-                <div class="aside-news-rows">
+                <div class="aside-news-rows sticky-xl-top">
                     <div class="bl-news bl-news--trending">
                         <div class="post-widgetHeader">
                             <h4>Trending</h4>

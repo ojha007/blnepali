@@ -24,7 +24,7 @@
 @endsection
 
 @section('content')
-    <section class="container">
+    <section class="container-fluid container-xxl">
         <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-9 col-xl-9 col-xxl-9">
                 <div class="bl-newsPost--details">
@@ -153,7 +153,7 @@
                     </div>
                 </div>
 
-                <div class="aside-news-rows">
+                <div class="aside-news-rows sticky-xl-top">
                     <div class="bl-news bl-news--trending">
                         <div class="post-widgetHeader">
                             <h4>ट्रेन्डिङ</h4>

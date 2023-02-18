@@ -1,7 +1,7 @@
 <!--header start-->
 <header class="header">
     <section class="header-top">
-        <div class="container-fluid">
+        <div class="container-fluid container-xxl">
             <div class="row">
                 <div class="col-sm-12 d-flex align-items-center justify-content-end">
                     <ul class="social-link">
@@ -47,7 +47,7 @@
             </div>
         </div>
     </section>
-    <div class="container">
+    <div class="container-fluid container-xxl">
         <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
                 <div class="adv-widebanner">
@@ -57,7 +57,7 @@
         </div>
     </div>
     <nav class="navbar navbar-expand-lg navbar--primary">
-        <div class="container-fluid align-items-start">
+        <div class="container-fluid container-xxl align-items-start position-relative">
             <div class="navbar-brand">
                 <a href="{{route('index')}}" class="brand-logo">
                     <img src="{{asset('frontend/images/blLogo.png')}}" alt="Bl media Logo"/>

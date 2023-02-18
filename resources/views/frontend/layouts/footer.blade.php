@@ -2,7 +2,7 @@
     <div class="footer-content">
         <div class="container">
             <div class="row">
-                <div class="col-sm-6 col-md-3 col-lg-2 col-xl-2 col-xxl-2 footer-widget">
+                <div class="col-sm-6 col-md-4 col-lg-4 col-xl-4 col-xxl-4 footer-widget">
                     <div class="w-100 mb-3">
                         <a href="{{url('/np')}}" class="brand-logo">
                             <img src="https://breaknlinks.com/frontend/img/logo.png" alt="BL Media">
@@ -11,30 +11,10 @@
                     <div class="infoblock">
                         <h4 class="block-title">BL Media Inc</h4>
                         <h6 class="block-subTitle">Media for all across the globe</h6>
-                        <ul class="infoList">
-                            <li class="list-item">
-                                <label>ईमेल:</label>
-                                <a href="mailto:{{setting('website_email')}}">{{setting('website_email')}}</a>
-                            </li>
-                            <li class="list-item">
-                                <label>सम्पर्क नम्बर</label>
-                                {{setting('contact_number')}}
-                            </li>
-                            @if(setting('registration_number'))
-                                <li class="list-item">
-                                    <label>दर्ता नम्बर</label>
-                                    {{setting('registration_number')}}
-                                </li>
-                            @endif
-                            <li class="list-item">
-                                <label>ठेगाना</label>
-                                {{setting('address')}}
-                            </li>
-                        </ul>
+
                     </div>
                 </div>
-
-                <div class="col-sm-6 col-md-3 col-lg-2 col-xl-2 col-xxl-2 footer-widget">
+                <div class="col-sm-6 col-md-2 col-lg-2 col-xl-2 col-xxl-2 footer-widget">
                     <h5 class="widget-title">अन्य संस्करण</h5>
                     <ul class="nav nav--listing">
                         <li class="nav-item">
@@ -48,15 +28,27 @@
                         </li>
                     </ul>
                 </div>
-                <div class="col-sm-6 col-md-3 col-lg-4 col-xl-4 col-xxl-4 footer-widget">
-                    <h5 class="widget-title">अन्य श्रेणी</h5>
-                    <ul class="nav nav--listing __2-columnn">
-                        @foreach($headerCategories ?? [] as $key=> $category)
-                            <li class="nav-item">
-                                <a href="{{route('newsByCategory',['slug'=>$category->slug])}}" class="nav-link">
-                                    {{$category->name}}</a>
+                <div class="col-sm-6 col-md-2 col-lg-2 col-xl-2 col-xxl-2 footer-widget">
+                    <h5 class="widget-title">सम्पर्क गर्नुहोस्</h5>
+                    <ul class="infoList">
+                        <li class="list-item">
+                            <label>ईमेल:</label>
+                            <a href="mailto:{{setting('website_email')}}">{{setting('website_email')}}</a>
+                        </li>
+                        <li class="list-item">
+                            <label>सम्पर्क नम्बर</label>
+                            {{setting('contact_number')}}
+                        </li>
+                        @if(setting('registration_number'))
+                            <li class="list-item">
+                                <label>दर्ता नम्बर</label>
+                                {{setting('registration_number')}}
                             </li>
-                        @endforeach
+                        @endif
+                        <li class="list-item">
+                            <label>ठेगाना</label>
+                            {{setting('address')}}
+                        </li>
                     </ul>
                 </div>
                 <div class="col-sm-6 col-md-4 col-lg-4 col-xl-4 col-xxl-4 footer-widget">
@@ -72,7 +64,7 @@
                     <ul class="social-link-circle">
                         <li class="nav-item">
                             <a href="{{setting('facebook')}}" class="nav-link" target="_blank">
-                                <i class="fab fa-facebook-square"></i>
+                                <i class="fab fa-facebook-square fa-1x"></i>
                             </a>
                         </li>
                         <li class="nav-item">

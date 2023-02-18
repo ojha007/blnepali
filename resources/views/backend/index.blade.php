@@ -6,16 +6,14 @@
     Dashboard
 @stop
 @section('content')
-    @include('backend.partials.errors')
     <div>
         <section class="content">
             <div class="row">
-                {{--                @foreach($attributes as $key=>$value)--}}
-                {{--                    @include('backend::dashboard.components.info-box')--}}
-                {{--                @endforeach--}}
+                @foreach($attributes as $key=>$value)
+                    @include('backend.dashboard.components.info-box')
+                @endforeach
 
             </div>
         </section>
-        <!-- /.content -->
     </div>
 @endsection

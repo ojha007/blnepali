@@ -1,12 +1,10 @@
-{{--order one news--}}
-<section class="container">
+<section class="container-fluid container-xxl">
     <div class="row">
         <section class="news-row">
             <div class="bl-newsHeader">
                 <h5 class="header-title">एंकर</h5>
             </div>
             <div class="bl-news bl-news--mainPost">
-                <!--repeatable items with condition-->
                 @foreach($anchorNews as $key=>$news)
                     @if($key ==0)
                         <div class="bl-newsPost bl-newsPost--topStory">
@@ -22,14 +20,13 @@
                                         {{$news->title}}
                                     </a>
                                 </h5>
-                                <p>{!! $news->short_description!!}</p>
+                                <p>{!!\Illuminate\Support\Str::limit($news->short_description)!!}</p>
                                 <p class="post_source">
                                     {{$news->guest ?? $news->reporter_name}}
                                     {{$news->date_line ? '-' .$news->date_line  :''}}
                                 </p>
                             </div>
                         </div>
-                        <!--ended repeatable items-->
                     @else
                         <div class="bl-newsPost bl-newsPost--thumbnail">
                             <figure class="post_img">

@@ -1,5 +1,5 @@
 @if(count($breakingNews))
-    <section class="container">
+    <section class="container-fluid container-xxl">
         <div class="row">
             <div class="bl-news bl-news--hotScrolling">
                 <div class="owl-carousel owl-theme" id="bl-hotScrolling">
@@ -20,7 +20,7 @@
                                             {!! $news->title !!}
                                         </a>
                                     </h5>
-                                    <p>{{\Illuminate\Support\Str::limit($news->short_description,50)}}</p>
+                                    <p>{{\Illuminate\Support\Str::limit($news->short_description, 50)}}</p>
                                 </div>
                             </div>
                         </div>
