@@ -42,7 +42,7 @@ class HomeController extends Controller
 
         $order1News = $this->newsRepository->getNewsByOrderId(1, 10);
         $order2News = $this->newsRepository->getNewsByOrderId(2, 4);
-        $order3News = $this->newsRepository->getNewsByOrderId(35, 10);
+        $order3News = $this->newsRepository->getNewsByOrderId(35, 6);
         $order4News = $this->newsRepository->getNewsByOrderId(4, 4);
         $order5News = $this->newsRepository->getNewsByOrderId(22, 4);
         $order6News = $this->newsRepository->getNewsByOrderId(11, 4);
