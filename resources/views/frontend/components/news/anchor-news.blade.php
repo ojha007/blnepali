@@ -20,7 +20,7 @@
                                         {{$news->title}}
                                     </a>
                                 </h5>
-                                <p>{!!\Illuminate\Support\Str::limit($news->short_description)!!}</p>
+                                <p>{!!\Illuminate\Support\Str::limit($news->short_description,400)!!}</p>
                                 <p class="post_source">
                                     {{$news->guest ?? $news->reporter_name}}
                                     {{$news->date_line ? '-' .$news->date_line  :''}}
