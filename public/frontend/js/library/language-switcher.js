@@ -249,7 +249,7 @@ Math.easeInOutQuad = function (t, b, c, d) {
         for (var i = 0; i < picker.options.length; i++) {
             var selected = picker.options[i].hasAttribute('selected') ? ' aria-selected="true"' : '',
                 language = picker.options[i].getAttribute('lang');
-            list = list + '<li><a lang="' + language + '" hreflang="' + language + '" href="' + getLanguageUrl(picker.options[i]) + '"' + selected + ' role="option" data-value="' + picker.options[i].value + '" class="language-picker__item language-picker__flag language-picker__flag--' + picker.options[i].value + '"><span>' + picker.options[i].text + '</span></a></li>';
+            list = list + '<li><a target="_blank" lang="' + language + '" hreflang="' + language + '" href="' + getLanguageUrl(picker.options[i]) + '"' + selected + ' role="option" data-value="' + picker.options[i].value + '" class="language-picker__item language-picker__flag language-picker__flag--' + picker.options[i].value + '"><span>' + picker.options[i].text + '</span></a></li>';
         }
         ;
         return list;
@@ -289,7 +289,7 @@ Math.easeInOutQuad = function (t, b, c, d) {
                 // ⚠️ Important: this 'else' code needs to be removed in production.
                 // The user has to be redirected to the new url -> nothing to do here
                 event.preventDefault();
-                window.location.href = language.href;
+                window.open(language.href,'_blank')
             }
         });
     };
