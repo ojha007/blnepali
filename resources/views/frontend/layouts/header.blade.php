@@ -38,7 +38,7 @@
                                 <select name="language-picker-select" id="language-picker-select">
                                     <option lang="np" value="nepali">Nepali</option>
                                     <option lang="en" value="english">English</option>
-                                    <option lang="hi" value="deutsch">Hindi</option>
+                                    <option lang="hi" value="hindi">Hindi</option>
                                 </select>
                             </form>
                         </div>
