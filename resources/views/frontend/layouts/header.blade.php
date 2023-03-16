@@ -1,7 +1,7 @@
 <!--header start-->
 <header class="header">
     <section class="header-top">
-        <div class="container-fluid container-xxl">
+        <div class="container">
             <div class="row">
                 <div class="col-sm-12 d-flex align-items-center justify-content-end">
                     <ul class="social-link">
@@ -47,7 +47,7 @@
             </div>
         </div>
     </section>
-    <div class="container-fluid container-xxl">
+    <div class="container">
         <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
                 <div class="adv-widebanner">

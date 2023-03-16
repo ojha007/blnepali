@@ -1,5 +1,5 @@
 @if(count($breakingNews))
-    <section class="container-fluid container-xxl">
+    <section class="container">
         <div class="row">
             <div class="bl-news bl-news--hotScrolling">
                 <div class="owl-carousel owl-theme" id="bl-hotScrolling">

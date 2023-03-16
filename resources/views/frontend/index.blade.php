@@ -14,7 +14,7 @@
     <!--ended BL Special news post-->
 
     <!--start general news and links news section-->
-    <section class="container-fluid container-xxl">
+    <section class="container">
         <div class="news-row">
             <div class="row">
                 <div class="col-sm-12 col-md-8 col-lg-9 col-xl-9 col-xxl-9">
@@ -30,7 +30,7 @@
     <!--ended general news and links news section-->
 
     <!--start trending and brand story news section-->
-    <div class="container-fluid container-xxl">
+    <div class="container">
         <div class="news-row">
             <div class="row">
                 <div class="col-sm-12 col-md-4 col-lg-3 col-xl-3 col-xxl-3">
@@ -47,7 +47,7 @@
     <!--ended trending and brand story news section-->
 
     <!--start economy and analysis news block-->
-    <section class="container-fluid container-xxl">
+    <section class="container">
         <div class="news-row">
             <div class="row">
                 <div class="col-sm-12 col-md-8 col-lg-9 col-xl-9 col-xxl-9">
@@ -62,7 +62,7 @@
     <!--ended economy and analysis news block-->
 
     <!--start Entertainment and Blog news block-->
-    <section class="container-fluid container-xxl">
+    <section class="container">
         <div class="news-row">
             <div class="row">
                 <div class="col-sm-12 col-md-8 col-lg-9 col-xl-9 col-xxl-9">
