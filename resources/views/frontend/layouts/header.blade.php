@@ -39,6 +39,8 @@
                                     <option lang="np" value="nepali">Nepali</option>
                                     <option lang="en" value="english">English</option>
                                     <option lang="hi" value="hindi">Hindi</option>
+                                    <option lang="bur" value="burmese">Burmese</option>
+                                    <option lang="sp" value="spanish">Español</option>
                                 </select>
                             </form>
                         </div>

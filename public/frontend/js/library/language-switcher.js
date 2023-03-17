@@ -273,6 +273,12 @@ Math.easeInOutQuad = function (t, b, c, d) {
                 return '/hindi';
             case 'english':
                 return '/';
+            case 'burmese':
+                return '/spanish';
+            case 'spanish':
+                return '/spanish';
+            case 'arabic':
+                return 'arabic';
         }
     };
 
@@ -289,7 +295,7 @@ Math.easeInOutQuad = function (t, b, c, d) {
                 // ⚠️ Important: this 'else' code needs to be removed in production.
                 // The user has to be redirected to the new url -> nothing to do here
                 event.preventDefault();
-                window.open(language.href,'_blank')
+                window.open(language.href, '_blank')
             }
         });
     };
