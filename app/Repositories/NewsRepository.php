@@ -151,6 +151,7 @@ class NewsRepository
             ->where('np.is_breaking', '=', 1)
             ->whereNull('np.deleted_at')
             ->where('status', '=', 'active')
+            ->where('c.is_active', '=', 1)
             ->orderByDesc('publish_date')
             ->limit(5)
             ->unionAll(function (Builder $query) use ($select, &$date) {
@@ -161,6 +162,7 @@ class NewsRepository
                     ->join('reporters as rp', 'rp.id', '=', 'np.reporter_id')
                     ->whereDate('publish_date', '>=', $date)
                     ->whereNull('np.deleted_at')
+                    ->where('c.is_active', '=', 1)
                     ->where('status', '=', 'active')
                     ->orderByDesc('view_count')
                     ->limit(6);
@@ -172,6 +174,7 @@ class NewsRepository
                     ->join('categories as c', 'c.id', '=', 'np.category_id')
                     ->where('np.is_anchor', '=', 1)
                     ->whereNull('np.deleted_at')
+                    ->where('c.is_active', '=', 1)
                     ->where('status', '=', 'active')
                     ->orderByDesc('publish_date')
                     ->limit(5);
@@ -182,6 +185,20 @@ class NewsRepository
                     ->selectRaw('NULL as reporter_id,NULL as reporter_name,"special" as type')
                     ->join('categories as c', 'c.id', '=', 'np.category_id')
                     ->where('np.is_special', '=', 1)
+                    ->where('c.is_active', '=', 1)
+                    ->whereNull('np.deleted_at')
+                    ->where('status', '=', 'active')
+                    ->orderByDesc('publish_date')
+                    ->limit(5);
+            })
+            ->unionAll(function (Builder $query) use ($select) {
+                $query->from('np_news as np')
+                    ->select($select)
+                    ->selectRaw('rp.id as reporter_id,rp.name as reporter_name,"trending" as type')
+                    ->join('categories as c', 'c.id', '=', 'np.category_id')
+                    ->join('reporters as rp', 'rp.id', '=', 'np.reporter_id')
+                    ->where('c.is_video', '=', 1)
+                    ->where('c.is_active', '=', 1)
                     ->whereNull('np.deleted_at')
                     ->where('status', '=', 'active')
                     ->orderByDesc('publish_date')
