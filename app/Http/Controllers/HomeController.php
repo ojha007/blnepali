@@ -103,6 +103,8 @@ class HomeController extends Controller
             ->orderByDesc('publish_date')
             ->first();
 
+        $news->increment('count');
+
         $headerCategories = $this->categoryRepository->getFrontPageHeaderCategories(11);
         $blSpecialNews = $this->newsRepository->getBlSpecialNews();
 
