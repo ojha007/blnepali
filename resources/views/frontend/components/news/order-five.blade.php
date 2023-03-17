@@ -9,7 +9,7 @@
 <div class="bl-news bl-news--twoColumner">
     @foreach($order5News as $key=> $news)
 
-        @if($loop->iteration < 2)
+        @if($loop->iteration <= 2)
             <div class="bl-newsPost bl-newsPost--columnTopNews">
                 <figure class="post_img">
                     <a href="{{route('category.news.show',['category'=>$news->category->slug,'c_id'=>$news->c_id])}}">
