@@ -60,6 +60,8 @@ class NewsRepository
                   ROW_NUMBER() OVER (PARTITION BY category_id ORDER BY publish_date DESC) AS row_num
                   FROM np_news
                   WHERE category_id IN (' . implode(',', $categoryIds) . ')
+                  and `np_news`.`deleted_at` is null
+                  and `np_news`.`status` = "active"
                 ) x
             WHERE row_num <= l.limit_per_category
            )')
