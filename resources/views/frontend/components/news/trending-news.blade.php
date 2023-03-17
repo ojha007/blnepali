@@ -7,14 +7,12 @@
             @foreach($trendingNews as $news)
                 <div class="trendingNews-item">
                     <h5 class="post_title">
-                        <a href="#">{{$news->title}}</a>
+                        <a href="{{route('category.news.show',[$news->category->slug,$news->c_id])}}">
+                            {{$news->title}}
+                        </a>
                     </h5>
                     <span class="post_source">
-                         @if($news->guest)
-                            {{$news->guest}}
-                        @elseif($news->reporter)
-                            {{$news->reporter->name}}
-                        @endif
+                         {{$news->guest ?? $news->reporter->name ?? '' }}
                         {{$news->date_line ? '-' .$news->date_line  :''}}
                     </span>
                 </div>

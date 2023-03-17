@@ -9,7 +9,7 @@
 <div class="bl-news bl-news--twoColumner">
     @foreach($order5News as $key=> $news)
 
-        @if($key < 2)
+        @if($loop->iteration < 2)
             <div class="bl-newsPost bl-newsPost--columnTopNews">
                 <figure class="post_img">
                     <a href="{{route('category.news.show',['category'=>$news->category->slug,'c_id'=>$news->c_id])}}">
@@ -20,11 +20,7 @@
                 <div class="post_content">
                     <h5 class="post_title"><a href="#">{{$news->title}} </a></h5>
                     <p class="post_source">
-                        @if($news->guest)
-                            {{$news->guest}}
-                        @elseif($news->reporter)
-                            {{$news->reporter->name}}
-                        @endif
+                        {{$news->guest ?? $news->reporter->name ?? '' }}
                         {{$news->date_line ? '-' .$news->date_line  :''}}
                     </p>
 
@@ -44,11 +40,7 @@
                             {{$news->title}}</a>
                     </h5>
                     <p class="post_source">
-                        @if($news->guest)
-                            {{$news->guest}}
-                        @elseif($news->reporter)
-                            {{$news->reporter->name}}
-                        @endif
+                        {{$news->guest ?? $news->reporter->name ?? '' }}
                         {{$news->date_line ? '-' .$news->date_line  :''}}
                     </p>
                 </div>

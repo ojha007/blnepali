@@ -3,27 +3,68 @@
 namespace App\Models;
 
 use Database\Factories\CategoryFactory;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Carbon;
 
 /**
- * @method static where(array $where)
- * @method static pluck(string $value, string $key)
- * @method static create(array $attributes)
- * @method static whereNull(string $string)
- * @method static select($column)
- * @method static count()
- * @property boolean $is_video
+ * App\Models\Category
+ *
+ * @property int $id
+ * @property string $name
+ * @property string $slug
+ * @property int|null $parent_id
+ * @property int $is_active
+ * @property int $in_mobile
+ * @property int $is_video
+ * @property int $new_design
+ * @property string|null $image
+ * @property string|null $image_description
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
+ * @property Carbon|null $deleted_at
+ * @property-read Collection<int, Category> $childCategories
+ * @property-read int|null $child_categories_count
+ * @property-read Collection<int, News> $news
+ * @property-read int|null $news_count
+ * @property-read CategoryPosition|null $position
+ * @method static Builder|Category isChildren()
+ * @method static Builder|Category isActive()
+ * @method static CategoryFactory factory(...$parameters)
+ * @method static Builder|Category newModelQuery()
+ * @method static Builder|Category newQuery()
+ * @method static Builder|Category onlyTrashed()
+ * @method static Builder|Category query()
+ * @method static Builder|Category whereCreatedAt($value)
+ * @method static Builder|Category whereDeletedAt($value)
+ * @method static Builder|Category whereId($value)
+ * @method static Builder|Category whereImage($value)
+ * @method static Builder|Category whereImageDescription($value)
+ * @method static Builder|Category whereInMobile($value)
+ * @method static Builder|Category whereIsActive($value)
+ * @method static Builder|Category whereIsVideo($value)
+ * @method static Builder|Category whereName($value)
+ * @method static Builder|Category whereNewDesign($value)
+ * @method static Builder|Category whereParentId($value)
+ * @method static Builder|Category whereSlug($value)
+ * @method static Builder|Category whereUpdatedAt($value)
+ * @method static Builder|Category withTrashed()
+ * @method static Builder|Category withoutTrashed()
+ * @method static Builder|Category orderByRaw($string)
+ * @method static pluck(string $string)
+ * @mixin Eloquent
  */
 class Category extends Model
 {
     use SoftDeletes, HasFactory;
 
     protected $guarded = [];
+
 
     public function news(): HasMany
     {
@@ -35,9 +76,19 @@ class Category extends Model
         return $this->hasMany(Category::class, 'parent_id', 'id');
     }
 
-    public function position(): BelongsTo
+    public function position(): HasOne
     {
-        return $this->belongsTo(CategoryPosition::class);
+        return $this->hasOne(CategoryPosition::class);
+    }
+
+    public function scopeIsChildren(Builder $builder)
+    {
+        $builder->whereNull('parent_id')->isActive();
+    }
+
+    public function scopeIsActive(Builder $builder)
+    {
+        $builder->where('is_active', true);
     }
 
     protected static function newFactory(): CategoryFactory

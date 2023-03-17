@@ -15,12 +15,15 @@ class NewsFactory extends Factory
 
     public function definition(): array
     {
+        $categories = Category::pluck('id')->toArray();
+        $catId = $this->faker->randomElement($categories);
+
         return [
             'title' => $this->faker->text,
-            'c_id' => $this->faker->numerify('##'),
-            'category_id' => Category::factory()->create(),
+            'c_id' => $this->faker->unique()->numerify('######'),
+            'category_id' => $catId,
             'sub_title' => $this->faker->text,
-            'reporter_id' => Reporter::factory()->create(),
+            'reporter_id' => fn() => Reporter::factory(),
             'is_anchor' => $this->faker->boolean,
             'is_special' => $this->faker->boolean,
             'image' => $this->faker->imageUrl,
@@ -29,9 +32,8 @@ class NewsFactory extends Factory
             'short_description' => $this->faker->word,
             'description' => $this->faker->text,
             'slug' => $this->faker->slug,
-            'created_by' => User::factory()->create(),
+            'created_by' => fn() => User::factory(),
             'date_line' => $this->faker->address,
-//            'status' => 'active'
         ];
     }
 }

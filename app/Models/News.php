@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 
 /**
- * @method static where(string $string, bool $true)
+ * @method static where(string $column, string $operator, mixed $value)
  * @method static count()
  * @method static create(array $attributes)
  * @method  static whereIsAnchor(boolean $value)

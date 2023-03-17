@@ -8,7 +8,7 @@
 
 <div class="bl-news bl-news--twoColumner">
     @foreach($order4News as $key=> $news)
-        @if($key ==0)
+        @if($loop->first)
             <div class="bl-newsPost bl-newsPost--highlightNews">
                 <figure class="post_img">
                     <a href="{{route('category.news.show',['category'=>$news->category->slug,'c_id'=>$news->c_id])}}">
@@ -25,11 +25,7 @@
                     <p>{!! \Illuminate\Support\Str::limit($news->short_description ??'',255) !!}</p>
 
                     <p class="post_source">
-                        @if($news->guest)
-                            {{$news->guest}}
-                        @elseif($news->reporter)
-                            {{$news->reporter->name}}
-                        @endif
+                        {{$news->guest ?? $news->reporter->name ?? '' }}
                         {{$news->date_line ? '-' .$news->date_line  :''}}
                     </p>
                 </div>
@@ -50,11 +46,7 @@
                         </a>
                     </h5>
                     <p class="post_source">
-                        @if($news->guest)
-                            {{$news->guest}}
-                        @elseif($news->reporter)
-                            {{$news->reporter->name}}
-                        @endif
+                        {{$news->guest ?? $news->reporter->name ?? '' }}
                         {{$news->date_line ? '-' .$news->date_line  :''}}
                     </p>
                 </div>

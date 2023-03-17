@@ -8,6 +8,7 @@ use Illuminate\Notifications\Notifiable;
 
 /**
  * @method static updateOrCreate(string[] $array, array $array1)
+ * @method static pluck(string $string)
  */
 class User extends Authenticatable
 {

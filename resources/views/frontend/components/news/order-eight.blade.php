@@ -22,11 +22,7 @@
                     </a>
                 </h5>
                 <p class="post_source">
-                    @if($news->guest)
-                        {{$news->guest}}
-                    @elseif($news->reporter)
-                        {{$news->reporter->name}}
-                    @endif
+                    {{$news->guest ?? $news->reporter->name ?? '' }}
                     {{$news->date_line ? '-' .$news->date_line  :''}}
                 </p>
             </div>

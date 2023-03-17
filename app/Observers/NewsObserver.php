@@ -16,11 +16,10 @@ class NewsObserver
     public function created(News $news)
     {
         if ($news->is_anchor)
-//            dd(file_get_contents(database_path('procedures/anchor_news.sql')));
             DB::unprepared(file_get_contents(database_path('procedures/anchor_news.sql')));
 
         if ($news->is_special)
-            DB::unprepared(file_get_contents(database_path('procedures/special_news.sql')));
+            DB::unprepared(file_get_contents(database_path('procedures/special_news.sq')));
 
         if ($news->category->is_video) {
             DB::unprepared(file_get_contents(database_path('procedures/video_news.sql')));
@@ -39,7 +38,7 @@ class NewsObserver
             DB::unprepared(file_get_contents(database_path('procedures/anchor_news.sql')));
 
         if ($news->is_special)
-            DB::unprepared(file_get_contents(database_path('procedures/special_news.sql')));
+            DB::unprepared(file_get_contents(database_path('procedures/special_news.sq')));
 
         if ($news->category->is_video) {
             DB::unprepared(file_get_contents(database_path('procedures/video_news.sql')));

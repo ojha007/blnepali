@@ -7,16 +7,16 @@
                 </div>
                 <div class="bl-news bl-news--videoNews">
                     @foreach($videoNews as $key => $news)
-                        @if($key ==0)
+                        @if($loop->first)
                             <div class="bl-newsPost bl-newsPost--topVideo">
                                 <figure class="post_img">
-                                    <a href="{{route('category.news.show',['category'=>$news->category_slug,'c_id'=>$news->c_id])}}">
+                                    <a href="{{route('category.news.show',['category'=>$news->category->slug,'c_id'=>$news->c_id])}}">
                                         <img src="{{$news->image}}" alt="Blmedia"/>
                                     </a>
                                 </figure>
                                 <div class="post_content">
                                     <h5 class="post_title">
-                                        <a href="{{route('category.news.show',['category'=>$news->category_slug,'c_id'=>$news->c_id])}}">
+                                        <a href="{{route('category.news.show',['category'=>$news->category->slug,'c_id'=>$news->c_id])}}">
                                             {!! $news->title !!}
                                         </a>
                                     </h5>
@@ -25,13 +25,13 @@
                         @else
                             <div class="bl-newsPost bl-newsPost--videoThumbnail">
                                 <figure class="post_img">
-                                    <a href="{{route('category.news.show',['category'=>$news->category_slug,'c_id'=>$news->c_id])}}">
+                                    <a href="{{route('category.news.show',['category'=>$news->category->slug,'c_id'=>$news->c_id])}}">
                                         <img src="{{$news->image}}" alt=""/>
                                     </a>
                                 </figure>
                                 <div class="post_content">
                                     <h5 class="post_title">
-                                        <a href="{{route('category.news.show',['category'=>$news->category_slug,'c_id'=>$news->c_id])}}">
+                                        <a href="{{route('category.news.show',['category'=>$news->category->slug,'c_id'=>$news->c_id])}}">
                                             {!! $news->title !!}
                                         </a>
                                     </h5>

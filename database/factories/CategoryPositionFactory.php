@@ -12,8 +12,10 @@ class CategoryPositionFactory extends Factory
 
     public function definition(): array
     {
+        $categories = Category::pluck('id')->toArray();
+
         return [
-            'category_id' => Category::factory()->create(),
+            'category_id' => $this->faker->randomElement($categories),
             'front_header_position' => $this->faker->numerify('#'),
             'detail_header_position' => $this->faker->numerify('#'),
             'detail_body_position' => $this->faker->numerify('#'),

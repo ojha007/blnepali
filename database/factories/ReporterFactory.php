@@ -14,7 +14,7 @@ class ReporterFactory extends Factory
             'email' => $this->faker->safeEmail,
             'description' => $this->faker->sentence,
             'address' => $this->faker->address,
-            'image' => $this->faker->image,
+            'image' => null,
             'caption' => $this->faker->title,
             'facebook_url' => $this->faker->url,
             'twitter_url' => $this->faker->url,

@@ -7,7 +7,7 @@
 </div>
 <div class="bl-news bl-news--generalNews">
     @foreach($order2News as $key=> $news)
-        @if($key == 0)
+        @if($loop->first)
             <div class="bl-newsPost bl-newsPost--highlightNews">
                 <figure class="post_img">
 
@@ -24,11 +24,7 @@
                     </h5>
                     <p>{!! \Illuminate\Support\Str::limit($news->short_description) !!}</p>
                     <p class="post_source">
-                        @if($news->guest)
-                            {{$news->guest}}
-                        @elseif($news->reporter)
-                            {{$news->reporter->name}}
-                        @endif
+                        {{$news->guest ?? $news->reporter->name ?? '' }}
                         {{$news->date_line ? '-' .$news->date_line  :''}}
                     </p>
 
@@ -50,11 +46,7 @@
                         </a>
                     </h5>
                     <p class="post_source">
-                        @if($news->guest)
-                            {{$news->guest}}
-                        @elseif($news->reporter)
-                            {{$news->reporter->name}}
-                        @endif
+                        {{$news->guest ?? $news->reporter->name ?? '' }}
                         {{$news->date_line ? '-' .$news->date_line  :''}}
                     </p>
                 </div>

@@ -10,8 +10,6 @@ class CategoryPositionSeeder extends Seeder
 {
     public function run(): void
     {
-        CategoryPosition::factory()
-            ->has(Category::factory()->count(10))
-            ->create();
+        CategoryPosition::factory()->count(20)->create();
     }
 }

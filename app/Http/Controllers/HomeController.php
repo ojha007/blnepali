@@ -16,7 +16,6 @@ class HomeController extends Controller
 
     protected string $viewPath = 'frontend.';
 
-
     public function __construct(NewsRepository $newsRepository, CategoryRepository $categoryRepository)
     {
         $this->newsRepository = $newsRepository;
@@ -25,29 +24,45 @@ class HomeController extends Controller
 
     public function index()
     {
-        $headerCategories = $this->categoryRepository->getFrontPageHeaderCategories(11);
-        $bodyCategories = $this->categoryRepository->getFrontPageBodyCategories(10);
 
-        $categories = [];
+        $categories = $this->categoryRepository->getCategories();
+        $headerCategories = $this->categoryRepository->filterFrontCategories($categories, 11, 'front_header_position');
+        $bodyCategories = $this->categoryRepository->filterFrontCategories($categories, 11, 'front_body_position');
 
-        $anchorNews = $this->newsRepository->getAnchorNews();
+//        $trendingNews = $this->newsRepository->getTrendingNews(5);
+//        $anchorNews = $this->newsRepository->getAnchorNews();
+//        $blSpecialNews = $this->newsRepository->getBlSpecialNews();
+//        $breakingNews = $this->newsRepository->getBreakingNews(6);
+//        $videoNews = $this->newsRepository->getVideosNews();
 
-        $trendingNews = $this->newsRepository->getTrendingNews(5);
+        $otherNews = $this->newsRepository->getOthersNews();
+        $trendingNews = $otherNews->where('type', 'trending');
+        $breakingNews = $otherNews->where('type', 'breaking');
+        $videoNews = $otherNews->where('type', 'video');
+        $blSpecialNews = $otherNews->where('type', 'special');
+        $anchorNews = $otherNews->where('type', 'anchor');
 
-        $blSpecialNews = $this->newsRepository->getBlSpecialNews();
+        $categoryIds = [1 => 10, 2 => 4, 35 => 6, 4 => 4, 22 => 4, 11 => 4, 9 => 4, 26 => 6];
 
-        $breakingNews = $this->newsRepository->getBreakingNews(6);
+        $allNews = $this->newsRepository->getNews($categoryIds);
 
-        $videoNews = $this->newsRepository->getVideosNews();
+        $order1News = $allNews->where('category_id', 1);
+        $order2News = $allNews->where('category_id', 2);
+        $order3News = $allNews->where('category_id', 35);
+        $order4News = $allNews->where('category_id', 4);
+        $order5News = $allNews->where('category_id', 22);
+        $order6News = $allNews->where('category_id', 11);
+        $order7News = $allNews->where('category_id', 9);
+        $order8News = $allNews->where('category_id', 26);
 
-        $order1News = $this->newsRepository->getNewsByOrderId(1, 10);
-        $order2News = $this->newsRepository->getNewsByOrderId(2, 4);
-        $order3News = $this->newsRepository->getNewsByOrderId(35, 6);
-        $order4News = $this->newsRepository->getNewsByOrderId(4, 4);
-        $order5News = $this->newsRepository->getNewsByOrderId(22, 4);
-        $order6News = $this->newsRepository->getNewsByOrderId(11, 4);
-        $order7News = $this->newsRepository->getNewsByOrderId(9, 4);
-        $order8News = $this->newsRepository->getNewsByOrderId(26, 6);
+//        $order1News = $this->newsRepository->getNewsByOrderId(1,10);
+//        $order2News = $this->newsRepository->getNewsByOrderId(2, 4);
+//        $order3News = $this->newsRepository->getNewsByOrderId(35, 6);
+//        $order4News = $this->newsRepository->getNewsByOrderId(4, 4);
+//        $order5News = $this->newsRepository->getNewsByOrderId(22, 4);
+//        $order6News = $this->newsRepository->getNewsByOrderId(11, 4);
+//        $order7News = $this->newsRepository->getNewsByOrderId(9, 4);
+//        $order8News = $this->newsRepository->getNewsByOrderId(26, 6);
 
 
         return view($this->viewPath . 'index', compact(

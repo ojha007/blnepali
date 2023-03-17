@@ -17,7 +17,7 @@ class CreateNewsTable extends Migration
             $table->id();
 
             $table->mediumText('title');
-            $table->bigInteger('c_id');
+            $table->bigInteger('c_id')->index();
 
             $table->foreignId('category_id')
                 ->references('id')
