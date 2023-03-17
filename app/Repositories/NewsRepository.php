@@ -194,7 +194,7 @@ class NewsRepository
             ->unionAll(function (Builder $query) use ($select) {
                 $query->from('np_news as np')
                     ->select($select)
-                    ->selectRaw('rp.id as reporter_id,rp.name as reporter_name,"trending" as type')
+                    ->selectRaw('rp.id as reporter_id,rp.name as reporter_name,"video" as type')
                     ->join('categories as c', 'c.id', '=', 'np.category_id')
                     ->join('reporters as rp', 'rp.id', '=', 'np.reporter_id')
                     ->where('c.is_video', '=', 1)
