@@ -2,11 +2,11 @@
 
 namespace App\Providers;
 
-use App\Models\News;
-use App\Observers\NewsObserver;
+use App\Listeners\ResizeUploadedImage;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
+use UniSharp\LaravelFilemanager\Events\ImageWasUploaded;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -19,6 +19,9 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
+        ImageWasUploaded::class => [
+            ResizeUploadedImage::class
+        ]
     ];
 
     /**
@@ -28,6 +31,5 @@ class EventServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        News::observe(NewsObserver::class);
     }
 }
