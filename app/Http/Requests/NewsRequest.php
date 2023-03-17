@@ -19,7 +19,7 @@ class NewsRequest extends FormRequest
             'description' => 'required',
             'image_alt' => 'nullable|string|max:255',
             'category_id' => 'required|exists:categories,id',
-            'short_description' => 'required',
+            'short_description' => 'required|min:20',
             'external_url' => 'nullable',
             'publish_date' => 'required|date|date_format:Y-m-d\TH:i',
             'is_anchor' => 'required|boolean',

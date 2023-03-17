@@ -193,6 +193,7 @@ class NewsRepository
                     'title' => $item->title,
                     'guest' => $item->guest,
                     'date_line' => $item->date_line,
+                    'short_description' => $item->short_description,
                     'id' => $item->id,
                     'c_id' => $item->c_id,
                     'image' => $item->image,
