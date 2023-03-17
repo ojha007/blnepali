@@ -272,7 +272,7 @@ Math.easeInOutQuad = function (t, b, c, d) {
             case 'hindi':
                 return '/hindi';
             case 'english':
-                return '/';
+                return '/en';
             case 'burmese':
                 return '/spanish';
             case 'spanish':
