@@ -142,7 +142,7 @@ class NewsRepository
             'np.image_description', 'guest', 'np.category_id',
             'c.slug as category_slug', 'c.name as category_name'
         ];
-        $date = now()->subDays(7)->format('Y-m-d\TH:i');
+        $date = now()->subDays(10)->format('Y-m-d\TH:i');
 
         return DB::table('np_news as np')
             ->select($select)
