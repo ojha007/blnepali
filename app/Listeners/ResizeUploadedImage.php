@@ -14,6 +14,7 @@ class ResizeUploadedImage
         if ($image->width() <= 1000) {
             return;
         }
+
         $path = $event->path();
 
         $image->resize(1280, null, function ($constraint) {
