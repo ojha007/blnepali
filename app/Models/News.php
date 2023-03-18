@@ -20,9 +20,13 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property boolean $is_anchor
  * @property boolean $is_special
  * @property Category $category
+ * @property string $image
  */
 class News extends Model
 {
+    const CLOUD_FRONT_URL = 'd13sbnamffvfth.cloudfront.net';
+    const S3_URL = 'bl-nepali.s3.amazonaws.com';
+
     use SoftDeletes, HasFactory, HasEvents;
 
     protected $table = 'np_news';
@@ -87,6 +91,11 @@ class News extends Model
     public function deletedBy(): BelongsTo
     {
         return $this->belongsTo(User::class, 'deleted_by');
+    }
+
+    public function getImageAttribute(): string
+    {
+        return str_replace(self::S3_URL, self::CLOUD_FRONT_URL, $this->attributes['image']);
     }
 
 }
