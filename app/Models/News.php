@@ -25,7 +25,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class News extends Model
 {
     const CLOUD_FRONT_URL = 'd13sbnamffvfth.cloudfront.net';
+
     const S3_URL = 'bl-nepali.s3.amazonaws.com';
+    const S3_URL2 = 'breaknlinks.s3.amazonaws.com';
 
     use SoftDeletes, HasFactory, HasEvents;
 
@@ -95,7 +97,7 @@ class News extends Model
 
     public function getImageAttribute(): string
     {
-        return str_replace(self::S3_URL, self::CLOUD_FRONT_URL, $this->attributes['image']);
+        return str_replace([self::S3_URL, self::S3_URL2], self::CLOUD_FRONT_URL, $this->attributes['image']);
     }
 
 }
