@@ -24,7 +24,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class News extends Model
 {
-    const CLOUD_FRONT_URL = 'd13sbnamffvfth.cloudfront.net';
+    const CLOUD_FRONT_URL = 'd18cmnmvofvv98.cloudfront.net';
 
     const S3_URL = 'bl-nepali.s3.amazonaws.com';
     const S3_URL2 = 'breaknlinks.s3.amazonaws.com';
