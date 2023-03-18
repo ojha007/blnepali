@@ -96,15 +96,15 @@ return [
 
     'disk'                     => 's3',
 
-    'rename_file'              => false,
+    'rename_file'              => true,
 
-    'rename_duplicates'        => false,
+    'rename_duplicates'        => true,
 
     'alphanumeric_filename'    => false,
 
     'alphanumeric_directory'   => false,
 
-    'should_validate_size'     => false,
+    'should_validate_size'     => true,
 
     'should_validate_mime'     => true,
 
