@@ -3,7 +3,7 @@
 namespace App\Observers;
 
 use App\Models\News;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Cache;
 
 class NewsObserver
 {
@@ -15,15 +15,8 @@ class NewsObserver
      */
     public function created(News $news)
     {
-//        if ($news->is_anchor)
-//            DB::unprepared(file_get_contents(database_path('procedures/anchor_news.sql')));
-//
-//        if ($news->is_special)
-//            DB::unprepared(file_get_contents(database_path('procedures/special_news.sq')));
-//
-//        if ($news->category->is_video) {
-//            DB::unprepared(file_get_contents(database_path('procedures/video_news.sql')));
-//        }
+        Cache::forget(News::CACHE_KEY);
+        Cache::forget(News::otherNewsCacheKey());
     }
 
     /**
@@ -34,15 +27,9 @@ class NewsObserver
      */
     public function updated(News $news)
     {
-//        if ($news->is_anchor)
-//            DB::unprepared(file_get_contents(database_path('procedures/anchor_news.sql')));
-//
-//        if ($news->is_special)
-//            DB::unprepared(file_get_contents(database_path('procedures/special_news.sq')));
-//
-//        if ($news->category->is_video) {
-//            DB::unprepared(file_get_contents(database_path('procedures/video_news.sql')));
-//        }
+        $cacheKey = sprintf(News::CACHE_KEY . '::%s', $news->c_id);
+
+        Cache::forget($cacheKey);
     }
 
     /**

@@ -16,11 +16,9 @@ use Illuminate\Support\Facades\Log;
 
 class NewsController extends Controller
 {
-
     protected string $baseRoute = 'cms.news';
 
     protected string $viewPath = 'backend.news.';
-
 
     public function index(Request $request)
     {
@@ -32,12 +30,9 @@ class NewsController extends Controller
 
         $q = $request->get('q');
 
-        $selectReporters = Reporter::whereNull('deleted_at')
-            ->pluck('name', 'id')
-            ->toArray();
+        $selectReporters = Reporter::pluck('name', 'id')->toArray();
 
-        $selectCategories = Category::where(['is_active' => true])
-            ->whereNull('deleted_at')
+        $selectCategories = Category::isActive()
             ->pluck('name', 'id')
             ->toArray();
 
@@ -75,7 +70,6 @@ class NewsController extends Controller
 
     public function create()
     {
-
         $statuses = News::selectNewsStatus();
         $reporters = Reporter::pluck('name', 'id')->toArray();
         $categories = Category::pluck('name', 'id')->toArray();

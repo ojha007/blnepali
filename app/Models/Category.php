@@ -3,13 +3,13 @@
 namespace App\Models;
 
 use Database\Factories\CategoryFactory;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Carbon;
 
 /**
@@ -35,6 +35,7 @@ use Illuminate\Support\Carbon;
  * @property-read CategoryPosition|null $position
  * @method static Builder|Category isChildren()
  * @method static Builder|Category isActive()
+ * @method static Builder|Category parentNull()
  * @method static CategoryFactory factory(...$parameters)
  * @method static Builder|Category newModelQuery()
  * @method static Builder|Category newQuery()
@@ -56,7 +57,7 @@ use Illuminate\Support\Carbon;
  * @method static Builder|Category withTrashed()
  * @method static Builder|Category withoutTrashed()
  * @method static Builder|Category orderByRaw($string)
- * @method static pluck(string $string)
+ * @method static pluck(string $value, string $key)
  * @mixin Eloquent
  */
 class Category extends Model
@@ -65,6 +66,8 @@ class Category extends Model
 
     protected $guarded = [];
 
+    public const HEADER_CACHE_KEY = 'BL_NEPALI_HEADER_CACHE';
+    public const CACHE_KEY = 'BL_NEPALI_CACHE';
 
     public function news(): HasMany
     {
@@ -91,9 +94,13 @@ class Category extends Model
         $builder->where('is_active', true);
     }
 
+    public function scopeParentNull(Builder $builder)
+    {
+        $builder->whereNull('parent_id');
+    }
+
     protected static function newFactory(): CategoryFactory
     {
         return CategoryFactory::new();
     }
-
 }

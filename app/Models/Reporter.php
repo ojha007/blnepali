@@ -17,7 +17,7 @@ use Illuminate\Support\Carbon;
  * @method static where(array $where)
  * @method static whereActive(string $column)
  * @method static whereNull(string $column)
- * @method static pluck(string $value)
+ * @method static pluck(string $value, string $key)
  * @method static withCount(string $relations)
  * @method static create(array $attributes)
  * @method static count()

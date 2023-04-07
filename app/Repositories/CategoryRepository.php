@@ -3,8 +3,8 @@
 namespace App\Repositories;
 
 use App\Models\Category;
-use App\Models\CategoryPosition;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 
 class CategoryRepository
@@ -13,28 +13,26 @@ class CategoryRepository
 
     public function getCategories(): Collection
     {
-        return Category::query()
-            ->select('categories.id', 'name', 'slug', 'front_body_position', 'front_header_position')
-            ->join('category_positions as cp', 'cp.category_id', '=', 'categories.id')
-            ->whereNull('parent_id')
-            ->where('is_active', true)
-            ->whereNotNull('front_header_position')
-            ->orWhereNotNull('front_body_position')
-            ->get()
-            ->map(function ($item) {
-                $category = new Category([
-                    'id' => $item->id,
-                    'name' => $item->name,
-                    'slug' => $item->slug
-                ]);
-                return $category->setRelation('position', new CategoryPosition([
-                    'front_header_position' => $item->front_header_position,
-                    'front_body_position' => $item->front_body_position,
-                ]));
-
-            });
+        return Cache::rememberForever(Category::CACHE_KEY, function () {
+            return Category::query()
+                ->select('categories.id', 'name', 'slug')
+                ->isActive()
+                ->parentNull()
+                ->whereHas('position')
+                ->with(['position' => function ($query) {
+                    $query->select('category_id', 'front_body_position', 'front_header_position')
+                        ->frontPagePosition();
+                }])
+                ->get();
+        });
     }
 
+    /**
+     * @param Collection<Category> $categories
+     * @param int $limit
+     * @param string $location
+     * @return Collection<Category>
+     */
     public function filterFrontCategories(Collection $categories, int $limit, string $location): Collection
     {
         return $categories
@@ -45,17 +43,18 @@ class CategoryRepository
 
     }
 
-    public function getFrontPageHeaderCategories(): Collection
+    public function getFrontPageHeaderCategories($limit = 11): Collection
     {
-        return DB::table('categories')
-            ->select('categories.id', 'front_header_position', 'categories.name', 'categories.slug')
-            ->where('is_active', true)
-            ->join('category_positions', 'categories.id', '=', 'category_positions.category_id')
-            ->whereNotNull('category_positions.front_header_position')
-            ->orderBy('category_positions.front_header_position', 'ASC')
-            ->limit(11)
-            ->get();
-
+        return Cache::rememberForever(Category::HEADER_CACHE_KEY, function () use ($limit) {
+            return DB::table('categories')
+                ->select('categories.id', 'front_header_position', 'categories.name', 'categories.slug')
+                ->where('is_active', true)
+                ->join('category_positions', 'categories.id', '=', 'category_positions.category_id')
+                ->whereNotNull('category_positions.front_header_position')
+                ->orderBy('category_positions.front_header_position', 'ASC')
+                ->limit($limit)
+                ->get();
+        });
     }
 
     public function getFrontPageBodyCategories(Collection $categories, int $limit = 16): Collection

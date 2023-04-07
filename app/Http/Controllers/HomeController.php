@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 
+use App\Models\Category;
 use App\Models\News;
 use App\Repositories\CategoryRepository;
 use App\Repositories\NewsRepository;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Cache;
 
 class HomeController extends Controller
 {
@@ -24,16 +25,9 @@ class HomeController extends Controller
 
     public function index()
     {
-
         $categories = $this->categoryRepository->getCategories();
         $headerCategories = $this->categoryRepository->filterFrontCategories($categories, 11, 'front_header_position');
         $bodyCategories = $this->categoryRepository->filterFrontCategories($categories, 11, 'front_body_position');
-
-//        $trendingNews = $this->newsRepository->getTrendingNews(5);
-//        $anchorNews = $this->newsRepository->getAnchorNews();
-//        $blSpecialNews = $this->newsRepository->getBlSpecialNews();
-//        $breakingNews = $this->newsRepository->getBreakingNews(6);
-//        $videoNews = $this->newsRepository->getVideosNews();
 
         $otherNews = $this->newsRepository->getOthersNews();
         $trendingNews = $otherNews->where('type', 'trending');
@@ -45,7 +39,6 @@ class HomeController extends Controller
         $categoryIds = [1 => 10, 2 => 4, 35 => 6, 4 => 4, 22 => 4, 11 => 4, 9 => 4, 26 => 6];
 
         $allNews = $this->newsRepository->getNews($categoryIds);
-
         $order1News = $allNews->where('category_id', 1);
         $order2News = $allNews->where('category_id', 2);
         $order3News = $allNews->where('category_id', 35);
@@ -54,16 +47,6 @@ class HomeController extends Controller
         $order6News = $allNews->where('category_id', 11);
         $order7News = $allNews->where('category_id', 9);
         $order8News = $allNews->where('category_id', 26);
-
-//        $order1News = $this->newsRepository->getNewsByOrderId(1,10);
-//        $order2News = $this->newsRepository->getNewsByOrderId(2, 4);
-//        $order3News = $this->newsRepository->getNewsByOrderId(35, 6);
-//        $order4News = $this->newsRepository->getNewsByOrderId(4, 4);
-//        $order5News = $this->newsRepository->getNewsByOrderId(22, 4);
-//        $order6News = $this->newsRepository->getNewsByOrderId(11, 4);
-//        $order7News = $this->newsRepository->getNewsByOrderId(9, 4);
-//        $order8News = $this->newsRepository->getNewsByOrderId(26, 6);
-
 
         return view($this->viewPath . 'index', compact(
             'order1News',
@@ -84,32 +67,41 @@ class HomeController extends Controller
             'order8News'));
     }
 
-    public function show($category, $cId)
+    public function show($categorySlug, $cId)
     {
-        $catId = DB::table('categories')
+        $category = Category::whereSlug($categorySlug)
             ->select('id')
-            ->where('slug', '=', $category)
-            ->first()->id;
-
-        if (!$catId) return redirect('/');
-
-        $news = News::with(['category:name,id,slug', 'reporter:name,id,image'])
-            ->select([
-                'title', 'short_description', 'guest', 'image_description', 'description', 'video_url',
-                'date_line', 'id', 'c_id', 'image', 'image_alt', 'category_id', 'reporter_id'
-            ])
-            ->where('category_id', $catId)
-            ->where('c_id', '=', $cId)
-            ->orderByDesc('publish_date')
             ->first();
+        if (!$category) return redirect('/');
 
+        $cacheKey = sprintf(News::CACHE_KEY . '::%s', $cId);
+
+        $allNews = Cache::remember($cacheKey, 1800, function () use ($cId, $category) {
+            $otherNews = $this->newsRepository->sameCategoryNewsQuery($category->id);
+            return News::query()
+                ->with(['category:name,id,slug', 'reporter:name,id,image'])
+                ->select([
+                    'title', 'short_description', 'guest', 'image_description', 'description', 'video_url',
+                    'date_line', 'id', 'c_id', 'image', 'image_alt', 'category_id', 'reporter_id'
+                ])
+                ->where('category_id', $category->id)
+                ->where('c_id', '=', $cId)
+                ->orderByDesc('publish_date')
+                ->union($otherNews)
+                ->get();
+        });
+
+        $news = $allNews->where('c_id', '=', $cId)->first();
         $news->increment('view_count');
 
-        $headerCategories = $this->categoryRepository->getFrontPageHeaderCategories(11);
-        $blSpecialNews = $this->newsRepository->getBlSpecialNews();
+        $sameCategoryNews = $allNews->where('c_id', '!=', $cId);
 
-        $trendingNews = $this->newsRepository->getTrendingNews(5);
-        $sameCategoryNews = $this->newsRepository->sameCategoryNews($catId, $news->id);
+        $categories = $this->categoryRepository->getCategories();
+        $headerCategories = $this->categoryRepository->filterFrontCategories($categories, 11, 'front_header_position');
+
+        $otherNews = $this->newsRepository->getOthersNews();
+        $trendingNews = $otherNews->where('type', 'trending');
+        $blSpecialNews = $otherNews->where('type', 'special');
 
         return view($this->viewPath . 'news-detail', compact('news',
             'headerCategories', 'blSpecialNews', 'trendingNews', 'sameCategoryNews'));
@@ -121,17 +113,17 @@ class HomeController extends Controller
         try {
             $categoryIds = $this->categoryRepository->getCategoryIdsBySlug($slug);
 
-            $headerCategories = $this->categoryRepository->getFrontPageHeaderCategories(11);
+            $categories = $this->categoryRepository->getCategories();
+            $headerCategories = $this->categoryRepository->filterFrontCategories($categories, 11, 'front_header_position');
 
             $news = $this->newsRepository->getNewsByCategoryIds($categoryIds);
 
-            $trendingNews = $this->newsRepository->getTrendingNews(5);
+            $otherNews = $this->newsRepository->getOthersNews();
+            $trendingNews = $otherNews->where('type', 'trending');
 
             return view($this->viewPath . 'category.index', compact('headerCategories', 'news', 'trendingNews'));
         } catch (\Exception $exception) {
-
             return redirect()->route('index');
         }
     }
-
 }

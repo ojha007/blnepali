@@ -48,9 +48,9 @@ class ArchiveNewsController extends Controller
 
             $headerCategories = $this->categoryRepository->getFrontPageHeaderCategories(11);
 
-            $blSpecialNews = $this->newsRepository->getBlSpecialNews(5);
-
-            $trendingNews = $this->newsRepository->getTrendingNews(5);
+            $otherNews = $this->newsRepository->getOthersNews();
+            $trendingNews = $otherNews->where('type', 'trending');
+            $blSpecialNews = $otherNews->where('type', 'special');
 
             $sameCategoryNews = $this->newsRepository->sameCategoryNews($news->category_id, $news->id);
 

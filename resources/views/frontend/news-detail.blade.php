@@ -50,11 +50,7 @@
                                     </span>
                                     <span class="post-by">
                                         <a href="#">
-                                            @if($news->guest)
-                                                {{$news->guest}}
-                                            @elseif($news->reporter)
-                                                {{$news->reporter->name}}
-                                            @endif
+                                        {{$news->guest ?? $news->reporter->name ?? ''}}
                                         </a>
                                     </span>
                                 </div>
@@ -71,7 +67,7 @@
                     <div class="bl-post--banner">
                         <figure class="primaryImage">
                             @if($news->video_url)
-                            {!! $news->video_url !!}
+                                {!! $news->video_url !!}
                             @else
                                 <img src="{{$news->image}}" alt="BlMedia"/>
                             @endif
@@ -131,18 +127,18 @@
                         @foreach($blSpecialNews as $key=>$news)
                             <div class="bl-newsPost bl-newsPost--small">
                                 <figure class="post_img">
-                                    <a href="{{route('category.news.show',[$news->category_slug,$news->c_id])}}">
+                                    <a href="{{route('category.news.show',[$news->category->slug,$news->c_id])}}">
                                         <img src="{{$news->image}}" alt="{{$news->title}}">
                                     </a>
                                 </figure>
                                 <div class="post_content">
                                     <h5 class="post_title">
-                                        <a href="{{route('category.news.show',[$news->category_slug,$news->c_id])}}">
+                                        <a href="{{route('category.news.show',[$news->category->slug,$news->c_id])}}">
                                             {{$news->title}}
                                         </a>
                                     </h5>
                                     <p class="post_source">
-                                        {{$news->guest ?? $news->reporter_name}}
+                                        {{$news->guest ?? $news->reporter->name ?? ''}}
                                         {{$news->date_line ? '-' .$news->date_line  :''}}
                                     </p>
 
