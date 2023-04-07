@@ -27,7 +27,7 @@ class HomeController extends Controller
     {
         $categories = $this->categoryRepository->getCategories();
         $headerCategories = $this->categoryRepository->filterFrontCategories($categories, 11, 'front_header_position');
-        dd($headerCategories);
+        dd($headerCategories,$categories);
         $bodyCategories = $this->categoryRepository->filterFrontCategories($categories, 11, 'front_body_position');
 
         $otherNews = $this->newsRepository->getOthersNews();
