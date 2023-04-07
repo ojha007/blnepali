@@ -66,8 +66,8 @@ class Category extends Model
 
     protected $guarded = [];
 
-    public const HEADER_CACHE_KEY = 'BL_NEPALI_HEADER_CACHE';
-    public const CACHE_KEY = 'BL_NEPALI_CACHE';
+    public const HEADER_CACHE_KEY = 'BL_NEPALI_CATEGORY_HEADER_CACHE';
+    public const CACHE_KEY = 'BL_NEPALI_CATEGORY_CACHE';
 
     public function news(): HasMany
     {

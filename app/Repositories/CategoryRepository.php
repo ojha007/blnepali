@@ -18,11 +18,8 @@ class CategoryRepository
                 ->select('categories.id', 'name', 'slug')
                 ->isActive()
                 ->parentNull()
-                ->whereHas('position')
-                ->with(['position' => function ($query) {
-                    $query->select('category_id', 'front_body_position', 'front_header_position')
-                        ->frontPagePosition();
-                }])
+                ->whereHas('position', fn($query) => $query->frontPagePosition())
+                ->with("position:category_id,front_body_position,front_header_position")
                 ->get();
         });
     }
@@ -36,11 +33,9 @@ class CategoryRepository
     public function filterFrontCategories(Collection $categories, int $limit, string $location): Collection
     {
         return $categories
-            ->each(fn(Category $category) => $category->position->{$location})
-            ->filter()
+            ->filter(fn(Category $category) => $category->position->{$location})
             ->sortBy(fn(Category $category) => $category->position->{$location})
             ->take($limit);
-
     }
 
     public function getFrontPageHeaderCategories($limit = 11): Collection
@@ -55,25 +50,6 @@ class CategoryRepository
                 ->limit($limit)
                 ->get();
         });
-    }
-
-    public function getFrontPageBodyCategories(Collection $categories, int $limit = 16): Collection
-    {
-        return $categories
-            ->each(fn(Category $category) => $category->position->front_body_position)
-            ->filter()
-            ->sortBy(fn(Category $category) => $category->position->front_body_position)
-            ->take($limit);
-
-//        return DB::table('categories')
-//            ->select('categories.id', 'front_body_position', 'categories.name', 'categories.slug')
-//            ->where('is_active', true)
-//            ->join('category_positions', 'categories.id', '=', 'category_positions.category_id')
-//            ->whereNotNull('category_positions.front_body_position')
-//            ->orderBy('category_positions.front_body_position', 'ASC')
-//            ->limit(16)
-//            ->get();
-
     }
 
     public function getCategoryIdsBySlug($slug): array

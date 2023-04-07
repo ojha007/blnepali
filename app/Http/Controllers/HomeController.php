@@ -26,6 +26,7 @@ class HomeController extends Controller
     public function index()
     {
         $categories = $this->categoryRepository->getCategories();
+        dd($categories);
         $headerCategories = $this->categoryRepository->filterFrontCategories($categories, 11, 'front_header_position');
         $bodyCategories = $this->categoryRepository->filterFrontCategories($categories, 11, 'front_body_position');
 
