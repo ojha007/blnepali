@@ -60,7 +60,7 @@ class CategoryPosition extends Model
 
     public function scopeFrontPagePosition(Builder $builder)
     {
-        $builder->whereNotNull('front_body_position')
+        $builder->whereNotNull('front_header_position')
             ->orWhereNotNull('front_body_position');
     }
 }
