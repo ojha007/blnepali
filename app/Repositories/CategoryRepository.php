@@ -9,8 +9,6 @@ use Illuminate\Support\Facades\DB;
 
 class CategoryRepository
 {
-    protected Category $category;
-
     public function getCategories(): Collection
     {
         return Cache::rememberForever(Category::CACHE_KEY, function () {
