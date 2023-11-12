@@ -19,7 +19,6 @@ class HomeController extends Controller
 
     public function __construct(NewsRepository $newsRepository, CategoryRepository $categoryRepository)
     {
-        dd('dddd');
         $this->newsRepository = $newsRepository;
         $this->categoryRepository = $categoryRepository;
     }
