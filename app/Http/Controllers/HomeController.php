@@ -25,6 +25,7 @@ class HomeController extends Controller
 
     public function index()
     {
+        return "FAILED";
         $categories = $this->categoryRepository->getCategories();
         $headerCategories = $categories->sortBy('header_position')->take(10);
         $bodyCategories = [];
