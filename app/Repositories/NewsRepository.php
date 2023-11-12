@@ -12,14 +12,14 @@ class NewsRepository
 {
     public function getHomePageNews(): Collection
     {
-        $results = DB::select(file_get_contents(DB::raw(database_path('procedures/homepage-news.sql'))));
-        return collect($results);
+//        $results = DB::select(file_get_contents(DB::raw(database_path('procedures/homepage-news.sql'))));
+        return collect([]);
     }
 
     public function getOthersNews(): Collection
     {
-        $results = DB::select(file_get_contents(DB::raw(database_path('procedures/non-categories-news.sql'))));
-        return collect($results);
+//        $results = DB::select(file_get_contents(DB::raw(database_path('procedures/non-categories-news.sql'))));
+        return collect([]);
     }
 
     public function sameCategoryNewsQuery($catId): Builder
