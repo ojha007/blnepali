@@ -76,7 +76,7 @@ class HomeController extends Controller
 
 //        $allNews = Cache::remember($cacheKey, 1800, function () use ($cId, $category) {
         $otherNews = $this->newsRepository->sameCategoryNewsQuery($category->id);
-        return News::query()
+        $allNews = News::query()
             ->with(['category:name,id,slug', 'reporter:name,id,image'])
             ->select([
                 'title', 'short_description', 'guest', 'image_description', 'description', 'video_url',
@@ -104,7 +104,6 @@ class HomeController extends Controller
 
         return view($this->viewPath . 'news-detail', compact('news',
             'headerCategories', 'blSpecialNews', 'trendingNews', 'sameCategoryNews'));
-
     }
 
     public function newsByCategory($slug)
