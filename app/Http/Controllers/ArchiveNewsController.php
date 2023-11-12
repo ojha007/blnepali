@@ -46,13 +46,14 @@ class ArchiveNewsController extends Controller
                 return redirect()->route('index');
             }
 
-            $headerCategories = $this->categoryRepository->getFrontPageHeaderCategories(11);
+            $categories = $this->categoryRepository->getCategories();
+            $headerCategories = $categories->sortBy('header_position')->take(10);
 
             $otherNews = $this->newsRepository->getOthersNews();
             $trendingNews = $otherNews->where('type', 'trending');
             $blSpecialNews = $otherNews->where('type', 'special');
 
-            $sameCategoryNews = $this->newsRepository->sameCategoryNews($news->category_id, $news->id);
+            $sameCategoryNews = [];
 
             return view($this->viewPath . 'show', compact('headerCategories', 'news',
                 'trendingNews', 'sameCategoryNews', 'blSpecialNews'));
@@ -60,7 +61,5 @@ class ArchiveNewsController extends Controller
             Log::error($exception->getMessage() . '---' . $exception->getTraceAsString());
             return redirect()->route('index');
         }
-
-
     }
 }
