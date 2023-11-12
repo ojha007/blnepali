@@ -1,5 +1,7 @@
 <?php
 
+phpinfo();
+die();
 /**
  * Laravel - A PHP Framework For Web Artisans
  *
