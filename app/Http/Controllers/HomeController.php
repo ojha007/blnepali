@@ -7,7 +7,6 @@ use App\Models\Category;
 use App\Models\News;
 use App\Repositories\CategoryRepository;
 use App\Repositories\NewsRepository;
-use Illuminate\Support\Facades\Cache;
 
 class HomeController extends Controller
 {
@@ -75,23 +74,24 @@ class HomeController extends Controller
 
         $cacheKey = sprintf(News::CACHE_KEY . '::%s', $cId);
 
-        $allNews = Cache::remember($cacheKey, 1800, function () use ($cId, $category) {
-            $otherNews = $this->newsRepository->sameCategoryNewsQuery($category->id);
-            return News::query()
-                ->with(['category:name,id,slug', 'reporter:name,id,image'])
-                ->select([
-                    'title', 'short_description', 'guest', 'image_description', 'description', 'video_url',
-                    'date_line', 'id', 'c_id', 'image', 'image_alt', 'category_id', 'reporter_id'
-                ])
-                ->where('category_id', $category->id)
-                ->where('c_id', '=', $cId)
-                ->orderByDesc('publish_date')
-                ->union($otherNews)
-                ->get();
-        });
+//        $allNews = Cache::remember($cacheKey, 1800, function () use ($cId, $category) {
+        $otherNews = $this->newsRepository->sameCategoryNewsQuery($category->id);
+        return News::query()
+            ->with(['category:name,id,slug', 'reporter:name,id,image'])
+            ->select([
+                'title', 'short_description', 'guest', 'image_description', 'description', 'video_url',
+                'date_line', 'id', 'c_id', 'image', 'image_alt', 'category_id', 'reporter_id'
+            ])
+            ->where('category_id', $category->id)
+            ->where('c_id', '=', $cId)
+            ->orderByDesc('publish_date')
+            ->union($otherNews)
+            ->get();
+//        });
 
         $news = $allNews->where('c_id', '=', $cId)->first();
-        $news->increment('view_count');
+
+//        $news->increment('view_count');
 
         $sameCategoryNews = $allNews->where('c_id', '!=', $cId);
 
