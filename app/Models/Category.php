@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Carbon;
 
@@ -32,7 +31,6 @@ use Illuminate\Support\Carbon;
  * @property-read int|null $child_categories_count
  * @property-read Collection<int, News> $news
  * @property-read int|null $news_count
- * @property-read CategoryPosition|null $position
  * @method static Builder|Category isChildren()
  * @method static Builder|Category isActive()
  * @method static Builder|Category parentNull()
@@ -58,7 +56,6 @@ use Illuminate\Support\Carbon;
  * @method static Builder|Category withoutTrashed()
  * @method static Builder|Category orderByRaw($string)
  * @method static pluck(string $value, string $key)
- * @mixin Eloquent
  */
 class Category extends Model
 {
@@ -68,6 +65,8 @@ class Category extends Model
 
     public const HEADER_CACHE_KEY = 'BL_NEPALI_CATEGORY_HEADER_CACHE';
     public const CACHE_KEY = 'BL_NEPALI_CATEGORY_CACHE';
+
+    protected $hidden = ['created_at', 'updated_at'];
 
     public function news(): HasMany
     {
@@ -79,19 +78,9 @@ class Category extends Model
         return $this->hasMany(Category::class, 'parent_id', 'id');
     }
 
-    public function position(): HasOne
-    {
-        return $this->hasOne(CategoryPosition::class);
-    }
-
     public function scopeIsChildren(Builder $builder)
     {
-        $builder->whereNull('parent_id')->isActive();
-    }
-
-    public function scopeIsActive(Builder $builder)
-    {
-        $builder->where('is_active', true);
+        $builder->whereNull('parent_id');
     }
 
     public function scopeParentNull(Builder $builder)

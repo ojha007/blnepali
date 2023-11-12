@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\Category;
-use App\Models\CategoryPosition;
 use Illuminate\Database\Seeder;
 
 class CategorySeeder extends Seeder
@@ -11,7 +10,12 @@ class CategorySeeder extends Seeder
     public function run(): void
     {
         Category::factory()
-            ->count(30)
+            ->count(5)
+            ->create();
+
+        Category::factory()
+            ->withParent()
+            ->count(5)
             ->create();
     }
 }

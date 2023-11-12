@@ -26,27 +26,26 @@ class HomeController extends Controller
     public function index()
     {
         $categories = $this->categoryRepository->getCategories();
-        $headerCategories = $this->categoryRepository->filterFrontCategories($categories, 11, 'front_header_position');
-        $bodyCategories = $this->categoryRepository->filterFrontCategories($categories, 11, 'front_body_position');
+        $headerCategories = $categories->sortBy('header_position')->take(10);
+        $bodyCategories = [];
 
         $otherNews = $this->newsRepository->getOthersNews();
-        $trendingNews = $otherNews->where('type', 'trending');
-        $breakingNews = $otherNews->where('type', 'breaking');
-        $videoNews = $otherNews->where('type', 'video');
-        $blSpecialNews = $otherNews->where('type', 'special');
-        $anchorNews = $otherNews->where('type', 'anchor');
+        $trendingNews = $otherNews->where('category_slug', 'trending');
+        $breakingNews = $otherNews->where('category_slug', 'breaking');
+        $videoNews = $otherNews->where('category_slug', 'video');
+        $blSpecialNews = $otherNews->where('category_slug', 'special');
+        $anchorNews = $otherNews->where('category_slug', 'anchor');
 
-        $categoryIds = [1 => 10, 2 => 4, 35 => 6, 4 => 4, 22 => 4, 11 => 4, 9 => 4, 26 => 6];
+        $allNews = $this->newsRepository->getHomePageNews();
 
-        $allNews = $this->newsRepository->getNews($categoryIds);
-        $order1News = $allNews->where('category_id', 1);
-        $order2News = $allNews->where('category_id', 2);
-        $order3News = $allNews->where('category_id', 35);
-        $order4News = $allNews->where('category_id', 4);
-        $order5News = $allNews->where('category_id', 22);
-        $order6News = $allNews->where('category_id', 11);
-        $order7News = $allNews->where('category_id', 9);
-        $order8News = $allNews->where('category_id', 26);
+        $order1News = $allNews->where('category_id', 1)->take(4)->values();
+        $order2News = $allNews->where('category_id', 2)->values();
+        $order3News = $allNews->where('category_id', 35)->values();
+        $order4News = $allNews->where('category_id', 4)->values();
+        $order5News = $allNews->where('category_id', 22)->values();
+        $order6News = $allNews->where('category_id', 11)->values();
+        $order7News = $allNews->where('category_id', 9)->values();
+        $order8News = $allNews->where('category_id', 26)->values();
 
         return view($this->viewPath . 'index', compact(
             'order1News',

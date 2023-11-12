@@ -2,85 +2,100 @@
 @section('content')
 
     <!--Hot carousel news-->
-    @include('frontend.components.carousel-news')
+    @include('frontend.components.news.breaking-news')
     <!--ended Hot carousel news-->
 
     <!--BL Top post news anchor news-->
     @include('frontend.components.news.anchor-news')
     <!--Ended BL Top post news-->
 
-    <!--BL Special news post order 1-->
+    <!--BL Special news-->
     @include('frontend.components.news.bl-special')
     <!--ended BL Special news post-->
 
     <!--start general news and links news section-->
-    <section class="container">
-        <div class="news-row">
+
+    <section class="container-fluid">
+        <div class="container">
             <div class="row">
-                <div class="col-sm-12 col-md-8 col-lg-9 col-xl-9 col-xxl-9">
-                    @include('frontend.components.news.order-two')
+                <div class="col-md-8">
+                    @include('frontend.components.news.order-one')
                 </div>
-                <div class="col-sm-12 col-md-4 col-lg-3 col-xl-3 col-xxl-3">
-                    @include('frontend.components.news.order-three')
+                <div class="col-md-4">
+
                 </div>
+
             </div>
         </div>
     </section>
 
-    <!--ended general news and links news section-->
+            {{--    <section class="container">--}}
+            {{--        <div class="news-row">--}}
+            {{--            <div class="row">--}}
+            {{--                <div class="col-sm-12 col-md-8 col-lg-9 col-xl-9 col-xxl-9">--}}
+            {{--                    @include('frontend.components.news.order-two')--}}
+            {{--                </div>--}}
+            {{--                <div class="col-sm-12 col-md-4 col-lg-3 col-xl-3 col-xxl-3">--}}
+            {{--                    @include('frontend.components.news.order-three')--}}
+            {{--                </div>--}}
+            {{--            </div>--}}
+            {{--        </div>--}}
+            {{--    </section>--}}
 
-    <!--start trending and brand story news section-->
-    <div class="container">
-        <div class="news-row">
-            <div class="row">
-                <div class="col-sm-12 col-md-4 col-lg-3 col-xl-3 col-xxl-3">
-                    @include('frontend.components.news.trending-news')
-                </div>
-                <div class="col-sm-12 col-md-8 col-lg-9 col-xl-9 col-xxl-9">
-                    @include('frontend.components.news.order-four')
-                </div>
+            <!--ended general news and links news section-->
 
-            </div>
-        </div>
-    </div>
+            <!--start trending and brand story news section-->
+            {{--    <div class="container">--}}
+            {{--        <div class="news-row">--}}
+            {{--            <div class="row">--}}
+            {{--                <div class="col-sm-12 col-md-4 col-lg-3 col-xl-3 col-xxl-3">--}}
+            {{--                    @include('frontend.components.news.trending-news')--}}
+            {{--                </div>--}}
+            {{--                <div class="col-sm-12 col-md-8 col-lg-9 col-xl-9 col-xxl-9">--}}
+            {{--                    @include('frontend.components.news.order-four')--}}
+            {{--                </div>--}}
 
-    <!--ended trending and brand story news section-->
+            {{--            </div>--}}
+            {{--        </div>--}}
+            {{--    </div>--}}
 
-    <!--start economy and analysis news block-->
-    <section class="container">
-        <div class="news-row">
-            <div class="row">
-                <div class="col-sm-12 col-md-8 col-lg-9 col-xl-9 col-xxl-9">
-                    @include('frontend.components.news.order-five')
-                </div>
-                <div class="col-sm-12 col-md-4 col-lg-3 col-xl-3 col-xxl-3">
-                    @include('frontend.components.news.order-six')
-                </div>
-            </div>
-        </div>
-    </section>
-    <!--ended economy and analysis news block-->
+            <!--ended trending and brand story news section-->
 
-    <!--start Entertainment and Blog news block-->
-    <section class="container">
-        <div class="news-row">
-            <div class="row">
-                <div class="col-sm-12 col-md-8 col-lg-9 col-xl-9 col-xxl-9">
-                    @include('frontend.components.news.order-seven')
-                </div>
-                <div class="col-sm-12 col-md-4 col-lg-3 col-xl-3 col-xxl-3">
-                    @include('frontend.components.news.order-eight')
-                </div>
-            </div>
-        </div>
-    </section>
-    <!--ended Entertainment and Blog news block-->
+            <!--start economy and analysis news block-->
+            {{--    <section class="container">--}}
+            {{--        <div class="news-row">--}}
+            {{--            <div class="row">--}}
+            {{--                <div class="col-sm-12 col-md-8 col-lg-9 col-xl-9 col-xxl-9">--}}
+            {{--                    @include('frontend.components.news.order-five')--}}
+            {{--                </div>--}}
+            {{--                <div class="col-sm-12 col-md-4 col-lg-3 col-xl-3 col-xxl-3">--}}
+            {{--                    @include('frontend.components.news.order-six')--}}
+            {{--                </div>--}}
+            {{--            </div>--}}
+            {{--        </div>--}}
+            {{--    </section>--}}
+            <!--ended economy and analysis news block-->
 
-    <!--start Video News block-->
-    @include('frontend.components.news.videos')
-    <!--ended Video News block-->
+            <!--start Entertainment and Blog news block-->
+            {{--    <section class="container">--}}
+            {{--        <div class="news-row">--}}
+            {{--            <div class="row">--}}
+            {{--                <div class="col-sm-12 col-md-8 col-lg-9 col-xl-9 col-xxl-9">--}}
+            {{--                    @include('frontend.components.news.order-seven')--}}
+            {{--                </div>--}}
+            {{--                <div class="col-sm-12 col-md-4 col-lg-3 col-xl-3 col-xxl-3">--}}
+            {{--                    @include('frontend.components.news.order-eight')--}}
+            {{--                </div>--}}
+            {{--            </div>--}}
+            {{--        </div>--}}
+            {{--    </section>--}}
+            <!--ended Entertainment and Blog news block-->
 
-@endsection
+            <!--start Video News block-->
+            {{--    @include('frontend.components.news.videos')--}}
+            <!--ended Video News block-->
 
-<!--script loading-->
+            @endsection
+
+            <!--script loading-->
 

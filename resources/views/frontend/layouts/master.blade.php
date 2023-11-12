@@ -31,22 +31,32 @@
         <meta content="" property="fb:pages"/>
         <meta content="" property="fb:admins"/>
     @endif
-    <link rel="stylesheet" href="{{asset('frontend/bootstrap/css/bootstrap.css')}}" type="text/css"/>
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+        crossorigin="anonymous"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Mukta:wght@200;300;400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    />
     <link rel="stylesheet" href="{{asset('frontend/fontawesome/css/all.css')}}" type="text/css"/>
-    <link rel="stylesheet" href="{{asset('frontend/owlcarousel/css/owl.carousel.css')}}" type="text/css"/>
-    <link rel="stylesheet" href="{{asset('frontend/owlcarousel/css/owl.theme.default.css')}}" type="text/css"/>
-    <link rel="stylesheet" href="{{asset('frontend/css/language-switcher.css')}}" type="text/css"/>
     <link rel="stylesheet" href="{{asset('frontend/css/main.css')}}" type="text/css"/>
 </head>
 <body>
 @include('frontend.layouts.header')
 @yield('content')
 @include('frontend.layouts.footer')
-<script type="text/javascript" src="{{asset('frontend/js/jquery-3.6.0.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('frontend/bootstrap/js/bootstrap.bundle.js')}}"></script>
-<script type="text/javascript" src="{{asset('frontend/js/library/language-switcher.js')}}"></script>
-<script type="text/javascript" src="{{asset('frontend/owlcarousel/js/owl.carousel.js')}}"></script>
-<script type="text/javascript" src="{{asset('frontend/js/library/loadScript.js')}}"></script>
+
+<script type="text/javascript" src="{{asset('frontend/js/app.js')}}"></script>
+<script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"
+></script>
 <script type='text/javascript'
         src='https://platform-api.sharethis.com/js/sharethis.js#property=628fa698b2339200190e6254&product=sop'
         async='async'></script>

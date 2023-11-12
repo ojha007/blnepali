@@ -11,19 +11,21 @@ class CategoryFactory extends Factory
 
     public function definition(): array
     {
-        $randomBoolean = false;
-        $parentIds = Category::pluck('id')->toArray();
-        if (!empty($parentIds)) {
-            $randomBoolean = $this->faker->boolean;
-        }
-
         return [
             'name' => $this->faker->name,
             'slug' => $this->faker->slug,
-            'is_active' => $this->faker->boolean,
-            'parent_id' => $randomBoolean
-                ? $this->faker->randomElements($parentIds)
-                : null
+            'parent_id' => null,
+            'header_position' => $this->faker->randomDigitNotZero(),
+            'body_position' => $this->faker->randomDigitNotZero(),
         ];
+    }
+
+    public function withParent(): CategoryFactory
+    {
+        return $this->state(function () {
+            return [
+                'parent_id' => Category::factory()->create(),
+            ];
+        });
     }
 }

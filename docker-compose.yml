@@ -10,6 +10,5 @@ services:
       MYSQL_DATABASE: bl_nepali
       MYSQL_USER: user
       MYSQL_PASSWORD: blnepali@321
-    restart: 'always'
     ports:
       - "3306:3306"
