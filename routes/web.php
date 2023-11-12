@@ -5,7 +5,6 @@ use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/np/', [HomeController::class, 'index'])->name('index');
 Route::get('/', [HomeController::class, 'index'])->name('index');
 Route::get('news/{id}', [ArchiveNewsController::class, 'show'])->name('news.show');
 

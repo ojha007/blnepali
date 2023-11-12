@@ -37,14 +37,14 @@ class HomeController extends Controller
 
         $allNews = $this->newsRepository->getHomePageNews();
 
-        $order1News = $allNews->where('category_id', 1)->take(4)->values();
-        $order2News = $allNews->where('category_id', 2)->values();
-        $order3News = $allNews->where('category_id', 35)->values();
-        $order4News = $allNews->where('category_id', 4)->values();
-        $order5News = $allNews->where('category_id', 22)->values();
-        $order6News = $allNews->where('category_id', 11)->values();
-        $order7News = $allNews->where('category_id', 9)->values();
-        $order8News = $allNews->where('category_id', 26)->values();
+        $order1News = $allNews->where('body_position', 1)->take(4)->values();
+        $order2News = $allNews->where('body_position', 2)->values();
+        $order3News = $allNews->where('body_position', 3)->values();
+        $order4News = $allNews->where('body_position', 4)->values();
+        $order5News = $allNews->where('body_position', 5)->values();
+        $order6News = $allNews->where('body_position', 6)->values();
+        $order7News = $allNews->where('body_position', 7)->values();
+        $order8News = $allNews->where('body_position', 8)->values();
 
         return view($this->viewPath . 'index', compact(
             'order1News',

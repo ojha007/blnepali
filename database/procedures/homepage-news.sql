@@ -27,6 +27,7 @@ SELECT news.title,
        news.date_line,
        news.image,
        news.image_description,
+       categories.body_position,
        news.image_alt
 FROM ranked_news rn
          JOIN np_news news ON rn.id = news.id AND news.status = 'active'
