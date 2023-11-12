@@ -23,6 +23,12 @@ class CreateCategoriesTable extends Migration
                 ->on('categories');
             $table->integer('header_position')->nullable();
             $table->integer('body_position')->nullable();
+            $table->boolean('is_active')->default(1);
+            $table->boolean('in_mobile')->default(1);
+            $table->boolean('is_video')->default(0);
+            $table->boolean('new_design')->default(0);
+            $table->string('image')->nullable();
+            $table->string('image_description')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

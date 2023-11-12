@@ -2,7 +2,7 @@
 @section('content')
 
     <!--Hot carousel news-->
-    @include('frontend.components.news.breaking-news')
+    @include('frontend.components.news.featured-news')
     <!--ended Hot carousel news-->
 
     <!--BL Top post news anchor news-->
@@ -22,80 +22,85 @@
                     @include('frontend.components.news.order-one')
                 </div>
                 <div class="col-md-4">
-
+                    @include('frontend.components.news.breaking-news')
                 </div>
 
             </div>
         </div>
     </section>
 
-            {{--    <section class="container">--}}
-            {{--        <div class="news-row">--}}
-            {{--            <div class="row">--}}
-            {{--                <div class="col-sm-12 col-md-8 col-lg-9 col-xl-9 col-xxl-9">--}}
-            {{--                    @include('frontend.components.news.order-two')--}}
-            {{--                </div>--}}
-            {{--                <div class="col-sm-12 col-md-4 col-lg-3 col-xl-3 col-xxl-3">--}}
-            {{--                    @include('frontend.components.news.order-three')--}}
-            {{--                </div>--}}
-            {{--            </div>--}}
-            {{--        </div>--}}
-            {{--    </section>--}}
+    @include('frontend.components.news.trending-news')
+    <section class="container-fluid py-5  my-5" style="background-color: #082332;" id="video_section">
+        @include('frontend.components.news.videos')
+    </section>
 
-            <!--ended general news and links news section-->
+    {{--    <section class="container">--}}
+    {{--        <div class="news-row">--}}
+    {{--            <div class="row">--}}
+    {{--                <div class="col-sm-12 col-md-8 col-lg-9 col-xl-9 col-xxl-9">--}}
+    {{--                    @include('frontend.components.news.order-two')--}}
+    {{--                </div>--}}
+    {{--                <div class="col-sm-12 col-md-4 col-lg-3 col-xl-3 col-xxl-3">--}}
+    {{--                    @include('frontend.components.news.order-three')--}}
+    {{--                </div>--}}
+    {{--            </div>--}}
+    {{--        </div>--}}
+    {{--    </section>--}}
 
-            <!--start trending and brand story news section-->
-            {{--    <div class="container">--}}
-            {{--        <div class="news-row">--}}
-            {{--            <div class="row">--}}
-            {{--                <div class="col-sm-12 col-md-4 col-lg-3 col-xl-3 col-xxl-3">--}}
-            {{--                    @include('frontend.components.news.trending-news')--}}
-            {{--                </div>--}}
-            {{--                <div class="col-sm-12 col-md-8 col-lg-9 col-xl-9 col-xxl-9">--}}
-            {{--                    @include('frontend.components.news.order-four')--}}
-            {{--                </div>--}}
+    <!--ended general news and links news section-->
 
-            {{--            </div>--}}
-            {{--        </div>--}}
-            {{--    </div>--}}
+    <!--start trending and brand story news section-->
+    {{--    <div class="container">--}}
+    {{--        <div class="news-row">--}}
+    {{--            <div class="row">--}}
+    {{--                <div class="col-sm-12 col-md-4 col-lg-3 col-xl-3 col-xxl-3">--}}
+    {{--                    @include('frontend.components.news.trending-news')--}}
+    {{--                </div>--}}
+    {{--                <div class="col-sm-12 col-md-8 col-lg-9 col-xl-9 col-xxl-9">--}}
+    {{--                    @include('frontend.components.news.order-four')--}}
+    {{--                </div>--}}
 
-            <!--ended trending and brand story news section-->
+    {{--            </div>--}}
+    {{--        </div>--}}
+    {{--    </div>--}}
 
-            <!--start economy and analysis news block-->
-            {{--    <section class="container">--}}
-            {{--        <div class="news-row">--}}
-            {{--            <div class="row">--}}
-            {{--                <div class="col-sm-12 col-md-8 col-lg-9 col-xl-9 col-xxl-9">--}}
-            {{--                    @include('frontend.components.news.order-five')--}}
-            {{--                </div>--}}
-            {{--                <div class="col-sm-12 col-md-4 col-lg-3 col-xl-3 col-xxl-3">--}}
-            {{--                    @include('frontend.components.news.order-six')--}}
-            {{--                </div>--}}
-            {{--            </div>--}}
-            {{--        </div>--}}
-            {{--    </section>--}}
-            <!--ended economy and analysis news block-->
+    <!--ended trending and brand story news section-->
 
-            <!--start Entertainment and Blog news block-->
-            {{--    <section class="container">--}}
-            {{--        <div class="news-row">--}}
-            {{--            <div class="row">--}}
-            {{--                <div class="col-sm-12 col-md-8 col-lg-9 col-xl-9 col-xxl-9">--}}
-            {{--                    @include('frontend.components.news.order-seven')--}}
-            {{--                </div>--}}
-            {{--                <div class="col-sm-12 col-md-4 col-lg-3 col-xl-3 col-xxl-3">--}}
-            {{--                    @include('frontend.components.news.order-eight')--}}
-            {{--                </div>--}}
-            {{--            </div>--}}
-            {{--        </div>--}}
-            {{--    </section>--}}
-            <!--ended Entertainment and Blog news block-->
+    <!--start economy and analysis news block-->
+    {{--    <section class="container">--}}
+    {{--        <div class="news-row">--}}
+    {{--            <div class="row">--}}
+    {{--                <div class="col-sm-12 col-md-8 col-lg-9 col-xl-9 col-xxl-9">--}}
+    {{--                    @include('frontend.components.news.order-five')--}}
+    {{--                </div>--}}
+    {{--                <div class="col-sm-12 col-md-4 col-lg-3 col-xl-3 col-xxl-3">--}}
+    {{--                    @include('frontend.components.news.order-six')--}}
+    {{--                </div>--}}
+    {{--            </div>--}}
+    {{--        </div>--}}
+    {{--    </section>--}}
+    <!--ended economy and analysis news block-->
 
-            <!--start Video News block-->
-            {{--    @include('frontend.components.news.videos')--}}
-            <!--ended Video News block-->
+    <!--start Entertainment and Blog news block-->
+    {{--    <section class="container">--}}
+    {{--        <div class="news-row">--}}
+    {{--            <div class="row">--}}
+    {{--                <div class="col-sm-12 col-md-8 col-lg-9 col-xl-9 col-xxl-9">--}}
+    {{--                    @include('frontend.components.news.order-seven')--}}
+    {{--                </div>--}}
+    {{--                <div class="col-sm-12 col-md-4 col-lg-3 col-xl-3 col-xxl-3">--}}
+    {{--                    @include('frontend.components.news.order-eight')--}}
+    {{--                </div>--}}
+    {{--            </div>--}}
+    {{--        </div>--}}
+    {{--    </section>--}}
+    <!--ended Entertainment and Blog news block-->
 
-            @endsection
+    <!--start Video News block-->
+    {{--    @include('frontend.components.news.videos')--}}
+    <!--ended Video News block-->
 
-            <!--script loading-->
+@endsection
+
+<!--script loading-->
 

@@ -96,7 +96,7 @@ class HomeController extends Controller
         $sameCategoryNews = $allNews->where('c_id', '!=', $cId);
 
         $categories = $this->categoryRepository->getCategories();
-        $headerCategories = $this->categoryRepository->filterFrontCategories($categories, 11, 'front_header_position');
+        $headerCategories = $categories->sortBy('header_position')->take(10);
 
         $otherNews = $this->newsRepository->getOthersNews();
         $trendingNews = $otherNews->where('type', 'trending');
@@ -113,7 +113,7 @@ class HomeController extends Controller
             $categoryIds = $this->categoryRepository->getCategoryIdsBySlug($slug);
 
             $categories = $this->categoryRepository->getCategories();
-            $headerCategories = $this->categoryRepository->filterFrontCategories($categories, 11, 'front_header_position');
+            $headerCategories = $categories->sortBy('header_position')->take(10);
 
             $news = $this->newsRepository->getNewsByCategoryIds($categoryIds);
 
