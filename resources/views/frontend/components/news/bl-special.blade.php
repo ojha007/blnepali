@@ -1,3 +1,4 @@
+@php use Illuminate\Support\Str; @endphp
 <section class="container-fluid my-5 bishesh py-5" style="background-color: #082332">
     <div class="container">
         <div class="col-md-12 mb-4">
@@ -13,7 +14,7 @@
                         </figure>
                         <a href="{{route('category.news.show',[$news->category_slug,$news->c_id])}}" class="a-hover">
                             <h1 class="small-title p-3 text-white">
-                                {!! \Illuminate\Support\Str::limit($news->title) !!}
+                                {!! Str::limit($news->title) !!}
                             </h1>
                         </a>
                     </div>
