@@ -26,7 +26,7 @@ class NewsRepository
     {
         return News::with('category:name,id,slug')
             ->select([
-                'title', 'short_description', 'guest', 'image_description', 'description', 'video_url',
+                'title', 'short_description', 'guest_id', 'image_description', 'description', 'video_url',
                 'date_line', 'id', 'c_id', 'image', 'image_alt', 'category_id', 'reporter_id'
             ])
             ->where('category_id', '=', $catId)
