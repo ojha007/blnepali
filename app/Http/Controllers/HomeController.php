@@ -79,7 +79,7 @@ class HomeController extends Controller
         $allNews = News::query()
             ->with(['category:name,id,slug', 'reporter:name,id,image'])
             ->select([
-                'title', 'short_description', 'guest', 'image_description', 'description', 'video_url',
+                'title', 'short_description', 'guest_id', 'image_description', 'description', 'video_url',
                 'date_line', 'id', 'c_id', 'image', 'image_alt', 'category_id', 'reporter_id'
             ])
             ->where('category_id', $category->id)
