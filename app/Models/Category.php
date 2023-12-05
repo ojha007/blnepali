@@ -61,16 +61,26 @@ class Category extends Model
 {
     use SoftDeletes, HasFactory;
 
-    protected $guarded = [];
-
     public const HEADER_CACHE_KEY = 'BL_NEPALI_CATEGORY_HEADER_CACHE';
     public const CACHE_KEY = 'BL_NEPALI_CATEGORY_CACHE';
-
+    protected $guarded = [];
     protected $hidden = ['created_at', 'updated_at'];
+
+    protected static function newFactory(): CategoryFactory
+    {
+        return CategoryFactory::new();
+    }
 
     public function news(): HasMany
     {
         return $this->hasMany(News::class);
+    }
+
+    public function scopeIsActive(Builder $builder): Builder
+    {
+        return $builder
+            ->where('is_active', '=', 1)
+            ->whereNull('deleted_at');
     }
 
     public function childCategories(): HasMany
@@ -86,10 +96,5 @@ class Category extends Model
     public function scopeParentNull(Builder $builder)
     {
         $builder->whereNull('parent_id');
-    }
-
-    protected static function newFactory(): CategoryFactory
-    {
-        return CategoryFactory::new();
     }
 }
