@@ -37,21 +37,27 @@ function getResizeImage(string $imageUrl, ?string $dimension = null): string
 {
     $urlParts = parse_url($imageUrl);
 
-    if ($urlParts) {
-        $urlParts['host'] = News::CLOUD_FRONT_URL;
-
-        if ($dimension) {
-            $urlParts['path'] = sprintf("%s/%s", $dimension, $urlParts['path']);
-        }
-        return sprintf(
-            '%s://%s/%s',
-            $urlParts['scheme'] ?? 'https',
-            $urlParts['host'] . $urlParts['path'],
-            $urlParts['query'] ?? ''
-        );
+    if (!isset($urlParts['host']) || !$urlParts) {
+        return $imageUrl;
     }
 
-    return $imageUrl;
+    if (!str_contains($urlParts['host'], 's3.amazonaws.com')) {
+        return $imageUrl;
+    }
+
+    if (!$dimension) {
+        return $imageUrl;
+
+    }
+    $urlParts['host'] = News::CLOUD_FRONT_URL;
+    $urlParts['path'] = sprintf("%s/%s", $dimension, $urlParts['path']);
+
+    return sprintf(
+        '%s://%s/%s',
+        $urlParts['scheme'] ?? 'https',
+        $urlParts['host'] . $urlParts['path'],
+        $urlParts['query'] ?? ''
+    );
 }
 
 function getImageSrcSet(string $imageUrl, array $dimensions): array
