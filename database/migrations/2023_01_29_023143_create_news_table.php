@@ -26,10 +26,12 @@ class CreateNewsTable extends Migration
             $table->unique(['category_id', 'c_id']);
 
             $table->mediumText('sub_title')->nullable();
-            $table->string('guest')->nullable();
+
+            $table->foreignId('guest_id')->constrained('guests');
 
             $table->unsignedBigInteger('reporter_id')->nullable();
-            $table->foreign('reporter_id')->references('id')
+            $table->foreign('reporter_id')
+                ->references('id')
                 ->on('reporters');
             $table->boolean('is_anchor')->default(false);
             $table->boolean('is_special')->default(false);

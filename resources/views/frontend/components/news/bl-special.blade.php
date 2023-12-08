@@ -9,7 +9,7 @@
                 <div class="col-md-3 a-hover">
                     <div class="black-box">
                         <figure class="position-relative">
-                            <img src="{{$news->image}}"
+                            <img src="{{getResizeImage($news->image)}}"
                                  alt="{{$news->title}}">
                         </figure>
                         <a href="{{route('category.news.show',[$news->category_slug,$news->c_id])}}" class="a-hover">

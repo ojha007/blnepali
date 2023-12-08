@@ -44,8 +44,8 @@
                                                  alt="{{$news->guest}}">
                                         @elseif($news->reporter)
                                             <img
-                                                src="{{ $news->reporter->image ?? asset('frontend/images/blLogo.png') }}"
-                                                alt="{{$news->reporter->name}}">
+                                                    src="{{ $news->reporter->image ?? asset('frontend/images/blLogo.png') }}"
+                                                    alt="{{$news->reporter->name}}">
                                         @endif
                                     </span>
                                     <span class="post-by">
@@ -69,7 +69,7 @@
                             @if($news->video_url)
                                 {!! $news->video_url !!}
                             @else
-                                <img src="{{$news->image}}" alt="BlMedia"/>
+                                <img src="{{getResizeImage($news->image)}}" alt="BlMedia"/>
                             @endif
                         </figure>
 
@@ -90,7 +90,7 @@
                                                 <div class="bl-newsPost bl-newsPost--thumbnail">
                                                     <figure class="post_img">
                                                         <a href="{{route('category.news.show',[$ne->category->slug,$ne->c_id])}}">
-                                                            <img src="{{$ne->image}}" alt=""/>
+                                                            <img src="{{getResizeImage($ne->image)}}" alt=""/>
                                                         </a>
                                                     </figure>
                                                     <div class="post_content">
@@ -128,7 +128,7 @@
                             <div class="bl-newsPost bl-newsPost--small">
                                 <figure class="post_img">
                                     <a href="{{route('category.news.show',[$news->category->slug,$news->c_id])}}">
-                                        <img src="{{$news->image}}" alt="{{$news->title}}">
+                                        <img src="{{getResizeImage($news->image)}}" alt="{{$news->title}}">
                                     </a>
                                 </figure>
                                 <div class="post_content">

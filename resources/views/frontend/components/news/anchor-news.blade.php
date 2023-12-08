@@ -8,6 +8,7 @@
                 </div>
                 <div class="col-md-6">
                     @php($anchorFirst = $anchorNews->first())
+
                     @if($anchorFirst)
                         <figure class="position-relative cover-photo">
                             <img
@@ -30,7 +31,7 @@
                         @foreach($anchorNews->skip(1) as $key=>$news)
                             <div class="col-md-6">
                                 <figure class="position-relative">
-                                    <img src="{{$news->image}}"
+                                    <img src="{{getResizeImage($news->image)}}"
                                          alt="{!! $news->title !!}"/>
                                     <figcaption>{!! $news->date_line ?? "" !!}</figcaption>
                                 </figure>

@@ -16,13 +16,16 @@ SELECT news.title,
        news.id,
        news.c_id,
        news.short_description,
+
        reporters.image as reporter_image,
        reporters.name  as reporter_name,
        reporters.name  as reporter_id,
        reporters.slug  as reporter_slug,
+
        categories.slug as category_slug,
        categories.slug as category_name,
        categories.id   as category_id,
+
        news.publish_date,
        news.date_line,
        news.image,

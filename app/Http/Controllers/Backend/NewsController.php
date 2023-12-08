@@ -6,6 +6,7 @@ use App\Http\Requests\NewsRequest;
 use App\Models\Category;
 use App\Models\News;
 use App\Models\Reporter;
+use Exception;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
@@ -16,7 +17,6 @@ use Illuminate\Support\Facades\Log;
 class NewsController extends Controller
 {
     protected string $baseRoute = 'cms.news';
-
     protected string $viewPath = 'backend.news.';
 
     public function index(Request $request)
@@ -30,31 +30,27 @@ class NewsController extends Controller
         $q = $request->get('q');
 
         $selectReporters = Reporter::pluck('name', 'id')->toArray();
+        $selectCategories = Category::isActive()->pluck('name', 'id')->toArray();
 
-        $selectCategories = Category::isActive()
-            ->pluck('name', 'id')
-            ->toArray();
-
-        $news = News::with(['reporter:name,id', 'updatedBy:user_name,id', 'createdBy:user_name,id', 'category:name,id,slug'])
+        $news = News::query()
+            ->with([
+                'reporter:name,id',
+                'updatedBy:user_name,id',
+                'createdBy:user_name,id',
+                'guest:user_name,id',
+                'category:name,id,slug'
+            ])
             ->orderByDesc('publish_date')
-            ->when($is_special, function ($query) {
-                $query->where('is_special', true);
-            })
-            ->when($reporter_id, function ($query) use ($reporter_id) {
-                $query->where('reporter_id', $reporter_id);
-            })
-            ->when($guest_id, function ($query) use ($guest_id) {
-                $query->where('guest_id', $guest_id);
-            })
-            ->when($is_anchor, function ($query) {
-                $query->where('is_anchor', true);
-            })->when($category_id, function ($query) use ($category_id) {
-                $query->where('category_id', $category_id);
-            })->when($q, function ($a) use ($q) {
+            ->when($is_special, fn($query) => $query->where('is_special', true))
+            ->when($reporter_id, fn($query) => $query->where('reporter_id', $reporter_id))
+            ->when($guest_id, fn($query) => $query->where('guest_id', $guest_id))
+            ->when($is_anchor, fn($query) => $query->where('is_anchor', true))
+            ->when($category_id, fn($query) => $query->where('category_id', $category_id))
+            ->when($q, fn($query) => $query->where(function ($a) use ($q) {
                 $a->where('title', 'like', $q . '%')
                     ->orWhere('sub_title', 'like', $q . '%')
                     ->orWhere('short_description', 'like', $q . '%');
-            })
+            }))
             ->paginate(50)
             ->appends(request()->query());
 
@@ -67,26 +63,11 @@ class NewsController extends Controller
             ]);
     }
 
-    public function create()
-    {
-        $statuses = News::selectNewsStatus();
-        $reporters = Reporter::pluck('name', 'id')->toArray();
-        $categories = Category::pluck('name', 'id')->toArray();
-
-        return view($this->viewPath . 'create')
-            ->with([
-                'statuses' => $statuses,
-                'reporters' => $reporters,
-                'categories' => $categories
-            ]);
-    }
-
     public function edit(News $news)
     {
         $statuses = News::selectNewsStatus();
         $reporters = Reporter::pluck('name', 'id')->toArray();
         $categories = Category::pluck('name', 'id')->toArray();
-
 
         return view($this->viewPath . 'edit', compact('reporters', 'news', 'categories', 'statuses'));
     }
@@ -116,31 +97,50 @@ class NewsController extends Controller
             $attributes['c_id'] = ($max ?? 0) + 1;
             $attributes['created_by'] = auth()->id();
 
-            News::create($attributes);
+            News::query()->create($attributes);
 
             return redirect()->route($this->baseRoute . '.index')
                 ->with('success', 'News Created SuccessFully');
-        } catch (\Throwable $exception) {
+        } catch (Exception $exception) {
+            Log::error($exception->getMessage(), $exception->getTrace());
 
-            Log::error($exception->getMessage() . '-' . $exception->getTraceAsString());
             DB::rollBack();
-            return redirect()->back()->withInput()
+            return redirect()
+                ->back()
+                ->withInput()
                 ->with('failed', 'Failed to create News');
         }
+    }
+
+    public function create()
+    {
+        $statuses = News::selectNewsStatus();
+        $reporters = Reporter::pluck('name', 'id')->toArray();
+        $categories = Category::pluck('name', 'id')->toArray();
+
+        return view($this->viewPath . 'create')
+            ->with([
+                'statuses' => $statuses,
+                'reporters' => $reporters,
+                'categories' => $categories
+            ]);
     }
 
     public function destroy(News $news): RedirectResponse
     {
         try {
-
             $news->deleted_by = Auth::id();
+
             $news->delete();
 
-            return redirect()->route($this->baseRoute . '.index')
+            return redirect()
+                ->route($this->baseRoute . '.index')
                 ->with('success', 'News Deleted SuccessFully');
-        } catch (\Exception $exception) {
-            Log::error($exception->getMessage() . '-' . $exception->getTraceAsString());
-            return redirect()->route($this->baseRoute . '.index')
+        } catch (Exception $exception) {
+            Log::error($exception->getMessage(), $exception->getTrace());
+
+            return redirect()
+                ->route($this->baseRoute . '.index')
                 ->with('failed', 'Failed to delete news.');
         }
     }

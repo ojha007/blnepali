@@ -86,19 +86,12 @@ use Illuminate\Support\Carbon;
  * @method static Builder|News whereViewCount($value)
  * @method static Builder|News withTrashed()
  * @method static Builder|News withoutTrashed()
- * @mixin \Eloquent
  */
 class News extends Model
 {
-    const CLOUD_FRONT_URL = 'd18cmnmvofvv98.cloudfront.net';
-    const CLOUD_FRONT_URL2 = 'd13sbnamffvfth.cloudfront.net';
-
-    const S3_URL2 = 'bl-nepali.s3.amazonaws.com';
-    const S3_URL = 'breaknlinks.s3.amazonaws.com';
-
-    const CACHE_KEY = 'BL_NEPALI_CACHE_NEWS';
-
     use SoftDeletes, HasFactory, HasEvents;
+    const CLOUD_FRONT_URL = 'd2y5l9fi6urcm1.cloudfront.net';
+    const CACHE_KEY = 'BL_NEPALI_CACHE_NEWS';
 
     protected $table = 'np_news';
 
@@ -144,6 +137,10 @@ class News extends Model
         return $this->belongsTo(Reporter::class);
     }
 
+    public function guest(): BelongsTo
+    {
+        return $this->belongsTo(Guest::class);
+    }
     public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);
@@ -162,11 +159,6 @@ class News extends Model
     public function deletedBy(): BelongsTo
     {
         return $this->belongsTo(User::class, 'deleted_by');
-    }
-
-    public function getImageAttribute(): string
-    {
-        return str_replace([self::S3_URL, self::S3_URL2], [self::CLOUD_FRONT_URL, self::CLOUD_FRONT_URL2], $this->attributes['image']);
     }
 
     public function scopeIsActive(Builder $builder): Builder

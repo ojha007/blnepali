@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\News;
 use App\Repositories\CategoryRepository;
 use App\Repositories\NewsRepository;
+use Exception;
 
 class HomeController extends Controller
 {
@@ -25,6 +26,7 @@ class HomeController extends Controller
     public function index()
     {
         $categories = $this->categoryRepository->getCategories();
+
         $headerCategories = $categories->sortBy('header_position')->take(10);
         $bodyCategories = [];
 
@@ -46,23 +48,27 @@ class HomeController extends Controller
         $order7News = $allNews->where('body_position', 7)->values();
         $order8News = $allNews->where('body_position', 8)->values();
 
-        return view($this->viewPath . 'index', compact(
-            'order1News',
-            'trendingNews',
-            'breakingNews',
-            'videoNews',
-            'anchorNews',
-            'blSpecialNews',
-            'headerCategories',
-            'order2News',
-            'categories',
-            'order3News',
-            'order4News',
-            'order5News',
-            'order6News',
-            'order7News',
-            'bodyCategories',
-            'order8News'));
+        return view(
+            $this->viewPath . 'index',
+            compact(
+                'order1News',
+                'trendingNews',
+                'breakingNews',
+                'videoNews',
+                'anchorNews',
+                'blSpecialNews',
+                'headerCategories',
+                'order2News',
+                'categories',
+                'order3News',
+                'order4News',
+                'order5News',
+                'order6News',
+                'order7News',
+                'bodyCategories',
+                'order8News'
+            )
+        );
     }
 
     public function show($categorySlug, $cId)
@@ -76,6 +82,7 @@ class HomeController extends Controller
 
 //        $allNews = Cache::remember($cacheKey, 1800, function () use ($cId, $category) {
         $otherNews = $this->newsRepository->sameCategoryNewsQuery($category->id);
+
         $allNews = News::query()
             ->with(['category:name,id,slug', 'reporter:name,id,image'])
             ->select([
@@ -102,8 +109,16 @@ class HomeController extends Controller
         $trendingNews = $otherNews->where('type', 'trending');
         $blSpecialNews = $otherNews->where('type', 'special');
 
-        return view($this->viewPath . 'news-detail', compact('news',
-            'headerCategories', 'blSpecialNews', 'trendingNews', 'sameCategoryNews'));
+        return view(
+            $this->viewPath . 'news-detail',
+            compact(
+                'news',
+                'headerCategories',
+                'blSpecialNews',
+                'trendingNews',
+                'sameCategoryNews'
+            )
+        );
     }
 
     public function newsByCategory($slug)
@@ -119,8 +134,12 @@ class HomeController extends Controller
             $otherNews = $this->newsRepository->getOthersNews();
             $trendingNews = $otherNews->where('type', 'trending');
 
-            return view($this->viewPath . 'category.index', compact('headerCategories', 'news', 'trendingNews'));
-        } catch (\Exception $exception) {
+            return view(
+                $this->viewPath . 'category.index',
+                compact('headerCategories', 'news', 'trendingNews')
+            );
+        } catch (Exception $exception) {
+
             return redirect()->route('index');
         }
     }

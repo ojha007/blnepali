@@ -63,7 +63,6 @@ use Illuminate\Support\Carbon;
  * @method static Builder|Reporter whereUpdatedAt($value)
  * @method static Builder|Reporter withTrashed()
  * @method static Builder|Reporter withoutTrashed()
- * @mixin Eloquent
  */
 class Reporter extends Model
 {
