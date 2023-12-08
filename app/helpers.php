@@ -45,7 +45,7 @@ function getResizeImage(string $imageUrl, ?string $dimension = null): string
         }
         return sprintf(
             '%s://%s/%s',
-            $urlParts['scheme'],
+            $urlParts['scheme'] ?? 'https',
             $urlParts['host'] . $urlParts['path'],
             $urlParts['query']
         );
