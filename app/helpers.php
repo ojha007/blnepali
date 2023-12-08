@@ -33,7 +33,7 @@ function spanByStatus($status): string
 }
 
 
-function getResizeImage(string $imageUrl, ?string $dimension = null): string
+function getResizeImage(string $imageUrl, ?string $filter = null): string
 {
     $urlParts = parse_url($imageUrl);
 
@@ -45,12 +45,12 @@ function getResizeImage(string $imageUrl, ?string $dimension = null): string
         return $imageUrl;
     }
 
-    if (!$dimension) {
+    if (!$filter) {
         return $imageUrl;
 
     }
     $urlParts['host'] = News::CLOUD_FRONT_URL;
-    $urlParts['path'] = sprintf("%s/%s", $dimension, $urlParts['path']);
+    $urlParts['path'] = sprintf("%s/%s", $filter, $urlParts['path']);
 
     return sprintf(
         '%s://%s/%s',
@@ -73,11 +73,11 @@ function getImageSrcSet(string $imageUrl, array $dimensions): array
 
         $urlParts['host'] = News::CLOUD_FRONT_URL;
 
-        if (!isset($dimension['dimension'])) {
+        if (!isset($dimension['filter'])) {
             return [$imageUrl];
         }
 
-        $urlParts['path'] = sprintf("%s/%s", $dimension['dimension'], $urlParts['path']);
+        $urlParts['path'] = sprintf("%s/%s", $dimension['filter'], $urlParts['path']);
         $resizedUrls[] = sprintf(
             '%s://%s/%s',
             $urlParts['scheme'],
