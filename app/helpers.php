@@ -38,7 +38,7 @@ function getResizeImage(string $imageUrl, ?string $filter = null): string
 {
     $urlParts = parse_url($imageUrl);
 
-    if (!isset($urlParts['host']) || !$urlParts) {
+    if (!$urlParts || !isset($urlParts['host'])) {
         return $imageUrl;
     }
 
@@ -49,12 +49,18 @@ function getResizeImage(string $imageUrl, ?string $filter = null): string
     $urlParts['host'] = News::CLOUD_FRONT_URL;
     $urlParts['path'] = sprintf("%s%s", $filter, $urlParts['path']);
 
-    return sprintf(
+    $path = sprintf(
         '%s://%s/%s',
         $urlParts['scheme'] ?? 'https',
-        $urlParts['host'] . $urlParts['path'],
-        $urlParts['query'] ?? ''
+        $urlParts['host'],
+        $urlParts['path']
     );
+
+    if (isset($urlParts['query'])) {
+        return sprintf('%s?%s', $path, $urlParts['query']);
+    }
+
+    return $path;
 }
 
 function getImageSrcSet(string $imageUrl, array $dimensions): array
