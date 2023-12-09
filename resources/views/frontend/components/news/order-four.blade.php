@@ -3,12 +3,12 @@
 
     @if($order4First)
         <h5 class="header-title pb-3">
-            {{$order4First->category->name}}
+            {{$order4First->category_name}}
         </h5>
         <div class="row">
             <div class="col-md-12">
                 <div class="text-center position-relative">
-                    <a href="{{route('category.news.show',['category'=>$order4First->category->slug,'c_id'=>$order4First->c_id])}}"
+                    <a href="{{route('category.news.show',['category'=>$order4First->category_slug,'c_id'=>$order4First->c_id])}}"
                        class="card  border-0 ">
                         <img src="{{getResizeImage($order4First->image,'fits-in/350x300')}}"
                              class="card-img"
@@ -29,7 +29,7 @@
                             <div class="d-flex align-items-center border-bottom mb-3">
                                 <figure
                                     class="post_img">
-                                    <a href="{{route('category.news.show',['category'=>$news->category->slug,'c_id'=>$news->c_id])}}">
+                                    <a href="{{route('category.news.show',['category'=>$news->category_slug,'c_id'=>$news->c_id])}}">
                                         <img src="{{getResizeImage($news->image,'fits-in/100x80')}}"
                                              class="card-img"
                                              alt="{{$news->title }} -- {{config('app.name')}}"/>
@@ -37,12 +37,12 @@
                                 </figure>
                                 <div class="ps-3">
                                     <h5 class="fw-bold medium-title fs-5">
-                                        <a href="{{route('category.news.show',['category'=>$news->category->slug,'c_id'=>$news->c_id])}}">
+                                        <a href="{{route('category.news.show',['category'=>$news->category_slug,'c_id'=>$news->c_id])}}">
                                             {!! $news->title !!}
                                         </a>
                                     </h5>
                                     <p class="text-muted fw-bold">
-                                        {{$news->guest ?? $news->reporter->name ?? '' }}
+                                        {{$news->guest ?? $news->reporter_name ?? '' }}
                                         {{$news->date_line ? '-' .$news->date_line  :''}}
                                     </p>
                                 </div>

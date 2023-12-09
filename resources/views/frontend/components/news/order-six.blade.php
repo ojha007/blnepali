@@ -14,7 +14,7 @@
             <div class="bl-newsPost bl-newsPost--small">
                 <figure class="post_img">
 
-                    <a href="{{route('category.news.show',['category'=>$news->category->slug,'c_id'=>$news->c_id])}}">
+                    <a href="{{route('category.news.show',['category'=>$news->category_slug,'c_id'=>$news->c_id])}}">
                         <img src="{{$news->image}}"
                              alt="{{$news->title??''}}"/>
                     </a>
