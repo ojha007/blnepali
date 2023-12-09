@@ -1,50 +1,34 @@
-<div class="bl-newsHeader">
-    <h5 class="header-title">
-        @if(!$order5News->isEmpty())
-            {{$order5News->first()->category->name}}
-        @endif
-    </h5>
-</div>
+@isset($order5News)
+    <div class="col-md-4">
+        <div class="col-md-12">
+            <h5 class="header-title pb-3">
+                @if(!$order5News->isEmpty())
+                    {{$order5News->first()->category->name}}
+                @endif
+            </h5>
+        </div>
+        @foreach($order5News as $key=> $news)
+            <div class="border p-3 rounded-1">
+                <h3 class="medium-title">
+                    <a href="{{route('category.news.show',['category'=>$news->category->slug,'c_id'=>$news->c_id])}}"
+                       class="fw-bold fs-5">
+                        {{$news->title}}
+                    </a>
 
-<div class="bl-news bl-news--twoColumner">
-    @foreach($order5News as $key=> $news)
-
-        @if($loop->iteration <= 2)
-            <div class="bl-newsPost bl-newsPost--columnTopNews">
-                <figure class="post_img">
+                </h3>
+                <div class="">
                     <a href="{{route('category.news.show',['category'=>$news->category->slug,'c_id'=>$news->c_id])}}">
-                        <img src="{{$news->image}}"
-                             alt="{{$news->title}}"/>
+                        <img src="{{getResizeImage($news->image)}}"
+                             alt="{{$news->title }} -- {{config('app.name')}}"/>
                     </a>
-                </figure>
-                <div class="post_content">
-                    <h5 class="post_title"><a href="#">{{$news->title}} </a></h5>
-                    <p class="post_source">
-                        {{$news->guest ?? $news->reporter->name ?? '' }}
-                        {{$news->date_line ? '-' .$news->date_line  :''}}
-                    </p>
+                    @include('frontend.icons.writer-icon')
 
-                </div>
-            </div>
-        @else
-            <div class="bl-newsPost bl-newsPost--thumbnail">
-                <figure class="post_img">
-                    <a href="#">
-                        <img src="{{$news->image}}"
-                             alt="{{$news->title}}"/>
-                    </a>
-                </figure>
-                <div class="post_content">
-                    <h5 class="post_title">
-                        <a href="{{route('category.news.show',['category'=>$news->category->slug,'c_id'=>$news->c_id])}}">
-                            {{$news->title}}</a>
-                    </h5>
-                    <p class="post_source">
+                    <span class="text-muted fw-bold me-4">
                         {{$news->guest ?? $news->reporter->name ?? '' }}
                         {{$news->date_line ? '-' .$news->date_line  :''}}
-                    </p>
+                  </span>
                 </div>
             </div>
-        @endif
-    @endforeach
-</div>
+        @endforeach
+    </div>
+@endisset

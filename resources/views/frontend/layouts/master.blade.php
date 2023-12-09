@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="shortcut icon" type="image/png" href="https://breaknlinks.com/images/favicon.png">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="title" content="Media for all across the globe">
     <meta name="description" content="Media for all across the globe">
     <meta name="keywords" content="{{ isset($allCategories)? $allCategories->implode(','):''}}">
@@ -37,6 +37,7 @@
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
         crossorigin="anonymous"
     />
+{{--    @vite(['resources/css/app.css', 'resources/js/app.js'])--}}
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link

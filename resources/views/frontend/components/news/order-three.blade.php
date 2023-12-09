@@ -1,33 +1,32 @@
-<div class="bl-newsHeader">
-    <h5 class="header-title">
-        @if(!$order3News->isEmpty())
-            {{$order3News->first()->category->name}}
-        @endif
-    </h5>
-</div>
+@isset($order3News)
+    <div class="col-md-12">
+        <h5 class="header-title mb-4">
 
-@foreach($order3News as $news)
-    <div class="bl-news bl-news--smallThumbs">
-        <!--repeatable items-->
-        <div class="bl-newsPost bl-newsPost--small">
+            @if(!$order3News->isEmpty())
+                {{$order3News->first()->category->name}}
+            @endif
+        </h5>
+    </div>
+    @foreach($order3News as $news)
+        <div class="d-flex align-items-center {{!$loop->last ?'border-bottom mb-3' : ''}} ">
             <figure class="post_img">
-
                 <a href="{{route('category.news.show',['category'=>$news->category->slug,'c_id'=>$news->c_id])}}">
-                    <img src="{{$news->image}}"
-                         alt="{{($news)->title}}"/>
+                    <img src="{{getResizeImage($news->image)}}" alt="{{($news)->title}}"/>
                 </a>
             </figure>
-            <div class="post_content">
-                <h5 class="post_title">
+            <div class="ps-3">
+                <h5 class="fw-bold medium-title fs-5">
                     <a href="{{route('category.news.show',['category'=>$news->category->slug,'c_id'=>$news->c_id])}}">
-                        {{$news->title}}
+                        {!! $news->title !!}
                     </a>
                 </h5>
-                <p class="post_source">
+                <p class="text-muted fw-bold">
                     {{$news->guest ?? $news->reporter->name ?? '' }}
                     {{$news->date_line ? '-' .$news->date_line  :''}}
                 </p>
             </div>
         </div>
-    </div>
-@endforeach
+    @endforeach
+@endisset
+
+

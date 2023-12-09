@@ -1,4 +1,4 @@
-<section class="container">
+
     <div class="text-only-news text-center">
         <a href="../breaknlinks/news-detail.html">
             <h1>

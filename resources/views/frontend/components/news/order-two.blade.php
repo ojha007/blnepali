@@ -1,56 +1,37 @@
-<div class="bl-newsHeader">
-    <h5 class="header-title">
-        @if(!$order2News->isEmpty())
-            {{$order2News->first()->category->name}}
-        @endif
-    </h5>
-</div>
-<div class="bl-news bl-news--generalNews">
-    @foreach($order2News as $key=> $news)
-        @if($loop->first)
-            <div class="bl-newsPost bl-newsPost--highlightNews">
-                <figure class="post_img">
+@isset($order2News)
+    <div class="col-md-12">
+        <h5 class="header-title mb-4">
+            @if(!$order2News->isEmpty())
+                {{$order2News->first()->category->name}}
+            @endif
+        </h5>
+    </div>
 
+    @foreach($order2News as $key => $news)
+        <div class="media d-flex mb-4 gap-4 align-items-center">
+            <a href="{{route('category.news.show',['category'=>$news->category->slug,'c_id'=>$news->c_id])}}">
+                <img src="{{getResizeImage($news->image)}}"
+                     class="img-fluid"
+                     alt="{{$news->title}} -- {{config('app.name')}}"/>
+            </a>
+            <div class="media-body">
+                <h3 class="fw-bold medium-title fs-5">
                     <a href="{{route('category.news.show',['category'=>$news->category->slug,'c_id'=>$news->c_id])}}">
-                        <img src="{{$news->image}}"
-                             alt="{{$news->title??''}} -- {{config('app.name')}}"/>
+                        {!! $news->title !!}
                     </a>
-                </figure>
-                <div class="post_content">
-                    <h5 class="post_title">
-                        <a href="{{route('category.news.show',['category'=>$news->category->slug,'c_id'=>$news->c_id])}}">
-                            {{$news->title}}
-                        </a>
-                    </h5>
-                    <p>{!! \Illuminate\Support\Str::limit($news->short_description) !!}</p>
-                    <p class="post_source">
-                        {{$news->guest ?? $news->reporter->name ?? '' }}
-                        {{$news->date_line ? '-' .$news->date_line  :''}}
-                    </p>
-
-                </div>
+                </h3>
+                <p class="post-description-sm d-none d-md-none d-lg-block">
+                    {!! \Illuminate\Support\Str::limit($news->description) !!}
+                </p>
+                <h5
+                    class="text-muted source fs-6 fw-bold text-info"
+                >
+                    {{$news->guest ?? $news->reporter->name ?? '' }}
+                    {{$news->date_line ? '-' .$news->date_line  :''}}
+                </h5>
             </div>
-        @else
-            <div class="bl-newsPost bl-newsPost--thumbnail">
-                <figure class="post_img">
-
-                    <a href="{{route('category.news.show',['category'=>$news->category->slug,'c_id'=>$news->c_id])}}">
-                        <img src="{{$news->image}}"
-                             alt="{{$news->title}} -- {{config('app.name')}}"/>
-                    </a>
-                </figure>
-                <div class="post_content">
-                    <h5 class="post_title">
-                        <a href="{{route('category.news.show',['category'=>$news->category->slug,'c_id'=>$news->c_id])}}">
-                            {{$news->title}}
-                        </a>
-                    </h5>
-                    <p class="post_source">
-                        {{$news->guest ?? $news->reporter->name ?? '' }}
-                        {{$news->date_line ? '-' .$news->date_line  :''}}
-                    </p>
-                </div>
-            </div>
-        @endif
+        </div>
     @endforeach
-</div>
+@endisset
+
+

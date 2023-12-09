@@ -1,19 +1,15 @@
 @extends('frontend.layouts.master')
 @section('content')
 
-    <!--Hot carousel news-->
-    @include('frontend.components.news.featured-news')
-    <!--ended Hot carousel news-->
-
-    <!--BL Top post news anchor news-->
-    @include('frontend.components.news.anchor-news')
-    <!--Ended BL Top post news-->
-
-    <!--BL Special news-->
-    @include('frontend.components.news.bl-special')
-    <!--ended BL Special news post-->
-
-    <!--start general news and links news section-->
+    <section class="container">
+        @include('frontend.components.news.featured-news')
+    </section>
+    <section class="container bl-anchor-news">
+        @include('frontend.components.news.anchor-news')
+    </section>
+    <section class="container-fluid my-5 bl-special py-5" style="background-color: #082332">
+        @include('frontend.components.news.bl-special')
+    </section>
 
     <section class="container-fluid">
         <div class="container">
@@ -30,22 +26,36 @@
     </section>
 
     @include('frontend.components.news.trending-news')
+
     <section class="container-fluid py-5  my-5" style="background-color: #082332;" id="video_section">
         @include('frontend.components.news.videos')
     </section>
 
-    {{--    <section class="container">--}}
-    {{--        <div class="news-row">--}}
-    {{--            <div class="row">--}}
-    {{--                <div class="col-sm-12 col-md-8 col-lg-9 col-xl-9 col-xxl-9">--}}
-    {{--                    @include('frontend.components.news.order-two')--}}
-    {{--                </div>--}}
-    {{--                <div class="col-sm-12 col-md-4 col-lg-3 col-xl-3 col-xxl-3">--}}
-    {{--                    @include('frontend.components.news.order-three')--}}
-    {{--                </div>--}}
-    {{--            </div>--}}
-    {{--        </div>--}}
-    {{--    </section>--}}
+    <section class="container-fluid">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    @include('frontend.components.news.order-two')
+                </div>
+                <div class="col-md-4">
+                    @include('frontend.components.news.order-three')
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container-fluid py-1">
+        <div class="container my-4">
+            <div class="row">
+                <div class="col-md-8">
+                    @include('frontend.components.news.order-four')
+                </div>
+                <div class="col-md-4">
+                    @include('frontend.components.news.order-five')
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!--ended general news and links news section-->
 
