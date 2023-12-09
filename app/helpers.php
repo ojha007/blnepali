@@ -50,7 +50,7 @@ function getResizeImage(string $imageUrl, ?string $filter = null): string
 
     }
     $urlParts['host'] = News::CLOUD_FRONT_URL;
-    $urlParts['path'] = sprintf("%s/%s", $filter, $urlParts['path']);
+    $urlParts['path'] = sprintf("%s%s", $filter, $urlParts['path']);
 
     return sprintf(
         '%s://%s/%s',
