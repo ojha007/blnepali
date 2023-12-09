@@ -31,7 +31,7 @@
                                 <figure
                                     class="post_img">
                                     <a href="{{route('category.news.show',['category'=>$news->category_slug,'c_id'=>$news->c_id])}}">
-                                        <img src="{{getResizeImage($news->image,'/fit-in/100x80')}}"
+                                        <img src="{{getResizeImage($news->image,'/fit-in/250x150')}}"
                                              class="card-img"
                                              alt="{{$news->image_alt ?? $news->image_description ?? ''}}"/>
                                     </a>
