@@ -5,6 +5,7 @@ namespace App\Exceptions;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Support\Facades\Redirect;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -52,7 +53,7 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Throwable $exception)
     {
-        if ($exception instanceof ModelNotFoundException && $request->is('*.jpg', '*.jpeg', '*.png', '*.gif')) {
+        if ($exception instanceof NotFoundHttpException && $request->is('*.jpg', '*.jpeg', '*.png', '*.gif')) {
             return Redirect::to('https://breaknlinks.s3.amazonaws.com/logodefault.jpg')
                 ->with('status', 307);
         }
