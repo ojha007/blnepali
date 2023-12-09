@@ -50,14 +50,14 @@ function getResizeImage(string $imageUrl, ?string $filter = null): string
     $urlParts['path'] = sprintf("%s%s", $filter, $urlParts['path']);
 
     $path = sprintf(
-        '%s://%s/%s',
+        '%s://%s%s',
         $urlParts['scheme'] ?? 'https',
         $urlParts['host'],
         $urlParts['path']
     );
 
     if (isset($urlParts['query'])) {
-        return sprintf('%s?%s', $path, $urlParts['query']);
+        return sprintf('%s/%s', $path, $urlParts['query']);
     }
 
     return $path;
