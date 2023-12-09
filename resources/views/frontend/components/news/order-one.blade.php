@@ -9,7 +9,8 @@
             <div class="col-md-7">
                 <figure class="position-relative">
                     <img src="{{getResizeImage($order1First->image)}}"
-                         alt="{{$order1First->title}}">
+                         alt="{{$order1First->image_alt ?? $order1First->image_description ?? ''}}"/>
+
                     <figcaption>{!! $order1First->date_line !!}</figcaption>
                 </figure>
             </div>
@@ -32,7 +33,8 @@
                     <div>
                         <figure class="position-relative mb-3">
                             <img src="{{getResizeImage($news->image)}}"
-                                 alt="{{$news->title}}">
+                                 alt="{{$news->image_alt ?? $news->image_description ?? ''}}"/>
+
                         </figure>
                         <a href="{{route('category.news.show',[$news->category_slug,$news->c_id])}}" class="a-hover">
                             <h1 class="small-title py-1">

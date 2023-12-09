@@ -11,7 +11,8 @@
         <div class="d-flex align-items-center {{!$loop->last ?'border-bottom mb-3' : ''}} ">
             <figure class="post_img">
                 <a href="{{route('category.news.show',['category'=>$news->category_slug,'c_id'=>$news->c_id])}}">
-                    <img src="{{getResizeImage($news->image)}}" alt="{{($news)->title}}"/>
+                    <img src="{{getResizeImage($news->image)}}"
+                         alt="{{$news->image_alt ?? $news->image_description ?? ''}}"/>
                 </a>
             </figure>
             <div class="ps-3">

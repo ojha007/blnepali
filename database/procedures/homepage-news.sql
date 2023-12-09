@@ -16,6 +16,7 @@ SELECT news.title,
        news.id,
        news.c_id,
        news.short_description,
+       news.description
 
        reporters.image as reporter_image,
        reporters.name  as reporter_name,

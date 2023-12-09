@@ -12,7 +12,7 @@
                 <h3 class="medium-title">
                     <a href="{{route('category.news.show',['category'=>$news->category_slug,'c_id'=>$news->c_id])}}"
                        class="fw-bold fs-5">
-                        {{$news->title}}
+                        {!! $news->title !!}
                     </a>
 
                 </h3>

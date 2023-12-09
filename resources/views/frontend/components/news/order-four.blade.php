@@ -12,7 +12,8 @@
                        class="card  border-0 ">
                         <img src="{{getResizeImage($order4First->image,'fits-in/350x300')}}"
                              class="card-img"
-                             alt="{{$order4First->title }} -- {{config('app.name')}}"/>
+                             alt="{{$news->image_alt ?? $news->image_description ?? ''}}"/>
+
                         <div class="card-img-overlay bg-gradient-primary top-50 p-3 mt-5 text-white bottom-0">
                             <div
                                 class="d-flex align-items-center justify-content-center gap-3">
@@ -32,7 +33,7 @@
                                     <a href="{{route('category.news.show',['category'=>$news->category_slug,'c_id'=>$news->c_id])}}">
                                         <img src="{{getResizeImage($news->image,'fits-in/100x80')}}"
                                              class="card-img"
-                                             alt="{{$news->title }} -- {{config('app.name')}}"/>
+                                             alt="{{$news->image_alt ?? $news->image_description ?? ''}}"/>
                                     </a>
                                 </figure>
                                 <div class="ps-3">

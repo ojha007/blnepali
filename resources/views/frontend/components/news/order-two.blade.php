@@ -12,7 +12,7 @@
             <a href="{{route('category.news.show',['category'=>$news->category_slug,'c_id'=>$news->c_id])}}">
                 <img src="{{getResizeImage($news->image)}}"
                      class="img-fluid"
-                     alt="{{$news->title}} -- {{config('app.name')}}"/>
+                     alt="{{$news->image_alt ?? $news->image_description ?? ''}}"/>
             </a>
             <div class="media-body">
                 <h3 class="fw-bold medium-title fs-5">
@@ -21,10 +21,10 @@
                     </a>
                 </h3>
                 <p class="post-description-sm d-none d-md-none d-lg-block">
-                    {!! \Illuminate\Support\Str::limit($news->description) !!}
+                    {!! \Illuminate\Support\Str::limit($news->short_description) !!}
                 </p>
                 <h5
-                    class="text-muted source fs-6 fw-bold text-info"
+                        class="text-muted source fs-6 fw-bold text-info"
                 >
                     {{$news->guest ?? $news->reporter_name ?? '' }}
                     {{$news->date_line ? '-' .$news->date_line  :''}}
