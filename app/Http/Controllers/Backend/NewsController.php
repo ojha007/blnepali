@@ -37,7 +37,7 @@ class NewsController extends Controller
                 'reporter:name,id',
                 'updatedBy:user_name,id',
                 'createdBy:user_name,id',
-                'guest:user_name,id',
+                'guest:name,id',
                 'category:name,id,slug'
             ])
             ->orderByDesc('publish_date')

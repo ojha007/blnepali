@@ -27,7 +27,7 @@ class CreateNewsTable extends Migration
 
             $table->mediumText('sub_title')->nullable();
 
-            $table->foreignId('guest_id')->constrained('guests');
+            $table->foreignId('guest_id')->nullable()->constrained('guests');
 
             $table->unsignedBigInteger('reporter_id')->nullable();
             $table->foreign('reporter_id')

@@ -61,8 +61,6 @@ class Category extends Model
 {
     use SoftDeletes, HasFactory;
 
-    public const HEADER_CACHE_KEY = 'BL_NEPALI_CATEGORY_HEADER_CACHE';
-    public const CACHE_KEY = 'BL_NEPALI_CATEGORY_CACHE';
     protected $guarded = [];
     protected $hidden = ['created_at', 'updated_at'];
 
