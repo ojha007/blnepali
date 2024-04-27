@@ -2,7 +2,7 @@ name: BlNepali
 on:
   push:
     branches:
-      - master
+      - main
 jobs:
   build:
     name: BlNepali PHP ${{ matrix.php-versions }} - OS ${{ matrix.operating-system}} Build
