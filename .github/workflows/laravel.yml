@@ -99,4 +99,4 @@ jobs:
             php artisan config:cache
             php artisan route:clear
             php artisan view:clear
-            echo 'Git pull successfully.'
+            echo 'Git pull successfully. '
