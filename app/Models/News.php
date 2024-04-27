@@ -90,6 +90,7 @@ use Illuminate\Support\Carbon;
 class News extends Model
 {
     use SoftDeletes, HasFactory, HasEvents;
+
     const CLOUD_FRONT_URL = 'd2y5l9fi6urcm1.cloudfront.net';
     const CACHE_KEY = 'BL_NEPALI_CACHE_NEWS';
 
