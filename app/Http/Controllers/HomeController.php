@@ -141,6 +141,8 @@ class HomeController extends Controller
         } catch (Exception $exception) {
 
             return redirect()->route('index');
+
+//            DB::raw(')')
         }
     }
 }
