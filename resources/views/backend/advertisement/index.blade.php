@@ -42,7 +42,7 @@
                                 <td>{{ucwords(str_replace('_',' ' ,$ads->sub_for))}}</td>
                                 <td>{!! $ads->description !!}</td>
                                 <td>{{\Carbon\Carbon::parse( $ads->created_at)->format('Y-m-d')}}</td>
-{{--                                <td>{!! spanByStatus($ads->is_active) !!}</td>--}}
+                                {{--                                <td>{!! spanByStatus($ads->is_active) !!}</td>--}}
                                 <td>
 
                                     <a href="{{route('cms.advertisements.edit',$ads->id)}}"
@@ -61,7 +61,7 @@
                         @endforeach
                         </tbody>
                     </table>
-                    {{--                    {{$advertisements->links()}}--}}
+                    {{$advertisements->links()}}
                 </div>
                 <!-- /.box-body -->
             </div>

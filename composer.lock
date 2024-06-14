@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6923f41a59770a11bfb2c45e7de09a1c",
+    "content-hash": "47090e1a3190113b4a75b6298b0256cf",
     "packages": [
         {
             "name": "anlutro/l4-settings",
@@ -217,6 +217,140 @@
                 "source": "https://github.com/aws/aws-sdk-php/tree/3.308.0"
             },
             "time": "2024-05-21T18:06:10+00:00"
+        },
+        {
+            "name": "barryvdh/elfinder-flysystem-driver",
+            "version": "v0.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/barryvdh/elfinder-flysystem-driver.git",
+                "reference": "91267e18bb6827cd563c82345286a74e7a509ca5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/barryvdh/elfinder-flysystem-driver/zipball/91267e18bb6827cd563c82345286a74e7a509ca5",
+                "reference": "91267e18bb6827cd563c82345286a74e7a509ca5",
+                "shasum": ""
+            },
+            "require": {
+                "intervention/image": "^3",
+                "league/flysystem": "^3",
+                "php": "^8.1",
+                "studio-42/elfinder": "^2.1.62"
+            },
+            "require-dev": {
+                "league/flysystem-memory": "^3",
+                "phpstan/phpstan": "^1.4",
+                "phpunit/phpunit": "^9",
+                "squizlabs/php_codesniffer": "^3.5"
+            },
+            "suggest": {
+                "league/glide": "1.x to display images through Glide"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.5-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Barryvdh\\elFinderFlysystemDriver\\": "src/"
+                },
+                "classmap": [
+                    "elFinderVolumeFlysystem.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Barry vd. Heuvel",
+                    "email": "barryvdh@gmail.com"
+                }
+            ],
+            "description": "A Flysystem Driver for elFinder",
+            "keywords": [
+                "Flysystem",
+                "elfinder",
+                "filesystem"
+            ],
+            "support": {
+                "issues": "https://github.com/barryvdh/elfinder-flysystem-driver/issues",
+                "source": "https://github.com/barryvdh/elfinder-flysystem-driver/tree/v0.5.0"
+            },
+            "funding": [
+                {
+                    "url": "https://fruitcake.nl",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/barryvdh",
+                    "type": "github"
+                }
+            ],
+            "time": "2024-03-09T18:52:35+00:00"
+        },
+        {
+            "name": "barryvdh/laravel-elfinder",
+            "version": "v0.5.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/barryvdh/laravel-elfinder.git",
+                "reference": "be07b94f4588206913daccd835942d01474beb79"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/barryvdh/laravel-elfinder/zipball/be07b94f4588206913daccd835942d01474beb79",
+                "reference": "be07b94f4588206913daccd835942d01474beb79",
+                "shasum": ""
+            },
+            "require": {
+                "barryvdh/elfinder-flysystem-driver": "^0.4.2|^0.5",
+                "illuminate/support": "^9|^10|^11.0",
+                "php": "^8.1",
+                "studio-42/elfinder": "~2.1.62"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.5-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "Barryvdh\\Elfinder\\ElfinderServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Barryvdh\\Elfinder\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Barry vd. Heuvel",
+                    "email": "barryvdh@gmail.com"
+                }
+            ],
+            "description": "A Laravel Package to integrate elFinder 2",
+            "keywords": [
+                "elfinder",
+                "filebrowser",
+                "laravel",
+                "tinymce"
+            ],
+            "support": {
+                "issues": "https://github.com/barryvdh/laravel-elfinder/issues",
+                "source": "https://github.com/barryvdh/laravel-elfinder/tree/v0.5.3"
+            },
+            "time": "2024-03-09T08:05:19+00:00"
         },
         {
             "name": "brick/math",
@@ -3925,6 +4059,74 @@
             "time": "2024-02-29T10:55:08+00:00"
         },
         {
+            "name": "studio-42/elfinder",
+            "version": "2.1.65",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Studio-42/elFinder.git",
+                "reference": "5535a8677558c44a20c19ff9b97ec37702f9c44d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Studio-42/elFinder/zipball/5535a8677558c44a20c19ff9b97ec37702f9c44d",
+                "reference": "5535a8677558c44a20c19ff9b97ec37702f9c44d",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.2"
+            },
+            "suggest": {
+                "barryvdh/elfinder-flysystem-driver": "VolumeDriver for elFinder to use Flysystem as a root.",
+                "google/apiclient": "VolumeDriver GoogleDrive require `google/apiclient:^2.0.",
+                "kunalvarma05/dropbox-php-sdk": "VolumeDriver `Dropbox`2 require `kunalvarma05/dropbox-php-sdk.",
+                "nao-pon/flysystem-google-drive": "require in GoogleDrive network volume mounting with Flysystem."
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Dmitry Levashov",
+                    "email": "dio@std42.ru",
+                    "homepage": "http://std42.ru"
+                },
+                {
+                    "name": "Troex Nevelin",
+                    "email": "troex@fury.scancode.ru",
+                    "homepage": "http://std42.ru"
+                },
+                {
+                    "name": "Naoki Sawada",
+                    "email": "hypweb+elfinder@gmail.com",
+                    "homepage": "http://xoops.hypweb.net"
+                },
+                {
+                    "name": "Community contributions",
+                    "homepage": "https://github.com/Studio-42/elFinder/contributors"
+                }
+            ],
+            "description": "File manager for web",
+            "homepage": "http://elfinder.org",
+            "support": {
+                "issues": "https://github.com/Studio-42/elFinder/issues",
+                "source": "https://github.com/Studio-42/elFinder/tree/2.1.65"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/nao-pon",
+                    "type": "github"
+                }
+            ],
+            "time": "2024-01-05T05:01:39+00:00"
+        },
+        {
             "name": "symfony/console",
             "version": "v6.4.7",
             "source": {
@@ -6209,86 +6411,6 @@
                 "source": "https://github.com/tijsverkoyen/CssToInlineStyles/tree/v2.2.7"
             },
             "time": "2023-12-08T13:03:43+00:00"
-        },
-        {
-            "name": "unisharp/laravel-filemanager",
-            "version": "v2.9.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/UniSharp/laravel-filemanager.git",
-                "reference": "eecae14bc2d31e9d12472d4c4ec362da1387ba82"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/UniSharp/laravel-filemanager/zipball/eecae14bc2d31e9d12472d4c4ec362da1387ba82",
-                "reference": "eecae14bc2d31e9d12472d4c4ec362da1387ba82",
-                "shasum": ""
-            },
-            "require": {
-                "ext-exif": "*",
-                "ext-fileinfo": "*",
-                "illuminate/config": "5.4.* || 5.5.* || 5.6.* || 5.7.* || 5.8.* || ^6.0 || ^7.0 || ^8.0 || ^9.0 || ^10.0 || ^11.0",
-                "illuminate/container": "5.4.* || 5.5.* || 5.6.* || 5.7.* || 5.8.* || ^6.0 || ^7.0 || ^8.0 || ^9.0 || ^10.0 || ^11.0",
-                "illuminate/filesystem": "5.4.* || 5.5.* || 5.6.* || 5.7.* || 5.8.* || ^6.0 || ^7.0 || ^8.0 || ^9.0 || ^10.0 || ^11.0",
-                "illuminate/http": "5.4.* || 5.5.* || 5.6.* || 5.7.* || 5.8.* || ^6.0 || ^7.0 || ^8.0 || ^9.0 || ^10.0 || ^11.0",
-                "illuminate/support": "5.4.* || 5.5.* || 5.6.* || 5.7.* || 5.8.* || ^6.0 || ^7.0 || ^8.0 || ^9.0 || ^10.0 || ^11.0",
-                "intervention/image": ">=2.0.0",
-                "league/flysystem": ">=2.0.0",
-                "php": ">=7.2.0"
-            },
-            "require-dev": {
-                "mockery/mockery": "~1.3.0",
-                "phpunit/phpunit": "~8.0",
-                "squizlabs/php_codesniffer": "^3.1"
-            },
-            "suggest": {
-                "ext-gd": "to use GD library based image processing.",
-                "ext-imagick": "to use Imagick based image processing."
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "UniSharp\\LaravelFilemanager\\LaravelFilemanagerServiceProvider"
-                    ],
-                    "aliases": []
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "UniSharp\\LaravelFilemanager\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Trevor Sawler",
-                    "email": "trevor.sawler@gmail.com"
-                },
-                {
-                    "name": "UniSharp Ltd.",
-                    "email": "opensource@unisharp.com"
-                }
-            ],
-            "description": "A file upload/editor intended for use with Laravel 5 to 10 and CKEditor / TinyMCE",
-            "keywords": [
-                "CKEditor",
-                "file",
-                "filemanager",
-                "image",
-                "laravel",
-                "manager",
-                "tinymce",
-                "upload"
-            ],
-            "support": {
-                "issues": "https://github.com/UniSharp/laravel-filemanager/issues",
-                "source": "https://github.com/UniSharp/laravel-filemanager/tree/v2.9.0"
-            },
-            "time": "2024-04-08T06:24:32+00:00"
         },
         {
             "name": "vlucas/phpdotenv",

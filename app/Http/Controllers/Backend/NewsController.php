@@ -33,6 +33,11 @@ class NewsController extends Controller
         $selectCategories = Category::isActive()->pluck('name', 'id')->toArray();
 
         $news = News::query()
+            ->select('id', 'title',
+                'view_count', 'publish_date',
+                'slug', 'category_id', 'reporter_id', 'created_by',
+                'guest_id', 'updated_by', 'c_id', 'status'
+            )
             ->with([
                 'reporter:name,id',
                 'updatedBy:user_name,id',
@@ -69,7 +74,10 @@ class NewsController extends Controller
         $reporters = Reporter::pluck('name', 'id')->toArray();
         $categories = Category::pluck('name', 'id')->toArray();
 
-        return view($this->viewPath . 'edit', compact('reporters', 'news', 'categories', 'statuses'));
+        return view(
+            $this->viewPath . 'edit',
+            compact('reporters', 'news', 'categories', 'statuses')
+        );
     }
 
     public function update(NewsRequest $request, News $news): RedirectResponse
@@ -89,6 +97,8 @@ class NewsController extends Controller
     {
         $attributes = $request->validated();
         try {
+            DB::beginTransaction();
+
             $max = DB::table('np_news')
                 ->where('category_id', '=', $attributes['category_id'])
                 ->groupBy('category_id')
@@ -99,7 +109,10 @@ class NewsController extends Controller
 
             News::query()->create($attributes);
 
-            return redirect()->route($this->baseRoute . '.index')
+            DB::commit();
+
+            return redirect()
+                ->route($this->baseRoute . '.index')
                 ->with('success', 'News Created SuccessFully');
         } catch (Exception $exception) {
             Log::error($exception->getMessage(), $exception->getTrace());

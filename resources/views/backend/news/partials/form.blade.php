@@ -118,14 +118,19 @@
                 <label for="fieldID4">Banner Picture</label>
                 <div class="input-group">
                      <span class="input-group-btn">
-                         <a id="lfm" data-input="feature_image" data-preview="holder" class="btn btn-primary">
+                         <a data-inputid="feature_image" data-preview="holder" class="btn btn-primary popup_selector">
                            <i class="fa fa-picture-o"></i> Choose
                          </a>
                        </span>
                     {{Form::text('image',null,['id'=>'feature_image','class'=>'form-control'])}}
+
                 </div>
-                <img id="holder" style="margin-top:15px;height:100px;width: 250px;" alt=""
-                     src="{{isset($news) ? $news->image : ''}}">
+                <div class="img-thumbnail" style="margin-top: 5px">
+                    <a href="{{isset($news) ? $news->image : '#'}}" target="_blank" id="holder_href">
+                        <img id="holder" style="height:auto;width: 100%;" alt=""
+                             src="{{isset($news) ? $news->image : ''}}">
+                    </a>
+                </div>
             </div>
 
             <div class="form-group  {{$errors->has('image_alt'?'has-error':'')}}">
@@ -172,21 +177,22 @@
         </div>
     </div>
 </div>
+@push('styles')
+    <link href="{{asset('css/colorbox.css')}}" rel="stylesheet">
+@endpush
 @push('scripts')
+    <script type="text/javascript" src="{{asset('js/jquery.colorbox-min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('packages/barryvdh/elfinder/js/standalonepopup.js')}}"></script>
+
     <script src="//cdnjs.cloudflare.com/ajax/libs/ckeditor/4.5.11/ckeditor.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/ckeditor/4.5.11/adapters/jquery.js"></script>
     <script>
-        var options = {
-            filebrowserImageBrowseUrl: '{{url('/filemanager?type=Images')}}',
-            filebrowserImageUploadUrl: '{{url('/filemanager/upload?type=Images&_token=')}}',
-            filebrowserBrowseUrl: '{{url('/filemanager?type=Files')}}',
-            filebrowserUploadUrl: '{{url('/filemanager/upload?type=Files&_token=')}}'
-        };
-        CKEDITOR.replace('description', options);
-    </script>
-    <script src="{{url('/vendor/laravel-filemanager/js/stand-alone-button.js')}}"></script>
-    <script>
-        $('#lfm').filemanager('image', {prefix: '{{url('/filemanager')}}'});
+        CKEDITOR.replace('description', {
+            filebrowserImageBrowseUrl: '{{url('/elfinder/ckeditor?type=Images')}}',
+            filebrowserImageUploadUrl: '{{url('/elfinder/ckeditor/upload?type=Images&_token=')}}',
+            filebrowserBrowseUrl: '{{url('/elfinder/ckeditor?type=Files')}}',
+            filebrowserUploadUrl: '{{url('/elfinder/ckeditor/upload?type=Files&_token=')}}'
+        });
     </script>
 @endpush
 

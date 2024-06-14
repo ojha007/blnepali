@@ -36,24 +36,24 @@
             @include('backend.partials.toggle-button',['value'=>'is_active','checked'=>$checked])
         </div>
 
-        <div class="form-group col-md-12" style="padding-right: 0">
+        <div class="form-group col-md-12">
             <label for="fieldID4">Banner Picture</label>
             <div class="input-group">
-                   <span class="input-group-btn btn-flat">
-                     <button
-                         type="button"
-                         onclick="return openElFinder(event, 'feature_image');"
-                         data-inputid="feature_image"
-                         class="btn btn-primary  ">
-                       <i class="fa fa-picture-o"></i> Choose
-                     </button>
-                   </span>
+                     <span class="input-group-btn">
+                         <a data-inputid="feature_image" data-preview="holder" class="btn btn-primary popup_selector">
+                           <i class="fa fa-picture-o"></i> Choose
+                         </a>
+                       </span>
                 {{Form::text('image',null,['id'=>'feature_image','class'=>'form-control'])}}
-            </div>
-            <img id="holder" style="margin-top:15px;height:100px;width: 250px;" alt=""
-                 src="{{isset($advertisement) ? $advertisement->image : ''}}">
-        </div>
 
+            </div>
+            <div class="img-thumbnail" style="margin-top: 5px">
+                <a href="{{isset($news) ? $news->image : '#'}}" target="_blank" id="holder_href">
+                    <img id="holder" style="height:auto;width: 100%;" alt=""
+                         src="{{isset($news) ? $news->image : ''}}">
+                </a>
+            </div>
+        </div>
         <div class="form-group col-md-12 {{$errors->has('sub_description') ? 'has-error':''}}">
             {{ Form::label('sub_description', 'Sub Description:', ['class'=>' control-label '])}}
             {!! Form::textarea('sub_description', null, array('placeholder' => 'Enter sub description',
@@ -75,5 +75,12 @@
 </div>
 
 
+@push('styles')
+    <link href="{{asset('css/colorbox.css')}}" rel="stylesheet">
+@endpush
+@push('scripts')
+    <script type="text/javascript" src="{{asset('js/jquery.colorbox-min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('packages/barryvdh/elfinder/js/standalonepopup.js')}}"></script>
+@endpush
 
 
