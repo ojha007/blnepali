@@ -2,9 +2,10 @@
 
 namespace App\Exceptions;
 
-use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Throwable;
 
@@ -32,32 +33,34 @@ class Handler extends ExceptionHandler
     /**
      * Report or log an exception.
      *
-     * @param  \Throwable  $exception
+     * @param Throwable $e
      * @return void
      *
-     * @throws \Throwable
+     * @throws Throwable
      */
-    public function report(Throwable $exception)
+    public function report(Throwable $e): void
     {
-        parent::report($exception);
+        parent::report($e);
     }
 
     /**
      * Render an exception into an HTTP response.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Throwable  $exception
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @param Request $request
+     * @param Throwable $e
+     * @return Response
      *
-     * @throws \Throwable
+     * @throws Throwable
      */
-    public function render($request, Throwable $exception)
+    public function render($request, Throwable $e): Response
     {
-        if ($exception instanceof NotFoundHttpException && $request->is('*.jpg', '*.jpeg', '*.png', '*.gif')) {
-            return Redirect::to('https://breaknlinks.s3.amazonaws.com/logodefault.jpg')
+        if (
+            $e instanceof NotFoundHttpException
+            && $request->is('*.jpg', '*.jpeg', '*.png', '*.gif')) {
+            return Redirect::to('https://images-breaknlinks.com/logodefault.jpg')
                 ->with('status', 307);
         }
 
-        return parent::render($request, $exception);
+        return parent::render($request, $e);
     }
 }
