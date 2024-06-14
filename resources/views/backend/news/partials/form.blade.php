@@ -181,11 +181,11 @@
     <link href="{{asset('css/colorbox.css')}}" rel="stylesheet">
 @endpush
 @push('scripts')
-    <script type="text/javascript" src="{{asset('js/jquery.colorbox-min.js')}}"></script>
-    <script type="text/javascript" src="{{asset('packages/barryvdh/elfinder/js/standalonepopup.js')}}"></script>
-
     <script src="//cdnjs.cloudflare.com/ajax/libs/ckeditor/4.5.11/ckeditor.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/ckeditor/4.5.11/adapters/jquery.js"></script>
+
+    <script type="text/javascript" src="{{asset('js/jquery.colorbox-min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('packages/barryvdh/elfinder/js/standalonepopup.js')}}"></script>
     <script>
         CKEDITOR.replace('description', {
             filebrowserImageBrowseUrl: '{{url('/elfinder/ckeditor?type=Images')}}',
