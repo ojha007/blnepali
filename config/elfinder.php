@@ -81,7 +81,23 @@ return array(
     |
     */
 
-    'options' => array(),
+    'options' => array(
+        'bind' => array(
+            'mkdir.pre mkfile.pre rename.pre' => array(
+                'Plugin.Sanitizer.cmdPreprocess'
+            ),
+            'upload.presave' => array(
+                'Plugin.Sanitizer.onUpLoadPreSave'
+            )
+        ),
+        'plugin' => array(
+            'Sanitizer' => array(
+                'enable' => true,
+                'targets'  => array('\\','/',':','*','?','"','<','>','|',' '), // target chars
+                'replace'  => '-'    // replace to this
+            )
+        ),
+    ),
 
     /*
     |--------------------------------------------------------------------------
