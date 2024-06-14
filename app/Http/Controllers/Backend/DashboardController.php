@@ -7,17 +7,18 @@ use App\Models\Advertisement;
 use App\Models\Category;
 use App\Models\News;
 use App\Models\Reporter;
+use Illuminate\Contracts\Support\Renderable;
 
 class DashboardController extends Controller
 {
-    public function index()
+    public function __invoke(): Renderable
     {
         $attributes = [
             [
                 'title' => 'Total Publish News',
                 'fa' => 'newspaper-o',
                 'bg' => 'green',
-                'count' => News::count()
+                'count' => News::query()->count()
             ],
             [
                 'title' => 'Active Reporters',
@@ -29,7 +30,7 @@ class DashboardController extends Controller
                 'title' => 'Total Category',
                 'fa' => 'list-alt',
                 'bg' => 'info',
-                'count' => Category::count()
+                'count' => Category::query()->count()
             ],
             [
                 'title' => 'Total Ads',
