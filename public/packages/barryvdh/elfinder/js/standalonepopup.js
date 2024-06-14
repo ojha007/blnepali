@@ -5,7 +5,6 @@ $(document).on('click','.popup_selector',function (event) {
 
     // trigger the reveal modal with elfinder inside
     let triggerUrl = elfinderUrl + updateID;
-    console.log(triggerUrl);
 
     $.colorbox({
         href: triggerUrl,

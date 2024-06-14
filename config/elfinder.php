@@ -90,7 +90,7 @@ return array(
     |
     */
     'root_options' => array(
-        'tmbURL' => '/.tmb',
+        'tmbURL' => '/np/.tmb',
     ),
 
 );
