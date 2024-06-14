@@ -1,10 +1,12 @@
 $(document).on('click','.popup_selector',function (event) {
     event.preventDefault();
     let updateID = $(this).attr('data-inputid'); // Btn id clicked
-    let elfinderUrl = 'np/elfinder/popup/';
+    let elfinderUrl = '/np/elfinder/popup/';
 
     // trigger the reveal modal with elfinder inside
     let triggerUrl = elfinderUrl + updateID;
+    console.log(triggerUrl);
+
     $.colorbox({
         href: triggerUrl,
         fastIframe: true,
@@ -14,7 +16,8 @@ $(document).on('click','.popup_selector',function (event) {
     });
 
 });
-// function to update the file selected by elfinder
+
+
 function processSelectedFile(filePath, requestingField) {
     $('#' + requestingField).val(filePath).trigger('change');
     $('#holder').attr('src', filePath)
