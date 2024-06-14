@@ -80,21 +80,43 @@ return array(
     | See https://github.com/Studio-42/elFinder/wiki/Connector-configuration-options-2.1
     |
     */
-
     'options' => array(
         'bind' => array(
+            'upload.pre mkdir.pre mkfile.pre rename.pre archive.pre ls.pre' => array(
+                'Plugin.Normalizer.cmdPreprocess'
+            ),
+            'upload.presave paste.copyfrom' => array(
+                'Plugin.Normalizer.onUpLoadPreSave'
+            ),
             'mkdir.pre mkfile.pre rename.pre' => array(
                 'Plugin.Sanitizer.cmdPreprocess'
             ),
-            'upload.presave' => array(
-                'Plugin.Sanitizer.onUpLoadPreSave'
-            )
+            'upload.presave' => [
+                'Plugin.Sanitizer.onUpLoadPreSave',
+                'Plugin.AutoResize.onUpLoadPreSave'
+            ],
         ),
         'plugin' => array(
             'Sanitizer' => array(
                 'enable' => true,
-                'targets'  => array('\\','/',':','*','?','"','<','>','|',' '), // target chars
-                'replace'  => '-'    // replace to this
+                'targets' => [
+                    '\\', '/', ':', '*',
+                    '?', '"', '<', '>', '|',
+                    ' ', '(', ')',
+                    '[', ']', '{', '}'
+                ],
+                'replace' => '-'
+            ),
+            'AutoResize' => [
+                'enable' => true,
+            ],
+            'Normalizer' => array(
+                'enable' => true,
+                'nfc' => true,
+                'nfkc' => true,
+                'umlauts' => false,
+                'lowercase' => false,
+                'convmap' => array()
             )
         ),
     ),
