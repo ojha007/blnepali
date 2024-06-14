@@ -28,9 +28,6 @@ return array(
     'disks' => [
         's3' => [
             'alias' => "S3 Storage"
-        ],
-        'public' => [
-            'alias' => "Local Storage",
         ]
     ],
 

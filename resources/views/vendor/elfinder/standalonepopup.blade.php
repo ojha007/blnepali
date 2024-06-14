@@ -56,7 +56,6 @@
                 getFileCallback: function (file) {
                     window.parent.processSelectedFile(file.url, '{{ $input_id  }}');
                     parent.jQuery.colorbox.close();
-                    $('#holder').attr('src', file.url)
                 }
             }).elfinder('instance');
         });
