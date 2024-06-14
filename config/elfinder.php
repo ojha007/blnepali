@@ -114,8 +114,8 @@ return array(
                 'enable' => true,
                 'nfc' => true,
                 'nfkc' => true,
-                'umlauts' => false,
-                'lowercase' => false,
+                'umlauts' => true,
+                'lowercase' => true,
                 'convmap' => array()
             )
         ),
