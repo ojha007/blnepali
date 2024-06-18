@@ -31,6 +31,7 @@ use Illuminate\Support\Carbon;
  * @property-read int|null $child_categories_count
  * @property-read Collection<int, News> $news
  * @property-read int|null $news_count
+ *
  * @method static Builder|Category isChildren()
  * @method static Builder|Category isActive()
  * @method static Builder|Category parentNull()
@@ -59,9 +60,10 @@ use Illuminate\Support\Carbon;
  */
 class Category extends Model
 {
-    use SoftDeletes, HasFactory;
+    use HasFactory, SoftDeletes;
 
     protected $guarded = [];
+
     protected $hidden = ['created_at', 'updated_at'];
 
     protected static function newFactory(): CategoryFactory

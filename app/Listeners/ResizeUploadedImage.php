@@ -18,7 +18,7 @@ class ResizeUploadedImage
         $path = $event->path();
 
         $image->encode('webp')
-            ->resize(1280, 720, fn($constraint) => $constraint->aspectRatio())
+            ->resize(1280, 720, fn ($constraint) => $constraint->aspectRatio())
             ->save($path, 80);
     }
 }

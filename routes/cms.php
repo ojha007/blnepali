@@ -2,10 +2,10 @@
 
 use App\Http\Controllers\Backend\AdvertisementController;
 use App\Http\Controllers\Backend\CategoryController;
-use App\Http\Controllers\Backend\DashboardController;
-use App\Http\Controllers\Backend\ProfileController;
-use App\Http\Controllers\Backend\NewsController;
 use App\Http\Controllers\Backend\CommentController;
+use App\Http\Controllers\Backend\DashboardController;
+use App\Http\Controllers\Backend\NewsController;
+use App\Http\Controllers\Backend\ProfileController;
 use App\Http\Controllers\Backend\ReporterController;
 use Illuminate\Support\Facades\Route;
 

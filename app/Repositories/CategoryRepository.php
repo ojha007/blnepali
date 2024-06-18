@@ -20,7 +20,9 @@ class CategoryRepository
             ->where('slug', '=', $slug)
             ->first();
 
-        if (!$category) return [];
+        if (! $category) {
+            return [];
+        }
 
         $subCategoriesIds = $this->getSubCategoriesId($category->id);
 
@@ -45,7 +47,9 @@ class CategoryRepository
             ->where('id', '=', $id)
             ->first();
 
-        if (!$category) return [];
+        if (! $category) {
+            return [];
+        }
 
         $subCategoriesIds = $this->getSubCategoriesId($category->id);
 

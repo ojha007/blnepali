@@ -1,6 +1,6 @@
 <?php
 
-return array(
+return [
 
     /*
     |--------------------------------------------------------------------------
@@ -27,11 +27,11 @@ return array(
     */
     'disks' => [
         'public' => [
-            'alias' => "Local Storage"
+            'alias' => 'Local Storage',
         ],
         's3' => [
-            'alias' => "S3 Storage"
-        ]
+            'alias' => 'S3 Storage',
+        ],
     ],
 
     /*
@@ -45,7 +45,7 @@ return array(
 
     'route' => [
         'prefix' => 'elfinder',
-        'middleware' => array('web', 'auth'), //Set to null to disable middleware filter
+        'middleware' => ['web', 'auth'], //Set to null to disable middleware filter
     ],
 
     /*
@@ -80,46 +80,46 @@ return array(
     | See https://github.com/Studio-42/elFinder/wiki/Connector-configuration-options-2.1
     |
     */
-    'options' => array(
-        'bind' => array(
-            'upload.pre mkdir.pre mkfile.pre rename.pre archive.pre ls.pre' => array(
-                'Plugin.Normalizer.cmdPreprocess'
-            ),
-            'upload.presave paste.copyfrom' => array(
-                'Plugin.Normalizer.onUpLoadPreSave'
-            ),
-            'mkdir.pre mkfile.pre rename.pre' => array(
-                'Plugin.Sanitizer.cmdPreprocess'
-            ),
+    'options' => [
+        'bind' => [
+            'upload.pre mkdir.pre mkfile.pre rename.pre archive.pre ls.pre' => [
+                'Plugin.Normalizer.cmdPreprocess',
+            ],
+            'upload.presave paste.copyfrom' => [
+                'Plugin.Normalizer.onUpLoadPreSave',
+            ],
+            'mkdir.pre mkfile.pre rename.pre' => [
+                'Plugin.Sanitizer.cmdPreprocess',
+            ],
             'upload.presave' => [
                 'Plugin.Sanitizer.onUpLoadPreSave',
-                'Plugin.AutoResize.onUpLoadPreSave'
+                'Plugin.AutoResize.onUpLoadPreSave',
             ],
-        ),
-        'plugin' => array(
-            'Sanitizer' => array(
+        ],
+        'plugin' => [
+            'Sanitizer' => [
                 'enable' => true,
                 'targets' => [
                     '\\', '/', ':', '*',
                     '?', '"', '<', '>', '|',
                     ' ', '(', ')',
-                    '[', ']', '{', '}'
+                    '[', ']', '{', '}',
                 ],
-                'replace' => '-'
-            ),
+                'replace' => '-',
+            ],
             'AutoResize' => [
                 'enable' => true,
             ],
-            'Normalizer' => array(
+            'Normalizer' => [
                 'enable' => true,
                 'nfc' => true,
                 'nfkc' => true,
                 'umlauts' => true,
                 'lowercase' => true,
-                'convmap' => array()
-            )
-        ),
-    ),
+                'convmap' => [],
+            ],
+        ],
+    ],
 
     /*
     |--------------------------------------------------------------------------
@@ -130,8 +130,8 @@ return array(
     | See https://github.com/Studio-42/elFinder/wiki/Connector-configuration-options-2.1#root-options
     |
     */
-    'root_options' => array(
+    'root_options' => [
         'tmbURL' => '/np/.tmb',
-    ),
+    ],
 
-);
+];

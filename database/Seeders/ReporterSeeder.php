@@ -13,5 +13,4 @@ class ReporterSeeder extends Seeder
             ->count(20)
             ->create();
     }
-
 }

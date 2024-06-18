@@ -18,7 +18,7 @@ class Advertisement extends Model
             [
                 'above' => 'Above',
                 'below' => 'Below',
-                'aside' => 'Aside'
+                'aside' => 'Aside',
             ];
     }
 

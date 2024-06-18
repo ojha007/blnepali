@@ -22,6 +22,7 @@ use Illuminate\Support\Carbon;
  * @method static create(array $attributes)
  * @method static count()
  * @method static orderByRaw(string $string)
+ *
  * @property int $id
  * @property string $name
  * @property string|null $organization
@@ -40,6 +41,7 @@ use Illuminate\Support\Carbon;
  * @property Carbon|null $deleted_at
  * @property-read Collection<int, News> $news
  * @property-read int|null $news_count
+ *
  * @method static ReporterFactory factory(...$parameters)
  * @method static Builder|Reporter newModelQuery()
  * @method static Builder|Reporter newQuery()
@@ -66,7 +68,7 @@ use Illuminate\Support\Carbon;
  */
 class Reporter extends Model
 {
-    use SoftDeletes, HasFactory;
+    use HasFactory, SoftDeletes;
 
     protected $table = 'reporters';
 

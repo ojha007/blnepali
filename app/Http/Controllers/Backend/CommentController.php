@@ -3,13 +3,11 @@
 namespace Modules\Backend\Http\Controllers;
 
 use App\Repositories\ErrorRepository;
-use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
 
 class CommentController extends Controller
 {
-
     public function index()
     {
         $comments = DB::table('comments')
@@ -20,6 +18,7 @@ class CommentController extends Controller
             })
             ->orderByDesc('id')
             ->paginate(20);
+
         return view('backend::comments.index', compact('comments'));
     }
 
@@ -33,12 +32,15 @@ class CommentController extends Controller
             if ($comment) {
                 DB::table('comments')
                     ->where('id', $id)
-                    ->update(['is_active' => !$comment->is_active]);
+                    ->update(['is_active' => ! $comment->is_active]);
+
                 return redirect()->back()->with('success', 'Comment status is changed successfully');
             }
+
             return redirect()->back()->with('error', 'Comments is not available');
         } catch (\Exception $exception) {
             (new ErrorRepository())->logError($exception);
+
             return redirect()->back()->with('error', $exception->getMessage());
         }
     }

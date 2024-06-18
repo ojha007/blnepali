@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-
 use App\Models\Category;
 use App\Models\News;
 use App\Repositories\CategoryRepository;
@@ -50,9 +49,8 @@ class HomeController extends Controller
         $order8News = $allNews->where('body_position', 8)->values();
         $order1Of4News = $allNews->where('body_position', 9)->take(3)->values();
 
-
         return view(
-            $this->viewPath . 'index',
+            $this->viewPath.'index',
             compact(
                 'order1News',
                 'trendingNews',
@@ -74,7 +72,7 @@ class HomeController extends Controller
                 'ghumphir',
                 'brandStory',
                 'sahitya'
-                
+
             )
         );
     }
@@ -84,9 +82,11 @@ class HomeController extends Controller
         $category = Category::whereSlug($categorySlug)
             ->select('id')
             ->first();
-        if (!$category) return redirect('/');
+        if (! $category) {
+            return redirect('/');
+        }
 
-        $cacheKey = sprintf(News::CACHE_KEY . '::%s', $cId);
+        $cacheKey = sprintf(News::CACHE_KEY.'::%s', $cId);
 
         //        $allNews = Cache::remember($cacheKey, 1800, function () use ($cId, $category) {
         $otherNews = $this->newsRepository->sameCategoryNewsQuery($category->id);
@@ -95,7 +95,7 @@ class HomeController extends Controller
             ->with(['category:name,id,slug', 'reporter:name,id,image'])
             ->select([
                 'title', 'short_description', 'guest_id', 'image_description', 'description', 'video_url',
-                'date_line', 'id', 'c_id', 'image', 'image_alt', 'category_id', 'reporter_id'
+                'date_line', 'id', 'c_id', 'image', 'image_alt', 'category_id', 'reporter_id',
             ])
             ->where('category_id', $category->id)
             ->where('c_id', '=', $cId)
@@ -118,7 +118,7 @@ class HomeController extends Controller
         $blSpecialNews = $otherNews->where('type', 'special');
 
         return view(
-            $this->viewPath . 'news-detail',
+            $this->viewPath.'news-detail',
             compact(
                 'news',
                 'headerCategories',
@@ -143,14 +143,14 @@ class HomeController extends Controller
             $trendingNews = $otherNews->where('type', 'trending');
 
             return view(
-                $this->viewPath . 'category.index',
+                $this->viewPath.'category.index',
                 compact('headerCategories', 'news', 'trendingNews')
             );
         } catch (Exception $exception) {
 
             return redirect()->route('index');
 
-//            DB::raw(')')
+            //            DB::raw(')')
         }
     }
 }

@@ -2,16 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\News;
 use App\Repositories\CategoryRepository;
 use App\Repositories\NewsRepository;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
-
 class ArchiveNewsController extends Controller
 {
-
     protected NewsRepository $newsRepository;
 
     protected CategoryRepository $categoryRepository;
@@ -42,7 +39,7 @@ class ArchiveNewsController extends Controller
                 ->where('n.id', $id)
                 ->first();
 
-            if (!$news) {
+            if (! $news) {
                 return redirect()->route('index');
             }
 
@@ -55,10 +52,11 @@ class ArchiveNewsController extends Controller
 
             $sameCategoryNews = [];
 
-            return view($this->viewPath . 'show', compact('headerCategories', 'news',
+            return view($this->viewPath.'show', compact('headerCategories', 'news',
                 'trendingNews', 'sameCategoryNews', 'blSpecialNews'));
         } catch (\Exception $exception) {
-            Log::error($exception->getMessage() . '---' . $exception->getTraceAsString());
+            Log::error($exception->getMessage().'---'.$exception->getTraceAsString());
+
             return redirect()->route('index');
         }
     }

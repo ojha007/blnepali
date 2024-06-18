@@ -8,10 +8,8 @@ use App\Models\Category;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Controller;
 
-
 class AdvertisementController extends Controller
 {
-
     private string $baseRoute = 'cms.advertisements.';
 
     private string $viewPath = 'backend.advertisement.';
@@ -21,30 +19,30 @@ class AdvertisementController extends Controller
         $advertisements = Advertisement::all()
             ->sortByDesc('id');
 
-        return view($this->viewPath . 'index', compact('advertisements'));
+        return view($this->viewPath.'index', compact('advertisements'));
     }
 
     public function create()
     {
         $advertisement = new Advertisement();
 
-        return view($this->viewPath . '.create')
+        return view($this->viewPath.'.create')
             ->with([
                 'advertisement' => $advertisement,
                 'selectAdsSubFor' => $this->adsPositions(),
                 'selectAdsFor' => Advertisement::adsPage(),
-                'placement' => Advertisement::adsPlacements()
+                'placement' => Advertisement::adsPlacements(),
             ]);
     }
 
     public function edit(Advertisement $advertisement)
     {
-        return view($this->viewPath . '.edit')
+        return view($this->viewPath.'.edit')
             ->with([
                 'advertisement' => $advertisement,
                 'selectAdsSubFor' => $this->adsPositions(),
                 'selectAdsFor' => Advertisement::adsPage(),
-                'placement' => Advertisement::adsPlacements()
+                'placement' => Advertisement::adsPlacements(),
             ]);
     }
 
@@ -55,7 +53,7 @@ class AdvertisementController extends Controller
         $advertisement->update($attributes);
 
         return redirect()
-            ->route($this->baseRoute . '.index')
+            ->route($this->baseRoute.'.index')
             ->with('success', 'Advertisement Updated SuccessFully');
     }
 
@@ -66,13 +64,13 @@ class AdvertisementController extends Controller
         Advertisement::create($attributes);
 
         return redirect()
-            ->route($this->baseRoute . '.index')
+            ->route($this->baseRoute.'.index')
             ->with('success', 'Advertisement Created SuccessFully');
     }
 
     public function show(Advertisement $advertisement)
     {
-        return view($this->viewPath . 'show', compact('advertisement'));
+        return view($this->viewPath.'show', compact('advertisement'));
     }
 
     public function destroy(Advertisement $advertisement): RedirectResponse
@@ -80,7 +78,7 @@ class AdvertisementController extends Controller
         $advertisement->delete();
 
         return redirect()
-            ->route($this->baseRoute . '.index')
+            ->route($this->baseRoute.'.index')
             ->with('success', 'Advertisement Deleted SuccessFully');
     }
 

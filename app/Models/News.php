@@ -11,7 +11,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Carbon;
 
-
 /**
  * App\Models\News
  *
@@ -48,6 +47,7 @@ use Illuminate\Support\Carbon;
  * @property-read User|null $deletedBy
  * @property-read Reporter|null $reporter
  * @property-read User|null $updatedBy
+ *
  * @method static \Database\Factories\NewsFactory factory(...$parameters)
  * @method static Builder|News newModelQuery()
  * @method static Builder|News newQuery()
@@ -89,9 +89,10 @@ use Illuminate\Support\Carbon;
  */
 class News extends Model
 {
-    use SoftDeletes, HasFactory, HasEvents;
+    use HasEvents, HasFactory, SoftDeletes;
 
     const CLOUD_FRONT_URL = 'd2y5l9fi6urcm1.cloudfront.net';
+
     const CACHE_KEY = 'BL_NEPALI_CACHE_NEWS';
 
     protected $table = 'np_news';
@@ -107,7 +108,7 @@ class News extends Model
     protected $with = ['category'];
 
     protected $casts = [
-        'publish_date' => 'datetime:Y-m-d\TH:i'
+        'publish_date' => 'datetime:Y-m-d\TH:i',
     ];
 
     public static function status(): array
@@ -130,6 +131,7 @@ class News extends Model
         foreach (News::publishStatus() as $status) {
             $publishStatuses[$status] = $status;
         }
+
         return $publishStatuses;
     }
 
@@ -142,6 +144,7 @@ class News extends Model
     {
         return $this->belongsTo(Guest::class);
     }
+
     public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);
@@ -177,12 +180,12 @@ class News extends Model
         return $builder->where('is_special', '=', 1);
     }
 
-    static function otherNewsCacheKey(): string
+    public static function otherNewsCacheKey(): string
     {
-        return sprintf(self::CACHE_KEY . '::%s', 'OTHER_NEWS');
+        return sprintf(self::CACHE_KEY.'::%s', 'OTHER_NEWS');
     }
 
-    static function cacheKey(): string
+    public static function cacheKey(): string
     {
         return self::CACHE_KEY;
     }

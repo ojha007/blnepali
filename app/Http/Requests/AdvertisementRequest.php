@@ -6,7 +6,7 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class AdvertisementRequest extends FormRequest
 {
-    public function rules():array
+    public function rules(): array
     {
         $id = $this->route()->parameter('advertisement');
 
@@ -23,5 +23,4 @@ class AdvertisementRequest extends FormRequest
             'sub_placement' => 'nullable',
         ];
     }
-
 }

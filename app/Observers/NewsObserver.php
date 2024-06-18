@@ -10,7 +10,6 @@ class NewsObserver
     /**
      * Handle the News "created" event.
      *
-     * @param News $news
      * @return void
      */
     public function created(News $news)
@@ -22,12 +21,11 @@ class NewsObserver
     /**
      * Handle the News "updated" event.
      *
-     * @param News $news
      * @return void
      */
     public function updated(News $news)
     {
-        $cacheKey = sprintf(News::CACHE_KEY . '::%s', $news->c_id);
+        $cacheKey = sprintf(News::CACHE_KEY.'::%s', $news->c_id);
 
         Cache::forget($cacheKey);
     }
@@ -35,7 +33,6 @@ class NewsObserver
     /**
      * Handle the News "deleted" event.
      *
-     * @param News $news
      * @return void
      */
     public function deleted(News $news)
@@ -46,7 +43,6 @@ class NewsObserver
     /**
      * Handle the News "restored" event.
      *
-     * @param News $news
      * @return void
      */
     public function restored(News $news)
@@ -57,7 +53,6 @@ class NewsObserver
     /**
      * Handle the News "force deleted" event.
      *
-     * @param News $news
      * @return void
      */
     public function forceDeleted(News $news)

@@ -3,10 +3,6 @@
 use App\Models\News;
 use Illuminate\Support\Str;
 
-/**
- * @param  $status
- * @return string
- */
 function spanByStatus($status): string
 {
     switch (strtolower($status)) {
@@ -16,7 +12,7 @@ function spanByStatus($status): string
             $labelClass = 'label-success';
             $labelName = 'Active';
             break;
-        case 'no';
+        case 'no':
         case '0':
             $labelClass = 'label-warning';
             $labelName = 'Inactive';
@@ -30,24 +26,24 @@ function spanByStatus($status): string
             $labelName = 'Pending';
 
     }
+
     return sprintf('<span class="label btn btn-flat %s">%s</span>', $labelClass, ucfirst($labelName));
 }
-
 
 function getResizeImage(string $imageUrl, ?string $filter = null): string
 {
     $urlParts = parse_url($imageUrl);
 
-    if (!$urlParts || !isset($urlParts['host'])) {
+    if (! $urlParts || ! isset($urlParts['host'])) {
         return $imageUrl;
     }
 
-    if (!Str::contains($urlParts['host'], 's3.amazonaws.com')) {
+    if (! Str::contains($urlParts['host'], 's3.amazonaws.com')) {
         return $imageUrl;
     }
 
     $urlParts['host'] = News::CLOUD_FRONT_URL;
-    $urlParts['path'] = sprintf("%s%s", $filter, $urlParts['path']);
+    $urlParts['path'] = sprintf('%s%s', $filter, $urlParts['path']);
 
     $path = sprintf(
         '%s://%s%s',
@@ -70,24 +66,25 @@ function getImageSrcSet(string $imageUrl, array $dimensions): array
     foreach ($dimensions as $dimension) {
         $urlParts = parse_url($imageUrl);
 
-        if (!$urlParts) {
+        if (! $urlParts) {
             return [$imageUrl];
         }
 
         $urlParts['host'] = News::CLOUD_FRONT_URL;
 
-        if (!isset($dimension['filter'])) {
+        if (! isset($dimension['filter'])) {
             return [$imageUrl];
         }
 
-        $urlParts['path'] = sprintf("%s/%s", $dimension['filter'], $urlParts['path']);
+        $urlParts['path'] = sprintf('%s/%s', $dimension['filter'], $urlParts['path']);
         $resizedUrls[] = sprintf(
             '%s://%s/%s',
             $urlParts['scheme'],
-            $urlParts['host'] . $urlParts['path'],
+            $urlParts['host'].$urlParts['path'],
             $urlParts['query']
         );
 
     }
+
     return $resizedUrls;
 }

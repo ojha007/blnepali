@@ -6,25 +6,18 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Modules\Backend\Http\Responses\Response;
 
-
 class SettingController extends Controller
 {
-
-    /**
-     * @var string
-     */
     protected string $routePrefix = 'settings';
-    /**
-     * @var string
-     */
-    protected string $viewPath = 'backend::setting.';
 
+    protected string $viewPath = 'backend::setting.';
 
     public function index()
     {
 
         $site_settings = $this->getSettingAttributes();
-        return new Response($this->viewPath . 'index', ["site_settings" => $site_settings]);
+
+        return new Response($this->viewPath.'index', ['site_settings' => $site_settings]);
     }
 
     public function getSettingAttributes()
@@ -64,7 +57,7 @@ class SettingController extends Controller
             'organization_setting' => [
                 'vat_number' => 'number',
                 'registration_number' => 'text',
-            ]
+            ],
 
         ];
     }
@@ -73,14 +66,14 @@ class SettingController extends Controller
     {
         $attributes = $request->all();
         foreach ($attributes as $name => $value) {
-            if ($value)
+            if ($value) {
                 \Setting::set($name, $value);
+            }
         }
         \Setting::save();
+
         return redirect()->back()
             ->with('success', 'Setting Created successfully');
 
     }
-
-
 }

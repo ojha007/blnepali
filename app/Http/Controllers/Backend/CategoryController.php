@@ -20,7 +20,7 @@ class CategoryController extends Controller
             ->whereNull('parent_id')
             ->get();
 
-        return view($this->viewPath . 'index', compact('categories'));
+        return view($this->viewPath.'index', compact('categories'));
     }
 
     public function create()
@@ -29,7 +29,8 @@ class CategoryController extends Controller
             ->pluck('name', 'id')
             ->toArray();
         $category = new Category();
-        return view($this->viewPath . 'create', compact('categories', 'category'));
+
+        return view($this->viewPath.'create', compact('categories', 'category'));
     }
 
     public function edit(Category $category)
@@ -37,9 +38,9 @@ class CategoryController extends Controller
         $categories = Category::whereNull('parent_id')
             ->pluck('name', 'id')
             ->get();
-        return view($this->viewPath . 'edit', compact('categories', 'category'));
-    }
 
+        return view($this->viewPath.'edit', compact('categories', 'category'));
+    }
 
     public function update(CategoryRequest $request, Category $category): RedirectResponse
     {
@@ -48,11 +49,10 @@ class CategoryController extends Controller
         $category->update($attributes);
 
         return redirect()
-            ->route($this->basePath . '.index')
+            ->route($this->basePath.'.index')
             ->with('success', 'News Category updated SuccessFully');
 
     }
-
 
     public function store(CategoryRequest $request): RedirectResponse
     {
@@ -63,17 +63,16 @@ class CategoryController extends Controller
         Category::create($attributes);
 
         return redirect()
-            ->route($this->basePath . '.index')
+            ->route($this->basePath.'.index')
             ->with('success', 'News Created SuccessFully');
     }
-
 
     public function destroy(Category $category): RedirectResponse
     {
         $category->delete();
 
         return redirect()
-            ->route($this->basePath . '.index')
+            ->route($this->basePath.'.index')
             ->with('success', 'News Category deleted  SuccessFully');
 
     }

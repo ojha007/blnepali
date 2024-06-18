@@ -5,12 +5,12 @@ namespace App\Http\Requests;
 use App\Models\Reporter;
 use Illuminate\Foundation\Http\FormRequest;
 
-class  ReporterRequest extends FormRequest
+class ReporterRequest extends FormRequest
 {
     public function rules(): array
     {
         return [
-            'name' => 'required|unique:' . new Reporter(),
+            'name' => 'required|unique:'.new Reporter(),
             'slug' => 'required|string|max:255',
             'designation' => 'nullable',
             'organization' => 'nullable',
@@ -23,5 +23,4 @@ class  ReporterRequest extends FormRequest
             'image' => 'nullable',
         ];
     }
-
 }

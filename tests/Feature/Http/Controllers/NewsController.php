@@ -2,8 +2,6 @@
 
 namespace Tests\Feature\Http\Controllers;
 
-use App\Models\Category;
-use App\Models\News;
 use App\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
@@ -27,5 +25,4 @@ class NewsController extends TestCase
             ->assertViewIs('backend.news.create')
             ->assertViewHas('categories');
     }
-
 }

@@ -18,28 +18,29 @@ class DashboardController extends Controller
                 'title' => 'Total Publish News',
                 'fa' => 'newspaper-o',
                 'bg' => 'green',
-                'count' => News::query()->count()
+                'count' => News::query()->count(),
             ],
             [
                 'title' => 'Active Reporters',
                 'fa' => 'users',
                 'bg' => 'orange',
-                'count' => Reporter::count()
+                'count' => Reporter::count(),
             ],
             [
                 'title' => 'Total Category',
                 'fa' => 'list-alt',
                 'bg' => 'info',
-                'count' => Category::query()->count()
+                'count' => Category::query()->count(),
             ],
             [
                 'title' => 'Total Ads',
                 'fa' => 'ad',
                 'bg' => 'aqua',
-                'count' => Advertisement::count()
+                'count' => Advertisement::count(),
             ],
 
         ];
+
         return view('backend.index', compact('attributes'));
     }
 }
