@@ -20,7 +20,6 @@
                 <div class="col-md-4">
                     @include('frontend.components.news.breaking-news')
                 </div>
-
             </div>
         </div>
     </section>
@@ -56,6 +55,26 @@
             </div>
         </div>
     </section>
+
+    <section class="container-fluid py-1">
+        <div class="container my-4">
+                    @include('frontend.components.news.order-one-of-four')
+                </div>
+        </div>
+    </section>
+
+    @include('frontend.components.news.ghumphir')
+
+
+    <section class="container my-5">
+        <div class="row">
+    @include('frontend.components.news.brand-story')
+          
+    @include('frontend.components.news.sahitya')
+           
+        </div>
+     </section>
+    
 
     <!--ended general news and links news section-->
 
