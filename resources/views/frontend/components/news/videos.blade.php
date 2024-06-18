@@ -3,9 +3,7 @@
         <div class="row g-2">
             <div class="col-md-12">
                 <h5 class="header-title pb-3 text-break-primary">
-                    @if(!$videoNews->isEmpty())
-                        {{$videoNews->first()->category->name}}
-                    @endif
+                    भिडियो
                 </h5>
             </div>
             @foreach($videoNews as $key => $news)

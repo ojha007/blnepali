@@ -33,20 +33,23 @@ class HomeController extends Controller
         $otherNews = $this->newsRepository->getOthersNews();
         $trendingNews = $otherNews->where('category_slug', 'trending');
         $breakingNews = $otherNews->where('category_slug', 'breaking');
-        $videoNews = $otherNews->where('category_slug', 'video');
+        $ghumphir = $otherNews->where('category_slug', 'tourism');
+        $brandStory = $otherNews->where('category_slug', 'brandstory');
+        $sahitya = $otherNews->where('category_slug', 'literature-18-20-12')->take(4);
+        $videoNews = $otherNews->where('category_slug', 'video-report');
         $blSpecialNews = $otherNews->where('category_slug', 'special');
         $anchorNews = $otherNews->where('category_slug', 'anchor');
-
         $allNews = $this->newsRepository->getHomePageNews();
-
         $order1News = $allNews->where('body_position', 1)->take(4)->values();
-        $order2News = $allNews->where('body_position', 2)->values();
-        $order3News = $allNews->where('body_position', 3)->values();
+        $order2News = $allNews->where('body_position', 2)->take(3)->values();
+        $order3News = $allNews->where('body_position', 3)->take(3)->values();
         $order4News = $allNews->where('body_position', 4)->values();
-        $order5News = $allNews->where('body_position', 5)->values();
+        $order5News = $allNews->where('body_position', 5)->take(4)->values();
         $order6News = $allNews->where('body_position', 6)->values();
         $order7News = $allNews->where('body_position', 7)->values();
         $order8News = $allNews->where('body_position', 8)->values();
+        $order1Of4News = $allNews->where('body_position', 9)->take(3)->values();
+
 
         return view(
             $this->viewPath . 'index',
@@ -66,7 +69,12 @@ class HomeController extends Controller
                 'order6News',
                 'order7News',
                 'bodyCategories',
-                'order8News'
+                'order8News',
+                'order1Of4News',
+                'ghumphir',
+                'brandStory',
+                'sahitya'
+                
             )
         );
     }
@@ -80,7 +88,7 @@ class HomeController extends Controller
 
         $cacheKey = sprintf(News::CACHE_KEY . '::%s', $cId);
 
-//        $allNews = Cache::remember($cacheKey, 1800, function () use ($cId, $category) {
+        //        $allNews = Cache::remember($cacheKey, 1800, function () use ($cId, $category) {
         $otherNews = $this->newsRepository->sameCategoryNewsQuery($category->id);
 
         $allNews = News::query()
@@ -94,11 +102,11 @@ class HomeController extends Controller
             ->orderByDesc('publish_date')
             ->union($otherNews)
             ->get();
-//        });
+        //        });
 
         $news = $allNews->where('c_id', '=', $cId)->first();
 
-//        $news->increment('view_count');
+        //        $news->increment('view_count');
 
         $sameCategoryNews = $allNews->where('c_id', '!=', $cId);
 
