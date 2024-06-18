@@ -5,7 +5,7 @@ on:
       - main
 jobs:
   build:
-    name: Bl-Nepali PHP ${{ matrix.php-versions }} - OS ${{ matrix.operating-system}} Build
+    name: PHP ${{ matrix.php-versions }} Build
     runs-on: ubuntu-latest
     env:
       DB_DATABASE: db_test_laravel
@@ -70,10 +70,11 @@ jobs:
         run: php artisan migrate
         env:
           DB_PORT: ${{ job.services.mysql.ports['3306'] }}
+
       - name: Execute tests (Unit and Feature tests) via PHPUnit
         run: vendor/bin/phpunit --coverage-text
         env:
-          DB_PORT: ${{ job.services.mysql.ports['3306'] }}
+          DB_DATABASE: db_test_laravel
 
       - name: Setup Node
         uses: actions/setup-node@v3
