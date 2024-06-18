@@ -40,12 +40,6 @@ class CommentController extends Controller
         } catch (\Exception $exception) {
             (new ErrorRepository())->logError($exception);
             return redirect()->back()->with('error', $exception->getMessage());
-
-
         }
-
-
     }
-
-
 }
