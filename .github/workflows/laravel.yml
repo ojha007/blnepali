@@ -1,8 +1,10 @@
 name: Bl-Nepali
 on:
+  pull_request:
   push:
     branches:
       - main
+
 jobs:
   build:
     name: PHP ${{ matrix.php-versions }} Build
@@ -87,13 +89,22 @@ jobs:
     needs: build
     name: Fix Code Style
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     strategy:
       fail-fast: true
       matrix:
         php: [ 8.2 ]
     steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+
       - name: Install Pint
         run: composer global require laravel/pint
+
+      - name: Run php-cs-fixer
+        uses: docker://oskarstark/php-cs-fixer-ga
 
       - name: Commit linted files
         uses: stefanzweifel/git-auto-commit-action@v5
