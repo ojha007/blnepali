@@ -34,7 +34,7 @@ class HomeController extends Controller
         $otherNews = $this->newsRepository->getOthersNews();
         $trendingNews = $otherNews->where('category_slug', 'trending');
         $breakingNews = $otherNews->where('category_slug', 'breaking');
-        $videoNews = $otherNews->where('category_slug', 'video-report');
+        $videoNews = $otherNews->where('category_slug', 'video');
         $blSpecialNews = $otherNews->where('category_slug', 'special');
         $anchorNews = $otherNews->where('category_slug', 'anchor');
 
