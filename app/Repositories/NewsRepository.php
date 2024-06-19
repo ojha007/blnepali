@@ -22,7 +22,7 @@ class NewsRepository
     {
         $results = Cache::remember(36000,
             'nonCategoryNews',
-            fn() => DB::select(file_get_contents(database_path('procedures/non-categories-news.sql')))
+            fn () => DB::select(file_get_contents(database_path('procedures/non-categories-news.sql')))
         );
 
         return collect($results);
