@@ -189,7 +189,7 @@
                     <div class="d-flex align-items-center">
                         @if($news->guest)
                         <img class="rounded-circle border p-1" style="width: 40px;height:40px;object-fit:cover" src="{{ asset('frontend/images/blLogo.png') }}"
-                             alt="{{$news->guest}}">
+                             alt="{{$news->guest->name}}">
                     @elseif($news->reporter)
                     <img class="rounded-circle border p-1" style="width: 40px;height:40px;object-fit:cover"                                src="{{ $news->reporter->image ?? asset('frontend/images/blLogo.png') }}"
                                 alt="{{$news->reporter->name}}">
@@ -312,7 +312,7 @@
                         <img src="{{ $news->image }}" class="card-img-top" alt="{{ $news->image_alt }}">
                         <div class="card-body p-0 pt-3 d-flex flex-column">
                             <h5 class="card-title small-title">{{ $news->title }}</h5>
-                            <p class="card-text mb-4 text-muted">{{ $news->description }}</p>
+                            {{-- <p class="card-text mb-4 text-muted">{{ $news->description }}</p> --}}
                         </div>
                     </div>
                 </div>
