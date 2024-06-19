@@ -12,7 +12,7 @@
                 </figure>
                 <a href="{{ route('category.news.show', ['category' => $news->category_slug, 'c_id' => $news->c_id]) }}">
                     <h1 class="small-title py-1">
-                        {{!! $news->title !!}}
+                        {{ $news->title }}
                     </h1>
                 </a>
             </div>
