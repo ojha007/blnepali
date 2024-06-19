@@ -20,6 +20,7 @@ class NewsRepository
     public function getOthersNews(): Collection
     {
         $results = DB::select(file_get_contents(database_path('procedures/non-categories-news.sql')));
+
         return collect($results);
     }
 
