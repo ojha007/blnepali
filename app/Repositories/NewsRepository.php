@@ -6,7 +6,6 @@ use App\Models\News;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 
 class NewsRepository
@@ -20,11 +19,7 @@ class NewsRepository
 
     public function getOthersNews(): Collection
     {
-        $results = Cache::remember(36000,
-            'nonCategoryNews',
-            fn() => DB::select(file_get_contents(database_path('procedures/non-categories-news.sql')))
-        );
-
+        $results = DB::select(file_get_contents(database_path('procedures/non-categories-news.sql')));
         return collect($results);
     }
 
