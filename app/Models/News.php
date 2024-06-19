@@ -48,6 +48,7 @@ use Illuminate\Support\Carbon;
  * @property-read User|null $deletedBy
  * @property-read Reporter|null $reporter
  * @property-read User|null $updatedBy
+ *
  * @method static NewsFactory factory(...$parameters)
  * @method static Builder|News newModelQuery()
  * @method static Builder|News newQuery()
@@ -95,10 +96,15 @@ class News extends Model
     const CLOUD_FRONT_URL = 'd2y5l9fi6urcm1.cloudfront.net';
 
     const CACHE_KEY = 'BL_NEPALI_CACHE_NEWS';
+
     const PUBLISHED = 'Published';
+
     const UNPUBLISHED = 'Unpublished';
+
     const DRAFT = 'Draft';
+
     protected $table = 'np_news';
+
     protected $guarded = [];
 
     protected $with = ['category'];
@@ -133,12 +139,12 @@ class News extends Model
 
     public static function otherNewsCacheKey(): string
     {
-        return sprintf(self::CACHE_KEY . '::%s', 'OTHER_NEWS');
+        return sprintf(self::CACHE_KEY.'::%s', 'OTHER_NEWS');
     }
 
     public static function cacheKey(int|string $cId): string
     {
-        return sprintf(self::CACHE_KEY . '::%s', $cId);
+        return sprintf(self::CACHE_KEY.'::%s', $cId);
     }
 
     public function reporter(): BelongsTo
