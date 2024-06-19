@@ -1,4 +1,4 @@
-WITH ranked_news
+ WITH ranked_news
          AS (SELECT news.id,
                     category_id,
                     ROW_NUMBER() OVER (PARTITION BY category_id ORDER BY publish_date DESC) AS row_num
@@ -10,22 +10,19 @@ WITH ranked_news
                AND news.status = 'active'
                AND c.body_position < 17
              order by publish_date desc
-             limit 500)
+             limit 1000)
 SELECT news.title,
        news.sub_title,
        news.id,
        news.c_id,
        news.short_description,
-
        reporters.image as reporter_image,
        reporters.name  as reporter_name,
        reporters.name  as reporter_id,
        reporters.slug  as reporter_slug,
-
        categories.slug as category_slug,
-       categories.slug as category_name,
+       categories.name as category_name,
        categories.id   as category_id,
-
        news.publish_date,
        news.date_line,
        news.image,

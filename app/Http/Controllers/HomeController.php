@@ -7,6 +7,8 @@ use App\Models\News;
 use App\Repositories\CategoryRepository;
 use App\Repositories\NewsRepository;
 use Exception;
+use Illuminate\Contracts\Support\Renderable;
+use Illuminate\Http\RedirectResponse;
 
 class HomeController extends Controller
 {
@@ -22,7 +24,7 @@ class HomeController extends Controller
         $this->categoryRepository = $categoryRepository;
     }
 
-    public function index()
+    public function index(): Renderable
     {
         $categories = $this->categoryRepository->getCategories();
 
@@ -38,6 +40,7 @@ class HomeController extends Controller
         $videoNews = $otherNews->where('category_slug', 'video-report');
         $blSpecialNews = $otherNews->where('category_slug', 'special');
         $anchorNews = $otherNews->where('category_slug', 'anchor');
+
         $allNews = $this->newsRepository->getHomePageNews();
         $order1News = $allNews->where('body_position', 1)->take(4)->values();
         $order2News = $allNews->where('body_position', 2)->take(3)->values();
@@ -50,7 +53,7 @@ class HomeController extends Controller
         $order1Of4News = $allNews->where('body_position', 9)->take(3)->values();
 
         return view(
-            $this->viewPath.'index',
+            $this->viewPath . 'index',
             compact(
                 'order1News',
                 'trendingNews',
@@ -72,21 +75,20 @@ class HomeController extends Controller
                 'ghumphir',
                 'brandStory',
                 'sahitya'
-
             )
         );
     }
 
-    public function show($categorySlug, $cId)
+    public function show(string $categorySlug, int $cId): Renderable|RedirectResponse
     {
         $category = Category::whereSlug($categorySlug)
             ->select('id')
             ->first();
-        if (! $category) {
+        if (!$category) {
             return redirect('/');
         }
 
-        $cacheKey = sprintf(News::CACHE_KEY.'::%s', $cId);
+        $cacheKey = News::getCacheKey($cId);
 
         //        $allNews = Cache::remember($cacheKey, 1800, function () use ($cId, $category) {
         $otherNews = $this->newsRepository->sameCategoryNewsQuery($category->id);
@@ -118,7 +120,7 @@ class HomeController extends Controller
         $blSpecialNews = $otherNews->where('type', 'special');
 
         return view(
-            $this->viewPath.'news-detail',
+            $this->viewPath . 'news-detail',
             compact(
                 'news',
                 'headerCategories',
@@ -129,7 +131,7 @@ class HomeController extends Controller
         );
     }
 
-    public function newsByCategory($slug)
+    public function newsByCategory(string $slug): Renderable|RedirectResponse
     {
         try {
             $categoryIds = $this->categoryRepository->getCategoryIdsBySlug($slug);
@@ -143,14 +145,11 @@ class HomeController extends Controller
             $trendingNews = $otherNews->where('type', 'trending');
 
             return view(
-                $this->viewPath.'category.index',
+                $this->viewPath . 'category.index',
                 compact('headerCategories', 'news', 'trendingNews')
             );
-        } catch (Exception $exception) {
-
+        } catch (Exception) {
             return redirect()->route('index');
-
-            //            DB::raw(')')
         }
     }
 }

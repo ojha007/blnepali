@@ -4,13 +4,17 @@ namespace App\Repositories;
 
 use App\Models\Category;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 
 class CategoryRepository
 {
     public function getCategories(): Collection
     {
-        return Category::query()->whereNull('parent_id')->get();
+        return Cache::rememberForever(
+            'categories',
+            fn() => Category::query()->whereNull('parent_id')->get()
+        );
     }
 
     public function getCategoryIdsBySlug($slug): array
@@ -20,7 +24,7 @@ class CategoryRepository
             ->where('slug', '=', $slug)
             ->first();
 
-        if (! $category) {
+        if (!$category) {
             return [];
         }
 
@@ -47,7 +51,7 @@ class CategoryRepository
             ->where('id', '=', $id)
             ->first();
 
-        if (! $category) {
+        if (!$category) {
             return [];
         }
 
