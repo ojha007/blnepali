@@ -179,7 +179,7 @@
         </div>
     </section> --}}
     <div class="container">
-        {{ print_r($news) }}
+        {{-- {{ print_r($news) }} --}}
         <div class="row py-5">
             <div class="col-md-8 news-detail">
                 <h1 class="fw-bold fs-2 my-4">
@@ -245,21 +245,22 @@
                 <div class="col-md-12 mb-4">
                     <h5 class="header-title">ब्रेक</h5>
                 </div>
-                @foreach($trendingNews->take(1) as $key =>$news)
+                @foreach($breakingNews->take(1) as $key =>$news)
 
                 <div class="border-bottom border-2 pb-2">
                     <figure class="position-relative">
-                        <img src="https://www.onlinekhabar.com/wp-content/uploads/2023/10/Leo-Thalapati-Vijay.jpg" alt="">
+                            <img src="{{ $news->image }}" alt="{{ $news->image_alt }}" class="img-fluid">
+                     
                     </figure>
                     <a href="">
                         <h1 class="small-title py-1">
-                            ‘जम्मु–कश्मीर’ अर्थात् डरै–डरको साम्राज्य!
+                            {!! $news->title !!}
                         </h1>
                     </a>
                 </div>
                 @endforeach
                 <ul class="list-style list-group mt-3">
-                    @foreach($trendingNews as $key =>$news)
+                    @foreach($breakingNews as $key =>$news)
                     <li class="m-0 my-2">
                         <a class="d-flex align-items-center a-hover" href="">
                             
@@ -268,7 +269,13 @@
                             </h2>
                         </a>
                         <span class="souce fw-bold text-muted">
-                            बिएल संवाददाता -काठमाडाैँ
+                            @if($news->guest)
+                                {{$news->guest}}
+                            @elseif($news->reporter)
+                                {{$news->reporter->name}}
+                            @endif
+                            {{$news->date_line ? '-' .$news->date_line  :''}}
+
                         </span>
                     </li>
                     @endforeach
@@ -277,120 +284,21 @@
                 <div class="col-md-12 my-4">
                     <h5 class="header-title">ट्रेन्डिङ</h5>
                 </div>
-    
-                 <div class="d-flex align-items-center border-bottom mb-3">
-          <figure 
-             class="post_img">
-          <a href="https://breaknlinks.com/np/category/social-10-2-28/news/10">
-          <img
-             style="    width: 80px;
-        height: 80px;"
-             src="https://www.onlinekhabar.com/wp-content/uploads/2023/08/Prakriti-Wasti-2.jpg" alt="‘जम्मु–कश्मीर’ अर्थात् डरै–डरको साम्राज्य !">
-          </a>
-          </figure>
-          <div class="ps-3">
-          <h5 class="fw-bold medium-title fs-5">
-          <a href="https://breaknlinks.com/np/category/social-10-2-28/news/10">
-       ज्ञानेन्द्र शाहलाई माधव नेपालको चुनौती : पार्टी खोलेर चुनाव लड्नुस्
-    
-          </a>
-          </h5>
-          <p class="text-muted fw-bold">
-          बिएल संवाददाता
-          
-          </p>
-          </div>
-          </div>
-                 <div class="d-flex align-items-center border-bottom mb-3">
-          <figure 
-             class="post_img">
-          <a href="https://breaknlinks.com/np/category/social-10-2-28/news/10">
-          <img
-             style="    width: 80px;
-        height: 80px;"
-             src="https://www.onlinekhabar.com/wp-content/uploads/2023/09/Nepal-Cricket-association-CAN.jpg" alt="‘जम्मु–कश्मीर’ अर्थात् डरै–डरको साम्राज्य !">
-          </a>
-          </figure>
-          <div class="ps-3">
-          <h5 class="fw-bold medium-title fs-5">
-          <a href="https://breaknlinks.com/np/category/social-10-2-28/news/10">
-          मन्त्रिपरिषद्‍मा उपप्रधानमन्त्री श्रेष्ठको स्वास्थ्य अवस्थाबारे प्रधानमन्त्रीको ‘ब्रिफिङ’   
-    
-          </a>
-          </h5>
-          <p class="text-muted fw-bold">
-          बिएल संवाददाता
-          
-          </p>
-          </div>
-          </div>
-                 <div class="d-flex align-items-center border-bottom mb-3">
-          <figure 
-             class="post_img">
-          <a href="https://breaknlinks.com/np/category/social-10-2-28/news/10">
-          <img
-             style="    width: 80px;
-        height: 80px;"
-             src="https://www.onlinekhabar.com/wp-content/uploads/2023/10/Janakpur-Airport-UML-1024x472.jpg" alt="‘जम्मु–कश्मीर’ अर्थात् डरै–डरको साम्राज्य !">
-          </a>
-          </figure>
-          <div class="ps-3">
-          <h5 class="fw-bold medium-title fs-5">
-          <a href="https://breaknlinks.com/np/category/social-10-2-28/news/10">
-          ओलीलाई स्वागत गर्न जनकपुर विमानस्थलको धावनमार्गमै पुगे कार्यकर्ता
-          </a>
-          </h5>
-          <p class="text-muted fw-bold">
-          बिएल संवाददाता
-          
-          </p>
-          </div>
-          </div>
-                 <div class="d-flex align-items-center border-bottom mb-3">
-          <figure 
-             class="post_img">
-          <a href="https://breaknlinks.com/np/category/social-10-2-28/news/10">
-          <img
-             style="    width: 80px;
-        height: 80px;"
-             src="https://www.onlinekhabar.com/wp-content/uploads/2023/10/Israel-1-1024x682.jpg" alt="‘जम्मु–कश्मीर’ अर्थात् डरै–डरको साम्राज्य !">
-          </a>
-          </figure>
-          <div class="ps-3">
-          <h5 class="fw-bold medium-title fs-5">
-          <a href="https://breaknlinks.com/np/category/social-10-2-28/news/10">
-          इजरायल आक्रमणमा १० नेपाली मारिएको पुष्टि
-    
-          </a>
-          </h5>
-          <p class="text-muted fw-bold">
-          बिएल संवाददाता
-          
-          </p>
-          </div>
-          </div>
-                 <div class="d-flex align-items-center  mb-3">
-          <figure 
-             class="post_img">
-          <a href="https://breaknlinks.com/np/category/social-10-2-28/news/10">
-          <img
-             style="    width: 80px;
-        height: 80px;"
-             src="https://i0.wp.com/www.nayapage.com/wp-content/uploads/2023/10/gaun-aayako-bato_7w5cd97j2y.png" alt="‘जम्मु–कश्मीर’ अर्थात् डरै–डरको साम्राज्य !">
-          </a>
-          </figure>
-          <div class="ps-3">
-          <h5 class="fw-bold medium-title fs-5">
-          <a href="https://breaknlinks.com/np/category/social-10-2-28/news/10">
-          ‘जम्मु–कश्मीर’ अर्थात् डरै–डरको साम्राज्य !
-          </a>
-          </h5>
-          <p class="text-muted fw-bold">
-          बिएल संवाददाता
-          
-          </p>
-          </div>
-          </div>
+                @foreach($trendingNews as $news)
+                <div class="d-flex align-items-center border-bottom mb-3">
+                    <figure class="post_img">
+                        <a href="{{ $news->link }}">
+                            <img style="width: 80px; height: 80px;" src="{{ $news->image }}" alt="{{ $news->image_alt }}">
+                        </a>
+                    </figure>
+                    <div class="ps-3">
+                        <h5 class="fw-bold medium-title fs-5">
+                            <a href="{{ $news->link }}">{{ $news->title }}</a>
+                        </h5>
+                        <p class="text-muted fw-bold">{{ $news->author }}</p>
+                    </div>
+                </div>
+            @endforeach
             </div>
              </div>
         </div>
@@ -398,44 +306,19 @@
           <h5 class="header-title mb-3">सिफारिश</h5>
     
           <div class="row">
-             
-             <div class="col-md-3">
-                  <div class="card border-0">
-              <img src="https://www.onlinekhabar.com/wp-content/uploads/2023/10/Rohit-Poudel-nepali-cricket-team.jpg" class="card-img-top" alt="Card Image">
-              <div class="card-body p-0 pt-3 d-flex flex-column">
-                <h5 class="card-title small-title">उच्च रक्तचापले मुटुमा पार्न सक्ने ५ घातक असर</h5>
-                <p class="card-text mb-4 text-muted">उच्च रक्तचाप भएका व्यक्तिलाई मुटुरोग हुने सम्भावना अधिक हुन्छ । किनकि शरीरमा रक्तचाप बढेको बेला मुटुले बढी दबाबमा काम  हुन्छ...</p>
+            @foreach($sameCategoryNews as $news)
+                <div class="col-md-3">
+                    <div class="card border-0">
+                        <img src="{{ $news->image }}" class="card-img-top" alt="{{ $news->image_alt }}">
+                        <div class="card-body p-0 pt-3 d-flex flex-column">
+                            <h5 class="card-title small-title">{{ $news->title }}</h5>
+                            <p class="card-text mb-4 text-muted">{{ $news->description }}</p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-                </div>
-             <div class="col-md-3">
-                  <div class="card border-0">
-              <img src="https://www.onlinekhabar.com/wp-content/uploads/2023/10/Ghar-lipne-mato-dashain-768x461.jpg" class="card-img-top" alt="Card Image">
-              <div class="card-body p-0 pt-3 d-flex flex-column">
-                <h5 class="card-title small-title">उच्च रक्तचापले मुटुमा पार्न सक्ने ५ घातक असर</h5>
-                <p class="card-text mb-4 text-muted">उच्च रक्तचाप भएका व्यक्तिलाई मुटुरोग हुने सम्भावना अधिक हुन्छ । किनकि शरीरमा रक्तचाप बढेको बेला मुटुले बढी दबाबमा काम  हुन्छ...</p>
-                </div>
-            </div>
-                </div>
-             <div class="col-md-3">
-                  <div class="card border-0">
-              <img src="https://www.onlinekhabar.com/wp-content/uploads/2023/10/u-19-nepali-cricket-toli.jpg" class="card-img-top" alt="Card Image">
-              <div class="card-body p-0 pt-3 d-flex flex-column">
-                <h5 class="card-title small-title">उच्च रक्तचापले मुटुमा पार्न सक्ने ५ घातक असर</h5>
-                <p class="card-text mb-4 text-muted">उच्च रक्तचाप भएका व्यक्तिलाई मुटुरोग हुने सम्भावना अधिक हुन्छ । किनकि शरीरमा रक्तचाप बढेको बेला मुटुले बढी दबाबमा काम  हुन्छ...</p>
-                </div>
-            </div>
-                </div>
-             <div class="col-md-3">
-                  <div class="card border-0">
-              <img src="https://www.onlinekhabar.com/wp-content/uploads/2023/10/Chatpate-Sindhuli-mai-270x170.jpg" class="card-img-top" alt="Card Image">
-              <div class="card-body p-0 pt-3 d-flex flex-column">
-                <h5 class="card-title small-title">उच्च रक्तचापले मुटुमा पार्न सक्ने ५ घातक असर</h5>
-                <p class="card-text mb-4 text-muted">उच्च रक्तचाप भएका व्यक्तिलाई मुटुरोग हुने सम्भावना अधिक हुन्छ । किनकि शरीरमा रक्तचाप बढेको बेला मुटुले बढी दबाबमा काम  हुन्छ...</p>
-                </div>
-            </div>
-                </div>
-             </div>
+            @endforeach
           </div>
+        </div>
+        
     </div>
 @endsection
