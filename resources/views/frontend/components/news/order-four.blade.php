@@ -33,6 +33,8 @@
                                     <a href="{{route('category.news.show',['category'=>$news->category_slug,'c_id'=>$news->c_id])}}">
                                         <img src="{{getResizeImage($news->image,'/fit-in/250x150')}}"
                                              class="card-img"
+                                        style="width: 100px;height: 80px;object-fit:cover"
+
                                              alt="{{$news->image_alt ?? $news->image_description ?? ''}}"/>
                                     </a>
                                 </figure>

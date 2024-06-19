@@ -34,9 +34,6 @@ class HomeController extends Controller
         $otherNews = $this->newsRepository->getOthersNews();
         $trendingNews = $otherNews->where('category_slug', 'trending');
         $breakingNews = $otherNews->where('category_slug', 'breaking');
-        $ghumphir = $otherNews->where('category_slug', 'tourism');
-        $brandStory = $otherNews->where('category_slug', 'brandstory');
-        $sahitya = $otherNews->where('category_slug', 'literature-18-20-12')->take(4);
         $videoNews = $otherNews->where('category_slug', 'video-report');
         $blSpecialNews = $otherNews->where('category_slug', 'special');
         $anchorNews = $otherNews->where('category_slug', 'anchor');
@@ -51,6 +48,9 @@ class HomeController extends Controller
         $order7News = $allNews->where('body_position', 7)->values();
         $order8News = $allNews->where('body_position', 8)->values();
         $order1Of4News = $allNews->where('body_position', 9)->take(3)->values();
+        $ghumphir = $allNews->where('body_position', 13)->values();
+        $brandStory = $allNews->where('body_position', 21)->take(6)->values();
+        $sahitya = $allNews->where('body_position', 14)->values();
 
         return view(
             $this->viewPath . 'index',
@@ -118,6 +118,7 @@ class HomeController extends Controller
         $otherNews = $this->newsRepository->getOthersNews();
         $trendingNews = $otherNews->where('type', 'trending');
         $blSpecialNews = $otherNews->where('type', 'special');
+        $breakingNews = $otherNews->where('type', 'breaking');
 
         return view(
             $this->viewPath . 'news-detail',
@@ -126,7 +127,8 @@ class HomeController extends Controller
                 'headerCategories',
                 'blSpecialNews',
                 'trendingNews',
-                'sameCategoryNews'
+                'sameCategoryNews',
+                'breakingNews'
             )
         );
     }
