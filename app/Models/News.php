@@ -142,10 +142,12 @@ class News extends Model
         return sprintf(self::CACHE_KEY.'::%s', 'OTHER_NEWS');
     }
 
-    public static function cacheKey(int|string $cId): string
+    public static function getCacheKey(int|string $cId): string
     {
         return sprintf(self::CACHE_KEY.'::%s', $cId);
     }
+    
+    
 
     public function reporter(): BelongsTo
     {
