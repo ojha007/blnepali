@@ -146,8 +146,6 @@ class News extends Model
     {
         return sprintf(self::CACHE_KEY.'::%s', $cId);
     }
-    
-    
 
     public function reporter(): BelongsTo
     {
