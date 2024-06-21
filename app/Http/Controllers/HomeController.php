@@ -50,7 +50,7 @@ class HomeController extends Controller
         $order1Of4News = $allNews->where('body_position', 9)->take(3)->values();
 
         $ghumphir = $allNews->where('body_position', 13)->values();
-        $brandStory = $allNews->where('body_position', 21)->take(6)->values();
+        $brandStory = $allNews->where('category_id', 29)->take(6)->values();
         $sahitya = $allNews->where('body_position', 14)->values();
 
         return view(
