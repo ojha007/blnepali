@@ -9,7 +9,7 @@
             </h1>
         </a>
     </div>
-            @foreach($breakingNews->skip(1)->take(2) as $key => $news)
+            @foreach($breakingNews->skip(1)->take(1) as $key => $news)
             <div style="background: url('{{ $news->image }}'); background-repeat: no-repeat; height: 600px; background-size: cover; border-radius: 10px;" class="container banner position-relative text-center my-5 py-4">
                 <a href="{{ route('news.show', ['id' => $news->id]) }}" class="a-hover">
                     <div class="text-center mb-4 fw-bolder position-absolute text-white fs-1 shadow-sm bg-gradient-primary px-4 py-2 fw-bolder rounded-2" style="left: 0; bottom: -25px; right: 0;">

@@ -8,7 +8,7 @@
                         <h5 class="header-title">एंकर</h5>
                     </div>
                     <div class="col-md-6">
-                        @php($anchorFirst = $anchorNews->first())
+                        @php($anchorFirst = $anchorNews->skip(1)->first())
 
                         @if($anchorFirst)
                             <figure class="position-relative cover-photo">

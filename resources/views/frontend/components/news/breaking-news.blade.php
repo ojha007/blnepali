@@ -3,7 +3,7 @@
         <h5 class="header-title">ब्रेक</h5>
     </div>
 
-    @php($breakFirst = $breakingNews->first())
+    @php($breakFirst = $breakingNews->skip(2)->first())
 
     @if($breakFirst)
         <div class="border-bottom border-2 pb-2">
