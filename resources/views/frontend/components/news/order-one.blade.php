@@ -22,6 +22,8 @@
                     </h1>
                     <p class="post-description-sm p-3">
                         {!! $order1First->sub_title !!}
+                        {!! $order1First->short_description !!}
+
                     </p>
                 </a>
             </div>

@@ -29,7 +29,7 @@
                     </div>
                     <div class="col-md-6 small-col">
                         <div class="row">
-                            @foreach($anchorNews->skip(1) as $key=>$news)
+                            @foreach($anchorNews->skip(2) as $key=>$news)
                                 <div class="col-md-6">
                                     <figure class="position-relative">
                                         <img src="{{getResizeImage($news->image)}}"
