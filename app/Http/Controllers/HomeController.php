@@ -111,7 +111,7 @@ class HomeController extends Controller
 
         //        $news->increment('view_count');
 
-        $sameCategoryNews = $allNews->where('c_id', '!=', $cId);
+        $sameCategoryNews = $allNews->where('c_id', '!=', $cId)->take(4);
 
         $categories = $this->categoryRepository->getCategories();
         $headerCategories = $categories->sortBy('header_position')->take(10);

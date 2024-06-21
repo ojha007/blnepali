@@ -195,7 +195,7 @@
                                 alt="{{$news->reporter->name}}">
                     @endif
                         <span class="ps-3 souce fw-bold text-muted">
-                            {{$news->guest ?? $news->reporter->name ?? ''}}
+                            {{-- {{$news->guest ?? $news->reporter->name ?? ''}} --}}
                         </span>
                     </div>
                     <div class="">
