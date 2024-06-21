@@ -200,28 +200,7 @@
                     </div>
                     <div class="">
                         <div class='social-share-btns-container'>
-                            <div class='social-share-btns'>
-                                <a class='share-btn share-btn-twitter' href='https://twitter.com/intent/tweet?text=https://codepen.io/marko-zub/#' rel='nofollow' target='_blank'>
-                                    <i class='ion-social-twitter'></i>
-                                    Tweet
-                                </a>
-                                <a class='share-btn share-btn-facebook' href='https://www.facebook.com/sharer/sharer.php?u=https://codepen.io/marko-zub/#' rel='nofollow' target='_blank'>
-                                    <i class='ion-social-facebook'></i>
-                                    Share
-                                </a>
-                                <a class='share-btn share-btn-linkedin' href='https://www.linkedin.com/cws/share?url=https://codepen.io/marko-zub/#' rel='nofollow' target='_blank'>
-                                    <i class='ion-social-linkedin'></i>
-                                    Share
-                                </a>
-                                <a class='share-btn share-btn-reddit' href='http://www.reddit.com/submit?url=https://codepen.io/marko-zub/&amp;title=Marko+Zub+codepen' rel='nofollow' target='_blank'>
-                                    <i class='ion-social-reddit'></i>
-                                    Share
-                                </a>
-                                <a class='share-btn share-btn-mail' href='mailto:?subject=Look Fun Codepen Account&amp;amp;body=https://codepen.io/marko-zub/#' rel='nofollow' target='_blank' title='via email'>
-                                    <i class='ion-paper-airplane'></i>
-                                    Share
-                                </a>
-                            </div>
+                            <div class="sharethis-inline-share-buttons"></div>
                         </div>
                     </div>
                 </div>
@@ -235,7 +214,7 @@
     
 
                 <p>
-                    {{!! $news->description !!}}
+                    {!! $news->description !!}
                 </p>
                 
             </div>
