@@ -11,49 +11,48 @@
         <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-9 col-xl-9 col-xxl-9">
                 <div class="news-row">
-                    @if(!$news->isEmpty())
-                        <div class="bl-newsHeader">
-                            <h5 class="header-title">{{$news->first()->category->name}}</h5>
-                        </div>
-                    @endif
+                    <div class="col-md-12 text-left my-2 py-2">
+                        <h1 class="small-title">
+                            @if(!$news->isEmpty())
+                            <div class="bl-newsHeader">
+                                <h5 class="header-title">{{$news->first()->category->name}}</h5>
+                            </div>
+                        @endif
+                        </h1>
+                        <hr style="margin-top:-8px">
+                    </div>
+                   
                     <div class="bl-news bl-news--condensed">
                         @foreach($news as $key=>$item)
-                            @if($key === 0)
-                                <div class="bl-news-condensed-item bl-news-condensed-item--highlight">
-                                    <div class="bl-newsPost">
-                                        <figure class="post_img">
-                                            <a href="{{route('category.news.show',['category'=>$item->category->slug,'c_id'=>$item->c_id])}}">
-                                                <img src="{{$item->image}}" alt="{{$item->image_description}}"/>
-                                            </a>
-                                        </figure>
-                                        <div class="post_content">
-                                            <h5 class="post_title">
-                                                <a href="{{route('category.news.show',['category'=>$item->category->slug,'c_id'=>$item->c_id])}}">
-                                                    {{$item->title}}
+                                <div class="col-md-12 mb-5">
+                                    <div class="shadow-sm">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="shadow-sm  text-center">
+                                                    <a class="my-5" href="breaknlinks.com/963047">
+                                                        <img width="840" height="540"
+                                                            src="{{$item->image}}"
+                                                            class="attachment-full size-full wp-post-image" alt="" decoding="async"
+                                                            fetchpriority="high"
+                                                            srcset="{{$item->image}} 840w, {{$item->image}} 768w"
+                                                            sizes="(max-width: 840px) 100vw, 840px">
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <a class="my-5" href="breaknlinks.com/963047">
+                                                    <div class="media-body p-3">
+                                                        <h2 class="mt-0 p-2 small-title"> {!! $item->title !!}
+                                                        </h2>
+                                                        <p class="">
+                                                            {!! $item->short_description !!}
+                                                        </p>
+                                                    </div>
                                                 </a>
-                                            </h5>
-                                            <p>{!! $item->short_description !!}</p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            @else
-                                <div class="bl-news-condensed-item">
-                                    <div class="bl-newsPost">
-                                        <figure class="post_img">
-                                            <a href="{{route('category.news.show',['category'=>$item->category->slug,'c_id'=>$item->c_id])}}">
-                                                <img src="{{$item->image}}" alt="{{$item->image_description}}"/>
-                                            </a>
-                                        </figure>
-                                        <div class="post_content">
-                                            <h5 class="post_title">
-                                                <a href="{{route('category.news.show',['category'=>$item->category->slug,'c_id'=>$item->c_id])}}">
-                                                    {!! $item->title !!}
-                                                </a>
-                                            </h5>
-                                        </div>
-                                    </div>
-                                </div>
-                            @endif
                         @endforeach
                     </div>
                     <div class="flex justify-content-center mt-5">
@@ -64,29 +63,24 @@
             <div class="col-sm-12 col-md-12 col-lg-3 col-xl-3 col-xxl-3 pt-4">
 
                 <div class="aside-news-rows sticky-xl-top">
-                    <div class="bl-news bl-news--trending">
-                        <div class="post-widgetHeader">
-                            <h4>Trending</h4>
-                        </div>
-                        <div class="post-widgetBody">
-                            <div class="trendingNews">
-                                <!--repeatable item-->
-                                @foreach($trendingNews ?? [] as $news)
-                                    <div class="trendingNews-item">
-                                        <h5 class="post_title">
-                                            <a href="{{route('category.news.show',['category'=>$news->category->slug,'c_id'=>$news->c_id])}}">
-                                                {{$news->title}}</a>
-                                        </h5>
-                                        <span
-                                            class="post_source">
-                                            {{$news->guest ??$news->reporter->name ?? '' }}
-                                            {{$news->date_line ? '- '. $news->date_line : ''}}
-                                        </span>
-                                    </div>
-                                @endforeach
-                            </div>
+                    <div class="col-md-12 my-4">
+                        <h5 class="header-title">ट्रेन्डिङ</h5>
+                    </div>
+                    @foreach($trendingNews as $news)
+                    <div class="d-flex align-items-center border-bottom mb-3">
+                        <figure class="post_img">
+                            <a href="{{ $news->link }}">
+                                <img style="width: 80px; height: 80px;" src="{{ $news->image }}" alt="{{ $news->image_alt }}">
+                            </a>
+                        </figure>
+                        <div class="ps-3">
+                            <h5 class="fw-bold medium-title fs-5">
+                                <a href="{{ $news->link }}">{{ $news->title }}</a>
+                            </h5>
+                            <p class="text-muted fw-bold">{{ $news->author }}</p>
                         </div>
                     </div>
+                @endforeach
                 </div>
             </div>
         </div>
