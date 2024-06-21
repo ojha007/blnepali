@@ -235,7 +235,7 @@
     
 
                 <p>
-                    {{ $news->description }}
+                    {{!! $news->description !!}}
                 </p>
                 
             </div>
