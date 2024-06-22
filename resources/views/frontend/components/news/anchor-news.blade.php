@@ -1,14 +1,17 @@
 @isset($anchorNews)
     <section class="container mt-5">
         <div class="row">
+            @php($anchorFirst = $anchorNews->skip(1)->first())
             <!-- column should be col-md-9 if ads other wise col-md-12 -->
             <div class="col-md-12">
                 <div class="row">
                     <div class="col-md-12 mb-4">
-                        <h5 class="header-title">एंकर</h5>
+                        <a>
+
+                            <h5 class="header-title">एंकर</h5>
+                        </a>
                     </div>
                     <div class="col-md-6">
-                        @php($anchorFirst = $anchorNews->skip(1)->first())
 
                         @if($anchorFirst)
                             <figure class="position-relative cover-photo">

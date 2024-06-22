@@ -27,7 +27,7 @@
                                 <div class="col-md-12 mb-5">
                                     <div class="shadow-sm">
                                         <div class="row">
-                                            <div class="col-md-6">
+                                            <div class="col-md-4">
                                                 <div class="shadow-sm  text-center">
                                                     <a class="my-5" href="{{route('category.news.show',['category'=>$item->category->slug,'c_id'=>$item->c_id])}}">
                                                         <img width="840" height="540"
@@ -39,7 +39,7 @@
                                                     </a>
                                                 </div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-8">
                                                 <a class="my-5" href="{{route('category.news.show',['category'=>$item->category->slug,'c_id'=>$item->c_id])}}">
                                                     <div class="media-body p-3">
                                                         <h2 class="mt-0 p-2 small-title"> {!! $item->title !!}
