@@ -223,6 +223,7 @@ class HomeController extends Controller
             return redirect()->route('index');
         }
     }
+
     public function newsByAuthor(string $reporter_id): Renderable|RedirectResponse
     {
         // try {
@@ -235,7 +236,7 @@ class HomeController extends Controller
         $trendingNews = $otherNews->where('type', 'trending');
 
         return view(
-            $this->viewPath . 'author.index',
+            $this->viewPath.'author.index',
             compact('headerCategories', 'news', 'trendingNews')
         );
         // } catch (Exception) {
