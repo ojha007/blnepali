@@ -9,7 +9,7 @@
 @section('content')
     <section class="container">
         <div class="row">
-            <div class="col-sm-12 col-md-12 col-lg-9 col-xl-9 col-xxl-9">
+            <div class="col-sm-12 col-md-12 col-lg-8 col-xl-8 col-xxl-8">
                 <div class="news-row">
                     <div class="col-md-12 text-left my-2 py-2">
                         <h1 class="small-title">
@@ -62,7 +62,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-12 col-md-12 col-lg-3 col-xl-3 col-xxl-3 pt-4">
+            <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4 col-xxl-4 pt-4">
 
                 <div class="aside-news-rows sticky-xl-top">
                     <div class="bl-news bl-news--trending">
