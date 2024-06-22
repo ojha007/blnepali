@@ -1,7 +1,7 @@
 @extends('frontend.layouts.master')
 @section('title')
     @if(!$news->isEmpty())
-        {{$news->first()->category->name}}
+        {{$news->first()->reporter->name}}
     @else
         Breaknlinks
     @endif
