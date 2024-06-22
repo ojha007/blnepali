@@ -236,11 +236,7 @@ class HomeController extends Controller
             $trendingNews = $otherNews->where('type', 'trending');
 
             return view(
-<<<<<<< HEAD
-                $this->viewPath.'author.index',
-=======
                 $this->viewPath . 'author.index',
->>>>>>> 83992ab (reporter-name)
                 compact('headerCategories', 'news', 'trendingNews')
             );
         } catch (Exception) {
