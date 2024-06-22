@@ -22,7 +22,7 @@
                                     {!! $anchorFirst->title !!}
                                 </h1>
                                 <p class="post-description">
-                                    {!! $anchorFirst->sub_title !!}
+                                    {!! $anchorFirst->short_description !!}
                                 </p>
                             </a>
                         @endif
