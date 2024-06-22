@@ -13,9 +13,13 @@ Route::group(['namespace' => 'App\Http\Controllers', 'prefix' => 'bl-secure'], f
 });
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
-Route::get('/comments', [CommentController::class, 'index'])->name('comments');
+// Route::get('/comments', [CommentController::class, 'index'])->name('comments');
 
 Route::get('category/{slug}/news', [HomeController::class, 'newsByCategory'])->name('newsByCategory');
 
 Route::get('category/{category}/news/{c_id}', [HomeController::class, 'show'])
     ->name('category.news.show');
+
+Route::get('/news/detail/{c_id}', [HomeController::class, 'showDetail'])->name('showDetail');
+
+

@@ -11,7 +11,7 @@
                 <img src="{{$breakFirst->image}}"
                      alt="{{$breakFirst->title}}">
             </figure>
-            <a href="{{route('category.news.show',[$breakFirst->category_slug,$breakFirst->c_id])}}" class="a-hover">
+            <a href="{{ route('showDetail', ['c_id' => $breakFirst->c_id]) }}" class="a-hover">
                 <h1 class="small-title py-1">
                     {!! $breakFirst->title !!}
                 </h1>
@@ -20,7 +20,7 @@
         <ul class="list-style list-group mt-3">
             @foreach($breakingNews->skip(1) as $key=>$news)
                 <li class="m-0 my-2">
-                    <a class="d-flex align-items-center a-hover" href="">
+                    <a class="d-flex align-items-center a-hover" href="{{ route('showDetail', ['c_id' => $news->c_id]) }}">
                <span class="breklink-badge">
                {{ __('messages.'.$loop->iteration ) }}
                </span>

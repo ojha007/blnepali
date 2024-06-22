@@ -13,7 +13,7 @@ class CategoryRepository
     {
         return Cache::rememberForever(
             'categories',
-            fn () => Category::query()->whereNull('parent_id')->get()
+            fn() => Category::query()->whereNull('parent_id')->get()
         );
     }
 
@@ -24,7 +24,7 @@ class CategoryRepository
             ->where('slug', '=', $slug)
             ->first();
 
-        if (! $category) {
+        if (!$category) {
             return [];
         }
 
@@ -51,7 +51,7 @@ class CategoryRepository
             ->where('id', '=', $id)
             ->first();
 
-        if (! $category) {
+        if (!$category) {
             return [];
         }
 

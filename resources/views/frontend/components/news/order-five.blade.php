@@ -30,7 +30,7 @@
         </div> --}}
         <div class="border p-3 rounded-1">
             <h3 class="medium-title">
-                <a href="{{route('category.news.show',['category'=>$news->category_slug,'c_id'=>$news->c_id])}}"
+                <a href="{{ route('showDetail', ['c_id' => $news->c_id]) }}"
                     class="fw-bold fs-5">
                      {!! $news->title !!}
                  </a>
@@ -38,7 +38,7 @@
             <div class="">
             <a href="">
             </a>
-            <a href="{{route('category.news.show',['category'=>$news->category_slug,'c_id'=>$news->c_id])}}"> 
+            <a href="{{ route('showDetail', ['c_id' => $news->c_id]) }}"> 
             
             <img class="border p-2 rounded-circle" style="height: 100px;width: 100px;"  src="{{getResizeImage($news->image)}}"
             alt="{{$news->title }} -- {{config('app.name')}}"/>    

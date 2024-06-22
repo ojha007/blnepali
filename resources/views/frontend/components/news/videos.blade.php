@@ -9,7 +9,7 @@
             @foreach($videoNews as $key => $news)
                 @if($loop->first)
                     <div class="col-md-5">
-                        <a href="{{route('category.news.show',['category'=>$news->category_slug,'c_id'=>$news->c_id])}}"
+                        <a href="{{ route('showDetail', ['c_id' => $news->c_id]) }}"
                            class="card h-100 border-0 ">
                             <img class="card-img"
                                  src="{{getResizeImage($news->image)}}"
@@ -30,7 +30,7 @@
                     <div class="col-md-7">
                         <div class="row g-2">
                             <div class="col-md-6">
-                                <a href="{{route('category.news.show',['category'=>$news->category_slug,'c_id'=>$news->c_id])}}"
+                                <a href="{{ route('showDetail', ['c_id' => $news->c_id]) }}"
                                    class="card  h-100 border-0">
                                     <img class="card-img "
                                          src="{{$news->image}}"

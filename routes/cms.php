@@ -14,5 +14,5 @@ Route::resource('advertisements', AdvertisementController::class);
 Route::resource('profile', ProfileController::class);
 Route::resource('news', NewsController::class);
 Route::resource('categories', CategoryController::class);
-Route::resource('comments', CommentController::class);
+// Route::resource('comments', CommentController::class);
 Route::resource('reporters', ReporterController::class);

@@ -100,7 +100,7 @@ UNION ALL
    AND is_anchor = 1
    AND news.status = 'active'
  order by news.publish_date desc
- limit 5)
+ limit 6)
 UNION ALL
 (SELECT news.title,
         news.sub_title,

@@ -17,7 +17,7 @@
                                     alt="{!! $anchorFirst->title !!}"/>
                                 <figcaption>{!! $anchorFirst->date_line ?? "" !!}</figcaption>
                             </figure>
-                            <a href="{{ route('category.news.show', ['category' => $anchorFirst->category_slug, 'c_id' => $anchorFirst->c_id]) }}">
+                            <a href="{{ route('showDetail', ['c_id' => $anchorFirst->c_id]) }}">
                                 <h1 class="small-title">
                                     {!! $anchorFirst->title !!}
                                 </h1>
@@ -36,7 +36,7 @@
                                              alt="{!! $news->title !!}"/>
                                         <figcaption>{!! $news->date_line ?? "" !!}</figcaption>
                                     </figure>
-                                    <a href="{{route('category.news.show',[$news->category_slug,'c_id'=>$news->c_id])}}">
+                                    <a href="{{ route('showDetail', ['c_id' => $news->c_id]) }}">
                                         <h1 class="small-title">
                                             {!! \Illuminate\Support\Str::limit($news->title) !!}
                                         </h1>

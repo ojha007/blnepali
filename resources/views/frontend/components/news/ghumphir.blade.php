@@ -24,11 +24,11 @@
             <div class="row g-2">
                 @foreach($ghumphir->take(2) as $news)
                 <div class="col-md-12">
-                    <a href="{{ route('category.news.show', ['category' => $news->category_slug, 'c_id' => $news->c_id]) }}" class="card border-0">
+                    <a href="{{ route('showDetail', ['c_id' => $news->c_id]) }}" class="card border-0">
                         <img class="card-img" src="{{ $news->image }}" alt="{{ $news->image_alt }}">
                         <div class="card-img-overlay bg-gradient-primary overlaypostition text-white bottom-0">
                             <h2 class="card-title fw-bold fs-4 overlay-postition-bttom">
-                                {{!! $news->title !!}}
+                                {!! $news->title !!}
                             </h2>
                         </div>
                     </a>

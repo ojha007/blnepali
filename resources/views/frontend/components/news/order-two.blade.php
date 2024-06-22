@@ -9,14 +9,14 @@
 
     @foreach($order2News as $key => $news)
         <div class="media d-flex mb-4 gap-4 align-items-center">
-            <a href="{{route('category.news.show',['category'=>$news->category_slug,'c_id'=>$news->c_id])}}">
+            <a href="{{ route('showDetail', ['c_id' => $news->c_id]) }}">
                 <img src="{{getResizeImage($news->image)}}"
                      class="img-fluid"
                      alt="{{$news->image_alt ?? $news->image_description ?? ''}}"/>
             </a>
             <div class="media-body">
                 <h3 class="fw-bold medium-title fs-5">
-                    <a href="{{route('category.news.show',['category'=>$news->category_slug,'c_id'=>$news->c_id])}}">
+                    <a href="{{ route('showDetail', ['c_id' => $news->c_id]) }}">
                         {!! $news->title !!}
                     </a>
                 </h3>

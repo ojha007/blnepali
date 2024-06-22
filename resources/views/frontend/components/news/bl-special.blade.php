@@ -14,7 +14,7 @@
                                 <img src="{{getResizeImage($news->image)}}"
                                      alt="{{$news->title}}">
                             </figure>
-                            <a href="{{route('category.news.show',[$news->category_slug,$news->c_id])}}"
+                            <a href="{{ route('showDetail', ['c_id' => $news->c_id]) }}"
                                class="a-hover">
                                 <h1 class="small-title p-3 text-white">
                                     {!! Str::limit($news->title) !!}

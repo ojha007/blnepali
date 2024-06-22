@@ -2,15 +2,15 @@
 <div class="col-md-8">
     <h5 class="header-title">ब्राण्ड स्टोरी</h5>
     <div class="row">
-        @foreach($brandStory as $story)
+        @foreach($brandStory as $news)
         <div class="col-md-4">
             <div class="pb-2">
                 <figure class="position-relative">
-                    <img src="{{ $story->image }}" alt="">
+                    <img src="{{ $news->image }}" alt="">
                 </figure>
-                <a href="{{ route('category.news.show', ['category' => $story->category_slug, 'c_id' => $story->c_id]) }}">
+                <a href="{{ route('showDetail', ['c_id' => $news->c_id]) }}">
                     <h1 class="small-title py-1">
-                        {{!! $story->title !!}}
+                        {!! $news->title !!}
                     </h1>
                 </a>
             </div>

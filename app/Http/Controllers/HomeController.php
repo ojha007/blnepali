@@ -33,7 +33,7 @@ class HomeController extends Controller
 
         $otherNews = $this->newsRepository->getOthersNews();
         $trendingNews = $otherNews->where('category_slug', 'trending');
-        $breakingNews = $otherNews->where('category_slug', 'breaking');
+        $breakingNews = $otherNews->where('category_slug', 'breaking')->take(4);
         $videoNews = $otherNews->where('category_slug', 'video');
         $blSpecialNews = $otherNews->where('category_slug', 'special');
         $anchorNews = $otherNews->where('category_slug', 'anchor');
@@ -54,7 +54,7 @@ class HomeController extends Controller
         $sahitya = $allNews->where('body_position', 14)->values();
 
         return view(
-            $this->viewPath.'index',
+            $this->viewPath . 'index',
             compact(
                 'order1News',
                 'trendingNews',
@@ -85,7 +85,7 @@ class HomeController extends Controller
         $category = Category::whereSlug($categorySlug)
             ->select('id')
             ->first();
-        if (! $category) {
+        if (!$category) {
             return redirect('/');
         }
 
@@ -97,8 +97,19 @@ class HomeController extends Controller
         $allNews = News::query()
             ->with(['category:name,id,slug', 'reporter:name,id,image'])
             ->select([
-                'title', 'short_description', 'guest_id', 'image_description', 'description', 'video_url',
-                'date_line', 'id', 'c_id', 'image', 'image_alt', 'category_id', 'reporter_id',
+                'title',
+                'short_description',
+                'guest_id',
+                'image_description',
+                'description',
+                'video_url',
+                'date_line',
+                'id',
+                'c_id',
+                'image',
+                'image_alt',
+                'category_id',
+                'reporter_id',
             ])
             ->where('category_id', $category->id)
             ->where('c_id', '=', $cId)
@@ -122,7 +133,7 @@ class HomeController extends Controller
         $breakingNews = $otherNews->where('type', 'breaking');
 
         return view(
-            $this->viewPath.'news-detail',
+            $this->viewPath . 'news-detail',
             compact(
                 'news',
                 'headerCategories',
@@ -132,6 +143,64 @@ class HomeController extends Controller
                 'breakingNews'
             )
         );
+    }
+
+    public function showDetail($cId)
+    {
+
+
+        $cacheKey = News::getCacheKey($cId);
+
+        //        $allNews = Cache::remember($cacheKey, 1800, function () use ($cId, $category) {
+
+        $allNews = News::query()
+            ->with(['category:name,id,slug', 'reporter:name,id,image'])
+            ->select([
+                'title',
+                'short_description',
+                'guest_id',
+                'image_description',
+                'description',
+                'video_url',
+                'date_line',
+                'id',
+                'c_id',
+                'image',
+                'image_alt',
+                'category_id',
+                'reporter_id',
+            ])
+            ->where('c_id', '=', $cId)
+            ->orderByDesc('publish_date')
+            ->get();
+        //        });
+
+        $news = $allNews->where('c_id', '=', $cId)->first();
+
+        //        $news->increment('view_count');
+
+        $sameCategoryNews = $allNews->where('c_id', '!=', $cId)->take(4);
+
+        $categories = $this->categoryRepository->getCategories();
+        $headerCategories = $categories->sortBy('header_position')->take(10);
+
+        $otherNews = $this->newsRepository->getOthersNews();
+        $trendingNews = $otherNews->where('type', 'trending');
+        $blSpecialNews = $otherNews->where('type', 'special');
+        $breakingNews = $otherNews->where('type', 'breaking');
+
+        return view(
+            $this->viewPath . 'news-detail',
+            compact(
+                'news',
+                'headerCategories',
+                'blSpecialNews',
+                'trendingNews',
+                'sameCategoryNews',
+                'breakingNews'
+            )
+        );
+
     }
 
     public function newsByCategory(string $slug): Renderable|RedirectResponse
@@ -148,7 +217,7 @@ class HomeController extends Controller
             $trendingNews = $otherNews->where('type', 'trending');
 
             return view(
-                $this->viewPath.'category.index',
+                $this->viewPath . 'category.index',
                 compact('headerCategories', 'news', 'trendingNews')
             );
         } catch (Exception) {
