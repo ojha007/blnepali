@@ -21,5 +21,3 @@ Route::get('category/{category}/news/{c_id}', [HomeController::class, 'show'])
     ->name('category.news.show');
 
 Route::get('/news/detail/{c_id}', [HomeController::class, 'showDetail'])->name('showDetail');
-
-
