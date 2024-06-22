@@ -15,7 +15,9 @@
                         <h1 class="small-title">
                             @if(!$news->isEmpty())
                             <div class="bl-newsHeader">
-                                <h5 class="header-title">{{$news->first()->category->name}}</h5>
+                                <h5 class="header-title">
+                                    {{$news->first()->reporter->name}}
+                                </h5>
                             </div>
                         @endif
                         </h1>
