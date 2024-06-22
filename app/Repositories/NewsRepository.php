@@ -28,8 +28,19 @@ class NewsRepository
     {
         return News::with('category:name,id,slug')
             ->select([
-                'title', 'short_description', 'guest_id', 'image_description', 'description', 'video_url',
-                'date_line', 'id', 'c_id', 'image', 'image_alt', 'category_id', 'reporter_id',
+                'title',
+                'short_description',
+                'guest_id',
+                'image_description',
+                'description',
+                'video_url',
+                'date_line',
+                'id',
+                'c_id',
+                'image',
+                'image_alt',
+                'category_id',
+                'reporter_id',
             ])
             ->where('category_id', '=', $catId)
             ->orderByDesc('publish_date')
@@ -40,11 +51,45 @@ class NewsRepository
     {
         return News::with('category:name,id,slug')
             ->select([
-                'sub_title', 'id', 'title', 'short_description', 'description',
-                'publish_date', 'image', 'image_alt', 'c_id', 'image_description',
-                'date_line', 'category_id',
+                'sub_title',
+                'id',
+                'title',
+                'short_description',
+                'description',
+                'publish_date',
+                'image',
+                'image_alt',
+                'c_id',
+                'image_description',
+                'date_line',
+                'category_id',
             ])
             ->whereIn('category_id', $ids)
+            ->orderByDesc('publish_date')
+            ->paginate($perPage);
+    }
+
+    public function getNewsByAuthorSlug($reporter_id, $perPage = 20): LengthAwarePaginator
+    {
+        return News::with('category:name,id,slug')
+            ->select([
+                'sub_title',
+                'id',
+                'title',
+                'short_description',
+                'description',
+                'publish_date',
+                'image',
+                'image_alt',
+                'c_id',
+                'image_description',
+                'date_line',
+                'category_id',
+                'reporter_id',
+                'guest_id',
+            ])
+            ->where('reporter_id', '=', $reporter_id)
+
             ->orderByDesc('publish_date')
             ->paginate($perPage);
     }

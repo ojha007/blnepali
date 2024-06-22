@@ -223,4 +223,23 @@ class HomeController extends Controller
             return redirect()->route('index');
         }
     }
+    public function newsByAuthor(string $reporter_id): Renderable|RedirectResponse
+    {
+        // try {
+
+        $news = $this->newsRepository->getNewsByAuthorSlug($reporter_id);
+        $categories = $this->categoryRepository->getCategories();
+        $headerCategories = $categories->sortBy('header_position')->take(10);
+
+        $otherNews = $this->newsRepository->getOthersNews();
+        $trendingNews = $otherNews->where('type', 'trending');
+
+        return view(
+            $this->viewPath . 'author.index',
+            compact('headerCategories', 'news', 'trendingNews')
+        );
+        // } catch (Exception) {
+        //     return redirect()->route('index');
+        // }
+    }
 }

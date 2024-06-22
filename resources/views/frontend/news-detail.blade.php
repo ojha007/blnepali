@@ -31,6 +31,7 @@
                 <h1 class="fw-bold fs-2 my-4">
                     {!! $news->title !!}
                 </h1>
+                <a class="w-full" href="{{ route('newsByAuthor', ['reporter_id' => $news->reporter_id]) }}">
                 <div class="d-flex border-top justify-content-between border-bottom py-2 mt-3 align-items-center">
                     <div class="d-flex align-items-center">
                         @if($news->guest)
@@ -50,7 +51,7 @@
                         </div>
                     </div>
                 </div>
-    
+            </a>
                 @if($news->image)
                 <figure>
                     <img src="{{ $news->image }}" alt="{{ $news->image_alt ?? 'News Image' }}" style="width:100%; max-width:100%;">
