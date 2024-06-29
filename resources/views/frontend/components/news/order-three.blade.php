@@ -8,14 +8,14 @@
         </h5>
     </div>
     @foreach($order3News as $news)
-        <div class="d-flex align-items-center {{!$loop->last ?'border-bottom mb-3' : ''}} ">
+        <div class="{{!$loop->last ?'border-bottom mb-3' : ''}} ">
             <figure class="post_img">
                 <a href="{{ route('showDetail', ['c_id' => $news->c_id]) }}">
                     <img src="{{getResizeImage($news->image)}}"
                          alt="{{$news->image_alt ?? $news->image_description ?? ''}}"/>
                 </a>
             </figure>
-            <div class="ps-3">
+            <div>
                 <h5 class="fw-bold medium-title fs-5">
                     <a href="{{ route('showDetail', ['c_id' => $news->c_id]) }}">
                         {!! $news->title !!}
