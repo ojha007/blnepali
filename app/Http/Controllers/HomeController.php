@@ -42,19 +42,23 @@ class HomeController extends Controller
         $order1News = $allNews->where('category_id', 60)->take(4)->values(); // samachar
         $order2News = $allNews->where('category_id', 22)->take(4)->values(); // कला
         $order3News = $allNews->where('category_id', 11)->take(3)->values(); // विचार/विश्लेषण
-        $order4News = $allNews->where('category_id', 25)->values(); //अन्तर्वार्ता
-        $order5News = $allNews->where('category_id', 26)->take(4)->values(); //ब्लग
+        $order4News = $allNews->where('category_id', 25)->take(5)->values(); //अन्तर्वार्ता
+        $order5News = $allNews->where('category_id', 59)->take(4)->values(); //ब्लग 26
         $order6News = $allNews->where('body_position', 6)->values();
         $order7News = $allNews->where('body_position', 7)->values();
         $order8News = $allNews->where('body_position', 8)->values();
-        $order1Of4News = $allNews->where('body_position', 9)->take(3)->values();
+        $order1Of4News = $allNews->where('category_id', 9)->take(3)->values();
 
         $ghumphir = $allNews->where('body_position', 13)->values();
         $brandStory = $allNews->where('category_id', 29)->take(6)->values();
         $sahitya = $allNews->where('body_position', 14)->values();
+        $artha = $allNews->where('category_id', 4)->take(3)->values();
+        $khel = $allNews->where('category_id', 1)->take(3)->values();
+        $jiwansaili = $allNews->where('category_id', 72)->take(3)->values();
+
 
         return view(
-            $this->viewPath.'index',
+            $this->viewPath . 'index',
             compact(
                 'order1News',
                 'trendingNews',
@@ -75,7 +79,10 @@ class HomeController extends Controller
                 'order1Of4News',
                 'ghumphir',
                 'brandStory',
-                'sahitya'
+                'sahitya',
+                'artha',
+                'khel',
+                'jiwansaili'
             )
         );
     }
@@ -85,7 +92,7 @@ class HomeController extends Controller
         $category = Category::whereSlug($categorySlug)
             ->select('id')
             ->first();
-        if (! $category) {
+        if (!$category) {
             return redirect('/');
         }
 
@@ -133,7 +140,7 @@ class HomeController extends Controller
         $breakingNews = $otherNews->where('category_slug', 'breaking');
 
         return view(
-            $this->viewPath.'news-detail',
+            $this->viewPath . 'news-detail',
             compact(
                 'news',
                 'headerCategories',
@@ -189,7 +196,7 @@ class HomeController extends Controller
         $breakingNews = $otherNews->where('category_slug', 'breaking');
 
         return view(
-            $this->viewPath.'news-detail',
+            $this->viewPath . 'news-detail',
             compact(
                 'news',
                 'headerCategories',
@@ -216,7 +223,7 @@ class HomeController extends Controller
             $trendingNews = $otherNews->where('category_slug', 'trending');
 
             return view(
-                $this->viewPath.'category.index',
+                $this->viewPath . 'category.index',
                 compact('headerCategories', 'news', 'trendingNews')
             );
         } catch (Exception) {
@@ -236,7 +243,7 @@ class HomeController extends Controller
             $trendingNews = $otherNews->where('category_slug', 'trending');
 
             return view(
-                $this->viewPath.'author.index',
+                $this->viewPath . 'author.index',
                 compact('headerCategories', 'news', 'trendingNews')
             );
         } catch (Exception) {

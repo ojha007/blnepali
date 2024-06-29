@@ -58,7 +58,11 @@
 
     <section class="container-fluid py-1">
         <div class="container my-4">
-                    @include('frontend.components.news.order-one-of-four')
+                <div class="row">
+                    @include('frontend.components.news.artha')
+                    @include('frontend.components.news.khel')
+                    @include('frontend.components.news.jiwansaili')
+                </div>
                 </div>
         </div>
     </section>
