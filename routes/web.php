@@ -24,3 +24,8 @@ Route::get('author/{reporter_id}', [HomeController::class, 'newsByAuthor'])
     ->name('newsByAuthor');
 
 Route::get('/news/detail/{c_id}', [HomeController::class, 'showDetail'])->name('showDetail');
+
+
+Route::get('/preeti-to-unicode', [HomeController::class, 'preetiToUnicode'])->name('preeti-to-unicode');
+Route::get('/roman-to-unicode', [HomeController::class, 'romanToUnicode'])->name('roman-to-unicode');
+Route::get('/unicode-to-preeti', [HomeController::class, 'unicodeToPreeti'])->name('unicode-to-preeti');

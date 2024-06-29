@@ -7,7 +7,7 @@
                 <option class="bg-primary border-0" selected="" value="en">
                     English
                 </option>
-                <option class="bg-primary border-0" value="nepali">
+                <option class="bg-primary border-0" value="np">
                     नेपाली
                 </option>
                 <option class="bg-primary border-0" value="hindi">
@@ -17,21 +17,27 @@
             <div class="collapse navbar-collapse" id="topnav">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link ps-4" aria-current="page" href="#">
+                        <a class="nav-link ps-4" aria-current="page" href="/np">
                             नेपाली</a
                         >
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">English</a>
+                        <a class="nav-link" href="/en">English</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Hindi</a>
+                        <a class="nav-link" href="/hindi">Hindi</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Español</a>
+                        <a class="nav-link" href="/spanish">Español</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">عربي한국어中文</a>
+                        <a href="https://breaknlinks.com/arabic" class="nav-link" target="_blank">عربي</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="https://breaknlinks.com/korean" class="nav-link" target="_blank">한국어</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="https://breaknlinks.com/chinese" class="nav-link" target="_blank">中文</a>
                     </li>
                 </ul>
                 <ul class="d-flex list-style align-items-center gap-2">
@@ -85,7 +91,7 @@
                     </li>
                     <li class="social-nav">
                         <a
-                            href="https://breaknlinks.com/nepali/preeti-to-unicode"
+                            href="/preeti-to-unicode"
                             target="_blank"
                         >
                             <svg
@@ -135,7 +141,7 @@
 
 <section class="bg-body-tertiary my-nav border-bottom">
     <div class="container">
-        <nav class="navbar navbar-expand-lg my-nav py-0">
+        <nav class="navbar  text-center navbar-expand-lg my-nav py-0">
             <div class="container-fluid">
                 <a class="d-inline-block" href="/">
                     <img

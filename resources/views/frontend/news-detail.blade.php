@@ -86,7 +86,7 @@
                 </div>
                 @endforeach
                 <ul class="list-style list-group mt-3">
-                    @foreach($breakingNews as $key =>$news)
+                    @foreach($breakingNews->skip(1) as $key =>$news)
                     <li class="m-0 my-2">
                         <a href="{{ route('showDetail', ['c_id' => $news->c_id]) }}" class="d-flex align-items-center a-hover" href="">
                             
