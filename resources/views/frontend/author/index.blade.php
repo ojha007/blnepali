@@ -65,29 +65,26 @@
             <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4 col-xxl-4 pt-4">
 
                 <div class="aside-news-rows sticky-xl-top">
-                    <div class="bl-news bl-news--trending">
-                        <div class="post-widgetHeader">
-                            <h4>ट्रेन्डिङ</h4>
-                        </div>
-                        <div class="post-widgetBody">
-                            <div class="trendingNews">
-                                <!--repeatable item-->
-                                @foreach($trendingNews ?? [] as $news)
-                                    <div class="trendingNews-item">
-                                        <h5 class="post_title">
-                                            <a href="{{route('category.news.show',['category'=>$news->category->slug,'c_id'=>$news->c_id])}}">
-                                                {{$news->title}}</a>
-                                        </h5>
-                                        {{-- <span
-                                            class="post_source">
-                                            {{$news->guest ??$news->reporter->name ?? '' }}
-                                            {{$news->date_line ? '- '. $news->date_line : ''}}
-                                        </span> --}}
-                                    </div>
-                                @endforeach
-                            </div>
+                    <div class="col-md-12 my-4">
+                        <h5 class="header-title">ट्रेन्डिङ</h5>
+                    </div>
+                    @foreach($trendingNews as $news)
+                    <div class="d-flex align-items-center border-bottom mb-3">
+                        <figure class="post_img">
+                            <a href="{{ route('showDetail', ['c_id' => $news->c_id]) }}">
+                                <img style="width: 80px; height: 80px;" src="{{ $news->image }}" alt="{{ $news->image_alt }}">
+                            </a>
+                        </figure>
+                        <div class="ps-3">
+                            <h5 class="fw-bold medium-title fs-5">
+                                <a href="{{ route('showDetail', ['c_id' => $news->c_id]) }}">{{ $news->title }}</a>
+                            </h5>
+                            {{-- <p class="text-muted fw-bold">
+                            {{print_r($news)}}
+                            </p> --}}
                         </div>
                     </div>
+                @endforeach
                 </div>
             </div>
         </div>

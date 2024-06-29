@@ -34,7 +34,7 @@ class HomeController extends Controller
         $otherNews = $this->newsRepository->getOthersNews();
         $trendingNews = $otherNews->where('category_slug', 'trending');
         $breakingNews = $otherNews->where('category_slug', 'breaking')->take(4);
-        $videoNews = $otherNews->where('category_slug', 'video');
+        $videoNews = $otherNews->where('category_slug', 'video-report');
         $blSpecialNews = $otherNews->where('category_slug', 'special');
         $anchorNews = $otherNews->where('category_slug', 'anchor');
 
@@ -54,7 +54,7 @@ class HomeController extends Controller
         $sahitya = $allNews->where('body_position', 14)->values();
 
         return view(
-            $this->viewPath.'index',
+            $this->viewPath . 'index',
             compact(
                 'order1News',
                 'trendingNews',
@@ -85,7 +85,7 @@ class HomeController extends Controller
         $category = Category::whereSlug($categorySlug)
             ->select('id')
             ->first();
-        if (! $category) {
+        if (!$category) {
             return redirect('/');
         }
 
@@ -133,7 +133,7 @@ class HomeController extends Controller
         $breakingNews = $otherNews->where('category_slug', 'breaking');
 
         return view(
-            $this->viewPath.'news-detail',
+            $this->viewPath . 'news-detail',
             compact(
                 'news',
                 'headerCategories',
@@ -189,7 +189,7 @@ class HomeController extends Controller
         $breakingNews = $otherNews->where('category_slug', 'breaking');
 
         return view(
-            $this->viewPath.'news-detail',
+            $this->viewPath . 'news-detail',
             compact(
                 'news',
                 'headerCategories',
@@ -216,7 +216,7 @@ class HomeController extends Controller
             $trendingNews = $otherNews->where('category_slug', 'trending');
 
             return view(
-                $this->viewPath.'category.index',
+                $this->viewPath . 'category.index',
                 compact('headerCategories', 'news', 'trendingNews')
             );
         } catch (Exception) {
@@ -236,7 +236,7 @@ class HomeController extends Controller
             $trendingNews = $otherNews->where('category_slug', 'trending');
 
             return view(
-                $this->viewPath.'author.index',
+                $this->viewPath . 'author.index',
                 compact('headerCategories', 'news', 'trendingNews')
             );
         } catch (Exception) {
