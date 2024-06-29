@@ -94,7 +94,7 @@
                                 {!! $news->title !!}
                             </h2>
                         </a>
-                        <span class="souce fw-bold text-muted">
+                        {{-- <span class="souce fw-bold text-muted">
                             @if($news->guest)
                                 {{$news->guest}}
                             @elseif($news->reporter)
@@ -102,7 +102,7 @@
                             @endif
                             {{$news->date_line ? '-' .$news->date_line  :''}}
 
-                        </span>
+                        </span> --}}
                     </li>
                     @endforeach
                 </ul>
@@ -113,15 +113,17 @@
                 @foreach($trendingNews as $news)
                 <div class="d-flex align-items-center border-bottom mb-3">
                     <figure class="post_img">
-                        <a href="{{ $news->link }}">
+                        <a href="{{ route('showDetail', ['c_id' => $news->c_id]) }}">
                             <img style="width: 80px; height: 80px;" src="{{ $news->image }}" alt="{{ $news->image_alt }}">
                         </a>
                     </figure>
                     <div class="ps-3">
                         <h5 class="fw-bold medium-title fs-5">
-                            <a href="{{ $news->link }}">{{ $news->title }}</a>
+                            <a href="{{ route('showDetail', ['c_id' => $news->c_id]) }}">{{ $news->title }}</a>
                         </h5>
-                        <p class="text-muted fw-bold">{{ $news->author }}</p>
+                        {{-- <p class="text-muted fw-bold">
+                        {{print_r($news)}}
+                        </p> --}}
                     </div>
                 </div>
             @endforeach

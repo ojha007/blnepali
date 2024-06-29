@@ -128,9 +128,9 @@ class HomeController extends Controller
         $headerCategories = $categories->sortBy('header_position')->take(10);
 
         $otherNews = $this->newsRepository->getOthersNews();
-        $trendingNews = $otherNews->where('type', 'trending');
-        $blSpecialNews = $otherNews->where('type', 'special');
-        $breakingNews = $otherNews->where('type', 'breaking');
+        $trendingNews = $otherNews->where('category_slug', 'trending');
+        $blSpecialNews = $otherNews->where('category_slug', 'special');
+        $breakingNews = $otherNews->where('category_slug', 'breaking');
 
         return view(
             $this->viewPath.'news-detail',
@@ -184,9 +184,9 @@ class HomeController extends Controller
         $headerCategories = $categories->sortBy('header_position')->take(10);
 
         $otherNews = $this->newsRepository->getOthersNews();
-        $trendingNews = $otherNews->where('type', 'trending');
-        $blSpecialNews = $otherNews->where('type', 'special');
-        $breakingNews = $otherNews->where('type', 'breaking');
+        $trendingNews = $otherNews->where('category_slug', 'trending');
+        $blSpecialNews = $otherNews->where('category_slug', 'special');
+        $breakingNews = $otherNews->where('category_slug', 'breaking');
 
         return view(
             $this->viewPath.'news-detail',
@@ -213,7 +213,7 @@ class HomeController extends Controller
             $news = $this->newsRepository->getNewsByCategoryIds($categoryIds);
 
             $otherNews = $this->newsRepository->getOthersNews();
-            $trendingNews = $otherNews->where('type', 'trending');
+            $trendingNews = $otherNews->where('category_slug', 'trending');
 
             return view(
                 $this->viewPath.'category.index',
@@ -233,7 +233,7 @@ class HomeController extends Controller
             $headerCategories = $categories->sortBy('header_position')->take(10);
 
             $otherNews = $this->newsRepository->getOthersNews();
-            $trendingNews = $otherNews->where('type', 'trending');
+            $trendingNews = $otherNews->where('category_slug', 'trending');
 
             return view(
                 $this->viewPath.'author.index',

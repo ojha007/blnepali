@@ -18,9 +18,10 @@
  from np_news news
           LEFT JOIN reporters ON news.reporter_id = reporters.id
 --           LEFT JOIN guests ON news.guest_id = guests.id
- WHERE news.deleted_by is NULL
+ WHERE 
+ news.deleted_by is NULL
    AND news.status = 'active'
-   and publish_date >= (NOW() - INTERVAL 1 WEEK)
+   and publish_date >= (NOW() - INTERVAL 10 WEEK)
  order by view_count desc
  limit 5)
 UNION ALL
