@@ -252,18 +252,16 @@ class HomeController extends Controller
 
     public function preetiToUnicode()
     {
-        return view($this->viewPath . 'unicode.preeti-to-unicode');
+        return view($this->viewPath.'unicode.preeti-to-unicode');
     }
 
     public function romanToUnicode()
     {
-        return view($this->viewPath . 'unicode.roman-to-nepali');
+        return view($this->viewPath.'unicode.roman-to-nepali');
     }
 
     public function unicodeToPreeti()
     {
-        return view($this->viewPath . 'unicode.unicode-to-preeti');
+        return view($this->viewPath.'unicode.unicode-to-preeti');
     }
-
-
 }
