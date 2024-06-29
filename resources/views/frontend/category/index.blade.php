@@ -61,6 +61,7 @@
                 </div>
             </div>
             <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4 col-xxl-4 pt-4">
+                <div class="aside-news-rows sticky-xl-top">
                 <div class="col-md-12 my-4">
                     <h5 class="header-title">ट्रेन्डिङ</h5>
                 </div>
@@ -81,6 +82,7 @@
                     </div>
                 </div>
             @endforeach
+            </div>
             </div>
         </div>
     </section>

@@ -39,7 +39,7 @@ class HomeController extends Controller
         $anchorNews = $otherNews->where('category_slug', 'anchor');
 
         $allNews = $this->newsRepository->getHomePageNews();
-        $order1News = $allNews->where('body_position', 1)->take(4)->values();
+        $order1News = $allNews->where('category_id', 60)->take(4)->values();
         $order2News = $allNews->where('body_position', 2)->take(3)->values();
         $order3News = $allNews->where('body_position', 3)->take(3)->values();
         $order4News = $allNews->where('body_position', 4)->values();
