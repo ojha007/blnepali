@@ -67,7 +67,7 @@
                 <div class="aside-news-rows sticky-xl-top">
                     <div class="bl-news bl-news--trending">
                         <div class="post-widgetHeader">
-                            <h4>Trending</h4>
+                            <h4>ट्रेन्डिङ</h4>
                         </div>
                         <div class="post-widgetBody">
                             <div class="trendingNews">
@@ -78,11 +78,11 @@
                                             <a href="{{route('category.news.show',['category'=>$news->category->slug,'c_id'=>$news->c_id])}}">
                                                 {{$news->title}}</a>
                                         </h5>
-                                        <span
+                                        {{-- <span
                                             class="post_source">
                                             {{$news->guest ??$news->reporter->name ?? '' }}
                                             {{$news->date_line ? '- '. $news->date_line : ''}}
-                                        </span>
+                                        </span> --}}
                                     </div>
                                 @endforeach
                             </div>
