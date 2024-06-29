@@ -1,6 +1,6 @@
 @isset($trendingNews)
     <div class="container">
-        <div class="row">
+        <div class="row mt-2">
             <div class="col-md-12">
                 <h5 class="header-title">ट्रेन्डिङ</h5>
             </div>
