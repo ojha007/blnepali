@@ -122,7 +122,7 @@ UNION ALL
         'video'        as category_slug
  from np_news news
           LEFT JOIN reporters ON news.reporter_id = reporters.id
-          JOIN categories ON news.category_id = categories.id and categories.slug = 'video'
+          JOIN categories ON news.category_id = categories.id and categories.slug = 'video-report'
 --           LEFT JOIN guests ON news.guest_id = guests.id
  WHERE news.deleted_by is NULL
    AND is_anchor = 1
