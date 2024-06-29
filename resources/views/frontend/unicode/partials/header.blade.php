@@ -18,7 +18,7 @@
             <ul class="uk-navbar-nav">
                 <li class=" {{request()->is(
                     'preeti-to-unicode',
-                    'nepali/preeti-to-unicode'
+                    'np/preeti-to-unicode'
                     ) ? 'uk-active':''}}">
                     <a href="/preeti-to-unicode">
                         Preeti to Nepali Unicode
@@ -32,7 +32,7 @@
                         Preeti</a></li>
                 <li class="{{request()->is(
                     'roman-to-unicode',
-                    'nepali/roman-to-unicode'
+                    'np/roman-to-unicode'
                      ) ? 'uk-active':''}}"><a
                         href="/roman-to-unicode">
                         Roman to Nepali Unicode</a>

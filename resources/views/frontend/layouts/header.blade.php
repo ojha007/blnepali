@@ -91,7 +91,7 @@
                     </li>
                     <li class="social-nav">
                         <a
-                            href="/preeti-to-unicode"
+                            href="/np/preeti-to-unicode"
                             target="_blank"
                         >
                             <svg
