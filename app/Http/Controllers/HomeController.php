@@ -39,11 +39,11 @@ class HomeController extends Controller
         $anchorNews = $otherNews->where('category_slug', 'anchor');
 
         $allNews = $this->newsRepository->getHomePageNews();
-        $order1News = $allNews->where('category_id', 60)->take(4)->values();
-        $order2News = $allNews->where('category_id', 22)->take(3)->values();
-        $order3News = $allNews->where('body_position', 3)->take(3)->values();
-        $order4News = $allNews->where('body_position', 4)->values();
-        $order5News = $allNews->where('body_position', 5)->take(4)->values();
+        $order1News = $allNews->where('category_id', 60)->take(4)->values(); // samachar
+        $order2News = $allNews->where('category_id', 22)->take(3)->values(); // kala news
+        $order3News = $allNews->where('category_id', 11)->take(5)->values(); //bichar news
+        $order4News = $allNews->where('category_id', 25)->values(); //अन्तर्वार्ता
+        $order5News = $allNews->where('category_id', 26)->take(4)->values(); //ब्लग
         $order6News = $allNews->where('body_position', 6)->values();
         $order7News = $allNews->where('body_position', 7)->values();
         $order8News = $allNews->where('body_position', 8)->values();
