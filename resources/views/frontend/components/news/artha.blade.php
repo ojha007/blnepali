@@ -3,6 +3,7 @@
     @php($arthaFirst = $artha->first())
     <div class="col-md-4">
         <h5 class="header-title">अर्थ</h5>
+      @if($arthaFirst)
         <div class="border-bottom border-2 pb-2">
             <figure class="position-relative">
                 <img src="{{ $arthaFirst->image }}" alt="{{ $arthaFirst->image_alt }}">
@@ -13,6 +14,8 @@
                 </h1>
             </a>
         </div>
+        @endif
+      
         <ul class="list-style list-group mt-3">
             @foreach($artha as $news)
             <li class="m-0 my-2">
@@ -29,5 +32,6 @@
 
             <!-- Add more list items for additional news items if needed -->
         </ul>
-    </div>
+    </div> 
+   
 @endisset

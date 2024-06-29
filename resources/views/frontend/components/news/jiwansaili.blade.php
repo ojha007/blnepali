@@ -2,6 +2,7 @@
     @php($jiwansailiFirst = $jiwansaili->first())
     <div class="col-md-4">
         <h5 class="header-title">जीवनशैली</h5>
+        @if($jiwansailiFirst)
         <div class="border-bottom border-2 pb-2">
             <figure class="position-relative">
                 <img src="{{ $jiwansailiFirst->image }}" alt="{{ $jiwansailiFirst->image_alt }}">
@@ -12,6 +13,7 @@
                 </h1>
             </a>
         </div>
+        @endif
         <ul class="list-style list-group mt-3">
             @foreach($jiwansaili as $news)
             <li class="m-0 my-2">

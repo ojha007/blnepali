@@ -3,6 +3,7 @@
   
     <div class="col-md-4">
         <h5 class="header-title">खेल</h5>
+        @if($khelFirst)
         <div class="border-bottom border-2 pb-2">
             <figure class="position-relative">
                 <img src="{{ $khelFirst->image }}" alt="{{ $khelFirst->image_alt }}">
@@ -13,6 +14,7 @@
                 </h1>
             </a>
         </div>
+        @endif
         <ul class="list-style list-group mt-3">
             @foreach($khel as $news)
             <li class="m-0 my-2">
