@@ -2,7 +2,7 @@
     
     @php($arthaFirst = $artha->first())
     <div class="col-md-4">
-        <h5 class="header-title">{{ $arthaFirst->category_name }}</h5>
+        <h5 class="header-title">अर्थ</h5>
         <div class="border-bottom border-2 pb-2">
             <figure class="position-relative">
                 <img src="{{ $arthaFirst->image }}" alt="{{ $arthaFirst->image_alt }}">
