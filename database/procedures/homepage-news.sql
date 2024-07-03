@@ -34,5 +34,5 @@ FROM ranked_news rn
          JOIN categories ON rn.category_id = categories.id AND body_position IS NOT NULL
          LEFT JOIN reporters ON news.reporter_id = reporters.id
 WHERE rn.row_num <= 9
-  and body_position < 100
+  -- and body_position < 100
 ORDER BY news.publish_date DESC;
