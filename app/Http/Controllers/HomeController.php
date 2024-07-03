@@ -250,17 +250,17 @@ class HomeController extends Controller
         }
     }
 
-    public function preetiToUnicode()
+    public function preetiToUnicode(): Renderable
     {
         return view($this->viewPath.'unicode.preeti-to-unicode');
     }
 
-    public function romanToUnicode()
+    public function romanToUnicode(): Renderable
     {
         return view($this->viewPath.'unicode.roman-to-nepali');
     }
 
-    public function unicodeToPreeti()
+    public function unicodeToPreeti(): Renderable
     {
         return view($this->viewPath.'unicode.unicode-to-preeti');
     }
