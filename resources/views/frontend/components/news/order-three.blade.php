@@ -1,7 +1,10 @@
 @isset($order3News)
     <div class="col-md-12">
         <h5 class="header-title mb-4">
-            ब्लग
+
+            @if(!$order3News->isEmpty())
+                {{$order3News->first()->category_name}}
+            @endif
         </h5>
     </div>
     @foreach($order3News as $news)
