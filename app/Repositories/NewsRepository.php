@@ -47,7 +47,7 @@ class NewsRepository
             ->limit(6);
     }
 
-    public function getNewsByCategoryIds(array $ids, $perPage = 20): LengthAwarePaginator
+    public function getNewsByCategoryIds(array $categoryIds, $perPage = 20): LengthAwarePaginator
     {
         return News::with('category:name,id,slug')
             ->select([
@@ -64,12 +64,12 @@ class NewsRepository
                 'date_line',
                 'category_id',
             ])
-            ->whereIn('category_id', $ids)
+            ->whereIn('category_id', $categoryIds)
             ->orderByDesc('publish_date')
             ->paginate($perPage);
     }
 
-    public function getNewsByAuthorSlug($reporter_id, $perPage = 20): LengthAwarePaginator
+    public function getNewsByAuthorSlug(int $reporterId, $perPage = 20): LengthAwarePaginator
     {
         return News::with('category:name,id,slug')
             ->select([
@@ -88,9 +88,35 @@ class NewsRepository
                 'reporter_id',
                 'guest_id',
             ])
-            ->where('reporter_id', '=', $reporter_id)
-
+            ->where('reporter_id', '=', $reporterId)
             ->orderByDesc('publish_date')
             ->paginate($perPage);
+    }
+
+    public function getTrendingNews(): Collection
+    {
+        return DB::table('np_news as news')
+            ->select(
+                'news.title',
+                'news.sub_title',
+                'news.id',
+                'news.c_id',
+                'news.short_description',
+                'reporters.image as reporter_image',
+                'reporters.name as reporter_name',
+                'reporters.slug as reporter_slug',
+                'publish_date',
+                'date_line',
+                'news.image',
+                'image_description',
+                'image_alt',
+            )
+            ->leftJoin('reporters', 'news.reporter_id', '=', 'reporters.id')
+            ->whereNull('news.deleted_by')
+            ->where('news.status', '=', 'active')
+            ->whereDate('news.publish_date', '>=', DB::raw('NOW() - INTERVAL 5 WEEK'))
+            ->orderBy('news.view_count', 'desc')
+            ->limit(5)
+            ->get();
     }
 }

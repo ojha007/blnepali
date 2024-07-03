@@ -6,7 +6,6 @@ use App\Models\Category;
 use App\Models\News;
 use App\Repositories\CategoryRepository;
 use App\Repositories\NewsRepository;
-use Exception;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\RedirectResponse;
 
@@ -130,9 +129,6 @@ class HomeController extends Controller
 
         $sameCategoryNews = $allNews->where('c_id', '!=', $cId)->take(4);
 
-        $categories = $this->categoryRepository->getCategories();
-        $headerCategories = $categories->sortBy('header_position')->take(10);
-
         $otherNews = $this->newsRepository->getOthersNews();
         $trendingNews = $otherNews->where('category_slug', 'trending');
         $blSpecialNews = $otherNews->where('category_slug', 'special');
@@ -142,7 +138,6 @@ class HomeController extends Controller
             $this->viewPath.'news-detail',
             compact(
                 'news',
-                'headerCategories',
                 'blSpecialNews',
                 'trendingNews',
                 'sameCategoryNews',
@@ -186,9 +181,6 @@ class HomeController extends Controller
 
         $sameCategoryNews = $allNews->where('c_id', '!=', $cId)->take(4);
 
-        $categories = $this->categoryRepository->getCategories();
-        $headerCategories = $categories->sortBy('header_position')->take(10);
-
         $otherNews = $this->newsRepository->getOthersNews();
         $trendingNews = $otherNews->where('category_slug', 'trending');
         $blSpecialNews = $otherNews->where('category_slug', 'special');
@@ -198,7 +190,6 @@ class HomeController extends Controller
             $this->viewPath.'news-detail',
             compact(
                 'news',
-                'headerCategories',
                 'blSpecialNews',
                 'trendingNews',
                 'sameCategoryNews',
@@ -206,62 +197,5 @@ class HomeController extends Controller
             )
         );
 
-    }
-
-    public function newsByCategory(string $slug): Renderable|RedirectResponse
-    {
-        try {
-            $categoryIds = $this->categoryRepository->getCategoryIdsBySlug($slug);
-
-            $categories = $this->categoryRepository->getCategories();
-            $headerCategories = $categories->sortBy('header_position')->take(10);
-
-            $news = $this->newsRepository->getNewsByCategoryIds($categoryIds);
-
-            $otherNews = $this->newsRepository->getOthersNews();
-            $trendingNews = $otherNews->where('category_slug', 'trending');
-
-            return view(
-                $this->viewPath.'category.index',
-                compact('headerCategories', 'news', 'trendingNews')
-            );
-        } catch (Exception) {
-            return redirect()->route('index');
-        }
-    }
-
-    public function newsByAuthor(string $reporter_id): Renderable|RedirectResponse
-    {
-        try {
-
-            $news = $this->newsRepository->getNewsByAuthorSlug($reporter_id);
-            $categories = $this->categoryRepository->getCategories();
-            $headerCategories = $categories->sortBy('header_position')->take(10);
-
-            $otherNews = $this->newsRepository->getOthersNews();
-            $trendingNews = $otherNews->where('category_slug', 'trending');
-
-            return view(
-                $this->viewPath.'author.index',
-                compact('headerCategories', 'news', 'trendingNews')
-            );
-        } catch (Exception) {
-            return redirect()->route('index');
-        }
-    }
-
-    public function preetiToUnicode(): Renderable
-    {
-        return view($this->viewPath.'unicode.preeti-to-unicode');
-    }
-
-    public function romanToUnicode(): Renderable
-    {
-        return view($this->viewPath.'unicode.roman-to-nepali');
-    }
-
-    public function unicodeToPreeti(): Renderable
-    {
-        return view($this->viewPath.'unicode.unicode-to-preeti');
     }
 }
