@@ -6,9 +6,9 @@
                       JOIN categories c ON c.id = news.category_id
              WHERE news.deleted_by IS NULL
                AND news.deleted_at IS NULL
-               AND c.body_position IS NOT NULL
+#                AND c.body_position IS NOT NULL
                AND news.status = 'active'
-               AND c.body_position < 17
+#                AND c.body_position < 17
              order by publish_date desc
              limit 1000)
 SELECT news.title,
@@ -33,6 +33,6 @@ FROM ranked_news rn
          JOIN np_news news ON rn.id = news.id AND news.status = 'active'
          JOIN categories ON rn.category_id = categories.id AND body_position IS NOT NULL
          LEFT JOIN reporters ON news.reporter_id = reporters.id
-WHERE rn.row_num <= 9
-  and body_position < 100
+WHERE rn.row_num <= 10
+#   and body_position < 100
 ORDER BY news.publish_date DESC;
