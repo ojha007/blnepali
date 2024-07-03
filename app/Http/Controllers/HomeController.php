@@ -16,8 +16,7 @@ class HomeController extends Controller
     public function __construct(
         protected NewsRepository $newsRepository,
         protected CategoryRepository $categoryRepository
-    ) {
-    }
+    ) {}
 
     public function index(): Renderable
     {

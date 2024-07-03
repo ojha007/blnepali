@@ -27,5 +27,4 @@ class CategoryRepository
                 INNER JOIN categoryIds ch ON c.parent_id = ch.id
             )', [$slug]);
     }
-
 }
