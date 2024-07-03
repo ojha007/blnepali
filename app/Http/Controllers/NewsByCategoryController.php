@@ -15,8 +15,7 @@ class NewsByCategoryController extends Controller
     public function __construct(
         protected NewsRepository $newsRepository,
         protected CategoryRepository $categoryRepository
-    ) {
-    }
+    ) {}
 
     public function __invoke(Category $category): Renderable|RedirectResponse
     {
