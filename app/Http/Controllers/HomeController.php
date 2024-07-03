@@ -41,10 +41,11 @@ class HomeController extends Controller
         $order1Of4News = $allNews->where('category_id', 9)->take(3)->values();
 
         $ghumphir = $allNews->where('body_position', 13)->values();
-        $brandStory = $allNews->where('category_id', 29)->take(6)->values();
+        // $brandStory = $allNews->where('category_id', 29)->take(6)->values();
+        $brandStory = $allNews->where('category_slug', 'brandstory')->take(6)->values();
         $sahitya = $allNews->where('body_position', 14)->values();
         $artha = $allNews->where('category_id', 4)->take(3)->values();
-        $khel = $allNews->where('category_id', 61)->take(3)->values(); //1
+        $khel = $allNews->where('category_slug', 'blogs')->take(3)->values(); //1
         $jiwansaili = $allNews->where('category_id', 72)->take(3)->values();
 
         return view(
