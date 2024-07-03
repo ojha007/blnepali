@@ -13,7 +13,7 @@
             </div>
         @endif
             @foreach($breakingNews->skip(1)->take(1) as $key => $news)
-            <div style="background: url('{{ $news->image }}'); background-repeat: no-repeat; height: 600px; background-size: cover; border-radius: 10px;" class="container banner position-relative text-center my-5 py-4">
+            <div style="background: url('{{ $news->image }}'); background-repeat: no-repeat; height: 600px;background-position:top; background-size: cover; border-radius: 10px;" class="container banner position-relative text-center my-5 py-4">
                 <a href="{{ route('showDetail', ['c_id' => $news->c_id]) }}" class="a-hover">
                     <div class="text-center mb-4 fw-bolder position-absolute text-white fs-1 shadow-sm bg-gradient-primary px-4 py-2 fw-bolder rounded-2" style="left: 0; bottom: -25px; right: 0;">
                         <h4 class="text-white a-hover mt-5 py-5 text-center fs-1 fw-bold">

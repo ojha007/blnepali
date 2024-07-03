@@ -34,7 +34,7 @@ class HomeController extends Controller
         $otherNews = $this->newsRepository->getOthersNews();
         $trendingNews = $otherNews->where('category_slug', 'trending');
         $breakingNews = $otherNews->where('category_slug', 'breaking')->take(4);
-        $videoNews = $otherNews->where('category_slug', 'video');
+        $videoNews = $otherNews->where('category_slug', 'trending');
         $blSpecialNews = $otherNews->where('category_slug', 'special');
         $anchorNews = $otherNews->where('category_slug', 'anchor');
 
@@ -57,7 +57,7 @@ class HomeController extends Controller
         $jiwansaili = $allNews->where('category_id', 72)->take(3)->values();
 
         return view(
-            $this->viewPath.'index',
+            $this->viewPath . 'index',
             compact(
                 'order1News',
                 'trendingNews',
@@ -91,7 +91,7 @@ class HomeController extends Controller
         $category = Category::whereSlug($categorySlug)
             ->select('id')
             ->first();
-        if (! $category) {
+        if (!$category) {
             return redirect('/');
         }
 
@@ -139,7 +139,7 @@ class HomeController extends Controller
         $breakingNews = $otherNews->where('category_slug', 'breaking');
 
         return view(
-            $this->viewPath.'news-detail',
+            $this->viewPath . 'news-detail',
             compact(
                 'news',
                 'headerCategories',
@@ -195,7 +195,7 @@ class HomeController extends Controller
         $breakingNews = $otherNews->where('category_slug', 'breaking');
 
         return view(
-            $this->viewPath.'news-detail',
+            $this->viewPath . 'news-detail',
             compact(
                 'news',
                 'headerCategories',
@@ -222,7 +222,7 @@ class HomeController extends Controller
             $trendingNews = $otherNews->where('category_slug', 'trending');
 
             return view(
-                $this->viewPath.'category.index',
+                $this->viewPath . 'category.index',
                 compact('headerCategories', 'news', 'trendingNews')
             );
         } catch (Exception) {
@@ -242,7 +242,7 @@ class HomeController extends Controller
             $trendingNews = $otherNews->where('category_slug', 'trending');
 
             return view(
-                $this->viewPath.'author.index',
+                $this->viewPath . 'author.index',
                 compact('headerCategories', 'news', 'trendingNews')
             );
         } catch (Exception) {
@@ -252,16 +252,16 @@ class HomeController extends Controller
 
     public function preetiToUnicode(): Renderable
     {
-        return view($this->viewPath.'unicode.preeti-to-unicode');
+        return view($this->viewPath . 'unicode.preeti-to-unicode');
     }
 
     public function romanToUnicode(): Renderable
     {
-        return view($this->viewPath.'unicode.roman-to-nepali');
+        return view($this->viewPath . 'unicode.roman-to-nepali');
     }
 
     public function unicodeToPreeti(): Renderable
     {
-        return view($this->viewPath.'unicode.unicode-to-preeti');
+        return view($this->viewPath . 'unicode.unicode-to-preeti');
     }
 }
