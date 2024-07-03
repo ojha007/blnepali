@@ -87,13 +87,10 @@ use Illuminate\Support\Carbon;
  * @method static Builder|News whereViewCount($value)
  * @method static Builder|News withTrashed()
  * @method static Builder|News withoutTrashed()
- * @method static string getCacheKey($cid)
  */
 class News extends Model
 {
     use HasEvents, HasFactory, SoftDeletes;
-
-    const CLOUD_FRONT_URL = 'd2y5l9fi6urcm1.cloudfront.net';
 
     const CACHE_KEY = 'BL_NEPALI_CACHE_NEWS';
 

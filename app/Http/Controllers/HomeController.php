@@ -11,23 +11,16 @@ use Illuminate\Http\RedirectResponse;
 
 class HomeController extends Controller
 {
-    protected NewsRepository $newsRepository;
-
-    protected CategoryRepository $categoryRepository;
-
     protected string $viewPath = 'frontend.';
 
-    public function __construct(NewsRepository $newsRepository, CategoryRepository $categoryRepository)
-    {
-        $this->newsRepository = $newsRepository;
-        $this->categoryRepository = $categoryRepository;
+    public function __construct(
+        protected NewsRepository $newsRepository,
+        protected CategoryRepository $categoryRepository
+    ) {
     }
 
     public function index(): Renderable
     {
-        $categories = $this->categoryRepository->getCategories();
-
-        $headerCategories = $categories->sortBy('header_position')->take(10);
         $bodyCategories = [];
 
         $otherNews = $this->newsRepository->getOthersNews();
@@ -64,9 +57,7 @@ class HomeController extends Controller
                 'videoNews',
                 'anchorNews',
                 'blSpecialNews',
-                'headerCategories',
                 'order2News',
-                'categories',
                 'order3News',
                 'order4News',
                 'order5News',
