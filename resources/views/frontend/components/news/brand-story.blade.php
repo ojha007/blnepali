@@ -8,7 +8,7 @@
                 <figure class="position-relative">
                     <img src="{{ $news->image }}" alt="">
                 </figure>
-                <a href="{{ route('showDetail', ['c_id' => $news->c_id]) }}">
+                <a href="{{ route('showDetail', ['c_id' => $news->id]) }}">
                     <h1 class="small-title py-1">
                         {!! $news->title !!}
                     </h1>

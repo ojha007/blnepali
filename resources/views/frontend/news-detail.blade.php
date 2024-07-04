@@ -117,7 +117,7 @@
                 @foreach($trendingNews as $news)
                 <div class="d-flex align-items-center border-bottom mb-3">
                     <figure class="post_img">
-                        <a href="{{ route('showDetail', ['c_id' => $news->c_id]) }}">
+                        <a href="{{ route('showDetail', ['c_id' => $news->id]) }}">
                             <img style="width: 80px; height: 80px;" src="{{ $news->image }}" alt="{{ $news->image_alt }}">
                         </a>
                     </figure>
