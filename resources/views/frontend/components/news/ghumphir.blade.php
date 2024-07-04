@@ -1,7 +1,9 @@
 <div class="container py-3">
     <div class="row g-2">
         <div class="col-md-12">
-            <h5 class="header-title pb-3">घुमफिर</h5>
+            <h5 class="header-title pb-3">
+                <a href="{{route('newsByCategory','tourism')}}">घुमफिर</a>
+            </h5>
         </div>
 
         {{-- Main News Section (col-md-8) --}}
