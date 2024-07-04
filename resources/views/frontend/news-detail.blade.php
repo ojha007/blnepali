@@ -23,7 +23,8 @@
     <meta name="twitter:description" content="{{$news->short_description}}"/>
 @endsection
 @section('content')
- 
+@if(isset($news))
+
     <div class="container">
         {{-- {{ print_r($news) }} --}}
         <div class="row py-5">
@@ -31,19 +32,22 @@
                 <h1 class="fw-bold fs-2 my-4">
                     {!! $news->title !!}
                 </h1>
-                {{-- <a class="w-full" href="{{ route('newsByAuthor', ['reporter_id' => $news->reporter_id]) }}">
+                <a class="w-full" href="{{ route('newsByAuthor', ['reporter_id' => $news->reporter_id]) }}">
                 <div class="d-flex border-top justify-content-between border-bottom py-2 mt-3 align-items-center">
                     <div class="d-flex align-items-center">
-                        @if($news->guest)
-                        <img class="rounded-circle border p-1" style="width: 40px;height:40px;object-fit:cover" src="{{ asset('frontend/images/blLogo.png') }}"
-                             alt="{{$news->guest->name}}">
-                    @elseif($news->reporter)
-                    <img class="rounded-circle border p-1" style="width: 40px;height:40px;object-fit:cover"                                src="{{ $news->reporter->image ?? asset('frontend/images/blLogo.png') }}"
-                                alt="{{$news->reporter->name}}">
+                        @if(isset($news->guest))
+                        <img class="rounded-circle border p-1" style="width: 40px; height:40px; object-fit:cover" 
+                             src="{{ asset('frontend/images/blLogo.png') }}" 
+                             alt="{{ $news->guest->name }}">
+                    @elseif(isset($news->reporter))
+                        <img class="rounded-circle border p-1" style="width: 40px; height:40px; object-fit:cover" 
+                             src="{{ $news->reporter->image ?? asset('frontend/images/blLogo.png') }}" 
+                             alt="{{ $news->reporter->name }}">
                     @endif
-                        <span class="ps-3 souce fw-bold text-muted">
-                            {{$news->guest ?? $news->reporter->name ?? ''}} 
-                        </span>
+                    
+                    <span class="ps-3 souce fw-bold text-muted">
+                        {{ $news->guest->name ?? $news->reporter->name ?? '' }}
+                    </span>
                     </div>
                     <div class="">
                         <div class='social-share-btns-container'>
@@ -51,7 +55,7 @@
                         </div>
                     </div>
                 </div>
-            </a> --}}
+            </a>
                 @if($news->image)
                 <figure>
                     <img src="{{ $news->image }}" alt="{{ $news->image_alt ?? 'News Image' }}" style="width:100%; max-width:100%;">
@@ -149,4 +153,7 @@
         </div>
         
     </div>
+    @else
+    <p>No news found.</p>
+@endif
 @endsection
