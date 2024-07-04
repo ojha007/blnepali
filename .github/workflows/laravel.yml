@@ -31,8 +31,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        operating-system: [ ubuntu-latest ]
-        php-versions: [ '8.2' ]
+        operating-system: [ubuntu-latest]
+        php-versions: ["8.2"]
 
     steps:
       - name: Checkout code
@@ -94,7 +94,7 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        php: [ 8.2 ]
+        php: [8.2]
 
     steps:
       - name: Checkout code

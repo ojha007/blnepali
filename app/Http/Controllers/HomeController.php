@@ -35,10 +35,10 @@ class HomeController extends Controller
         $order3News = $allNews->where('category_id', 11)->take(3)->values(); // विचार/विश्लेषण
         $order4News = $allNews->where('category_id', 25)->take(5)->values(); //अन्तर्वार्ता
         $order5News = $allNews->where('category_id', 26)->take(4)->values(); //ब्लग 59
-        $order6News = $allNews->where('body_position', 6)->values();
-        $order7News = $allNews->where('body_position', 7)->values();
-        $order8News = $allNews->where('body_position', 8)->values();
-        $order1Of4News = $allNews->where('category_id', 9)->take(3)->values();
+        // $order6News = $allNews->where('body_position', 6)->values();
+        // $order7News = $allNews->where('body_position', 7)->values();
+        // $order8News = $allNews->where('body_position', 8)->values();
+        // $order1Of4News = $allNews->where('category_id', 9)->take(3)->values();
 
         $ghumphir = $allNews->where('body_position', 13)->values();
         $brandStory = $allNews->where('category_id', 29)->take(6)->values();
@@ -60,11 +60,11 @@ class HomeController extends Controller
                 'order3News',
                 'order4News',
                 'order5News',
-                'order6News',
-                'order7News',
+                // 'order6News',
+                // 'order7News',
+                // 'order8News',
+                // 'order1Of4News',
                 'bodyCategories',
-                'order8News',
-                'order1Of4News',
                 'ghumphir',
                 'brandStory',
                 'sahitya',

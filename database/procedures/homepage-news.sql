@@ -13,7 +13,7 @@ WITH ranked_news AS (
         AND news.status = 'active'
     ORDER BY
         publish_date DESC
-    LIMIT 1000
+    LIMIT 2000
 )
 SELECT
     news.title,
