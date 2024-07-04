@@ -14,13 +14,12 @@ WITH ranked_news AS (SELECT news.title,
                             news.date_line,
                             news.image,
                             news.image_description,
-                            categories.body_position,
                             news.image_alt,
                             ROW_NUMBER() OVER (PARTITION BY news.category_id ORDER BY news.publish_date DESC) AS rn
                      FROM np_news news
                               JOIN categories ON news.category_id = categories.id
                               LEFT JOIN reporters ON news.reporter_id = reporters.id
-                     WHERE news.category_id IN (1, 4, 11, 13, 22, 25, 26, 27, 29, 32, 60, 72)
+                     WHERE news.category_id IN (1, 4, 9, 11, 13, 22, 25, 26, 27, 29, 32, 60, 72)
                        AND news.deleted_by IS NULL
                        AND news.deleted_at IS NULL
                        AND news.status = 'active')
@@ -41,7 +40,6 @@ SELECT title,
        date_line,
        image,
        image_description,
-       body_position,
        image_alt
 FROM ranked_news
 WHERE (category_id = 26 AND rn <= 10)
@@ -55,4 +53,5 @@ WHERE (category_id = 26 AND rn <= 10)
    OR (category_id = 72 AND rn <= 3)
    OR (category_id = 11 AND rn <= 5)
    OR (category_id = 32 AND rn <= 5)
+   OR (category_id = 9 AND rn <= 5)
    OR (category_id = 4 AND rn <= 3);
