@@ -160,7 +160,7 @@ class HomeController extends Controller
 
         $news->increment('view_count');
 
-        $sameCategoryNews = $allNews->where('c_id', '!=', $cId)->take(4);
+        $sameCategoryNews = $allNews->where('c_id', '=', $cId)->take(4);
 
         $otherNews = $this->newsRepository->getOthersNews();
         $trendingNews = $otherNews->where('category_slug', 'trending');

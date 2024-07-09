@@ -23,7 +23,8 @@
     <meta name="twitter:description" content="{{$news->short_description}}"/>
 @endsection
 @section('content')
- 
+@if(isset($news))
+
     <div class="container">
         {{-- {{ print_r($news) }} --}}
         <div class="row py-5">
@@ -34,16 +35,19 @@
                 <a class="w-full" href="{{ route('newsByAuthor', ['reporter_id' => $news->reporter_id]) }}">
                 <div class="d-flex border-top justify-content-between border-bottom py-2 mt-3 align-items-center">
                     <div class="d-flex align-items-center">
-                        @if($news->guest)
-                        <img class="rounded-circle border p-1" style="width: 40px;height:40px;object-fit:cover" src="{{ asset('frontend/images/blLogo.png') }}"
-                             alt="{{$news->guest->name}}">
-                    @elseif($news->reporter)
-                    <img class="rounded-circle border p-1" style="width: 40px;height:40px;object-fit:cover"                                src="{{ $news->reporter->image ?? asset('frontend/images/blLogo.png') }}"
-                                alt="{{$news->reporter->name}}">
+                        @if(isset($news->guest))
+                        <img class="rounded-circle border p-1" style="width: 40px; height:40px; object-fit:cover" 
+                             src="{{ asset('frontend/images/blLogo.png') }}" 
+                             alt="{{ $news->guest->name }}">
+                    @elseif(isset($news->reporter))
+                        <img class="rounded-circle border p-1" style="width: 40px; height:40px; object-fit:cover" 
+                             src="{{ $news->reporter->image ?? asset('frontend/images/blLogo.png') }}" 
+                             alt="{{ $news->reporter->name }}">
                     @endif
-                        <span class="ps-3 souce fw-bold text-muted">
-                            {{$news->guest ?? $news->reporter->name ?? ''}} 
-                        </span>
+                    
+                    <span class="ps-3 souce fw-bold text-muted">
+                        {{ $news->guest->name ?? $news->reporter->name ?? '' }}
+                    </span>
                     </div>
                     <div class="">
                         <div class='social-share-btns-container'>
@@ -113,7 +117,7 @@
                 @foreach($trendingNews as $news)
                 <div class="d-flex align-items-center border-bottom mb-3">
                     <figure class="post_img">
-                        <a href="{{ route('showDetail', ['c_id' => $news->c_id]) }}">
+                        <a href="{{ route('showDetail', ['c_id' => $news->id]) }}">
                             <img style="width: 80px; height: 80px;" src="{{ $news->image }}" alt="{{ $news->image_alt }}">
                         </a>
                     </figure>
@@ -149,4 +153,7 @@
         </div>
         
     </div>
+    @else
+    <p>No news found.</p>
+@endif
 @endsection
