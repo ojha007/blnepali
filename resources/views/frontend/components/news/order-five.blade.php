@@ -45,7 +45,9 @@
                 @include('frontend.icons.writer-icon')
             <span class="text-muted fw-bold me-4">
                 {{$news->guest ?? $news->reporter->name ?? '' }}
-                {{$news->date_line ? '-' .$news->date_line  :''}}
+                {{-- {{$news->date_line ? '-' .$news->date_line  :''}} --}}
+
+                {{ $news }}
             </span>
             </span>
             
