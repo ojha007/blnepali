@@ -70,14 +70,14 @@
     @include('frontend.components.news.ghumphir')
 
 
-    <section class="container my-5">
+    {{-- <section class="container my-5">
         <div class="row">
     @include('frontend.components.news.brand-story')
           
     @include('frontend.components.news.sahitya')
            
         </div>
-     </section>
+     </section> --}}
     
 
     <!--ended general news and links news section-->

@@ -14,7 +14,7 @@
                              class="card-img"
                              alt="{{$news->image_alt ?? $news->image_description ?? ''}}"/>
 
-                        <div class="card-img-overlay bg-gradient-primary top-50 p-3 mt-5 text-white bottom-0">
+                        <div class="card-img-overlay bg-gradient-primary  p-3 mt-5 text-white bottom-0" style="top:65%">
                             <div
                                 class="d-flex align-items-center justify-content-center gap-3">
                                 <h2 class="card-title fw-bold fs-3 text-center">
@@ -41,7 +41,7 @@
                                 <div class="ps-3">
                                     <h5 class="fw-bold medium-title fs-5">
                                         <a href="{{ route('showDetail', ['c_id' => $news->c_id]) }}">
-                                            {!! $news->title !!}
+                                            {{\Illuminate\Support\Str::limit($news->title, 12)}}
                                         </a>
                                     </h5>
                                     <p class="text-muted fw-bold">
