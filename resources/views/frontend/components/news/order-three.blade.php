@@ -22,7 +22,6 @@
                     </a>
                 </h5>
                 <p class="text-muted fw-bold">
-                    {{ print_r($news) }}
                     {{$news->guest ?? $news->reporter_name ?? '' }}
                     {{$news->date_line ? '-' .$news->date_line  :''}}
                 </p>
