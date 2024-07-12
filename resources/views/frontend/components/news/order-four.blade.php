@@ -27,7 +27,7 @@
                 <div class="row mt-3">
                     @foreach($order4News->skip(1) as $key=>$news)
                         <div class="col-md-6">
-                            <div class="d-flex align-items-center border-bottom mb-3">
+                            <div class="d-flex align-items-center  {{ $loop->remaining > 1 ? 'border-bottom' : '' }} mb-3">
                                 <figure
                                     class="post_img">
                                     <a href="{{ route('showDetail', ['c_id' => $news->c_id]) }}">
