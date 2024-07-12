@@ -61,11 +61,11 @@
                     <img src="{{ $news->image }}" alt="{{ $news->image_alt ?? 'News Image' }}" style="width:100%; max-width:100%;">
                 </figure>
                 @endif
-    
-
-                <p>
-                    {!! $news->description !!}
-                </p>
+                    <div class="description-img">
+                        <p>
+                            {!! $news->description !!}
+                        </p>
+                    </div>
                 
             </div>
             <div class="col-md-4">
@@ -158,10 +158,10 @@
 @endsection
 
 <script>
-    let elements = document.querySelectorAll('img');
+    let elements = document.querySelectorAll('.description-img img');
       elements.forEach(element => {
         element.removeAttribute('style');
-        element.setAttribute('style', 'width:100%; max-width:100%;');
+        element.setAttribute('style', 'width:100%');
       });
 
 </script>
