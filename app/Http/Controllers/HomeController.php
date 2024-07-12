@@ -16,7 +16,8 @@ class HomeController extends Controller
     public function __construct(
         protected NewsRepository $newsRepository,
         protected CategoryRepository $categoryRepository
-    ) {}
+    ) {
+    }
 
     public function index(): Renderable
     {
@@ -32,7 +33,7 @@ class HomeController extends Controller
         $allNews = $this->newsRepository->getHomePageNews();
         $order1News = $allNews->where('category_id', 60); // samachar
         $order2News = $allNews->where('category_id', 22); // कला
-        $order3News = $allNews->where('category_id', 11); // विचार/विश्लेषण
+        $order3News = $allNews->where('category_id', 11); // विचार
         $order4News = $allNews->where('category_id', 25); //अन्तर्वार्ता
         $order5News = $allNews->where('category_id', 26); //ब्लग 59
         $ghumphir = $allNews->where('category_id', 9);
@@ -43,7 +44,7 @@ class HomeController extends Controller
         $jiwansaili = $allNews->where('category_id', 72);
 
         return view(
-            $this->viewPath.'index',
+            $this->viewPath . 'index',
             compact(
                 'order1News',
                 'trendingNews',
@@ -71,7 +72,7 @@ class HomeController extends Controller
         $category = Category::whereSlug($categorySlug)
             ->select('id')
             ->first();
-        if (! $category) {
+        if (!$category) {
             return redirect('/');
         }
 
@@ -116,7 +117,7 @@ class HomeController extends Controller
         $breakingNews = $otherNews->where('category_slug', 'breaking');
 
         return view(
-            $this->viewPath.'news-detail',
+            $this->viewPath . 'news-detail',
             compact(
                 'news',
                 'blSpecialNews',
@@ -168,7 +169,7 @@ class HomeController extends Controller
         $breakingNews = $otherNews->where('category_slug', 'breaking');
 
         return view(
-            $this->viewPath.'news-detail',
+            $this->viewPath . 'news-detail',
             compact(
                 'news',
                 'blSpecialNews',
