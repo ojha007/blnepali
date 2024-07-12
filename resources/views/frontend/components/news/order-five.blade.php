@@ -47,7 +47,7 @@
                 {{$news->guest ?? $news->reporter->name ?? '' }}
                 {{-- {{$news->date_line ? '-' .$news->date_line  :''}} --}}
 
-                {{ $news }}
+                {{print_r($news)}}
             </span>
             </span>
             
