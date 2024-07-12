@@ -59,7 +59,6 @@
                 @if($news->image)
                 <figure>
                     <img src="{{ $news->image }}" alt="{{ $news->image_alt ?? 'News Image' }}" style="width:100%; max-width:100%;">
-  
                 </figure>
                 @endif
     
@@ -134,7 +133,7 @@
             </div>
              </div>
         </div>
-        <div class="col-md-12 mb-5">
+        <div class="col-md-12 mb-5 related-news-image">
           <h5 class="header-title mb-3">सिफारिश</h5>
     
           <a href="{{ route('showDetail', ['c_id' => $news->c_id]) }}" class="row">
@@ -157,3 +156,12 @@
     <p>No news found.</p>
 @endif
 @endsection
+
+<script>
+    let elements = document.querySelectorAll('img');
+      elements.forEach(element => {
+        element.removeAttribute('style');
+        element.setAttribute('style', 'width:100%; max-width:100%;');
+      });
+
+</script>
