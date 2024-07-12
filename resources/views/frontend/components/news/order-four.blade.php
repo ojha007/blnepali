@@ -41,7 +41,7 @@
                                 <div class="ps-3">
                                     <h5 class="fw-bold medium-title fs-5">
                                         <a href="{{ route('showDetail', ['c_id' => $news->c_id]) }}">
-                                            {{\Illuminate\Support\Str::limit($news->title, 12)}}
+                                            {{\Illuminate\Support\Str::limit($news->title, 93)}}
                                         </a>
                                     </h5>
                                     <p class="text-muted fw-bold">
