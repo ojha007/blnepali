@@ -19,6 +19,8 @@ WITH ranked_news AS (SELECT news.title,
                      FROM np_news news
                               JOIN categories ON news.category_id = categories.id
                               LEFT JOIN reporters ON news.reporter_id = reporters.id
+                              LEFT JOIN  guests ON news.guest_id = guests.id
+
                      WHERE news.category_id IN (1, 4, 9, 11, 13, 22, 25, 26, 27, 29, 32, 60, 72)
                        AND news.deleted_by IS NULL
                        AND news.deleted_at IS NULL
