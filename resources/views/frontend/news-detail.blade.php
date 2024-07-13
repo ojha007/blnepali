@@ -36,11 +36,11 @@
                     <div class="d-flex align-items-center">
                         @if(isset($news->guest))
                         <img class="rounded-circle border p-1" style="width: 40px; height:40px; object-fit:cover" 
-                             src="{{ asset('frontend/images/blLogo.png') }}" 
+                             src="{{ asset('frontend/images/bl-logo.png') }}" 
                              alt="{{ $news->guest->name }}">
                     @elseif(isset($news->reporter))
                         <img class="rounded-circle border p-1" style="width: 40px; height:40px; object-fit:cover" 
-                             src="{{ $news->reporter->image ?? asset('frontend/images/blLogo.png') }}" 
+                             src="{{ $news->reporter->image ?? asset('frontend/images/bl-logo.png') }}" 
                              alt="{{ $news->guest->name ?? $news->reporter->name ?? '' }}">
                     @endif
                     
