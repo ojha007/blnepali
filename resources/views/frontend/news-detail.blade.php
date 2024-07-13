@@ -26,7 +26,6 @@
 @if(isset($news))
 
     <div class="container">
-        {{ print_r($news) }}
         <div class="row py-5">
             <div class="col-md-8 news-detail">
                 <h1 class="fw-bold fs-2 my-4">
@@ -42,7 +41,7 @@
                     @elseif(isset($news->reporter))
                         <img class="rounded-circle border p-1" style="width: 40px; height:40px; object-fit:cover" 
                              src="{{ $news->reporter->image ?? asset('frontend/images/blLogo.png') }}" 
-                             alt="{{ $news->reporter->name }}">
+                             alt="{{ $news->guest->name ?? $news->reporter->name ?? '' }}">
                     @endif
                     
                     <span class="ps-3 souce fw-bold text-muted">
