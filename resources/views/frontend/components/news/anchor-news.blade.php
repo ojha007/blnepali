@@ -25,7 +25,7 @@
                                     {!! $anchorFirst->title !!}
                                 </h1>
                                 <p class="post-description">
-                                    {!! $anchorFirst->short_description !!}
+                                    {!! \Illuminate\Support\Str::limit($anchorFirst->short_description,261) !!}
                                 </p>
                             </a>
                         @endif
