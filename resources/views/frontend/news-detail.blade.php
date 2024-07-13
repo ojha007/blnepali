@@ -46,7 +46,7 @@
                     @endif
                     
                     <span class="ps-3 souce fw-bold text-muted">
-                        {{ $news->guest->name ?? $news->reporter->name ?? '' }}
+                        {{-- {{ $news->guest->name ?? $news->reporter->name ?? '' }} --}}
                     </span>
                     </div>
                     <div class="">

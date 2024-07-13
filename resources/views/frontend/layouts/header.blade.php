@@ -139,7 +139,7 @@
     </nav>
 </header>
 
-<section class="bg-body-tertiary my-nav border-bottom">
+<section class="bg-body-tertiary my-nav border-bottom sticky-top shadow-md">
     <div class="container">
         <nav class="navbar  text-center navbar-expand-lg my-nav py-0">
             <div class="container-fluid">
