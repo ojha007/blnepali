@@ -1,7 +1,9 @@
 @isset($jiwansaili)
     @php($jiwansailiFirst = $jiwansaili->first())
     <div class="col-md-4">
+        <a href="{{route('newsByCategory','lifestyle')}}">
         <h5 class="header-title">जीवनशैली</h5>
+        </a>
         @if($jiwansailiFirst)
         <div class="border-bottom border-2 pb-2">
             <figure class="position-relative">

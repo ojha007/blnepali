@@ -2,7 +2,9 @@
     
     @php($arthaFirst = $artha->first())
     <div class="col-md-4">
-        <h5 class="header-title">अर्थ</h5>
+        <a href="{{route('newsByCategory','econimics')}}">
+            <h5 class="header-title">अर्थ</h5>
+        </a>
       @if($arthaFirst)
         <div class="border-bottom border-2 pb-2">
             <figure class="position-relative">

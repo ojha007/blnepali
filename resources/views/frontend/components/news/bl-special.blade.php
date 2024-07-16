@@ -4,7 +4,10 @@
 
         <div class="container">
             <div class="col-md-12 mb-4">
+                <a href="{{route('newsByCategory','bl-special')}}"
+                   class="a-hover">
                 <h5 class="header-title text-white">बिएल विशेष</h5>
+                </a>
             </div>
             <div class="row">
                 @foreach($blSpecialNews as $news)

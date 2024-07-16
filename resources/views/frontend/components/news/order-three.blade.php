@@ -3,7 +3,9 @@
         <h5 class="header-title mb-4">
 
             @if(!$order3News->isEmpty())
+            <a href="{{route('newsByCategory','opinion')}}">
                 {{$order3News->first()->category_name}}
+            </a>
             @endif
         </h5>
     </div>

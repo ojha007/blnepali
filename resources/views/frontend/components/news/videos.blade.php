@@ -2,9 +2,11 @@
     <div class="container py-3">
         <div class="row g-2">
             <div class="col-md-12">
-                <h5 class="header-title pb-3 text-break-primary">
+                <a href="{{route('newsByCategory','video-report')}}">
+                <h5 class="header-title pb-3 text-white">
                     भिडियो
                 </h5>
+                </a>
             </div>
             @foreach($videoNews as $key => $news)
                 @if($loop->first)

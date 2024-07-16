@@ -3,7 +3,10 @@
 
     @if($order1First)
         <div class="col-md-12 mb-4">
+            <a href="{{route('newsByCategory',$order1First->category_slug)}}"
+               class="a-hover">
             <h5 class="header-title">{{$order1First->category_name}}</h5>
+            </a>
         </div>
         <div class="row g-0">
             <div class="col-md-7">

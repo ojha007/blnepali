@@ -2,9 +2,11 @@
     @php($order4First = $order4News->first())
 
     @if($order4First)
+    <a href="{{route('newsByCategory','interview')}}">
         <h5 class="header-title pb-3">
             {{$order4First->category_name}}
         </h5>
+    </a>
         <div class="row">
             <div class="col-md-12">
                 <div class="text-center position-relative">

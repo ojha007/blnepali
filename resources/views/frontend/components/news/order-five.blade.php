@@ -1,8 +1,10 @@
 @isset($order5News)
     <div class="col-md-12">
-        <h5 class="header-title pb-3">
-            ब्लग
-        </h5>
+        <a href="{{route('newsByCategory','blogs')}}">
+            <h5 class="header-title pb-3">
+                ब्लग
+            </h5>
+        </a>
     </div>
     @foreach($order5News as $key=> $news)
         {{-- <div class="border p-3 rounded-1">

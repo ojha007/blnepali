@@ -2,7 +2,9 @@
     @php($khelFirst = $artha->first())
   
     <div class="col-md-4">
+        <a href="{{route('newsByCategory','sports')}}">
         <h5 class="header-title">खेल</h5>
+        </a>
         @if($khelFirst)
         <div class="border-bottom border-2 pb-2">
             <figure class="position-relative">

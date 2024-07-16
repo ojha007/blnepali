@@ -6,7 +6,7 @@
             <div class="col-md-12">
                 <div class="row">
                     <div class="col-md-12 mb-4">
-                        <a>
+                        <a href="{{route('newsByCategory','anchor')}}">
 
                             <h5 class="header-title">एंकर</h5>
                         </a>

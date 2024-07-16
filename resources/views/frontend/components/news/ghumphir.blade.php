@@ -23,7 +23,7 @@
 
         {{-- Side News Section (col-md-4) --}}
         <div class="col-md-4">
-            <div class="row g-2">
+            <div class="row g-2 h-100 ghumphir-side">
                 @foreach($ghumphir->take(2) as $news)
                 <div class="col-md-12">
                     <a href="{{ route('showDetail', ['c_id' => $news->c_id]) }}" class="card border-0">
