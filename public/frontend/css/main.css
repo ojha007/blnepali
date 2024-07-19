@@ -186,12 +186,7 @@ img {
     border-radius: 5px;
     height: 100%;
 }
-.ghumphir-side{
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
+
 .rajniti-second-row img {
     height: 200px !important;
     object-fit: cover;

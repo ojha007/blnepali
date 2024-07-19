@@ -26,7 +26,7 @@
 @if(isset($news))
 
     <div class="container">
-        <div class="row py-5">
+        <div class="row py-4">
             <div class="col-md-12 mb-4">
                 <h1 class="fw-bold text-center fs-1 my-4">
                     {!! $news->title !!}
@@ -70,7 +70,6 @@
                             {!! $news->description !!}
                         </p>
                     </div>
-                
             </div>
             <div class="col-md-4">
              <div class=" sticky-top"> 
