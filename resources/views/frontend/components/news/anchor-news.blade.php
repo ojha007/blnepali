@@ -18,13 +18,13 @@
                                 <img
                                     src="{{$anchorFirst->image}}"
                                     alt="{!! $anchorFirst->title !!}"/>
-                                <figcaption>{!! $anchorFirst->date_line ?? "" !!}</figcaption>
+                                
                             </figure>
                             <a href="{{ route('showDetail', ['c_id' => $anchorFirst->c_id]) }}">
                                 <h1 class="small-title">
                                     {!! $anchorFirst->title !!}
                                 </h1>
-                                <p class="post-description">
+                                <p class="post-description-sm">
                                     {!! \Illuminate\Support\Str::limit($anchorFirst->short_description,261) !!}
                                 </p>
                             </a>

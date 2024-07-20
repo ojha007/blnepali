@@ -172,12 +172,12 @@ img {
     font-weight: 500;
 }
 .small-col img {
-    height: 204px !important;
+    height: 130px !important;
     object-fit: cover;
 }
 
 .cover-photo img {
-    height: 450px !important;
+    height: 300px !important;
     object-fit: cover;
 }
 

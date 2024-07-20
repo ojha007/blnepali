@@ -14,7 +14,7 @@
                     <div class="col-md-3 a-hover">
                         <div class="black-box">
                             <figure class="position-relative">
-                                <img src="{{getResizeImage($news->image)}}"
+                                <img src="{{$news->image}}"
                                      alt="{{$news->title}}">
                             </figure>
                             <a href="{{ route('showDetail', ['c_id' => $news->c_id]) }}"

@@ -45,7 +45,7 @@
                                 {!! $news->title !!}
                             </h1>
                         </a>
-                        <span class="text-muted fs-6 fw-bold text-info">{!! $news->date_line !!}</span>
+                        <span class="text-muted fs-6 fw-bold text-info">{!! $news->reporter_name !!}</span>
                     </div>
                 </div>
             @endforeach
