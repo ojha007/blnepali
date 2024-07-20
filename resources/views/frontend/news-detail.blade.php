@@ -34,7 +34,7 @@
                 </h1>
                 
                 <a class="w-full" >
-                <div class="d-flex border-top justify-content-between border-bottom py-2 mt-3 align-items-center">
+                <div class="d-flex border-top justify-content-between border-bottom py-2  mt-3 mb-3 align-items-center">
                     <div class="d-flex align-items-center">
                         @if(isset($news->guest))
                         <img class="rounded-circle border p-1" style="width: 40px; height:40px; object-fit:cover" 
