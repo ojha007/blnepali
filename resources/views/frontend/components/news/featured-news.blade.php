@@ -35,10 +35,11 @@
                                 <p>
                                     {{\Illuminate\Support\Str::limit($news->short_description, 500)}}
                                 </p>
+                                <p class="text-muted fs-6 fw-bold text-info">
+                                    {{$news->reporter_name}}
+                                </p>
                             </div>
-                            <span class="text-muted fs-6 fw-bold text-info">
-                                {{$news->reporter_name}}
-                            </span>
+                            
                         </div>
                     </a>
                 </div>

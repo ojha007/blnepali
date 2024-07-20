@@ -1,9 +1,9 @@
 @isset($sahitya)
-    <h5 class="header-title">साहित्य</h5>
+<h5 class="header-title">साहित्य</h5>
 
     <div class="row mt-4">
         @foreach($sahitya as $news)
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <div>
                     <figure class="position-relative mb-3">
                         <img src="{{getResizeImage($news->image)}}"
