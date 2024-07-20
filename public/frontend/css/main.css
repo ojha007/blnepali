@@ -331,6 +331,18 @@ img {
     font-size: 1.5rem;
     border-radius: 5px;
 }
+.util div svg:hover{
+    color: rebeccapurple;
+    cursor: pointer;
+}
+
+.bi-copy {
+    cursor: pointer;
+    
+}
+.bi-copy:hover {
+    color: rebeccapurple;
+}
 .story-title::after{
     content: "";
     background: var(--primary-color);

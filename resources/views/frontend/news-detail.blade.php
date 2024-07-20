@@ -50,9 +50,35 @@
                     {{ $news->guest->name ?? $news->reporter->name ?? '' }}
                     </span>
                     </div>
-                    <div class="">
+                    <div class="d-flex util flex-row align-items-center ">
+                    <div id="plus">
+                        <svg xmlns="http://www.w3.org/2000/svg"  width="32" height="32" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
+                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+                            <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
+                        </svg>
+                    </div>
+                        <div id="reset" class="mx-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-arrow-repeat" viewBox="0 0 16 16">
+                                <path d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41m-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9"/>
+                                <path fill-rule="evenodd" d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5 5 0 0 0 8 3M3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9z"/>
+                              </svg>
+                        </div>
+                        <div id="minus">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-dash-circle" viewBox="0 0 16 16">
+                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+                                <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8"/>
+                              </svg>
+                        </div>
+                    </div>
+                    <div class="d-flex">
                         <div class='social-share-btns-container'>
                             <div class="sharethis-inline-share-buttons"></div>
+                        </div>
+                        <div id="copy">
+
+                            <svg  xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-copy" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M4 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-1h1v1a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h1v1z"/>
+                            </svg>
                         </div>
                     </div>
                 </div>
@@ -164,5 +190,62 @@
         element.removeAttribute('style');
         element.setAttribute('style', 'width:100%');
       });
+
+      
+      document.addEventListener("DOMContentLoaded", function() {
+            let copy = document.querySelector('#copy');
+if(copy){
+copy.addEventListener('click', function(){
+        let url = window.location.href;
+        navigator.clipboard.writeText(url);
+        copy.appendChild(document.createTextNode('Copied!'));
+        setTimeout(() => {
+            copy.removeChild(copy.lastChild);
+        }, 500);
+    });
+}
+
+let plus = document.querySelector('#plus');
+let minus = document.querySelector('#minus');
+let reset = document.querySelector('#reset');
+
+plus.addEventListener('click', function(){
+    // inside .news-detail p
+
+    let elements = document.querySelectorAll('.description-img p');
+    elements.forEach(element => {
+        let fontSize = window.getComputedStyle(element, null).getPropertyValue('font-size');
+        let currentSize = parseFloat(fontSize);
+        let newSize = currentSize + 1;
+        element.style.fontSize = newSize + 'px';
+    });
+
+
+    minus.addEventListener('click', function(){
+        // inside .news-detail p
+
+        let elements = document.querySelectorAll('.description-img p');
+        elements.forEach(element => {
+            let fontSize = window.getComputedStyle(element, null).getPropertyValue('font-size');
+            let currentSize = parseFloat(fontSize);
+            let newSize = currentSize - 1;
+            element.style.fontSize = newSize + 'px';
+        });
+    });
+
+    reset.addEventListener('click', function(){
+        // inside .news-detail p
+
+        let elements = document.querySelectorAll('.description-img p');
+        elements.forEach(element => {
+            element.style.fontSize = '22px';
+        });
+    });
+
+});
+
+
+
+        });
 
 </script>
