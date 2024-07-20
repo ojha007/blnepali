@@ -29,14 +29,10 @@
         <div class="row py-4">
             
             <div class="col-md-8 news-detail ">
-                <h1 class="fw-bold text-center fs-1 my-4">
+                <h1 class="fw-bold text-left fs-1 my-4">
                     {!! $news->title !!}
                 </h1>
-                @if($news->image)
-                <figure>
-                    <img src="{{ $news->image }}" alt="{{ $news->image_alt ?? 'News Image' }}" style="width:100%; max-width:100%;">
-                </figure>
-                @endif
+                
                 <a class="w-full" >
                 <div class="d-flex border-top justify-content-between border-bottom py-2 mt-3 align-items-center">
                     <div class="d-flex align-items-center">
@@ -60,7 +56,11 @@
                         </div>
                     </div>
                 </div>
-                
+                @if($news->image)
+                <figure>
+                    <img src="{{ $news->image }}" alt="{{ $news->image_alt ?? 'News Image' }}" style="width:100%; max-width:100%;">
+                </figure>
+                @endif
             </a>
                
                     <div class="description-img mt-3">
