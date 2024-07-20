@@ -36,9 +36,9 @@
                                     {{\Illuminate\Support\Str::limit($news->short_description, 500)}}
                                 </p>
                             </div>
-                            <h4 class="mt-3" style="color: #f06023">
+                            <span class="text-muted fs-6 fw-bold text-info">
                                 {{$news->reporter_name}}
-                            </h4>
+                            </span>
                         </div>
                     </a>
                 </div>

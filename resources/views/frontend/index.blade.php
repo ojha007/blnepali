@@ -18,7 +18,7 @@
                     @include('frontend.components.news.order-one')
                 </div>
                 <div class="col-md-4">
-                    @include('frontend.components.news.breaking-news')
+                    @include('frontend.components.news.order-three')
                 </div>
             </div>
         </div>
@@ -37,7 +37,7 @@
                     @include('frontend.components.news.order-two')
                 </div>
                 <div class="col-md-4">
-                    @include('frontend.components.news.order-three')
+                    @include('frontend.components.news.breaking-news')
                 </div>
             </div>
         </div>
@@ -69,6 +69,8 @@
 
     @include('frontend.components.news.ghumphir')
 
+    
+    @include('frontend.components.news.sahitya')
 
     {{-- <section class="container my-5">
         <div class="row">

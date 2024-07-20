@@ -46,7 +46,6 @@
             <span class="writer">
                 @include('frontend.icons.writer-icon')
             <span class="text-muted fw-bold me-4">
-             
                 {{ $news->guest_name ?? $news->reporter_name ?? '' }}
             </span>
             </span>
