@@ -48,8 +48,6 @@
             <span class="text-muted fw-bold me-4">
              
                 {{ $news->guest_name ?? $news->reporter_name ?? '' }}
-
-                {{$news->date_line ? '-' .$news->date_line  :''}}
             </span>
             </span>
             

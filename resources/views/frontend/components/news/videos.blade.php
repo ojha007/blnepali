@@ -13,7 +13,7 @@
                     <div class="col-md-5">
                         <a href="{{ route('showDetail', ['c_id' => $news->c_id]) }}"
                            class="card h-100 border-0 ">
-                            <img class="card-img"
+                            <img class="card-img h-100"
                                  src="{{ getResizeImage($news->image) }}"
                                  alt="{{ $news->image_alt }}"/>
 
