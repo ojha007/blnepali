@@ -22,7 +22,8 @@
                                     @include('frontend.icons.video-icon')
 
                                     <h2 class="card-title fw-bold fs-3">
-                                        {!! $news->title !!}
+                                        
+                                        {{\Illuminate\Support\Str::limit($news->title, 40)}}
                                     </h2>
                                 </div>
                             </div>
