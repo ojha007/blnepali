@@ -50,7 +50,32 @@
                     {{ $news->guest->name ?? $news->reporter->name ?? '' }}
                     </span>
                     </div>
-                    <div class="d-flex util flex-row align-items-center ">
+                    
+                    <div class="d-flex">
+                        <div class='social-share-btns-container'>
+                            <div class="sharethis-inline-share-buttons"></div>
+                        </div>
+                        <div id="copy">
+
+                            <svg  xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-copy" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M4 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-1h1v1a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h1v1z"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                @if($news->image)
+                <figure class="position-relative">
+                    <img src="{{ $news->image }}" alt="{{ $news->image_alt ?? 'News Image' }}" style="width:100%; max-width:100%;">
+                <figcaption>
+                    <span>
+                        {{ $news->image_description }}
+                    </span>
+                </figcaption>  
+                </figure>
+                
+                @endif
+
+                <div class="d-flex util flex-row align-items-center ">
                     <div id="plus">
                         <svg xmlns="http://www.w3.org/2000/svg"  width="32" height="32" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
                             <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
@@ -70,23 +95,6 @@
                               </svg>
                         </div>
                     </div>
-                    <div class="d-flex">
-                        <div class='social-share-btns-container'>
-                            <div class="sharethis-inline-share-buttons"></div>
-                        </div>
-                        <div id="copy">
-
-                            <svg  xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-copy" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd" d="M4 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-1h1v1a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h1v1z"/>
-                            </svg>
-                        </div>
-                    </div>
-                </div>
-                @if($news->image)
-                <figure>
-                    <img src="{{ $news->image }}" alt="{{ $news->image_alt ?? 'News Image' }}" style="width:100%; max-width:100%;">
-                </figure>
-                @endif
             </a>
                
                     <div class="description-img mt-3">
@@ -95,7 +103,6 @@
                         </p>
                     </div>
 
-                    <div class="sharethis-inline-share-buttons"></div>
             </div>
             <div class="col-md-4">
              <div class=" sticky-top"> 
@@ -108,7 +115,6 @@
                 <div class="border-bottom border-2 pb-2">
                     <figure class="position-relative">
                             <img src="{{ $news->image }}" alt="{{ $news->image_alt }}" class="img-fluid">
-                     
                     </figure>
                     <a href="{{ route('showDetail', ['c_id' => $news->c_id]) }}">
                         <h1 class="small-title py-1">
