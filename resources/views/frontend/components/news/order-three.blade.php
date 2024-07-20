@@ -4,7 +4,7 @@
 
             @if(!$order3News->isEmpty())
             <a href="{{route('newsByCategory','opinion')}}">
-                {{$order3News->first()->category_name}}
+                विचार
             </a>
             @endif
         </h5>
@@ -25,7 +25,6 @@
                 </h5>
                 <p class="text-muted fw-bold">
                     {{$news->guest ?? $news->reporter_name ?? '' }}
-                    {{$news->date_line ? '-' .$news->date_line  :''}}
                 </p>
             </div>
         </div>

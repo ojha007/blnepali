@@ -44,16 +44,16 @@ SELECT title,
        image_description,
        image_alt
 FROM ranked_news
-WHERE (category_id = 1 AND rn <= 3)
-   OR (category_id = 4 AND rn <= 3)
+WHERE (category_id = 1 AND rn <= 2)
+   OR (category_id = 4 AND rn <= 2)
+   OR (category_id = 72 AND rn <= 2)
    OR (category_id = 9 AND rn <= 5)
-   OR (category_id = 11 AND rn <= 3)
+   OR (category_id = 11 AND rn <= 2)
    OR (category_id = 13 AND rn <= 5)
-   OR (category_id = 22 AND rn <= 5)
-   OR (category_id = 25 AND rn <= 7)
-   OR (category_id = 26 AND rn <= 5)
+   OR (category_id = 22 AND rn <= 4)
+   OR (category_id = 25 AND rn <= 5)
+   OR (category_id = 26 AND rn <= 4)
    OR (category_id = 27 AND rn <= 5)
    OR (category_id = 29 AND rn <= 6)
    OR (category_id = 32 AND rn <= 5)
-   OR (category_id = 60 AND rn <= 4)
-   OR (category_id = 72 AND rn <= 3);
+   OR (category_id = 60 AND rn <= 4);
