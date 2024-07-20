@@ -22,6 +22,7 @@
                     <h1 class="small-title px-3">
                         {!! $order1First->title !!}
                     </h1>
+                    <span class="text-muted fs-6 fw-bold text-info">{!! $news->reporter_name !!}</span>
                     <p class="post-description-sm p-3">
                         {!! $order1First->sub_title !!}
                         {!! $order1First->short_description !!}

@@ -50,7 +50,7 @@
                                                 <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z"/>
                                             </svg>
                                             <h2 class="card-title fw-bold fs-5">
-                                                {!! $news->title !!}
+                                                {{\Illuminate\Support\Str::limit($news->title, 50)}}
                                             </h2>
                                         </div>
                                     </div>
