@@ -104,6 +104,7 @@
                         <p>
                             {!! $news->description !!}
                         </p>
+                        <!-- ShareThis BEGIN --><div class="sharethis-inline-reaction-buttons"></div><!-- ShareThis END -->
                     </div>
 
             </div>

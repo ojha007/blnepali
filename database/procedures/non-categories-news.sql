@@ -2,6 +2,7 @@
         news.sub_title,
         news.id,
         news.c_id,
+       
         news.short_description,
         news.video_url,
         reporters.image as reporter_image,

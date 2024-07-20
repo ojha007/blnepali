@@ -25,13 +25,15 @@
                                 </h4>
                             @endif
                             <h4 class="a-hover text-left fs-1 fw-bold">
+
+                                {{$news->title}}
                                 
-                                {{\Illuminate\Support\Str::limit($news->title, 50)}}
+                                {{-- {{\Illuminate\Support\Str::limit($news->title, 50)}} --}}
                             </h4>
                             <div class="feature-news my-2">
 
                                 <p>
-                                    {{\Illuminate\Support\Str::limit($news->short_description, 150)}}
+                                    {{\Illuminate\Support\Str::limit($news->short_description, 13)}}
                                 </p>
                             </div>
                             <h4 class="mt-3" style="color: #f06023">
