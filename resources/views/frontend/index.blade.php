@@ -7,7 +7,7 @@
     <section class="container bl-anchor-news">
         @include('frontend.components.news.anchor-news')
     </section>
-    <section class="container-fluid my-5 bl-special py-5" style="background-color: #082332">
+    <section class="container-fluid my-5 bl-special py-5" style="background-color: #50558b">
         @include('frontend.components.news.bl-special')
     </section>
 
