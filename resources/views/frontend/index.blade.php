@@ -68,9 +68,11 @@
     </section>
 
     @include('frontend.components.news.ghumphir')
+<div class="container">
 
-    
     @include('frontend.components.news.sahitya')
+</div>
+    
 
     {{-- <section class="container my-5">
         <div class="row">
