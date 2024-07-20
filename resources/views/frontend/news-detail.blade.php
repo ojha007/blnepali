@@ -109,6 +109,27 @@
             </div>
             <div class="col-md-4">
              <div class=" sticky-top"> 
+
+                <div class="col-md-12 my-4">
+                    <h5 class="header-title">बिएल विशेष</h5>
+                </div>
+                @foreach($blSpecialNews as $news)
+                <div class="d-flex align-items-center border-bottom mb-3">
+                    <figure class="post_img">
+                        <a href="{{ route('showDetail', ['c_id' => $news->id]) }}">
+                            <img style="width: 80px; height: 80px;" src="{{ $news->image }}" alt="{{ $news->image_alt }}">
+                        </a>
+                    </figure>
+                    <div class="ps-3">
+                        <h5 class="fw-bold medium-title fs-5">
+                            <a href="{{ route('showDetail', ['c_id' => $news->c_id]) }}">{{ $news->title }}</a>
+                        </h5>
+                        {{-- <p class="text-muted fw-bold">
+                        {{print_r($news)}}
+                        </p> --}}
+                    </div>
+                </div>
+            @endforeach
                
                 <div class="col-md-12 mb-4">
                     <h5 class="header-title">ब्रेक</h5>
@@ -196,71 +217,64 @@
 @endsection
 
 <script>
-    let elements = document.querySelectorAll('.description-img img');
-      elements.forEach(element => {
-        element.removeAttribute('style');
-        element.setAttribute('style', 'width:100%');
-      });
-
-      
-      document.addEventListener("DOMContentLoaded", function() {
-            let copy = document.querySelector('#copy');
-if(copy){
-copy.addEventListener('click', function(){
-        let url = window.location.href;
-        navigator.clipboard.writeText(url);
-        copy.appendChild(document.createTextNode('Copied!'));
-        setTimeout(() => {
-            copy.removeChild(copy.lastChild);
-        }, 500);
-    });
-}
-
-let plus = document.querySelector('#plus');
-let minus = document.querySelector('#minus');
-let reset = document.querySelector('#reset');
-
-plus.addEventListener('click', function(){
-    // inside .news-detail p
-
-    let elements = document.querySelectorAll('.description-img p');
-    elements.forEach(element => {
-        let fontSize = window.getComputedStyle(element, null).getPropertyValue('font-size');
-        if(fontSize === '40px'){
-            return;
+    document.addEventListener("DOMContentLoaded", function() {
+        // Handle image styling
+        let elements = document.querySelectorAll('.description-img img');
+        elements.forEach(element => {
+            element.removeAttribute('style');
+            element.setAttribute('style', 'width:100%');
+        });
+    
+        // Handle copy functionality
+        let copy = document.querySelector('#copy');
+        if(copy){
+            copy.addEventListener('click', function(){
+                let url = window.location.href;
+                navigator.clipboard.writeText(url);
+                copy.appendChild(document.createTextNode('Copied!'));
+                setTimeout(() => {
+                    copy.removeChild(copy.lastChild);
+                }, 500);
+            });
         }
-        let currentSize = parseFloat(fontSize);
-        let newSize = currentSize + 1;
-        element.style.fontSize = newSize + 'px';
-    });
-
-
-    minus.addEventListener('click', function(){
-        // inside .news-detail p
-
-        let elements = document.querySelectorAll('.description-img p');
-        elements.forEach(element => {
-            let fontSize = window.getComputedStyle(element, null).getPropertyValue('font-size');
-
-            if(fontSize === '16px'){
-                return;
-            }
-            let currentSize = parseFloat(fontSize);
-            let newSize = currentSize - 1;
-             element.style.fontSize = newSize + 'px';
+    
+        // Handle font size adjustments
+        let plus = document.querySelector('#plus');
+        let minus = document.querySelector('#minus');
+        let reset = document.querySelector('#reset');
+    
+        plus.addEventListener('click', function(){
+            let elements = document.querySelectorAll('.description-img p');
+            elements.forEach(element => {
+                let fontSize = window.getComputedStyle(element, null).getPropertyValue('font-size');
+                if(fontSize === '40px'){
+                    return;
+                }
+                let currentSize = parseFloat(fontSize);
+                let newSize = currentSize + 1;
+                element.style.fontSize = newSize + 'px';
+            });
+        });
+    
+        minus.addEventListener('click', function(){
+            let elements = document.querySelectorAll('.description-img p');
+            elements.forEach(element => {
+                let fontSize = window.getComputedStyle(element, null).getPropertyValue('font-size');
+                if(fontSize === '16px'){
+                    return;
+                }
+                let currentSize = parseFloat(fontSize);
+                let newSize = currentSize - 1;
+                element.style.fontSize = newSize + 'px';
+            });
+        });
+    
+        reset.addEventListener('click', function(){
+            let elements = document.querySelectorAll('.description-img p');
+            elements.forEach(element => {
+                element.style.fontSize = '22px';
+            });
         });
     });
-
-    reset.addEventListener('click', function(){
-        // inside .news-detail p
-
-        let elements = document.querySelectorAll('.description-img p');
-        elements.forEach(element => {
-            element.style.fontSize = '22px';
-        });
-    });
-
-});
-
-
-</script>
+    </script>
+    

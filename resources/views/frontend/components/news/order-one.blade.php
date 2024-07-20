@@ -14,7 +14,6 @@
                     <img src="{{getResizeImage($order1First->image)}}"
                          alt="{{$order1First->image_alt ?? $order1First->image_description ?? ''}}"/>
 
-                    <figcaption>{!! $order1First->date_line !!}</figcaption>
                 </figure>
             </div>
             <div class="col-md-5">

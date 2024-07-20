@@ -17,7 +17,7 @@
                 <div class="col-md-5">
                     <a href="{{ route('showDetail', ['c_id' => $news->c_id]) }}" class="a-hover">
 
-                        <div class="text-left fw-bolder fs-1 text-black py-2 fw-bolder rounded-2">
+                        <div class="text-left fw-bolder fs-1 text-black fw-bolder rounded-2">
                             
                             @if($news->slug)
                                 <h4 class="featured-title">
