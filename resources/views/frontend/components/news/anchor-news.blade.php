@@ -37,7 +37,6 @@
                                     <figure class="position-relative">
                                         <img src="{{getResizeImage($news->image)}}"
                                              alt="{!! $news->title !!}"/>
-                                        <figcaption>{!! $news->date_line ?? "" !!}</figcaption>
                                     </figure>
                                     <a href="{{ route('showDetail', ['c_id' => $news->c_id]) }}">
                                         <h1 class="small-title">

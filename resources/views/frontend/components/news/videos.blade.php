@@ -16,6 +16,7 @@
                             <img class="card-img"
                                  src="{{ getResizeImage($news->image) }}"
                                  alt="{{ $news->image_alt }}"/>
+                                 {{print_r($news)}}
 
                             <div class="card-img-overlay bg-gradient-primary top-50 p-3 mt-5 text-white bottom-0">
                                 <div class="d-flex align-items-center gap-3 overlay-postition-bttom">
