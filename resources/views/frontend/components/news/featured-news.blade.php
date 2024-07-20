@@ -16,15 +16,21 @@
             <div class="row">
                 <div class="col-md-5">
                     <a href="{{ route('showDetail', ['c_id' => $news->c_id]) }}" class="a-hover">
+
                         <div class="text-left fw-bolder fs-1 text-black py-2 fw-bolder rounded-2">
+                            
+                            @if($news->slug)
+                                <h4 class="featured-title">
+                                    {{$news->slug}}
+                                </h4>
+                            @endif
                             <h4 class="a-hover text-left fs-1 fw-bold">
                                 
                                 {{\Illuminate\Support\Str::limit($news->title, 50)}}
                             </h4>
-                            <div class="news-detail my-2">
+                            <div class="feature-news my-2">
 
                                 <p>
-                                    
                                     {{\Illuminate\Support\Str::limit($news->short_description, 150)}}
                                 </p>
                             </div>
@@ -35,7 +41,7 @@
                     </a>
                 </div>
                 <div class="col-md-7">
-                    <div class="" style="background: url('{{ $news->image }}'); background-repeat: no-repeat; height: 450px;background-position:top; background-size: cover; border-radius: 10px;" class="container banner position-relative text-center my-5 py-4">
+                    <div class="" style="background: url('{{ $news->image }}'); background-repeat: no-repeat; height: 340px;background-position:top; background-size: cover; border-radius: 10px;" class="container banner position-relative text-center my-5 py-4">
                        
                     </div>
                 </div>

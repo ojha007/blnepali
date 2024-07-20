@@ -14,6 +14,7 @@
         news.image,
         news.image_description,
         news.image_alt,
+        news.slug,
         'trending'      as category_slug
  from np_news news
           LEFT JOIN reporters ON news.reporter_id = reporters.id
@@ -39,6 +40,7 @@ UNION ALL
         news.publish_date,
         news.date_line,
         news.image,
+        news.slug,
         news.image_description,
         news.image_alt,
         'breaking'      as category_slug
@@ -59,6 +61,7 @@ UNION ALL
         reporters.image as reporter_image,
         reporters.name  as reporter_name,
         reporters.slug  as reporter_slug,
+        news.slug,
 --         guests.name     as guest_name,
 --         guests.image    as guest_image,
 --         guests.slug     as guest_slug,
@@ -93,6 +96,7 @@ UNION ALL
         news.image,
         news.image_description,
         news.image_alt,
+        news.slug,
         'anchor'        as category_slug
  from np_news news
           LEFT JOIN reporters ON news.reporter_id = reporters.id
@@ -119,6 +123,7 @@ UNION ALL
         news.image,
         news.image_description,
         news.image_alt,
+        news.slug,
         'video'        as category_slug
  from np_news news
           LEFT JOIN reporters ON news.reporter_id = reporters.id
