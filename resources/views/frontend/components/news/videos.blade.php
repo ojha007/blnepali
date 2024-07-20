@@ -23,7 +23,7 @@
 
                                     <h2 class="card-title fw-bold fs-3">
                                         
-                                        {{\Illuminate\Support\Str::limit($news->title, 40)}}
+                                        {{\Illuminate\Support\Str::limit($news->title, 80)}}
                                     </h2>
                                 </div>
                             </div>
