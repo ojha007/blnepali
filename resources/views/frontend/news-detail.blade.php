@@ -94,6 +94,8 @@
                             {!! $news->description !!}
                         </p>
                     </div>
+
+                    <div class="sharethis-inline-share-buttons"></div>
             </div>
             <div class="col-md-4">
              <div class=" sticky-top"> 
@@ -215,6 +217,9 @@ plus.addEventListener('click', function(){
     let elements = document.querySelectorAll('.description-img p');
     elements.forEach(element => {
         let fontSize = window.getComputedStyle(element, null).getPropertyValue('font-size');
+        if(fontSize === '40px'){
+            return;
+        }
         let currentSize = parseFloat(fontSize);
         let newSize = currentSize + 1;
         element.style.fontSize = newSize + 'px';
@@ -227,9 +232,13 @@ plus.addEventListener('click', function(){
         let elements = document.querySelectorAll('.description-img p');
         elements.forEach(element => {
             let fontSize = window.getComputedStyle(element, null).getPropertyValue('font-size');
+
+            if(fontSize === '16px'){
+                return;
+            }
             let currentSize = parseFloat(fontSize);
             let newSize = currentSize - 1;
-            element.style.fontSize = newSize + 'px';
+             element.style.fontSize = newSize + 'px';
         });
     });
 
