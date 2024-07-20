@@ -24,6 +24,10 @@ a {
     margin: -15px auto;
 }
 
+strong img{
+   margin-bottom: 10px;
+}
+
 .top-nav li {
     font-size: 16px;
 }

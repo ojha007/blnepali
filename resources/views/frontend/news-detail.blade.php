@@ -48,6 +48,10 @@
                     
                     <span class="ps-3 souce fw-bold text-muted">
                     {{ $news->guest->name ?? $news->reporter->name ?? '' }}
+                    <br/>
+                   <span style="font-size:13px">
+                    {{ $news->date_line}}
+                   </span>
                     </span>
                     </div>
                     
@@ -258,8 +262,5 @@ plus.addEventListener('click', function(){
 
 });
 
-
-
-        });
 
 </script>
