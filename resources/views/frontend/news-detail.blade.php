@@ -27,7 +27,8 @@
 
     <div class="container">
         <div class="row py-4">
-            <div class="col-md-12 mb-4">
+            
+            <div class="col-md-8 news-detail ">
                 <h1 class="fw-bold text-center fs-1 my-4">
                     {!! $news->title !!}
                 </h1>
@@ -61,9 +62,6 @@
                 </div>
                 
             </a>
-            </div>
-            <div class="col-md-8 news-detail ">
-                
                
                     <div class="description-img mt-3">
                         <p>
