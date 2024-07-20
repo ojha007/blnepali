@@ -47,11 +47,7 @@
                 @include('frontend.icons.writer-icon')
             <span class="text-muted fw-bold me-4">
              
-                @if($news->guest)
-                    {{$news->guest}}
-                @else
-                    {{$news->reporter->name}}
-                @endif
+                {{ $news->guest_name ?? $news->reporter_name ?? '' }}
 
                 {{$news->date_line ? '-' .$news->date_line  :''}}
             </span>

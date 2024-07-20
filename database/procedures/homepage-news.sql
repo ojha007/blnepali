@@ -15,6 +15,7 @@ WITH ranked_news AS (SELECT news.title,
                             news.image,
                             news.image_description,
                             news.image_alt,
+                            guests.name AS guest_name,
                             ROW_NUMBER() OVER (PARTITION BY news.category_id ORDER BY news.publish_date DESC) AS rn
                      FROM np_news news
                               JOIN categories ON news.category_id = categories.id
@@ -42,7 +43,8 @@ SELECT title,
        date_line,
        image,
        image_description,
-       image_alt
+       image_alt,
+        guest_name
 FROM ranked_news
 WHERE (category_id = 1 AND rn <= 2)
    OR (category_id = 4 AND rn <= 2)
