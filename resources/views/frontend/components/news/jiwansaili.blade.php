@@ -17,7 +17,7 @@
         </div>
         @endif
         <ul class="list-style list-group mt-3">
-            @foreach($jiwansaili as $news)
+            @foreach($jiwansaili->skip(1) as $news)
             <li class="m-0 my-2">
                 <a class="d-flex align-items-center" href="{{ route('showDetail', ['c_id' => $news->c_id]) }}">
                     <h2 class="samaj-title">
