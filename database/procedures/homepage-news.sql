@@ -32,7 +32,7 @@ WITH ranked_news AS (
         AND n.deleted_at IS NULL
         AND c.slug IN (
             'sports', 'break', 'bl-special', 'economics', 'news', 'art-1', 
-            'literature', 'blogs', 'tourism', 'anchor', 'opinion', 'crime'
+            'literature', 'blogs', 'tourism', 'anchor', 'opinion', 'crime','interview'
         )
         AND n.status = 'active'
 )
@@ -67,6 +67,7 @@ WHERE
     OR (category_slug = 'art-1' AND rn <= 3)
     OR (category_slug = 'literature' AND rn <= 4)
     OR (category_slug = 'blogs' AND rn <= 3)
+    OR (category_slug = 'interview' AND rn <= 5)
     OR (category_slug = 'tourism' AND rn <= 3)
     OR (category_slug = 'anchor' AND rn <= 6)
     OR (category_slug = 'opinion' AND rn <= 3)
