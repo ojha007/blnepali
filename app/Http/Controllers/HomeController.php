@@ -29,17 +29,17 @@ class HomeController extends Controller
         $anchorNews = $otherNews->where('category_slug', 'anchor');
 
         $allNews = $this->newsRepository->getHomePageNews();
-        $order1News = $allNews->where('category_id', 60); // samachar
-        $order2News = $allNews->where('category_id', 22); // कला
-        $order3News = $allNews->where('category_id', 11); // विचार
-        $order4News = $allNews->where('category_id', 25); //अन्तर्वार्ता
-        $order5News = $allNews->where('category_id', 26); //ब्लग 59
-        $ghumphir = $allNews->where('category_id', 9);
-        $brandStory = $allNews->where('category_id', 29);
-        $sahitya = $allNews->where('category_id', 32);
-        $artha = $allNews->where('category_id', 4);
-        $khel = $allNews->where('category_id', 1); //1
-        $jiwansaili = $allNews->where('category_id', 72);
+        $order1News = $allNews->where('slug', 'news'); // samachar
+        $order2News = $allNews->where('slug', 'art-1'); // कला
+        $order3News = $allNews->where('slug', 'opinion'); // विचार
+        $order4News = $allNews->where('slug', 'interview'); //अन्तर्वार्ता
+        $order5News = $allNews->where('slug', 'blogs'); //ब्लग 59
+        $ghumphir = $allNews->where('slug', 'tourism');
+        $brandStory = $allNews->where('slug', 'brand-story');
+        $sahitya = $allNews->where('slug', 'literature');
+        $artha = $allNews->where('slug', 'literature');
+        $khel = $allNews->where('slug', 'sports'); //1
+        $jiwansaili = $allNews->where('slug', 'health'); //health
 
         return view(
             $this->viewPath.'index',

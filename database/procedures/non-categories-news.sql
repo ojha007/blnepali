@@ -52,7 +52,6 @@ UNION ALL
 --           LEFT JOIN guests ON news.guest_id = guests.id
  WHERE news.deleted_by is NULL
    AND news.status = 'active'
-#    AND news.is_breaking = 1
  order by news.publish_date desc
  limit 5)
 UNION ALL
@@ -79,7 +78,6 @@ UNION ALL
           LEFT JOIN reporters ON news.reporter_id = reporters.id
 --           LEFT JOIN guests ON news.guest_id = guests.id
  WHERE news.deleted_by is NULL
-   AND is_special = 1
    AND news.status = 'active'
  order by news.publish_date desc
  limit 4)
@@ -107,7 +105,6 @@ UNION ALL
           LEFT JOIN reporters ON news.reporter_id = reporters.id
 --           LEFT JOIN guests ON news.guest_id = guests.id
  WHERE news.deleted_by is NULL
-   AND is_anchor = 1
    AND news.status = 'active'
  order by news.publish_date desc
  limit 6)
@@ -136,7 +133,6 @@ UNION ALL
           JOIN categories ON news.category_id = categories.id and categories.slug = 'video-report'
 --           LEFT JOIN guests ON news.guest_id = guests.id
  WHERE news.deleted_by is NULL
-   AND is_anchor = 1
    AND news.status = 'active'
  order by news.publish_date desc
  limit 5);
