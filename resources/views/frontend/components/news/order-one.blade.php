@@ -32,12 +32,11 @@
 
         <div class="row mt-4 mini-col">
             @foreach($order1News->skip(1) as $news)
-                <div class="col-md-4 pb-2">
+                <div class="col-md-4 pb-3">
                     <div>
                         <figure class="position-relative mb-3">
                             <img src="{{getResizeImage($news->image)}}"
                                  alt="{{$news->image_alt ?? $news->image_description ?? ''}}"/>
-
                         </figure>
                         <a href="{{ route('showDetail', ['c_id' => $news->c_id]) }}" class="a-hover">
                             <h1 class="small-title">

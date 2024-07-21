@@ -76,6 +76,8 @@ UNION ALL
         'special'       as category_slug
  from np_news news
           LEFT JOIN reporters ON news.reporter_id = reporters.id
+          JOIN categories ON news.category_id = categories.id 
+          and categories.slug = 'bl-special'
 --           LEFT JOIN guests ON news.guest_id = guests.id
  WHERE news.deleted_by is NULL
    AND news.status = 'active'
@@ -104,6 +106,8 @@ UNION ALL
  from np_news news
           LEFT JOIN reporters ON news.reporter_id = reporters.id
 --           LEFT JOIN guests ON news.guest_id = guests.id
+JOIN categories ON news.category_id = categories.id 
+          and categories.slug = 'anchor'
  WHERE news.deleted_by is NULL
    AND news.status = 'active'
  order by news.publish_date desc
