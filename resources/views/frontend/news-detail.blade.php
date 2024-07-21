@@ -104,6 +104,10 @@
                         <p>
                             {!! $news->description !!}
                         </p>
+
+                        <h4 class="my-2 text-center">
+                            यो समाचार पढेपछि तपाईलाई कस्तो लाग्यो?
+                        </h4>
                         <!-- ShareThis BEGIN --><div class="sharethis-inline-reaction-buttons"></div><!-- ShareThis END -->
                     </div>
 
@@ -194,7 +198,7 @@
              </div>
         </div>
         <div class="col-md-12 mb-5 related-news-image">
-          <h5 class="header-title mb-3">सिफारिश</h5>
+          <h5 class="header-title mb-3">सम्बन्धित खवर</h5>
     
           <a href="{{ route('showDetail', ['c_id' => $news->c_id]) }}" class="row">
             @foreach($sameCategoryNews as $news)
