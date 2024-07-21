@@ -31,8 +31,8 @@ WITH ranked_news AS (
         n.deleted_by IS NULL
         AND n.deleted_at IS NULL
         AND c.slug IN (
-            'sports', 'break', 'bl-special', 'economics', 'news', 'art-1', 
-            'literature', 'blogs', 'tourism', 'anchor', 'opinion', 'crime','interview'
+            'sports', 'break', 'bl-special', 'econimics', 'news', 'art-1', 
+            'literature', 'blogs', 'tourism', 'anchor', 'opinion','interview'
         )
         AND n.status = 'active'
 )
@@ -71,6 +71,5 @@ WHERE
     OR (category_slug = 'tourism' AND rn <= 3)
     OR (category_slug = 'anchor' AND rn <= 6)
     OR (category_slug = 'opinion' AND rn <= 3)
-    OR (category_slug = 'crime' AND rn <= 7)
 ORDER BY 
     publish_date DESC;
