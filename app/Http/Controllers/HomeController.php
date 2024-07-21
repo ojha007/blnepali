@@ -16,7 +16,8 @@ class HomeController extends Controller
     public function __construct(
         protected NewsRepository $newsRepository,
         protected CategoryRepository $categoryRepository
-    ) {}
+    ) {
+    }
 
     public function index(): Renderable
     {
@@ -26,10 +27,11 @@ class HomeController extends Controller
         $breakingNews = $otherNews->where('category_slug', 'breaking')->take(3);
         $videoNews = $otherNews->where('category_slug', 'video');
         $blSpecialNews = $otherNews->where('category_slug', 'special');
-        $anchorNews = $otherNews->where('category_slug', 'anchor');
+        // $anchorNews = $otherNews->where('category_slug', 'anchor');
 
         $allNews = $this->newsRepository->getHomePageNews();
         $order1News = $allNews->where('category_slug', 'news'); // samachar
+        $anchorNews = $allNews->where('category_slug', 'anchor');
         $order2News = $allNews->where('category_slug', 'art-1'); // कला
         $order3News = $allNews->where('category_slug', 'opinion'); // विचार
         $order4News = $allNews->where('category_slug', 'interview'); //अन्तर्वार्ता
@@ -42,7 +44,7 @@ class HomeController extends Controller
         $jiwansaili = $allNews->where('category_slug', 'health'); //health
 
         return view(
-            $this->viewPath.'index',
+            $this->viewPath . 'index',
             compact(
                 'order1News',
                 'trendingNews',
@@ -70,7 +72,7 @@ class HomeController extends Controller
         $category = Category::whereSlug($categorySlug)
             ->select('id')
             ->first();
-        if (! $category) {
+        if (!$category) {
             return redirect('/');
         }
 
@@ -115,7 +117,7 @@ class HomeController extends Controller
         $breakingNews = $otherNews->where('category_slug', 'breaking');
 
         return view(
-            $this->viewPath.'news-detail',
+            $this->viewPath . 'news-detail',
             compact(
                 'news',
                 'blSpecialNews',
@@ -189,7 +191,7 @@ class HomeController extends Controller
             ->get();
 
         return view(
-            $this->viewPath.'news-detail',
+            $this->viewPath . 'news-detail',
             compact(
                 'news',
                 'blSpecialNews',
