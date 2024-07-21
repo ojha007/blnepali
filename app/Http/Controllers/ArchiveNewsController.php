@@ -62,7 +62,7 @@ class ArchiveNewsController extends Controller
 
             $categories = $this->categoryRepository->getCategories();
             $headerCategories = $categories->sortBy('header_position')
-                ->whereNotIn('slug', ['sifarish', 'brand-story', 'startup'])
+                ->whereNotIn('name', ['सिफारिस', 'ब्राण्ड स्टोरी', 'स्टार्टअप'])
                 ->take(10);
 
             $otherNews = $this->newsRepository->getOthersNews();

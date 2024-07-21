@@ -131,6 +131,10 @@ strong img{
     flex-flow: row wrap;
 }
 
+.related-news-image .small-title {
+    font-size: 1rem;
+}
+
 .small-title {
     font-size: 1.3rem;
     color: #2d2d2d;
