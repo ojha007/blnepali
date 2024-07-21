@@ -6,6 +6,7 @@ WITH trending_news AS (
         news.c_id,
         news.short_description,
         news.video_url,
+        news.category_id,
         reporters.image AS reporter_image,
         reporters.name AS reporter_name,
         reporters.slug AS reporter_slug,
@@ -33,6 +34,7 @@ breaking_news AS (
         news.c_id,
         news.short_description,
         news.video_url,
+        news.category_id,
         reporters.image AS reporter_image,
         reporters.name AS reporter_name,
         reporters.slug AS reporter_slug,
@@ -59,6 +61,7 @@ special_news AS (
         news.c_id,
         news.short_description,
         news.video_url,
+        news.category_id,
         reporters.image AS reporter_image,
         reporters.name AS reporter_name,
         reporters.slug AS reporter_slug,
@@ -74,7 +77,7 @@ special_news AS (
     JOIN categories ON news.category_id = categories.id 
     WHERE 
         news.deleted_by IS NULL
-        AND news.status = 'active',
+        AND news.status = 'active'
         AND news.is_special = 1
     ORDER BY news.publish_date DESC
     LIMIT 4
@@ -97,7 +100,6 @@ anchor_news AS (
         news.image_description,
         news.image_alt,
         news.slug,
-        news.is_anchor,
         'anchor' AS category_slug
     FROM np_news news
     LEFT JOIN reporters ON news.reporter_id = reporters.id
@@ -117,6 +119,7 @@ video_news AS (
         news.c_id,
         news.short_description,
         news.video_url,
+        news.category_id,
         reporters.image AS reporter_image,
         reporters.name AS reporter_name,
         reporters.slug AS reporter_slug,
