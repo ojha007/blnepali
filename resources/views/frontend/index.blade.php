@@ -56,8 +56,8 @@
         </div>
     </section>
 
-    <section class="container-fluid py-1">
-        <div class="container my-4 artha-wrapper">
+    <section class="container-fluid">
+        <div class="container my-2 artha-wrapper">
                 <div class="row">
                     @include('frontend.components.news.artha')
                     @include('frontend.components.news.khel')
