@@ -24,7 +24,8 @@
                     </a>
                 </h5>
                 <p class="text-muted fw-bold">
-                    {{$news->guest ?? $news->reporter_name ?? '' }}
+                
+                    {{ $news->guest_name ?? $news->reporter_name ?? '' }}
                 </p>
 
                 {{print_r($news)}}

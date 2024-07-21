@@ -8,6 +8,7 @@ use App\Repositories\CategoryRepository;
 use App\Repositories\NewsRepository;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -158,9 +159,21 @@ class HomeController extends Controller
 
         $news = $allNews->where('c_id', '=', $cId)->first();
 
+
+
+
+        $comments = DB::table('comments')
+            ->select('full_name', 'description', 'created_at')
+            ->where('is_active', true)
+            ->where('news_id', '=', $cId)
+            ->whereNull('deleted_at')
+            ->orderByDesc('id')
+            ->paginate(5);
+
         $news->increment('view_count');
 
         $sameCategoryNews = $allNews->where('c_id', '!=', $cId)->take(4);
+
 
         $otherNews = $this->newsRepository->getOthersNews();
         $trendingNews = $otherNews->where('category_slug', 'trending');
