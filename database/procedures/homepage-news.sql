@@ -30,7 +30,7 @@ WITH ranked_news AS (
     WHERE 
         news.deleted_by IS NULL
         AND news.deleted_at IS NULL
-        AND categories.slug IN ('sports', 'break', 'bl-special', 'economics', 'news', 'art-1', 'literature', 'blogs', 'tourism', 'anchor', 'opinion', 'crime', 'environment')
+        AND categories.slug IN ('sports', 'break', 'bl-special', 'econimics', 'news', 'art-1', 'literature', 'blogs', 'tourism', 'anchor', 'opinion', 'crime', 'environment')
         AND news.status = 'active'
 )
 
