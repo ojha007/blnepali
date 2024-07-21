@@ -109,7 +109,7 @@ anchor_news AS (
         AND news.status = 'active'
         AND news.is_anchor = 1
     ORDER BY news.publish_date DESC
-    LIMIT 6
+    LIMIT 5
 ),
 video_news AS (
     SELECT 
