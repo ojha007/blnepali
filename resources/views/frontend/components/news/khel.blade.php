@@ -1,5 +1,5 @@
 @isset($khel)
-    @php($khelFirst = $artha->first())
+    @php($khelFirst = $khel->first())
   
     <div class="col-md-4">
         <a href="{{route('newsByCategory','sports')}}">
