@@ -11,7 +11,7 @@
             @if($ghumphir->isNotEmpty())
                 @php $mainNews = $ghumphir->shift(); @endphp
                 <a href="{{ route('category.news.show', ['category' => $mainNews->category_slug, 'c_id' => $mainNews->c_id]) }}" class="card a-hover h-100 border-0">
-                    <img class="card-img h-100" src="{{ $mainNews->image }}" alt="{{ $mainNews->image_alt }}">
+                    <img class="card-img h-100" src="{{getResizeImage($mainNews->image)}}" alt="{{ $mainNews->image_alt }}">
                     <div class="card-img-overlay bg-gradient-primary top-50 p-3 mt-5 text-white bottom-0">
                         <h2 class="card-title fw-bold fs-3 overlay-postition-bttom">
                             {{ $mainNews->title }}
@@ -26,7 +26,7 @@
             <div class="row g-2 h-100 ghumphir-side">
                 @foreach($ghumphir->take(2) as $news)
                 <div class="col-md-12">
-                    <a href="{{ route('showDetail', ['c_id' => $news->c_id]) }}" class="card border-0">
+                    <a href="{{ route('showDetail', ['c_id' => $news->c_id]) }}" class="card  d-block h-100 border-0">
                         <img class="card-img" src="{{ $news->image }}" alt="{{ $news->image_alt }}">
                         <div class="card-img-overlay bg-gradient-primary overlaypostition text-white bottom-0">
                             <h2 class="card-title fw-bold fs-4 overlay-postition-bttom">

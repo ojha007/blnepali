@@ -1,6 +1,6 @@
 @import url(https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css);
 body {
-    font-family: "Mukta" !important;
+    font-family: "Mukta",sans-serif !important;
     --primary-color: #f06023;
 }
 
@@ -86,18 +86,27 @@ strong img{
 }
 
 .header-center .header-title {
-    font-family: "Mukta";
+    font-family: "Mukta",sans-serif;
     text-align: center;
     justify-content: center;
     font-size: 1.125rem;
     padding-bottom: 0.5rem;
     position: relative;
 }
-
+.artha-wrapper img{
+    height: 235px;
+}
 .header-center .header-title::before {
     display: none;
 }
-
+.ghumphir-side{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.ghumphir-side img{
+    height: 100%;
+}
 .header-center .header-title::after {
     content: "";
     position: absolute;
@@ -385,7 +394,7 @@ img{
 .numbering{
     font-size: 80px;
     font-weight: 900;
-    font-family: "Mukta";
+    font-family: "Mukta",sans-serif;
     color: var(--primary-color);
 }
 .bg-gradient-primary{
