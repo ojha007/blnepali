@@ -66,7 +66,7 @@ WHERE
     OR (category_slug = 'news' AND rn <= 7)
     OR (category_slug = 'art-1' AND rn <= 3)
     OR (category_slug = 'literature' AND rn <= 4)
-    OR (category_slug = 'blogs' AND rn <= 3)
+    OR (category_slug = 'blogs' AND rn <= 4)
     OR (category_slug = 'interview' AND rn <= 5)
     OR (category_slug = 'tourism' AND rn <= 3)
     OR (category_slug = 'anchor' AND rn <= 6)
