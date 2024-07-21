@@ -24,7 +24,7 @@
  WHERE 
  news.deleted_by is NULL
    AND news.status = 'active'
-   and publish_date >= (NOW() - INTERVAL 10 WEEK)
+   and publish_date >= (NOW() - INTERVAL 1 WEEK)
  order by view_count desc
  limit 5)
 UNION ALL

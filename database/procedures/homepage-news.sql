@@ -49,18 +49,34 @@ SELECT title,
        image_alt,
         guest_name
 FROM ranked_news
-WHERE (category_id = 1 AND rn <= 2)
-   OR (category_id = 4 AND rn <= 2)
-   OR (category_id = 72 AND rn <= 2)
-   OR (category_id = 9 AND rn <= 5)
-   OR (category_id = 11 AND rn <= 3)
-   OR (category_id = 13 AND rn <= 5)
-   OR (category_id = 22 AND rn <= 3)
-   OR (category_id = 25 AND rn <= 5)
-   OR (category_id = 26 AND rn <= 4)
-   OR (category_id = 27 AND rn <= 5)
-   OR (category_id = 29 AND rn <= 6)
-   OR (category_id = 32 AND rn <= 4)
-   OR (category_id = 60 AND rn <= 7);
+
+-- WHERE (category_id = 1 AND rn <= 2)
+--    OR (category_id = 4 AND rn <= 2)
+--    OR (category_id = 72 AND rn <= 2)
+--    OR (category_id = 9 AND rn <= 5)
+--    OR (category_id = 11 AND rn <= 3)
+--    OR (category_id = 13 AND rn <= 5)
+--    OR (category_id = 22 AND rn <= 3)
+--    OR (category_id = 25 AND rn <= 5)
+--    OR (category_id = 26 AND rn <= 4)
+--    OR (category_id = 27 AND rn <= 5)
+--    OR (category_id = 29 AND rn <= 6)
+--    OR (category_id = 32 AND rn <= 4)
+--    OR (category_id = 60 AND rn <= 7);
 
 --    //एंकर 8
+
+WHERE (category_slug = 'sports' AND rn <= 2)
+   OR (category_slug = 'break' AND rn <= 2)
+   OR (category_slug = 'bl-special' AND rn <= 4)
+   OR (category_slug = 'econimics' AND rn <= 2)
+   OR (category_slug = 'news' AND rn <= 5)
+   OR (category_slug = 'art-1' AND rn <= 3)
+   OR (category_slug = 'literature' AND rn <= 5)
+   OR (category_slug = 'blogs' AND rn <= 3)
+   OR (category_slug = 'tourism' AND rn <= 5)
+   OR (category_slug = 'anchor' AND rn <= 6)
+   OR (category_slug = 'opinion' AND rn <= 4)
+   OR (category_slug = 'crime' AND rn <= 7)
+   OR (category_slug = 'environment' AND rn <= 8)
+ORDER BY publish_date DESC;

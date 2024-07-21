@@ -56,13 +56,13 @@ class ArchiveNewsController extends Controller
                 ->where('n.id', $id)
                 ->first();
 
-            if (! $news) {
+            if (!$news) {
                 return redirect()->route('index');
             }
 
             $categories = $this->categoryRepository->getCategories();
-            $headerCategories = $categories->sortBy('header_position')
-                ->whereNotIn('name', ['सिफारिस', 'ब्राण्ड स्टोरी', 'स्टार्टअप'])
+            $headerCategories = $categories
+                ->whereIn('slug', ['sports', 'break', 'bl-special', 'econimics', 'news', 'art-1', 'literature', 'blogs', 'tourism', 'anchor', 'opinion', 'crime', 'environment'])
                 ->take(10);
 
             $otherNews = $this->newsRepository->getOthersNews();
@@ -72,7 +72,7 @@ class ArchiveNewsController extends Controller
             $sameCategoryNews = [];
 
             return view(
-                $this->viewPath.'show',
+                $this->viewPath . 'show',
                 compact(
                     'headerCategories',
                     'news',
@@ -82,7 +82,7 @@ class ArchiveNewsController extends Controller
                 )
             );
         } catch (\Exception $exception) {
-            Log::error($exception->getMessage().'---'.$exception->getTraceAsString());
+            Log::error($exception->getMessage() . '---' . $exception->getTraceAsString());
 
             return redirect()->route('index');
         }
