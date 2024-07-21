@@ -1,37 +1,41 @@
 WITH ranked_news AS (
     SELECT 
-        news.title,
-        news.sub_title,
-        news.id,
-        news.c_id,
-        news.short_description,
-        reporters.image AS reporter_image,
-        reporters.name AS reporter_name,
-        reporters.id AS reporter_id, -- Changed alias to avoid conflict
-        reporters.slug AS reporter_slug,
-        categories.slug AS category_slug,
-        categories.name AS category_name,
-        categories.id AS category_id,
-        news.publish_date,
-        news.date_line,
-        news.image,
-        news.image_description,
-        news.image_alt,
-        guests.name AS guest_name,
-        ROW_NUMBER() OVER (PARTITION BY news.category_id ORDER BY news.publish_date DESC) AS rn
+        n.title,
+        n.sub_title,
+        n.id,
+        n.c_id,
+        n.short_description,
+        r.image AS reporter_image,
+        r.name AS reporter_name,
+        r.id AS reporter_id,
+        r.slug AS reporter_slug,
+        c.slug AS category_slug,
+        c.name AS category_name,
+        c.id AS category_id,
+        n.publish_date,
+        n.date_line,
+        n.image,
+        n.image_description,
+        n.image_alt,
+        g.name AS guest_name,
+        ROW_NUMBER() OVER (PARTITION BY n.category_id ORDER BY n.publish_date DESC) AS rn
     FROM 
-        np_news news
+        np_news n
     JOIN 
-        categories ON news.category_id = categories.id
+        categories c ON n.category_id = c.id
     LEFT JOIN 
-        reporters ON news.reporter_id = reporters.id
+        reporters r ON n.reporter_id = r.id
     LEFT JOIN  
-        guests ON news.guest_id = guests.id
+        guests g ON n.guest_id = g.id
     WHERE 
-        news.deleted_by IS NULL
-        AND news.deleted_at IS NULL
-        AND categories.slug IN ('sports', 'break', 'bl-special', 'econimics', 'news', 'art-1', 'literature', 'blogs', 'tourism', 'anchor', 'opinion', 'crime', 'environment')
-        AND news.status = 'active'
+        n.deleted_by IS NULL
+        AND n.deleted_at IS NULL
+        AND c.slug IN (
+            'sports', 'break', 'bl-special', 'economics', 'news', 'art-1', 
+            'literature', 'blogs', 'tourism', 'anchor', 'opinion', 'crime', 
+            'environment'
+        )
+        AND n.status = 'active'
 )
 
 SELECT 
@@ -59,7 +63,7 @@ WHERE
     (category_slug = 'sports' AND rn <= 2)
     OR (category_slug = 'break' AND rn <= 2)
     OR (category_slug = 'bl-special' AND rn <= 4)
-    OR (category_slug = 'econimics' AND rn <= 2)
+    OR (category_slug = 'economics' AND rn <= 2)
     OR (category_slug = 'news' AND rn <= 5)
     OR (category_slug = 'art-1' AND rn <= 3)
     OR (category_slug = 'literature' AND rn <= 4)
