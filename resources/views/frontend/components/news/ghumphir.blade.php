@@ -9,9 +9,9 @@
         {{-- Main News Section (col-md-8) --}}
         <div class="col-md-8">
             @if($ghumphir->isNotEmpty())
-                @php $mainNews = $ghumphir->take(1); @endphp
+                @php $mainNews = $ghumphir->first(); @endphp
                 <a href="{{ route('category.news.show', ['category' => $mainNews->category_slug, 'c_id' => $mainNews->c_id]) }}" class="card a-hover h-100 border-0">
-                    <img class="card-img h-100" src="{{getResizeImage($mainNews->image)}}" alt="{{ $mainNews->image_alt }}">
+                    <img class="card-img h-100" src="{{ getResizeImage($mainNews->image) }}" alt="{{ $mainNews->image_alt }}">
                     <div class="card-img-overlay bg-gradient-primary top-50 p-3 mt-5 text-white bottom-0">
                         <h2 class="card-title fw-bold fs-3 overlay-postition-bttom">
                             {{ $mainNews->title }}
@@ -25,16 +25,16 @@
         <div class="col-md-4">
             <div class="row g-2 h-100 ghumphir-side">
                 @foreach($ghumphir as $news)
-                <div class="col-md-12 h-50">
-                    <a href="{{ route('showDetail', ['c_id' => $news->c_id]) }}" class="card  d-block h-100 border-0">
-                        <img class="card-img" src="{{ $news->image }}" alt="{{ $news->image_alt }}">
-                        <div class="card-img-overlay bg-gradient-primary overlaypostition text-white bottom-0">
-                            <h2 class="card-title fw-bold fs-4 overlay-postition-bttom">
-                                {!! $news->title !!}
-                            </h2>
-                        </div>
-                    </a>
-                </div>
+                    <div class="col-md-12 h-50">
+                        <a href="{{ route('showDetail', ['c_id' => $news->c_id]) }}" class="card d-block h-100 border-0">
+                            <img class="card-img" src="{{ $news->image }}" alt="{{ $news->image_alt }}">
+                            <div class="card-img-overlay bg-gradient-primary overlaypostition text-white bottom-0">
+                                <h2 class="card-title fw-bold fs-4 overlay-postition-bttom">
+                                    {!! $news->title !!}
+                                </h2>
+                            </div>
+                        </a>
+                    </div>
                 @endforeach
             </div>
         </div>
