@@ -24,7 +24,7 @@
         {{-- Side News Section (col-md-4) --}}
         <div class="col-md-4">
             <div class="row g-2 h-100 ghumphir-side">
-                @foreach($ghumphir as $news)
+                @foreach($ghumphir->take(2) as $news)
                     <div class="col-md-12 h-50">
                         <a href="{{ route('showDetail', ['c_id' => $news->c_id]) }}" class="card d-block h-100 border-0">
                             <img class="card-img" src="{{ $news->image }}" alt="{{ $news->image_alt }}">
