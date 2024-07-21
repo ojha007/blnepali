@@ -328,6 +328,10 @@ img {
     color: #747474;
 }
 
+.mini-col img {
+    height: 130px;
+}
+
 .featured-title{
     background: var(--primary-color);
     color: white;

@@ -32,9 +32,9 @@
             </div>
         </div>
 
-        <div class="row mt-4">
+        <div class="row mt-4 mini-col">
             @foreach($order1News->skip(1) as $news)
-                <div class="col-md-4">
+                <div class="col-md-4 pb-2">
                     <div>
                         <figure class="position-relative mb-3">
                             <img src="{{getResizeImage($news->image)}}"
