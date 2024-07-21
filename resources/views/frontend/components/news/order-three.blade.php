@@ -26,6 +26,8 @@
                 <p class="text-muted fw-bold">
                     {{$news->guest ?? $news->reporter_name ?? '' }}
                 </p>
+
+                {{print_r($news)}}
             </div>
         </div>
     @endforeach

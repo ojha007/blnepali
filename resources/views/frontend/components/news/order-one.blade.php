@@ -42,7 +42,7 @@
 
                         </figure>
                         <a href="{{ route('showDetail', ['c_id' => $news->c_id]) }}" class="a-hover">
-                            <h1 class="small-title py-1">
+                            <h1 class="small-title">
                                 {!! $news->title !!}
                             </h1>
                         </a>
