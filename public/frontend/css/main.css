@@ -116,6 +116,10 @@ strong img{
     margin: 0px;
 }
 
+.related-news-image img {
+    height: 130px;
+}
+
 .medium-title {
     font-size: 2rem;
     color: #2d2d2d;

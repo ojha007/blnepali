@@ -135,7 +135,7 @@
                   
                         <a href="{{ route('showDetail', ['c_id' => $news->c_id]) }}" class="row">
                           @foreach($otherSamachar as $news)
-                              <div class="col-md-4">
+                              <div class="col-md-4 mb-4">
                                   <div class="card border-0">
                                       <img src="{{ $news->image }}" class="card-img-top" alt="{{ $news->image_alt }}">
                                       <div class="card-body p-0 pt-3 d-flex flex-column">
