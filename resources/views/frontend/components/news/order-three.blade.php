@@ -27,8 +27,6 @@
                 
                     {{ $news->guest_name ?? $news->reporter_name ?? '' }}
                 </p>
-
-                {{print_r($news)}}
             </div>
         </div>
     @endforeach
