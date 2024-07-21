@@ -37,7 +37,7 @@ class HomeController extends Controller
         $ghumphir = $allNews->where('category_slug', 'tourism');
         $brandStory = $allNews->where('category_slug', 'brand-story');
         $sahitya = $allNews->where('category_slug', 'literature');
-        $artha = $allNews->where('category_slug', 'literature');
+        $artha = $allNews->where('category_slug', 'econimics');
         $khel = $allNews->where('category_slug', 'sports'); //1
         $jiwansaili = $allNews->where('category_slug', 'health'); //health
 
