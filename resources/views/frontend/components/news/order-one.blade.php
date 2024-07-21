@@ -24,8 +24,7 @@
                     </h1>
                     <span class="text-muted fs-6 fw-bold px-3 text-info">{!! $order1First->reporter_name !!}</span>
                     <p class="post-description-sm p-3">
-                        {!! $order1First->sub_title !!}
-
+                        {{\Illuminate\Support\Str::limit($order1First->short_description, 120)}}
                     </p>
                 </a>
             </div>

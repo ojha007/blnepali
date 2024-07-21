@@ -141,7 +141,7 @@
 
 <section class="bg-body-tertiary my-nav border-bottom sticky-top shadow-md" style="z-index: 1030">
     <div class="container">
-        <nav class="navbar  text-center navbar-expand-lg my-nav py-0">
+        <nav class="navbar  text-center navbar-expand-lg my-nav py-2">
             <div class="container-fluid">
                 <a class="d-inline-block" href="/">
                     <img
