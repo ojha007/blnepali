@@ -1,7 +1,7 @@
 @isset($anchorNews)
     <section class="container mt-5">
         <div class="row">
-            @php($anchorFirst = $anchorNews->skip(1)->first())
+            @php($anchorFirst = $anchorNews->first())
             <!-- column should be col-md-9 if ads other wise col-md-12 -->
             <div class="col-md-12">
                 <div class="row">
@@ -32,7 +32,7 @@
                     </div>
                     <div class="col-md-6 small-col">
                         <div class="row">
-                            @foreach($anchorNews->skip(2) as $key=>$news)
+                            @foreach($anchorNews as $key=>$news)
                                 <div class="col-md-6">
                                     <figure class="position-relative">
                                         <img src="{{getResizeImage($news->image)}}"
