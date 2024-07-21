@@ -56,7 +56,7 @@ class ArchiveNewsController extends Controller
                 ->where('n.id', $id)
                 ->first();
 
-            if (!$news) {
+            if (! $news) {
                 return redirect()->route('index');
             }
 
@@ -65,8 +65,6 @@ class ArchiveNewsController extends Controller
                 ->whereNotIn('slug', ['sifarish', 'brand-story', 'startup'])
                 ->take(10);
 
-
-
             $otherNews = $this->newsRepository->getOthersNews();
             $trendingNews = $otherNews->where('type', 'trending');
             $blSpecialNews = $otherNews->where('type', 'special');
@@ -74,7 +72,7 @@ class ArchiveNewsController extends Controller
             $sameCategoryNews = [];
 
             return view(
-                $this->viewPath . 'show',
+                $this->viewPath.'show',
                 compact(
                     'headerCategories',
                     'news',
@@ -84,7 +82,7 @@ class ArchiveNewsController extends Controller
                 )
             );
         } catch (\Exception $exception) {
-            Log::error($exception->getMessage() . '---' . $exception->getTraceAsString());
+            Log::error($exception->getMessage().'---'.$exception->getTraceAsString());
 
             return redirect()->route('index');
         }
