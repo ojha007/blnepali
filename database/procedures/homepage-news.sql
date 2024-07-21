@@ -25,9 +25,10 @@ WITH ranked_news AS (SELECT news.title,
                 --      WHERE news.category_id IN (1, 4, 9, 11, 13, 22, 25, 26, 27, 29, 32, 60, 72)
                      --     WHERE news.category_id IN (SELECT id FROM categories WHERE slug IN ('national', 'international', 'sports', 'entertainment', 'lifestyle', 'technology', 'economy', 'politics', 'health', 'education', 'opinion', 'crime', 'environment'))
                       
-                       WHERE categories.slug  IN ('sports', 'break', 'bl-special', 'econimics', 'news', 'art-1', 'literature', 'blogs', 'tourism', 'anchor', 'opinion', 'crime', 'environment')
-                       AND news.deleted_by IS NULL
+                       WHERE 
+                       news.deleted_by IS NULL
                        AND news.deleted_at IS NULL
+                       AND categories.slug  IN ('sports', 'break', 'bl-special', 'econimics', 'news', 'art-1', 'literature', 'blogs', 'tourism', 'anchor', 'opinion', 'crime', 'environment')
                        AND news.status = 'active')
 
 SELECT title,
