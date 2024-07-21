@@ -99,11 +99,7 @@ strong img{
 .header-center .header-title::before {
     display: none;
 }
-.ghumphir-side{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
+
 .ghumphir-side img{
     height: 100%;
 }
