@@ -59,3 +59,5 @@ WHERE (category_id = 1 AND rn <= 2)
    OR (category_id = 29 AND rn <= 6)
    OR (category_id = 32 AND rn <= 4)
    OR (category_id = 60 AND rn <= 7);
+
+--    //एंकर 8
