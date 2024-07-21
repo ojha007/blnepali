@@ -21,7 +21,7 @@
             <li class="m-0 my-2">
                 <a class="d-flex align-items-center" href="{{ route('showDetail', ['c_id' => $news->c_id]) }}">
                     <h2 class="samaj-title">
-                        {{ $news->sub_title }}
+                        {{ $news->title }}
                     </h2>
                 </a>
                 <span class="source fw-bold text-muted">
