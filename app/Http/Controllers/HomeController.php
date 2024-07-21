@@ -17,7 +17,8 @@ class HomeController extends Controller
     public function __construct(
         protected NewsRepository $newsRepository,
         protected CategoryRepository $categoryRepository
-    ) {}
+    ) {
+    }
 
     public function index(): Renderable
     {
@@ -43,7 +44,7 @@ class HomeController extends Controller
         $jiwansaili = $allNews->where('category_id', 72);
 
         return view(
-            $this->viewPath.'index',
+            $this->viewPath . 'index',
             compact(
                 'order1News',
                 'trendingNews',
@@ -71,7 +72,7 @@ class HomeController extends Controller
         $category = Category::whereSlug($categorySlug)
             ->select('id')
             ->first();
-        if (! $category) {
+        if (!$category) {
             return redirect('/');
         }
 
@@ -116,7 +117,7 @@ class HomeController extends Controller
         $breakingNews = $otherNews->where('category_slug', 'breaking');
 
         return view(
-            $this->viewPath.'news-detail',
+            $this->viewPath . 'news-detail',
             compact(
                 'news',
                 'blSpecialNews',
@@ -159,31 +160,46 @@ class HomeController extends Controller
 
         $news = $allNews->where('c_id', '=', $cId)->first();
 
-        $comments = DB::table('comments')
-            ->select('full_name', 'description', 'created_at')
-            ->where('is_active', true)
-            ->where('news_id', '=', $cId)
-            ->whereNull('deleted_at')
-            ->orderByDesc('id')
-            ->paginate(5);
 
         $news->increment('view_count');
 
-        $sameCategoryNews = $allNews->where('c_id', '!=', $cId)->take(4);
+        $sameCategoryNews = $allNews->where('c_id', '!=', $cId)->take(3);
 
         $otherNews = $this->newsRepository->getOthersNews();
         $trendingNews = $otherNews->where('category_slug', 'trending');
         $blSpecialNews = $otherNews->where('category_slug', 'special');
         $breakingNews = $otherNews->where('category_slug', 'breaking');
+        $otherSamachar = News::query()
+            ->with(['category:name,id,slug', 'reporter:name,id,image'])
+            ->select([
+                'title',
+                'short_description',
+                'guest_id',
+                'image_description',
+                'description',
+                'video_url',
+                'date_line',
+                'publish_date',
+                'id',
+                'c_id',
+                'image',
+                'image_alt',
+                'category_id',
+                'reporter_id',
+            ])
+            ->orderByDesc('publish_date')
+            ->take(6)
+            ->get();
 
         return view(
-            $this->viewPath.'news-detail',
+            $this->viewPath . 'news-detail',
             compact(
                 'news',
                 'blSpecialNews',
                 'trendingNews',
                 'sameCategoryNews',
-                'breakingNews'
+                'breakingNews',
+                'otherSamachar'
             )
         );
 

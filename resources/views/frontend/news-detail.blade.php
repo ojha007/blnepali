@@ -105,13 +105,53 @@
                             {!! $news->description !!}
                         </p>
 
-                        <h4 class="my-2 text-center">
+                        <hr>
+                        <h5 class="my-2 text-center">
                             यो समाचार पढेपछि तपाईलाई कस्तो लाग्यो?
-                        </h4>
+                        </h5>
                         <!-- ShareThis BEGIN --><div class="sharethis-inline-reaction-buttons"></div><!-- ShareThis END -->
                     </div>
 
-            </div>
+                    <div class="col-md-12 mb-5 mt-3 related-news-image">
+                        <h5 class="header-title mb-3">सम्बन्धित खवर</h5>
+                  
+                        <a href="{{ route('showDetail', ['c_id' => $news->c_id]) }}" class="row">
+                          @foreach($sameCategoryNews as $news)
+                              <div class="col-md-4">
+                                  <div class="card border-0">
+                                      <img src="{{ $news->image }}" class="card-img-top" alt="{{ $news->image_alt }}">
+                                      <div class="card-body p-0 pt-3 d-flex flex-column">
+                                          <h5 class="card-title small-title">{{ $news->title }}</h5>
+                                          {{-- <p class="card-text mb-4 text-muted">{{ $news->description }}</p> --}}
+                                      </div>
+                                  </div>
+                              </div>
+                          @endforeach
+                        </a>
+                      </div>
+
+                      <div class="col-md-12 mb-5 mt-3 related-news-image">
+                        <h5 class="header-title mb-3">अन्य समाचर</h5>
+                  
+                        <a href="{{ route('showDetail', ['c_id' => $news->c_id]) }}" class="row">
+                          @foreach($otherSamachar as $news)
+                              <div class="col-md-4">
+                                  <div class="card border-0">
+                                      <img src="{{ $news->image }}" class="card-img-top" alt="{{ $news->image_alt }}">
+                                      <div class="card-body p-0 pt-3 d-flex flex-column">
+                                          <h5 class="card-title small-title">{{ $news->title }}</h5>
+                                          {{-- <p class="card-text mb-4 text-muted">{{ $news->description }}</p> --}}
+                                      </div>
+                                  </div>
+                              </div>
+                          @endforeach
+                        </a>
+                      </div>
+
+
+           
+           
+                    </div>
             <div class="col-md-4">
              <div class=" sticky-top"> 
 
@@ -197,23 +237,7 @@
             </div>
              </div>
         </div>
-        <div class="col-md-12 mb-5 related-news-image">
-          <h5 class="header-title mb-3">सम्बन्धित खवर</h5>
-    
-          <a href="{{ route('showDetail', ['c_id' => $news->c_id]) }}" class="row">
-            @foreach($sameCategoryNews as $news)
-                <div class="col-md-3">
-                    <div class="card border-0">
-                        <img src="{{ $news->image }}" class="card-img-top" alt="{{ $news->image_alt }}">
-                        <div class="card-body p-0 pt-3 d-flex flex-column">
-                            <h5 class="card-title small-title">{{ $news->title }}</h5>
-                            {{-- <p class="card-text mb-4 text-muted">{{ $news->description }}</p> --}}
-                        </div>
-                    </div>
-                </div>
-            @endforeach
-          </a>
-        </div>
+        
         
     </div>
     @else
