@@ -13,7 +13,7 @@ class CategoryRepository
     {
         return Cache::rememberForever(
             'categories',
-            fn() => Category::query()
+            fn () => Category::query()
                 ->whereIn('slug', [
                     'sports',
                     'break',
@@ -25,7 +25,7 @@ class CategoryRepository
                     'blogs',
                     'tourism',
                     'anchor',
-                    'opinion'
+                    'opinion',
                 ])
                 ->get()
         );
