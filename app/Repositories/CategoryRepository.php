@@ -28,7 +28,6 @@ class CategoryRepository
                     'opinion',
                     'video-report',
                 ])
-                ->sortBy('slug')
                 ->get()
         );
     }
