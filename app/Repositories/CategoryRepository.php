@@ -13,9 +13,6 @@ class CategoryRepository
     {
         return Cache::rememberForever(
             'categories',
-<<<<<<< Updated upstream
-            fn () => Category::query()->get()
-=======
             fn() => Category::query()
                 ->whereIn('slug', [
                     'sports',
@@ -31,7 +28,6 @@ class CategoryRepository
                     'opinion'
                 ])
                 ->get()
->>>>>>> Stashed changes
         );
     }
 
