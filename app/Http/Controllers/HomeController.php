@@ -17,7 +17,8 @@ class HomeController extends Controller
     public function __construct(
         protected NewsRepository $newsRepository,
         protected CategoryRepository $categoryRepository
-    ) {}
+    ) {
+    }
 
     public function index(): Renderable
     {
@@ -43,7 +44,7 @@ class HomeController extends Controller
         $jiwansaili = $allNews->where('category_slug', 'lifestyle'); //health
 
         return view(
-            $this->viewPath.'index',
+            $this->viewPath . 'index',
             compact(
                 'order1News',
                 'trendingNews',
@@ -71,7 +72,7 @@ class HomeController extends Controller
         $category = Category::whereSlug($categorySlug)
             ->select('id')
             ->first();
-        if (! $category) {
+        if (!$category) {
             return redirect('/');
         }
 
@@ -116,7 +117,7 @@ class HomeController extends Controller
         $breakingNews = $otherNews->where('category_slug', 'breaking');
 
         return view(
-            $this->viewPath.'news-detail',
+            $this->viewPath . 'news-detail',
             compact(
                 'news',
                 'blSpecialNews',
@@ -161,13 +162,8 @@ class HomeController extends Controller
 
         $news->increment('view_count');
 
-        $sameCategoryNews = DB::table('np_news')
-            ->select('title', 'short_description', 'guest_id', 'image_description', 'description', 'video_url', 'date_line', 'publish_date', 'id', 'c_id', 'image', 'image_alt', 'category_id', 'reporter_id')
-            ->where('c_id', '=', $cId)
-            ->orderByDesc('publish_date')
-            ->skip(1)
-            ->take(3)
-            ->get();
+        $sameCategoryNews = $this->newsRepository->sameCategoryNewsQuery($news->category_id);
+
 
         $otherNews = $this->newsRepository->getOthersNews();
         $trendingNews = $otherNews->where('category_slug', 'trending');
@@ -197,7 +193,7 @@ class HomeController extends Controller
             ->get();
 
         return view(
-            $this->viewPath.'news-detail',
+            $this->viewPath . 'news-detail',
             compact(
                 'news',
                 'blSpecialNews',
