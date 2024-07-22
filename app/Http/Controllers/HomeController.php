@@ -16,7 +16,8 @@ class HomeController extends Controller
     public function __construct(
         protected NewsRepository $newsRepository,
         protected CategoryRepository $categoryRepository
-    ) {}
+    ) {
+    }
 
     public function index(): Renderable
     {
@@ -42,7 +43,7 @@ class HomeController extends Controller
         $jiwansaili = $allNews->where('category_slug', 'lifestyle'); //health
 
         return view(
-            $this->viewPath.'index',
+            $this->viewPath . 'index',
             compact(
                 'order1News',
                 'trendingNews',
@@ -70,7 +71,7 @@ class HomeController extends Controller
         $category = Category::whereSlug($categorySlug)
             ->select('id')
             ->first();
-        if (! $category) {
+        if (!$category) {
             return redirect('/');
         }
 
@@ -115,7 +116,7 @@ class HomeController extends Controller
         $breakingNews = $otherNews->where('category_slug', 'breaking');
 
         return view(
-            $this->viewPath.'news-detail',
+            $this->viewPath . 'news-detail',
             compact(
                 'news',
                 'blSpecialNews',
@@ -165,6 +166,16 @@ class HomeController extends Controller
             ->take(3)
             ->get();
 
+        //  yo pani DB::table('news')
+        //         ->select('id', 'title')
+        //         ->where('slug', 'like', '%' . $slug . '%')
+        //         ->where('id', '!=', $id)
+        //         ->whereNull('deleted_at')
+        //         ->whereNotNull('slug')
+        //         ->inRandomOrder()
+        //         ->take(5)
+        //         ->get();
+
         $otherNews = $this->newsRepository->getOthersNews();
         $trendingNews = $otherNews->where('category_slug', 'trending');
         $blSpecialNews = $otherNews->where('category_slug', 'special');
@@ -193,7 +204,7 @@ class HomeController extends Controller
             ->get();
 
         return view(
-            $this->viewPath.'news-detail',
+            $this->viewPath . 'news-detail',
             compact(
                 'news',
                 'blSpecialNews',
