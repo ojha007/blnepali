@@ -58,8 +58,9 @@
     integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
     crossorigin="anonymous"
 ></script>
-<script type='text/javascript'
+{{-- <script type='text/javascript'
         src='https://platform-api.sharethis.com/js/sharethis.js#property=628fa698b2339200190e6254&product=sop'
-        async='async'></script>
-</body>
+        async='async'></script> --}}
+        <script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=669b3523595beb00197dfa96&product=inline-share-buttons' async='async'></script> 
+    </body>
 </html>

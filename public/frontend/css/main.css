@@ -1,6 +1,6 @@
 @import url(https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css);
 body {
-    font-family: "Mukta" !important;
+    font-family: "Mukta",sans-serif !important;
     --primary-color: #f06023;
 }
 
@@ -22,6 +22,10 @@ a {
 }
 .small-nav{
     margin: -15px auto;
+}
+
+strong img{
+   margin-bottom: 10px;
 }
 
 .top-nav li {
@@ -82,18 +86,23 @@ a {
 }
 
 .header-center .header-title {
-    font-family: "Mukta";
+    font-family: "Mukta",sans-serif;
     text-align: center;
     justify-content: center;
     font-size: 1.125rem;
     padding-bottom: 0.5rem;
     position: relative;
 }
-
+.artha-wrapper img{
+    height: 235px;
+}
 .header-center .header-title::before {
     display: none;
 }
 
+.ghumphir-side img{
+    height: 100%;
+}
 .header-center .header-title::after {
     content: "";
     position: absolute;
@@ -107,6 +116,10 @@ a {
     margin: 0px;
 }
 
+.related-news-image img {
+    height: 130px;
+}
+
 .medium-title {
     font-size: 2rem;
     color: #2d2d2d;
@@ -116,6 +129,10 @@ a {
     align-items: center;
     justify-content: flex-start;
     flex-flow: row wrap;
+}
+
+.related-news-image .small-title {
+    font-size: 1rem;
 }
 
 .small-title {
@@ -147,18 +164,18 @@ a {
 
 figcaption {
     position: absolute;
-    left: 0;
     bottom: 0;
-    background-color: var(--primary-color);
     color: white;
     padding: 5px 15px;
     font-size: 1.2rem;
     font-weight: 500;
+    right: 20px;
+    text-align: center;
+    font-style: italic;
 }
 
 img {
     width: 100%;
-    height: 100%;
     object-fit: cover;
 }
 .post-description-sm {
@@ -168,12 +185,12 @@ img {
     font-weight: 500;
 }
 .small-col img {
-    height: 204px !important;
+    height: 130px !important;
     object-fit: cover;
 }
 
 .cover-photo img {
-    height: 450px !important;
+    height: 300px !important;
     object-fit: cover;
 }
 
@@ -185,6 +202,7 @@ img {
 .black-box {
     box-shadow: 1px 0px 6px 1px rgb(0 0 0 / 36%);
     border-radius: 5px;
+    height: 100%;
 }
 
 .rajniti-second-row img {
@@ -316,6 +334,36 @@ img {
     z-index: -1;
     top: 45%;
 }
+.feature-news p{
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.8;
+    color: #747474;
+}
+
+.mini-col img {
+    height: 130px;
+}
+
+.featured-title{
+    background: var(--primary-color);
+    color: white;
+    padding: 10px 20px;
+    font-size: 1.5rem;
+    border-radius: 5px;
+}
+.util div svg:hover{
+    color: rebeccapurple;
+    cursor: pointer;
+}
+
+.bi-copy {
+    cursor: pointer;
+    
+}
+.bi-copy:hover {
+    color: rebeccapurple;
+}
 .story-title::after{
     content: "";
     background: var(--primary-color);
@@ -350,7 +398,7 @@ img{
 .numbering{
     font-size: 80px;
     font-weight: 900;
-    font-family: "Mukta";
+    font-family: "Mukta",sans-serif;
     color: var(--primary-color);
 }
 .bg-gradient-primary{
@@ -442,11 +490,12 @@ a:hover{
     background-color: #dab10d;
 }
 
-.news-detail p{
+.news-detail p {
     font-size: 22px;
     margin: 0 0 28px;
-    font-weight: 500;
+    font-weight: 400;
     line-height: 1.8;
+    text-align: justify;
 }
 
 .kala img{

@@ -47,7 +47,7 @@ class NewsRepository
             ->limit(6);
     }
 
-    public function getNewsByCategoryIds(array $categoryIds, $perPage = 20): LengthAwarePaginator
+    public function getNewsByCategoryIds($slug, $perPage = 20): LengthAwarePaginator
     {
         return News::with('category:name,id,slug')
             ->select([
@@ -64,7 +64,9 @@ class NewsRepository
                 'date_line',
                 'category_id',
             ])
-            ->whereIn('category_id', $categoryIds)
+            ->whereHas('category', function ($query) use ($slug) {
+                $query->where('slug', $slug);
+            })
             ->orderByDesc('publish_date')
             ->paginate($perPage);
     }

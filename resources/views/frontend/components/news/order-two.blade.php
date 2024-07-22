@@ -2,7 +2,9 @@
     <div class="col-md-12">
         <h5 class="header-title mb-4">
             @if(!$order2News->isEmpty())
+            <a href="{{route('newsByCategory','art-1')}}">
                 {{$order2News->first()->category_name}}
+            </a>
             @endif
         </h5>
     </div>

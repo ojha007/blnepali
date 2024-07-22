@@ -2,7 +2,9 @@
     
     @php($arthaFirst = $artha->first())
     <div class="col-md-4">
-        <h5 class="header-title">अर्थ</h5>
+        <a href="{{route('newsByCategory','econimics')}}">
+            <h5 class="header-title">अर्थ</h5>
+        </a>
       @if($arthaFirst)
         <div class="border-bottom border-2 pb-2">
             <figure class="position-relative">
@@ -17,7 +19,7 @@
         @endif
       
         <ul class="list-style list-group mt-3">
-            @foreach($artha as $news)
+            @foreach($artha->skip(1) as $news)
             <li class="m-0 my-2">
                 <a class="d-flex align-items-center" href="{{ route('showDetail', ['c_id' => $news->c_id]) }}">
                     <h2 class="samaj-title">

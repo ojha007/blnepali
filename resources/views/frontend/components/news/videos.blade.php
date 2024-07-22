@@ -2,16 +2,18 @@
     <div class="container py-3">
         <div class="row g-2">
             <div class="col-md-12">
-                <h5 class="header-title pb-3 text-break-primary">
+                <a href="{{route('newsByCategory','video-report')}}">
+                <h5 class="header-title pb-3 text-white">
                     भिडियो
                 </h5>
+                </a>
             </div>
             @foreach($videoNews as $key => $news)
                 @if($loop->first)
                     <div class="col-md-5">
                         <a href="{{ route('showDetail', ['c_id' => $news->c_id]) }}"
                            class="card h-100 border-0 ">
-                            <img class="card-img"
+                            <img class="card-img h-100"
                                  src="{{ getResizeImage($news->image) }}"
                                  alt="{{ $news->image_alt }}"/>
 
@@ -20,7 +22,8 @@
                                     @include('frontend.icons.video-icon')
 
                                     <h2 class="card-title fw-bold fs-3">
-                                        {!! $news->title !!}
+                                        
+                                        {{\Illuminate\Support\Str::limit($news->title, 80)}}
                                     </h2>
                                 </div>
                             </div>
@@ -47,7 +50,7 @@
                                                 <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z"/>
                                             </svg>
                                             <h2 class="card-title fw-bold fs-5">
-                                                {!! $news->title !!}
+                                                {{\Illuminate\Support\Str::limit($news->title, 50)}}
                                             </h2>
                                         </div>
                                     </div>

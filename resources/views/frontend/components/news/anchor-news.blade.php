@@ -1,12 +1,12 @@
 @isset($anchorNews)
     <section class="container mt-5">
         <div class="row">
-            @php($anchorFirst = $anchorNews->skip(1)->first())
+            @php($anchorFirst = $anchorNews->first())
             <!-- column should be col-md-9 if ads other wise col-md-12 -->
             <div class="col-md-12">
                 <div class="row">
                     <div class="col-md-12 mb-4">
-                        <a>
+                        <a href="{{route('newsByCategory','anchor')}}">
 
                             <h5 class="header-title">एंकर</h5>
                         </a>
@@ -18,26 +18,25 @@
                                 <img
                                     src="{{$anchorFirst->image}}"
                                     alt="{!! $anchorFirst->title !!}"/>
-                                <figcaption>{!! $anchorFirst->date_line ?? "" !!}</figcaption>
+                                
                             </figure>
                             <a href="{{ route('showDetail', ['c_id' => $anchorFirst->c_id]) }}">
                                 <h1 class="small-title">
                                     {!! $anchorFirst->title !!}
                                 </h1>
-                                <p class="post-description">
-                                    {!! $anchorFirst->short_description !!}
+                                <p class="post-description-sm">
+                                    {!! \Illuminate\Support\Str::limit($anchorFirst->short_description,261) !!}
                                 </p>
                             </a>
                         @endif
                     </div>
                     <div class="col-md-6 small-col">
                         <div class="row">
-                            @foreach($anchorNews->skip(2) as $key=>$news)
+                            @foreach($anchorNews->skip(1) as $key=>$news)
                                 <div class="col-md-6">
                                     <figure class="position-relative">
                                         <img src="{{getResizeImage($news->image)}}"
                                              alt="{!! $news->title !!}"/>
-                                        <figcaption>{!! $news->date_line ?? "" !!}</figcaption>
                                     </figure>
                                     <a href="{{ route('showDetail', ['c_id' => $news->c_id]) }}">
                                         <h1 class="small-title">

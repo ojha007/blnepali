@@ -4,14 +4,17 @@
 
         <div class="container">
             <div class="col-md-12 mb-4">
+                <a href="{{route('newsByCategory','bl-special')}}"
+                   class="a-hover">
                 <h5 class="header-title text-white">बिएल विशेष</h5>
+                </a>
             </div>
             <div class="row">
                 @foreach($blSpecialNews as $news)
                     <div class="col-md-3 a-hover">
                         <div class="black-box">
                             <figure class="position-relative">
-                                <img src="{{getResizeImage($news->image)}}"
+                                <img src="{{$news->image}}"
                                      alt="{{$news->title}}">
                             </figure>
                             <a href="{{ route('showDetail', ['c_id' => $news->c_id]) }}"

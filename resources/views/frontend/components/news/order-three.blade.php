@@ -3,7 +3,9 @@
         <h5 class="header-title mb-4">
 
             @if(!$order3News->isEmpty())
-                {{$order3News->first()->category_name}}
+            <a href="{{route('newsByCategory','opinion')}}">
+                विचार
+            </a>
             @endif
         </h5>
     </div>
@@ -22,8 +24,8 @@
                     </a>
                 </h5>
                 <p class="text-muted fw-bold">
-                    {{$news->guest ?? $news->reporter_name ?? '' }}
-                    {{$news->date_line ? '-' .$news->date_line  :''}}
+                
+                    {{ $news->guest_name ?? $news->reporter_name ?? '' }}
                 </p>
             </div>
         </div>

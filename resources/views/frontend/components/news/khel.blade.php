@@ -1,8 +1,10 @@
 @isset($khel)
-    @php($khelFirst = $artha->first())
+    @php($khelFirst = $khel->first())
   
     <div class="col-md-4">
+        <a href="{{route('newsByCategory','sports')}}">
         <h5 class="header-title">खेल</h5>
+        </a>
         @if($khelFirst)
         <div class="border-bottom border-2 pb-2">
             <figure class="position-relative">
@@ -16,7 +18,7 @@
         </div>
         @endif
         <ul class="list-style list-group mt-3">
-            @foreach($khel as $news)
+            @foreach($khel->skip(1) as $news)
             <li class="m-0 my-2">
                 <a class="d-flex align-items-center" href="{{ route('showDetail', ['c_id' => $news->c_id]) }}">
                     <h2 class="samaj-title">

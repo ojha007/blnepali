@@ -61,7 +61,8 @@ class ArchiveNewsController extends Controller
             }
 
             $categories = $this->categoryRepository->getCategories();
-            $headerCategories = $categories->sortBy('header_position')->take(10);
+            $headerCategories = $categories
+                ->take(12);
 
             $otherNews = $this->newsRepository->getOthersNews();
             $trendingNews = $otherNews->where('type', 'trending');

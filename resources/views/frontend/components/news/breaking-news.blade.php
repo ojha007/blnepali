@@ -1,6 +1,9 @@
 @isset($breakingNews)
     <div class="col-md-12 mb-4">
+        <a href="{{route('newsByCategory',$breakingNews->first()->category_slug)}}"
+           class="a-hover">
         <h5 class="header-title">ब्रेक</h5>
+        </a>
     </div>
 
     @php($breakFirst = $breakingNews->skip(2)->first())

@@ -13,7 +13,23 @@ class CategoryRepository
     {
         return Cache::rememberForever(
             'categories',
-            fn () => Category::query()->whereNull('parent_id')->get()
+            fn () => Category::query()
+                ->whereIn('slug', [
+                    'sports',
+                    'break',
+                    'bl-special',
+                    'economics',
+                    'news',
+                    'art-1',
+                    'literature',
+                    'blogs',
+                    'tourism',
+                    'anchor',
+                    'opinion',
+                    'video-report',
+                ])
+                ->sortBy('slug')
+                ->get()
         );
     }
 

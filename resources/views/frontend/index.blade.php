@@ -7,7 +7,7 @@
     <section class="container bl-anchor-news">
         @include('frontend.components.news.anchor-news')
     </section>
-    <section class="container-fluid my-5 bl-special py-5" style="background-color: #082332">
+    <section class="container-fluid my-5 bl-special py-5" style="background-color: #50558b">
         @include('frontend.components.news.bl-special')
     </section>
 
@@ -18,7 +18,7 @@
                     @include('frontend.components.news.order-one')
                 </div>
                 <div class="col-md-4">
-                    @include('frontend.components.news.breaking-news')
+                    @include('frontend.components.news.order-three')
                 </div>
             </div>
         </div>
@@ -37,7 +37,7 @@
                     @include('frontend.components.news.order-two')
                 </div>
                 <div class="col-md-4">
-                    @include('frontend.components.news.order-three')
+                    @include('frontend.components.news.breaking-news')
                 </div>
             </div>
         </div>
@@ -56,8 +56,8 @@
         </div>
     </section>
 
-    <section class="container-fluid py-1">
-        <div class="container my-4">
+    <section class="container-fluid">
+        <div class="container my-2 artha-wrapper">
                 <div class="row">
                     @include('frontend.components.news.artha')
                     @include('frontend.components.news.khel')
@@ -68,16 +68,20 @@
     </section>
 
     @include('frontend.components.news.ghumphir')
+<div class="container">
 
+    @include('frontend.components.news.sahitya')
+</div>
+    
 
-    <section class="container my-5">
+    {{-- <section class="container my-5">
         <div class="row">
     @include('frontend.components.news.brand-story')
           
     @include('frontend.components.news.sahitya')
            
         </div>
-     </section>
+     </section> --}}
     
 
     <!--ended general news and links news section-->

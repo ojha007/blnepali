@@ -26,7 +26,7 @@ class NewsByCategoryController extends Controller
                 ->pluck('id')
                 ->toArray();
 
-            $news = $this->newsRepository->getNewsByCategoryIds($categoryIds);
+            $news = $this->newsRepository->getNewsByCategoryIds($category->slug);
 
             $trendingNews = $this->newsRepository->getTrendingNews();
 

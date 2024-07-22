@@ -1,131 +1,152 @@
-(SELECT news.title,
+WITH trending_news AS (
+    SELECT 
+        news.title,
         news.sub_title,
         news.id,
         news.c_id,
         news.short_description,
-        reporters.image as reporter_image,
-        reporters.name  as reporter_name,
-        reporters.slug  as reporter_slug,
---         guests.name     as guest_name,
---         guests.image    as guest_image,
---         guests.slug     as guest_slug,
+        news.video_url,
+        news.category_id,
+        reporters.image AS reporter_image,
+        reporters.name AS reporter_name,
+        reporters.slug AS reporter_slug,
         news.publish_date,
         news.date_line,
         news.image,
         news.image_description,
         news.image_alt,
-        'trending'      as category_slug
- from np_news news
-          LEFT JOIN reporters ON news.reporter_id = reporters.id
---           LEFT JOIN guests ON news.guest_id = guests.id
- WHERE 
- news.deleted_by is NULL
-   AND news.status = 'active'
-   and publish_date >= (NOW() - INTERVAL 10 WEEK)
- order by view_count desc
- limit 5)
+        news.slug,
+        'trending' AS category_slug
+    FROM np_news news
+    LEFT JOIN reporters ON news.reporter_id = reporters.id
+    WHERE 
+        news.deleted_by IS NULL
+        AND news.status = 'active'
+        AND news.publish_date >= (NOW() - INTERVAL 1 WEEK)
+    ORDER BY news.view_count DESC
+    LIMIT 5
+),
+breaking_news AS (
+    SELECT 
+        news.title,
+        news.sub_title,
+        news.id,
+        news.c_id,
+        news.short_description,
+        news.video_url,
+        news.category_id,
+        reporters.image AS reporter_image,
+        reporters.name AS reporter_name,
+        reporters.slug AS reporter_slug,
+        news.publish_date,
+        news.date_line,
+        news.image,
+        news.image_description,
+        news.image_alt,
+        news.slug,
+        'breaking' AS category_slug
+    FROM np_news news
+    LEFT JOIN reporters ON news.reporter_id = reporters.id
+    WHERE 
+        news.deleted_by IS NULL
+        AND news.status = 'active'
+    ORDER BY news.publish_date DESC
+    LIMIT 5
+),
+special_news AS (
+    SELECT 
+        news.title,
+        news.sub_title,
+        news.id,
+        news.c_id,
+        news.short_description,
+        news.video_url,
+        news.category_id,
+        reporters.image AS reporter_image,
+        reporters.name AS reporter_name,
+        reporters.slug AS reporter_slug,
+        news.publish_date,
+        news.date_line,
+        news.image,
+        news.image_description,
+        news.image_alt,
+        news.slug,
+        'special' AS category_slug
+    FROM np_news news
+    LEFT JOIN reporters ON news.reporter_id = reporters.id
+    JOIN categories ON news.category_id = categories.id 
+    WHERE 
+        news.deleted_by IS NULL
+        AND news.status = 'active'
+        AND news.is_special = 1
+    ORDER BY news.publish_date DESC
+    LIMIT 4
+),
+anchor_news AS (
+    SELECT 
+        news.title,
+        news.sub_title,
+        news.id,
+        news.c_id,
+        news.short_description,
+        news.video_url,
+        news.category_id,
+        reporters.image AS reporter_image,
+        reporters.name AS reporter_name,
+        reporters.slug AS reporter_slug,
+        news.publish_date,
+        news.date_line,
+        news.image,
+        news.image_description,
+        news.image_alt,
+        news.slug,
+        'anchor' AS category_slug
+    FROM np_news news
+    LEFT JOIN reporters ON news.reporter_id = reporters.id
+    JOIN categories ON news.category_id = categories.id
+    WHERE 
+        news.deleted_by IS NULL
+        AND news.status = 'active'
+        AND news.is_anchor = 1
+    ORDER BY news.publish_date DESC
+    LIMIT 5
+),
+video_news AS (
+    SELECT 
+        news.title,
+        news.sub_title,
+        news.id,
+        news.c_id,
+        news.short_description,
+        news.video_url,
+        news.category_id,
+        reporters.image AS reporter_image,
+        reporters.name AS reporter_name,
+        reporters.slug AS reporter_slug,
+        news.publish_date,
+        news.date_line,
+        news.image,
+        news.image_description,
+        news.image_alt,
+        news.slug,
+        'video' AS category_slug
+    FROM np_news news
+    LEFT JOIN reporters ON news.reporter_id = reporters.id
+    JOIN categories ON news.category_id = categories.id 
+        AND categories.slug = 'video-report'
+    WHERE 
+        news.deleted_by IS NULL
+        AND news.status = 'active'
+    ORDER BY news.publish_date DESC
+    LIMIT 5
+)
+
+SELECT * FROM trending_news
 UNION ALL
-(SELECT news.title,
-        news.sub_title,
-        news.id,
-        news.c_id,
-        news.short_description,
-        reporters.image as reporter_image,
-        reporters.name  as reporter_name,
-        reporters.slug  as reporter_slug,
---         guests.name     as guest_name,
---         guests.image    as guest_image,
---         guests.slug     as guest_slug,
-        news.publish_date,
-        news.date_line,
-        news.image,
-        news.image_description,
-        news.image_alt,
-        'breaking'      as category_slug
- from np_news news
-          LEFT JOIN reporters ON news.reporter_id = reporters.id
---           LEFT JOIN guests ON news.guest_id = guests.id
- WHERE news.deleted_by is NULL
-   AND news.status = 'active'
-#    AND news.is_breaking = 1
- order by news.publish_date desc
- limit 5)
+SELECT * FROM breaking_news
 UNION ALL
-(SELECT news.title,
-        news.sub_title,
-        news.id,
-        news.c_id,
-        news.short_description,
-        reporters.image as reporter_image,
-        reporters.name  as reporter_name,
-        reporters.slug  as reporter_slug,
---         guests.name     as guest_name,
---         guests.image    as guest_image,
---         guests.slug     as guest_slug,
-        news.publish_date,
-        news.date_line,
-        news.image,
-        news.image_description,
-        news.image_alt,
-        'special'       as category_slug
- from np_news news
-          LEFT JOIN reporters ON news.reporter_id = reporters.id
---           LEFT JOIN guests ON news.guest_id = guests.id
- WHERE news.deleted_by is NULL
-   AND is_special = 1
-   AND news.status = 'active'
- order by news.publish_date desc
- limit 4)
+SELECT * FROM special_news
 UNION ALL
-(SELECT news.title,
-        news.sub_title,
-        news.id,
-        news.c_id,
-        news.short_description,
-        reporters.image as reporter_image,
-        reporters.name  as reporter_name,
-        reporters.slug  as reporter_slug,
---         guests.name     as guest_name,
---         guests.image    as guest_image,
---         guests.slug     as guest_slug,
-        news.publish_date,
-        news.date_line,
-        news.image,
-        news.image_description,
-        news.image_alt,
-        'anchor'        as category_slug
- from np_news news
-          LEFT JOIN reporters ON news.reporter_id = reporters.id
---           LEFT JOIN guests ON news.guest_id = guests.id
- WHERE news.deleted_by is NULL
-   AND is_anchor = 1
-   AND news.status = 'active'
- order by news.publish_date desc
- limit 6)
+SELECT * FROM anchor_news
 UNION ALL
-(SELECT news.title,
-        news.sub_title,
-        news.id,
-        news.c_id,
-        news.short_description,
-        reporters.image as reporter_image,
-        reporters.name  as reporter_name,
-        reporters.slug  as reporter_slug,
---         guests.name     as guest_name,
---         guests.image    as guest_image,
---         guests.slug     as guest_slug,
-        news.publish_date,
-        news.date_line,
-        news.image,
-        news.image_description,
-        news.image_alt,
-        'video'        as category_slug
- from np_news news
-          LEFT JOIN reporters ON news.reporter_id = reporters.id
-          JOIN categories ON news.category_id = categories.id and categories.slug = 'video-report'
---           LEFT JOIN guests ON news.guest_id = guests.id
- WHERE news.deleted_by is NULL
-   AND is_anchor = 1
-   AND news.status = 'active'
- order by news.publish_date desc
- limit 5);
+SELECT * FROM video_news;

@@ -21,26 +21,25 @@ class HomeController extends Controller
     public function index(): Renderable
     {
         $bodyCategories = [];
-
         $otherNews = $this->newsRepository->getOthersNews();
         $trendingNews = $otherNews->where('category_slug', 'trending');
-        $breakingNews = $otherNews->where('category_slug', 'breaking')->take(4);
+        $breakingNews = $otherNews->where('category_slug', 'breaking')->take(3);
         $videoNews = $otherNews->where('category_slug', 'video');
         $blSpecialNews = $otherNews->where('category_slug', 'special');
         $anchorNews = $otherNews->where('category_slug', 'anchor');
 
         $allNews = $this->newsRepository->getHomePageNews();
-        $order1News = $allNews->where('category_id', 60); // samachar
-        $order2News = $allNews->where('category_id', 22); // कला
-        $order3News = $allNews->where('category_id', 11); // विचार/विश्लेषण
-        $order4News = $allNews->where('category_id', 25); //अन्तर्वार्ता
-        $order5News = $allNews->where('category_id', 26); //ब्लग 59
-        $ghumphir = $allNews->where('category_id', 9);
-        $brandStory = $allNews->where('category_id', 29);
-        $sahitya = $allNews->where('category_id', 32);
-        $artha = $allNews->where('category_id', 4);
-        $khel = $allNews->where('category_id', 1); //1
-        $jiwansaili = $allNews->where('category_id', 72);
+        $order1News = $allNews->where('category_slug', 'news'); // samachar
+        $order2News = $allNews->where('category_slug', 'art-1'); // कला
+        $order3News = $allNews->where('category_slug', 'opinion'); // विचार
+        $order4News = $allNews->where('category_slug', 'interview'); //अन्तर्वार्ता
+        $order5News = $allNews->where('category_slug', 'blogs'); //ब्लग 59
+        $ghumphir = $allNews->where('category_slug', 'tourism');
+        $brandStory = $allNews->where('category_slug', 'brand-story');
+        $sahitya = $allNews->where('category_slug', 'literature');
+        $artha = $allNews->where('category_slug', 'econimics');
+        $khel = $allNews->where('category_slug', 'sports'); //1
+        $jiwansaili = $allNews->where('category_slug', 'lifestyle'); //health
 
         return view(
             $this->viewPath.'index',
@@ -144,6 +143,7 @@ class HomeController extends Controller
                 'description',
                 'video_url',
                 'date_line',
+                'publish_date',
                 'id',
                 'c_id',
                 'image',
@@ -160,12 +160,47 @@ class HomeController extends Controller
 
         $news->increment('view_count');
 
-        $sameCategoryNews = $allNews->where('c_id', '=', $cId)->take(4);
+        $sameCategoryNews = $this->newsRepository->sameCategoryNewsQuery($news->category_id)
+            ->where('c_id', '!=', $cId)
+            ->take(3)
+            ->get();
+
+        //  yo pani DB::table('news')
+        //         ->select('id', 'title')
+        //         ->where('slug', 'like', '%' . $slug . '%')
+        //         ->where('id', '!=', $id)
+        //         ->whereNull('deleted_at')
+        //         ->whereNotNull('slug')
+        //         ->inRandomOrder()
+        //         ->take(5)
+        //         ->get();
 
         $otherNews = $this->newsRepository->getOthersNews();
         $trendingNews = $otherNews->where('category_slug', 'trending');
         $blSpecialNews = $otherNews->where('category_slug', 'special');
         $breakingNews = $otherNews->where('category_slug', 'breaking');
+        $otherSamachar = News::query()
+            ->with(['category:name,id,slug', 'reporter:name,id,image'])
+            ->select([
+                'title',
+                'short_description',
+                'guest_id',
+                'image_description',
+                'description',
+                'video_url',
+                'date_line',
+                'publish_date',
+                'id',
+                'c_id',
+                'image',
+                'image_alt',
+                'category_id',
+                'reporter_id',
+            ])
+            ->orderByDesc('publish_date')
+            ->skip(1)
+            ->take(6)
+            ->get();
 
         return view(
             $this->viewPath.'news-detail',
@@ -174,7 +209,8 @@ class HomeController extends Controller
                 'blSpecialNews',
                 'trendingNews',
                 'sameCategoryNews',
-                'breakingNews'
+                'breakingNews',
+                'otherSamachar'
             )
         );
 

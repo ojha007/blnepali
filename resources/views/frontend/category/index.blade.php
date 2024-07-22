@@ -29,18 +29,18 @@
                                         <div class="row">
                                             <div class="col-md-4">
                                                 <div class="shadow-sm  text-center">
-                                                    <a class="my-5" href="{{route('category.news.show',['category'=>$item->category->slug,'c_id'=>$item->c_id])}}">
-                                                        <img width="840" height="540"
+                                                    <a class="my-5" href="{{ route('showDetail', ['c_id' => $item->c_id]) }}">
+                                                        <img 
                                                             src="{{$item->image}}"
                                                             class="attachment-full size-full wp-post-image" alt="" decoding="async"
                                                             fetchpriority="high"
-                                                            srcset="{{$item->image}} 840w, {{$item->image}} 768w"
-                                                            sizes="(max-width: 840px) 100vw, 840px">
+                                                            srcset="{{$item->image}}"
+                                                            >
                                                     </a>
                                                 </div>
                                             </div>
                                             <div class="col-md-8">
-                                                <a class="my-5" href="{{route('category.news.show',['category'=>$item->category->slug,'c_id'=>$item->c_id])}}">
+                                                <a class="my-5" href="{{ route('showDetail', ['c_id' => $item->c_id]) }}">
                                                     <div class="media-body p-3">
                                                         <h2 class="mt-0 p-2 small-title"> {!! $item->title !!}
                                                         </h2>
