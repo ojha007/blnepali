@@ -163,9 +163,10 @@ class HomeController extends Controller
 
         $sameCategoryNews = DB::table('np_news')
             ->select('title', 'short_description', 'guest_id', 'image_description', 'description', 'video_url', 'date_line', 'publish_date', 'id', 'c_id', 'image', 'image_alt', 'category_id', 'reporter_id')
-            ->where('c_id', '!=', $cId)
+            ->where('c_id', '=', $cId)
             ->orderByDesc('publish_date')
-            ->take(4)
+            ->skip(1)
+            ->take(3)
             ->get();
 
         $otherNews = $this->newsRepository->getOthersNews();
@@ -191,6 +192,7 @@ class HomeController extends Controller
                 'reporter_id',
             ])
             ->orderByDesc('publish_date')
+            ->skip(1)
             ->take(6)
             ->get();
 

@@ -59,11 +59,11 @@ SELECT
 FROM 
     ranked_news
 WHERE 
-    (category_slug = 'sports' AND rn <= 2)
-    OR (category_slug = 'break' AND rn <= 2)
-    OR (category_slug = 'lifestyle' AND rn <= 2)
+    (category_slug = 'sports' AND rn <= 3)
+    OR (category_slug = 'break' AND rn <= 3)
+    OR (category_slug = 'lifestyle' AND rn <= 3)
+    OR (category_slug = 'econimics' AND rn <= 3)
     OR (category_slug = 'bl-special' AND rn <= 4)
-    OR (category_slug = 'econimics' AND rn <= 2)
     OR (category_slug = 'news' AND rn <= 7)
     OR (category_slug = 'art-1' AND rn <= 3)
     OR (category_slug = 'literature' AND rn <= 4)
