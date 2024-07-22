@@ -7,14 +7,13 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 
-
 class CategoryRepository
 {
     public function getCategories(): Collection
     {
         return Cache::rememberForever(
             'categories',
-            fn() => Category::query()
+            fn () => Category::query()
                 ->whereIn('slug', [
                     'sports',
                     'break',
