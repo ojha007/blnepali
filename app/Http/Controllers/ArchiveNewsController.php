@@ -62,7 +62,7 @@ class ArchiveNewsController extends Controller
 
             $categories = $this->categoryRepository->getCategories();
             $headerCategories = $categories
-                ->whereIn('slug', ['sports', 'break', 'bl-special', 'econimics', 'news', 'art-1', 'literature', 'blogs', 'tourism', 'anchor', 'opinion'])
+                // ->whereIn('slug', ['sports', 'break', 'bl-special', 'econimics', 'news', 'art-1', 'literature', 'blogs', 'tourism', 'anchor', 'opinion'])
                 ->take(12);
 
             $otherNews = $this->newsRepository->getOthersNews();
