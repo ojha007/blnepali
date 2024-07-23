@@ -19,7 +19,7 @@ class HomeController extends Controller
     public function index(): Renderable
     {
         $bodyCategories = [];
-        $otherNews = $this->newsRepository->getOthersNews();
+        $otherNews = $this->newsRepository->getIndexPageNonCategoryNews();
         $trendingNews = $otherNews->where('category', 'trending');
         $breakingNews = $otherNews->where('category', 'breaking')->take(3);
         $videoNews = $otherNews->where('category', 'video');
@@ -40,7 +40,7 @@ class HomeController extends Controller
         $jiwansaili = $allNews->where('category_slug', 'lifestyle'); //health
 
         return view(
-            $this->viewPath . 'index',
+            $this->viewPath.'index',
             compact(
                 'order1News',
                 'trendingNews',
@@ -165,7 +165,7 @@ class HomeController extends Controller
         //         ->take(5)
         //         ->get();
 
-        $otherNews = $this->newsRepository->getOthersNews();
+        $otherNews = $this->newsRepository->getIndexPageNonCategoryNews();
         $trendingNews = $otherNews->where('category_slug', 'trending');
         $blSpecialNews = $otherNews->where('category_slug', 'special');
         $breakingNews = $otherNews->where('category_slug', 'breaking');
@@ -193,7 +193,7 @@ class HomeController extends Controller
             ->get();
 
         return view(
-            $this->viewPath . 'news-detail',
+            $this->viewPath.'news-detail',
             compact(
                 'news',
                 'blSpecialNews',

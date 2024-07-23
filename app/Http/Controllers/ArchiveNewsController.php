@@ -4,24 +4,22 @@ namespace App\Http\Controllers;
 
 use App\Repositories\CategoryRepository;
 use App\Repositories\NewsRepository;
+use Illuminate\Contracts\Support\Renderable;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
 class ArchiveNewsController extends Controller
 {
-    protected NewsRepository $newsRepository;
-
-    protected CategoryRepository $categoryRepository;
-
     protected string $viewPath = 'frontend.archive.news.';
 
-    public function __construct(NewsRepository $newsRepository, CategoryRepository $categoryRepository)
+    public function __construct(
+        protected NewsRepository $newsRepository,
+        protected CategoryRepository $categoryRepository)
     {
-        $this->newsRepository = $newsRepository;
-        $this->categoryRepository = $categoryRepository;
     }
 
-    public function show($id)
+    public function show($id): Renderable|RedirectResponse
     {
         try {
             $news = DB::table('news as n')
@@ -60,20 +58,15 @@ class ArchiveNewsController extends Controller
                 return redirect()->route('index');
             }
 
-            $categories = $this->categoryRepository->getCategories();
-            $headerCategories = $categories
-                ->take(12);
-
-            $otherNews = $this->newsRepository->getOthersNews();
-            $trendingNews = $otherNews->where('type', 'trending');
-            $blSpecialNews = $otherNews->where('type', 'special');
+            $otherNews = $this->newsRepository->getIndexPageNonCategoryNews();
+            $trendingNews = $otherNews->where('category', 'trending');
+            $blSpecialNews = $otherNews->where('category', 'special');
 
             $sameCategoryNews = [];
 
             return view(
                 $this->viewPath.'show',
                 compact(
-                    'headerCategories',
                     'news',
                     'trendingNews',
                     'sameCategoryNews',
@@ -81,7 +74,7 @@ class ArchiveNewsController extends Controller
                 )
             );
         } catch (\Exception $exception) {
-            Log::error($exception->getMessage().'---'.$exception->getTraceAsString());
+            Log::error($exception->getMessage(), $exception->getTrace());
 
             return redirect()->route('index');
         }
