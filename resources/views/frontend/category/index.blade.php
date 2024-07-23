@@ -69,23 +69,20 @@
                     <div class="col-md-12 my-4">
                         <h5 class="header-title">ट्रेन्डिङ</h5>
                     </div>
-                    @foreach($trendingNews as $news)
+                    @foreach($trendingNews as $tNews)
                         <div class="d-flex align-items-center border-bottom mb-3">
                             <figure class="post_img">
-                                <a href="{{ route('category.news.show', [$news->category->slug, $news->c_id]) }}">
-                                    <img style="width: 80px; height: 80px;" src="{{ $news->image }}"
-                                         alt="{{ $news->image_alt }}">
+                                <a href="{{ route('category.news.show', [$tNews->category_slug, $tNews->c_id]) }}">
+                                    <img style="width: 80px; height: 80px;" src="{{ $tNews->image }}"
+                                         alt="{{ $tNews->image_alt }}">
                                 </a>
                             </figure>
                             <div class="ps-3">
                                 <h5 class="fw-bold medium-title fs-5">
-                                    <a href="{{ route('category.news.show', [$news->category->slug, $news->c_id]) }}">
-                                        {{ $news->title }}
+                                    <a href="{{ route('category.news.show', [$tNews->category_slug, $tNews->c_id]) }}">
+                                        {{ $tNews->title }}
                                     </a>
                                 </h5>
-                                {{-- <p class="text-muted fw-bold">
-                                {{print_r($news)}}
-                                </p> --}}
                             </div>
                         </div>
                     @endforeach
