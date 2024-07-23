@@ -32,7 +32,7 @@
                             <div class="d-flex align-items-center  {{ $loop->remaining > 1 ? 'border-bottom' : '' }} mb-3">
                                 <figure
                                     class="post_img">
-                                    <a href="{{ route('showDetail', ['c_id' => $news->c_id]) }}">
+                                    <a href="{{ route('category.news.show', [$news->category_slug, $news->c_id]) }}">
                                         <img src="{{getResizeImage($news->image,'/fit-in/250x150')}}"
                                              class="card-img"
                                         style="width: 100px;height: 80px;object-fit:cover"
@@ -42,7 +42,7 @@
                                 </figure>
                                 <div class="ps-3">
                                     <h5 class="fw-bold medium-title fs-5">
-                                        <a href="{{ route('showDetail', ['c_id' => $news->c_id]) }}">
+                                        <a href="{{ route('category.news.show', [$news->category_slug, $news->c_id]) }}">
                                             {{\Illuminate\Support\Str::limit($news->title, 74)}}
                                         </a>
                                     </h5>

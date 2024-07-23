@@ -17,7 +17,7 @@
                 </figure>
             </div>
             <div class="col-md-5">
-                <a href="{{ route('showDetail', ['c_id' => $order1First->c_id]) }}"
+                <a href="{{ route('category.news.show', [$order1First->category_slug, $order1First->c_id]) }}"
                    class="a-hover">
                     <h1 class="small-title px-3">
                         {!! $order1First->title !!}
@@ -38,7 +38,7 @@
                             <img src="{{getResizeImage($news->image)}}"
                                  alt="{{$news->image_alt ?? $news->image_description ?? ''}}"/>
                         </figure>
-                        <a href="{{ route('showDetail', ['c_id' => $news->c_id]) }}" class="a-hover">
+                        <a href="{{  route('category.news.show', [$news->category_slug, $news->c_id]) }}" class="a-hover">
                             <h1 class="small-title">
                                 {!! $news->title !!}
                             </h1>

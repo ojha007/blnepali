@@ -177,7 +177,9 @@
                                 </figure>
                                 <div class="ps-3">
                                     <h5 class="fw-bold medium-title fs-5">
-                                        <a href="{{ route('category.news.show', [$bNews->category_slug, $bNews->c_id]) }}">{{ $news->title }}</a>
+                                        <a href="{{ route('category.news.show', [$bNews->category_slug, $bNews->c_id]) }}">
+                                            {{ $bNews->title }}
+                                        </a>
                                     </h5>
                                 </div>
                             </div>
