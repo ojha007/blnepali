@@ -120,17 +120,19 @@ class NewsRepository
                 'reporters.image as reporter_image',
                 'reporters.name as reporter_name',
                 'reporters.slug as reporter_slug',
-                'publish_date',
-                'date_line',
+                'news.publish_date',
+                'news.date_line',
                 'news.image',
-                'image_description',
-                'image_alt',
+                'news.image_description',
+                'news.image_alt',
+                'categories.slug as category_slug',
             )
             ->leftJoin('reporters', 'news.reporter_id', '=', 'reporters.id')
-            ->whereNull('news.deleted_by')
+            ->join('categories', 'categories.id', '=', 'news.category_id')
+            ->whereNull(['news.deleted_by', 'news.deleted_at'])
             ->where('news.status', '=', 'active')
             ->whereDate('news.publish_date', '>=', DB::raw('NOW() - INTERVAL 5 WEEK'))
-            ->orderBy('news.view_count', 'desc')
+            ->orderByDesc('news.view_count')
             ->limit(5)
             ->get();
     }
@@ -152,8 +154,8 @@ class NewsRepository
                 'date_line',
                 'category_id',
             ])
-            ->when($slug === 'anchor', fn (Builder $news) => $news->where('is_anchor', true))
-            ->when($slug === 'special', fn (Builder $news) => $news->where('is_special', true))
+            ->when($slug === 'anchor', fn(Builder $news) => $news->where('is_anchor', true))
+            ->when($slug === 'special', fn(Builder $news) => $news->where('is_special', true))
             ->whereNull(['deleted_at', 'deleted_by'])
             ->where('status', '=', StatusEnum::ACTIVE)
             ->orderByDesc('publish_date')
@@ -180,7 +182,7 @@ class NewsRepository
             ])
             ->when(
                 is_string($news->slug),
-                fn (Builder $query) => $query->where('slug', 'like', $news->slug)
+                fn(Builder $query) => $query->where('slug', 'like', $news->slug)
             )
             ->where('id', '!=', $news->id)
             ->whereNull(['deleted_at', 'deleted_by'])

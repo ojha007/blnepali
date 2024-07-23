@@ -18,6 +18,7 @@ class NewsByCategoryController extends Controller
     {
         try {
             $nonCategories = ['anchor', 'bl-special'];
+
             if (in_array($categorySlug, $nonCategories)) {
                 $news = $this->newsRepository->getNewsByNonCategory($categorySlug);
             } else {
