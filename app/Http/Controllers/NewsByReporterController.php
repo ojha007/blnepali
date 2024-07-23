@@ -13,7 +13,8 @@ class NewsByReporterController extends Controller
     public function __construct(
         protected NewsRepository $newsRepository,
         protected CategoryRepository $categoryRepository
-    ) {}
+    ) {
+    }
 
     public function __invoke(int $reporter_id): Renderable|RedirectResponse
     {

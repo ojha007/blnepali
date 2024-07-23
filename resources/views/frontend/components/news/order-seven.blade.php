@@ -33,7 +33,6 @@
         @else
             <div class="bl-newsPost bl-newsPost--thumbnail">
                 <figure class="post_img">
-
                     <a href="{{ route('showDetail', ['c_id' => $news->c_id]) }}">
                         <img src="{{$news->image}}"
                              alt="{{($news)->title??''}} -- {{config('app.name')}}"/>

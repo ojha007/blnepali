@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use App\Enums\StatusEnum;
 use App\Models\News;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Pagination\LengthAwarePaginator;
@@ -20,6 +21,13 @@ class NewsRepository
     public function getOthersNews(): Collection
     {
         $results = DB::select(file_get_contents(database_path('procedures/non-categories-news.sql')));
+
+        return collect($results);
+    }
+
+    public function getDetailPageNonCategoriesNews(): Collection
+    {
+        $results = DB::select(file_get_contents(database_path('procedures/detail-page-non-categories-news.sql')));
 
         return collect($results);
     }
@@ -44,10 +52,15 @@ class NewsRepository
             ])
             ->where('category_id', '=', $catId)
             ->orderByDesc('publish_date')
+            ->whereNull(['deleted_at', 'deleted_by'])
+            ->where('status', '=', StatusEnum::ACTIVE)
             ->limit(6);
     }
 
-    public function getNewsByCategoryIds($slug, $perPage = 20): LengthAwarePaginator
+    /**
+     * @array<int> $categoriesIds
+     */
+    public function getNewsByCategoryIds(array $categoriesIds, int $perPage = 20): LengthAwarePaginator
     {
         return News::with('category:name,id,slug')
             ->select([
@@ -64,10 +77,10 @@ class NewsRepository
                 'date_line',
                 'category_id',
             ])
-            ->whereHas('category', function ($query) use ($slug) {
-                $query->where('slug', $slug);
-            })
+            ->whereIn('category_id', $categoriesIds)
             ->orderByDesc('publish_date')
+            ->whereNull(['deleted_at', 'deleted_by'])
+            ->where('status', '=', StatusEnum::ACTIVE)
             ->paginate($perPage);
     }
 
@@ -119,6 +132,61 @@ class NewsRepository
             ->whereDate('news.publish_date', '>=', DB::raw('NOW() - INTERVAL 5 WEEK'))
             ->orderBy('news.view_count', 'desc')
             ->limit(5)
+            ->get();
+    }
+
+    public function getNewsByNonCategory(string $slug, int $perPage = 20): LengthAwarePaginator
+    {
+        return News::with('category:name,id,slug')
+            ->select([
+                'sub_title',
+                'id',
+                'title',
+                'short_description',
+                'description',
+                'publish_date',
+                'image',
+                'image_alt',
+                'c_id',
+                'image_description',
+                'date_line',
+                'category_id',
+            ])
+            ->when($slug === 'anchor', fn(Builder $news) => $news->where('is_anchor', true))
+            ->when($slug === 'special', fn(Builder $news) => $news->where('is_special', true))
+            ->whereNull(['deleted_at', 'deleted_by'])
+            ->where('status', '=', StatusEnum::ACTIVE)
+            ->orderByDesc('publish_date')
+            ->paginate($perPage);
+    }
+
+    public function getSimilarNewsBySlug(News $news): Collection
+    {
+        return News::with(['category:name,id,slug', 'reporter:id,name,slug'])
+            ->select([
+                'title',
+                'short_description',
+                'guest_id',
+                'image_description',
+                'description',
+                'video_url',
+                'date_line',
+                'id',
+                'c_id',
+                'image',
+                'image_alt',
+                'category_id',
+                'reporter_id',
+            ])
+            ->when(
+                is_string($news->slug),
+                fn(Builder $query) => $query->where('slug', 'like', $news->slug)
+            )
+            ->where('id', '!=', $news->id)
+            ->whereNull(['deleted_at', 'deleted_by'])
+            ->where('status', '=', StatusEnum::ACTIVE)
+            ->orderByDesc('publish_date')
+            ->limit(3)
             ->get();
     }
 }

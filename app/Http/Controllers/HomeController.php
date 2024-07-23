@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\News;
-use App\Repositories\CategoryRepository;
 use App\Repositories\NewsRepository;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\RedirectResponse;
@@ -13,20 +12,19 @@ class HomeController extends Controller
 {
     protected string $viewPath = 'frontend.';
 
-    public function __construct(
-        protected NewsRepository $newsRepository,
-        protected CategoryRepository $categoryRepository
-    ) {}
+    public function __construct(protected NewsRepository $newsRepository)
+    {
+    }
 
     public function index(): Renderable
     {
         $bodyCategories = [];
         $otherNews = $this->newsRepository->getOthersNews();
-        $trendingNews = $otherNews->where('category_slug', 'trending');
-        $breakingNews = $otherNews->where('category_slug', 'breaking')->take(3);
-        $videoNews = $otherNews->where('category_slug', 'video');
-        $blSpecialNews = $otherNews->where('category_slug', 'special');
-        $anchorNews = $otherNews->where('category_slug', 'anchor');
+        $trendingNews = $otherNews->where('category', 'trending');
+        $breakingNews = $otherNews->where('category', 'breaking')->take(3);
+        $videoNews = $otherNews->where('category', 'video');
+        $blSpecialNews = $otherNews->where('category', 'special');
+        $anchorNews = $otherNews->where('category', 'anchor');
 
         $allNews = $this->newsRepository->getHomePageNews();
         $order1News = $allNews->where('category_slug', 'news'); // samachar
@@ -42,7 +40,7 @@ class HomeController extends Controller
         $jiwansaili = $allNews->where('category_slug', 'lifestyle'); //health
 
         return view(
-            $this->viewPath.'index',
+            $this->viewPath . 'index',
             compact(
                 'order1News',
                 'trendingNews',
@@ -65,20 +63,8 @@ class HomeController extends Controller
         );
     }
 
-    public function show(string $categorySlug, int $cId): Renderable|RedirectResponse
+    public function show(Category $category, int $cId): Renderable|RedirectResponse
     {
-        $category = Category::whereSlug($categorySlug)
-            ->select('id')
-            ->first();
-        if (! $category) {
-            return redirect('/');
-        }
-
-        $cacheKey = News::getCacheKey($cId);
-
-        //        $allNews = Cache::remember($cacheKey, 1800, function () use ($cId, $category) {
-        $otherNews = $this->newsRepository->sameCategoryNewsQuery($category->id);
-
         $allNews = News::query()
             ->with(['category:name,id,slug', 'reporter:name,id,image'])
             ->select([
@@ -99,9 +85,8 @@ class HomeController extends Controller
             ->where('category_id', $category->id)
             ->where('c_id', '=', $cId)
             ->orderByDesc('publish_date')
-            ->union($otherNews)
+            ->union($this->newsRepository->sameCategoryNewsQuery($category->id))
             ->get();
-        //        });
 
         $news = $allNews->where('c_id', '=', $cId)->first();
 
@@ -109,19 +94,24 @@ class HomeController extends Controller
 
         $sameCategoryNews = $allNews->where('c_id', '!=', $cId)->take(4);
 
-        $otherNews = $this->newsRepository->getOthersNews();
-        $trendingNews = $otherNews->where('category_slug', 'trending');
-        $blSpecialNews = $otherNews->where('category_slug', 'special');
-        $breakingNews = $otherNews->where('category_slug', 'breaking');
+        $nonCategoryNews = $this->newsRepository->getDetailPageNonCategoriesNews();
+        $trendingNews = $nonCategoryNews->where('category', 'trending');
+        $blSpecialNews = $nonCategoryNews->where('category', 'special');
+        $breakingNews = $nonCategoryNews->where('category', 'breaking');
+
+        $otherSamachar = [];
+        $similarNews = $this->newsRepository->getSimilarNewsBySlug($news);
 
         return view(
-            $this->viewPath.'news-detail',
+            'frontend.news-detail',
             compact(
                 'news',
                 'blSpecialNews',
                 'trendingNews',
                 'sameCategoryNews',
-                'breakingNews'
+                'breakingNews',
+                'otherSamachar',
+                'similarNews',
             )
         );
     }
@@ -203,7 +193,7 @@ class HomeController extends Controller
             ->get();
 
         return view(
-            $this->viewPath.'news-detail',
+            $this->viewPath . 'news-detail',
             compact(
                 'news',
                 'blSpecialNews',

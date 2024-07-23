@@ -1,5 +1,5 @@
 WITH trending_news AS (
-    SELECT 
+    SELECT
         news.title,
         news.sub_title,
         news.id,
@@ -16,10 +16,12 @@ WITH trending_news AS (
         news.image_description,
         news.image_alt,
         news.slug,
-        'trending' AS category_slug
+        categories.slug AS category_slug,
+        'trending' AS category
     FROM np_news news
     LEFT JOIN reporters ON news.reporter_id = reporters.id
-    WHERE 
+    JOIN categories ON news.category_id = categories.id
+WHERE
         news.deleted_by IS NULL
         AND news.status = 'active'
         AND news.publish_date >= (NOW() - INTERVAL 1 WEEK)
@@ -27,7 +29,7 @@ WITH trending_news AS (
     LIMIT 5
 ),
 breaking_news AS (
-    SELECT 
+    SELECT
         news.title,
         news.sub_title,
         news.id,
@@ -44,17 +46,19 @@ breaking_news AS (
         news.image_description,
         news.image_alt,
         news.slug,
-        'breaking' AS category_slug
+        categories.slug AS category_slug,
+        'breaking' AS category
     FROM np_news news
     LEFT JOIN reporters ON news.reporter_id = reporters.id
-    WHERE 
+    JOIN categories ON news.category_id = categories.id
+WHERE
         news.deleted_by IS NULL
         AND news.status = 'active'
     ORDER BY news.publish_date DESC
     LIMIT 5
 ),
 special_news AS (
-    SELECT 
+    SELECT
         news.title,
         news.sub_title,
         news.id,
@@ -71,11 +75,12 @@ special_news AS (
         news.image_description,
         news.image_alt,
         news.slug,
-        'special' AS category_slug
+        categories.slug AS category_slug,
+        'special' AS category
     FROM np_news news
     LEFT JOIN reporters ON news.reporter_id = reporters.id
-    JOIN categories ON news.category_id = categories.id 
-    WHERE 
+    JOIN categories ON news.category_id = categories.id
+    WHERE
         news.deleted_by IS NULL
         AND news.status = 'active'
         AND news.is_special = 1
@@ -83,7 +88,7 @@ special_news AS (
     LIMIT 4
 ),
 anchor_news AS (
-    SELECT 
+    SELECT
         news.title,
         news.sub_title,
         news.id,
@@ -100,11 +105,12 @@ anchor_news AS (
         news.image_description,
         news.image_alt,
         news.slug,
-        'anchor' AS category_slug
+        categories.slug AS category_slug,
+        'anchor' AS category
     FROM np_news news
     LEFT JOIN reporters ON news.reporter_id = reporters.id
     JOIN categories ON news.category_id = categories.id
-    WHERE 
+    WHERE
         news.deleted_by IS NULL
         AND news.status = 'active'
         AND news.is_anchor = 1
@@ -112,7 +118,7 @@ anchor_news AS (
     LIMIT 5
 ),
 video_news AS (
-    SELECT 
+    SELECT
         news.title,
         news.sub_title,
         news.id,
@@ -129,12 +135,13 @@ video_news AS (
         news.image_description,
         news.image_alt,
         news.slug,
-        'video' AS category_slug
+        categories.slug AS category_slug,
+        'video' AS category
     FROM np_news news
     LEFT JOIN reporters ON news.reporter_id = reporters.id
-    JOIN categories ON news.category_id = categories.id 
+    JOIN categories ON news.category_id = categories.id
         AND categories.slug = 'video-report'
-    WHERE 
+    WHERE
         news.deleted_by IS NULL
         AND news.status = 'active'
     ORDER BY news.publish_date DESC
