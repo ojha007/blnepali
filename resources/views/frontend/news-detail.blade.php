@@ -124,39 +124,43 @@
                     <div class="col-md-12 mb-5 mt-3 related-news-image">
                         <h5 class="header-title mb-3">सम्बन्धित खवर</h5>
 
+                    <div class="row">
 
                         @foreach($sameCategoryNews as $smNews)
                         <div class="col-md-4">
                         
-                        <a href="{{ route('category.news.show', [$smNews->category->slug, $smNews->c_id]) }}">
+                            <a href="{{ route('category.news.show', [$smNews->category->slug, $smNews->c_id]) }}">
                                     <div class="card border-0">
                                         <img src="{{ $smNews->image }}" class="card-img-top"
                                              alt="{{ $smNews->image_alt }}">
                                         <div class="card-body p-0 pt-3 d-flex flex-column">
                                             <h5 class="card-title small-title">{{ $smNews->title }}</h5>
                                         </div>
-                                    </a>
                                     </div>
-                                </div>
+                            </a>    
+                            </div>
                         @endforeach
                     </div>
+                </div>
 
                     <div class="col-md-12 mb-5 mt-3 related-news-image">
                         <h5 class="header-title mb-3">अन्य समाचर</h5>
 
-                        @foreach($similarNews ?? [] as $sNews)
-                        <div class="col-md-4 mb-4">
-                                    <a href="{{ route('category.news.show', [$sNews->category->slug, $sNews->c_id]) }}">
-                                    <div class="card border-0">
-                                        <img src="{{ $sNews->image }}" class="card-img-top"
-                                             alt="{{ $sNews->image_alt }}">
-                                        <div class="card-body p-0 pt-3 d-flex flex-column">
-                                            <h5 class="card-title small-title">{{ $sNews->title }}</h5>
+                        <div class="row">
+                            @foreach($similarNews ?? [] as $sNews)
+                            <div class="col-md-4 mb-4">
+                                        <a href="{{ route('category.news.show', [$sNews->category->slug, $sNews->c_id]) }}">
+                                        <div class="card border-0">
+                                            <img src="{{ $sNews->image }}" class="card-img-top"
+                                                alt="{{ $sNews->image_alt }}">
+                                            <div class="card-body p-0 pt-3 d-flex flex-column">
+                                                <h5 class="card-title small-title">{{ $sNews->title }}</h5>
+                                            </div>
                                         </div>
+                                    </a>
                                     </div>
-                                </a>
-                                </div>
-                        @endforeach
+                            @endforeach
+                    </div>
                     </div>
                 </div>
                 <div class="col-md-4">
