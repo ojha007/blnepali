@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\View\Composers\HeaderCategoryComposer;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
+use Opcodes\LogViewer\Facades\LogViewer;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -23,6 +24,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        LogViewer::auth(fn($request) => true);
         View::composer('*', HeaderCategoryComposer::class);
     }
 }
