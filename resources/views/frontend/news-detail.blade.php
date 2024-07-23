@@ -226,7 +226,7 @@
                                 </figure>
                                 <div class="ps-3">
                                     <h5 class="fw-bold medium-title fs-5">
-                                        <a href="{{ route('category.news.show', [$trNews->category_slug, $trNews->c_id]) }}">{{ $news->title }}</a>
+                                        <a href="{{ route('category.news.show', [$trNews->category_slug, $trNews->c_id]) }}">{{ $trNews->title }}</a>
                                     </h5>
                                 </div>
                             </div>
