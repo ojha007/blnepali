@@ -24,7 +24,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        LogViewer::auth(fn($request) => true);
+        LogViewer::auth(fn ($request) => true);
         View::composer('*', HeaderCategoryComposer::class);
     }
 }
