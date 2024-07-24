@@ -10,7 +10,7 @@ class ReporterRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|unique:'.new Reporter(),
+            'name' => 'required|unique:'.new Reporter,
             'slug' => 'required|string|max:255',
             'designation' => 'nullable',
             'organization' => 'nullable',

@@ -39,7 +39,7 @@ class CommentController extends Controller
 
             return redirect()->back()->with('error', 'Comments is not available');
         } catch (\Exception $exception) {
-            (new ErrorRepository())->logError($exception);
+            (new ErrorRepository)->logError($exception);
 
             return redirect()->back()->with('error', $exception->getMessage());
         }
