@@ -12,7 +12,7 @@ class BannerController extends Controller
      */
     public function index()
     {
-        //
+        return "something";
     }
 
     /**

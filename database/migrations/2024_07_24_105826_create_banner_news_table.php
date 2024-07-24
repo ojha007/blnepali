@@ -14,7 +14,8 @@ return new class extends Migration {
         Schema::create('banners', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(News::class);
-            $table->string('position');
+            $table->integer('position');
+            $table->boolean('is_image_visible')->default(false);
             $table->timestamps();
         });
     }
