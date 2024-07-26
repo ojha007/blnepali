@@ -24,7 +24,7 @@ class AdvertisementController extends Controller
 
     public function create()
     {
-        $advertisement = new Advertisement();
+        $advertisement = new Advertisement;
 
         return view($this->viewPath.'.create')
             ->with([

@@ -28,7 +28,7 @@ class CategoryController extends Controller
         $categories = Category::whereNull('parent_id')
             ->pluck('name', 'id')
             ->toArray();
-        $category = new Category();
+        $category = new Category;
 
         return view($this->viewPath.'create', compact('categories', 'category'));
     }
