@@ -5,6 +5,9 @@
 @section('subHeader')
     List of News
 @stop
+@section('sidebar-type')
+    sidebar-collapse
+@endsection
 @section('content')
     <div class="row">
         <div class="col-xs-12">
@@ -27,6 +30,7 @@
                                     [
                                      'is_anchor'=>[ '1'=>'True','0'=>'False'],
                                      'is_special'=>['1'=>'True','0'=>'False'],
+                                     'is_banner'=>['1'=>'True','0'=>'False'],
                                      'category'=>$selectCategories,
                                      'reporter'=>$selectReporters
                                      ]]
@@ -161,7 +165,7 @@
                                     @else
 
                                         <a href="{{route('cms.news.edit',$news->id)}}"
-                                           class="btn btn-primary btn-sm btn-flat">
+                                           class="btn btn-primary btn-xs btn-flat">
                                             <i class="fa fa-edit"></i>
                                         </a>
                                         {!! Form::open(['method' => 'DELETE', 'route' => ['cms.news.destroy', $news->id],
@@ -169,7 +173,7 @@
                                           ])
                                           !!}
 
-                                        <button class="btn btn-danger btn-flat btn-sm" role="button"
+                                        <button class="btn btn-danger btn-flat btn-xs" role="button"
                                                 type="submit">
                                             <i class="fa fa-trash"></i>
                                         </button>

@@ -28,6 +28,9 @@ class NewsRequest extends FormRequest
             'video_url' => ['nullable'],
             'status' => ['required', 'in:active,draft'],
             'is_breaking' => ['required', 'boolean'],
+            'is_banner' => ['nullable', 'boolean'],
+            'image_visible' => ['required_if:is_banner', 'boolean'],
+            'banner_position' => ['required_if:is_banner', 'integer', 'min:1', 'max:3'],
         ];
     }
 }

@@ -25,6 +25,13 @@ class NewsRepository
         return collect($results);
     }
 
+    public function getBannerNews(): Collection
+    {
+        $results = DB::select(file_get_contents(database_path('procedures/banner-news.sql')));
+
+        return collect($results);
+    }
+
     public function getDetailPageNonCategoriesNews(): Collection
     {
         $results = DB::select(file_get_contents(database_path('procedures/detail-page-non-categories-news.sql')));
@@ -154,8 +161,8 @@ class NewsRepository
                 'date_line',
                 'category_id',
             ])
-            ->when($slug === 'anchor', fn (Builder $news) => $news->where('is_anchor', true))
-            ->when($slug === 'special', fn (Builder $news) => $news->where('is_special', true))
+            ->when($slug === 'anchor', fn(Builder $news) => $news->where('is_anchor', true))
+            ->when($slug === 'special', fn(Builder $news) => $news->where('is_special', true))
             ->whereNull(['deleted_at', 'deleted_by'])
             ->where('status', '=', StatusEnum::ACTIVE)
             ->orderByDesc('publish_date')
@@ -182,7 +189,7 @@ class NewsRepository
             ])
             ->when(
                 is_string($news->slug),
-                fn (Builder $query) => $query->where('slug', 'like', $news->slug)
+                fn(Builder $query) => $query->where('slug', 'like', $news->slug)
             )
             ->where('id', '!=', $news->id)
             ->whereNull(['deleted_at', 'deleted_by'])

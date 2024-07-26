@@ -94,9 +94,10 @@
                         <input type="datetime-local" value="{{old('publish_date')}}"
                                class="form-control" name="publish_date">
                     @else
-                        <input type="datetime-local" value="{{isset($news) ?
-                                         \Illuminate\Support\Carbon::parse($news->publish_date)->format('Y-m-d\TH:i')
-                                        : now()->timezone(config('app.timezone'))->format('Y-m-d\TH:i')}}"
+                        <input type="datetime-local" value="{{ isset($news) ?
+                                         \Carbon\Carbon::parse($news->publish_date)->format('Y-m-d\TH:i')
+                                        : now()->timezone(config('app.timezone'))->format('Y-m-d\TH:i')
+                                        }}"
 
                                class="form-control" name="publish_date">
                     @endif
@@ -164,6 +165,28 @@
                 @include('backend.partials.toggle-button',['value'=>'is_breaking','title'=>'Breaking News','checked'=> $news->is_urgent ?? 0])
             </div>
 
+            <div class="box">
+                <div class="with-border">
+                    <div class="box-header">
+                        <h5 class="box-title">Banner Setting</h5>
+                    </div>
+                    <div class="box-body">
+                        <div class="form-group  {{$errors->has('is_banner') ?'has-error':''}} ">
+                            @include('backend.partials.toggle-button',['value'=>'is_banner','title'=>'Banner News','checked'=> $news->is_banner ?? 0])
+                        </div>
+                        <div class="form-group hide banner_setting @error('banner_position') 'has-error' @enderror">
+                            {{Form::label('banner_position','Banner Position')}}
+                            {{Form::text('banner_position',null,['class'=>'form-control','placeholder'=>'Enter banner position'])}}
+                        </div>
+                        <div class="form-group hide banner_setting @error('image_visible' ) 'has-error' @enderror">
+                            {{Form::checkbox('image_visible','1',['class'=>'form-control'])}}
+                            {{Form::label('image_visible','Show Image on banner')}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
             <div class="form-group  {{$errors->has('status') ? 'has-error':''}} ">
                 {!! Form::select('status', ['active'=>'Active','draft'=>'Draft'], null,
                                         ['class' => 'form-control  select2', 'style'=>'width:100%;']) !!}
@@ -193,6 +216,11 @@
             filebrowserBrowseUrl: '{{url('/elfinder/ckeditor?type=Files')}}',
             filebrowserUploadUrl: '{{url('/elfinder/ckeditor/upload?type=Files&_token=')}}'
         });
+        $(document).ready(function () {
+            $("input[name='is_banner']").on('change', function () {
+                $('.banner_setting').toggleClass('hide');
+            })
+        })
     </script>
 @endpush
 

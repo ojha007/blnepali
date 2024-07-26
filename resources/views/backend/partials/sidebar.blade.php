@@ -48,12 +48,6 @@
                         Add News
                     </a>
                 </li>
-                <li class="{{request()->routeIs('cms.banners.index') ? 'active':''}}">
-                    <a href="{{route('cms.banners.index')}}">
-                        <i class="fa fa-circle-o"></i>
-                        Banner
-                    </a>
-                </li>
             </ul>
         </li>
         {{--        <li class="treeview {{request()->routeIs('cms.categories.*') ? 'active':''}}">--}}
