@@ -49,21 +49,21 @@ class NewsController extends Controller
                 'category:name,id,slug',
             ])
             ->orderByDesc('publish_date')
-            ->when($is_special, fn($query) => $query->where('is_special', true))
-            ->when($reporter_id, fn($query) => $query->where('reporter_id', $reporter_id))
-            ->when($guest_id, fn($query) => $query->where('guest_id', $guest_id))
-            ->when($is_anchor, fn($query) => $query->where('is_anchor', true))
-            ->when($is_banner, fn($query) => $query->where('is_banner', true))
-            ->when($category_id, fn($query) => $query->where('category_id', $category_id))
-            ->when($q, fn($query) => $query->where(function ($a) use ($q) {
-                $a->where('title', 'like', $q . '%')
-                    ->orWhere('sub_title', 'like', $q . '%')
-                    ->orWhere('short_description', 'like', $q . '%');
+            ->when($is_special, fn ($query) => $query->where('is_special', true))
+            ->when($reporter_id, fn ($query) => $query->where('reporter_id', $reporter_id))
+            ->when($guest_id, fn ($query) => $query->where('guest_id', $guest_id))
+            ->when($is_anchor, fn ($query) => $query->where('is_anchor', true))
+            ->when($is_banner, fn ($query) => $query->where('is_banner', true))
+            ->when($category_id, fn ($query) => $query->where('category_id', $category_id))
+            ->when($q, fn ($query) => $query->where(function ($a) use ($q) {
+                $a->where('title', 'like', $q.'%')
+                    ->orWhere('sub_title', 'like', $q.'%')
+                    ->orWhere('short_description', 'like', $q.'%');
             }))
             ->paginate(50)
             ->appends(request()->query());
 
-        return view($this->viewPath . 'index',
+        return view($this->viewPath.'index',
             [
                 'allNews' => $news,
                 'trashed' => false,
@@ -79,7 +79,7 @@ class NewsController extends Controller
         $categories = Category::pluck('name', 'id')->toArray();
 
         return view(
-            $this->viewPath . 'edit',
+            $this->viewPath.'edit',
             compact('reporters', 'news', 'categories', 'statuses')
         );
     }
@@ -93,7 +93,7 @@ class NewsController extends Controller
         $news->update($attributes);
 
         return redirect()
-            ->route($this->baseRoute . '.index')
+            ->route($this->baseRoute.'.index')
             ->with('success', 'News Updated SuccessFully');
     }
 
@@ -116,7 +116,7 @@ class NewsController extends Controller
             DB::commit();
 
             return redirect()
-                ->route($this->baseRoute . '.index')
+                ->route($this->baseRoute.'.index')
                 ->with('success', 'News Created SuccessFully');
         } catch (Exception $exception) {
             Log::error($exception->getMessage(), $exception->getTrace());
@@ -136,7 +136,7 @@ class NewsController extends Controller
         $reporters = Reporter::pluck('name', 'id')->toArray();
         $categories = Category::pluck('name', 'id')->toArray();
 
-        return view($this->viewPath . 'create')
+        return view($this->viewPath.'create')
             ->with([
                 'statuses' => $statuses,
                 'reporters' => $reporters,
@@ -152,13 +152,13 @@ class NewsController extends Controller
             $news->delete();
 
             return redirect()
-                ->route($this->baseRoute . '.index')
+                ->route($this->baseRoute.'.index')
                 ->with('success', 'News Deleted SuccessFully');
         } catch (Exception $exception) {
             Log::error($exception->getMessage(), $exception->getTrace());
 
             return redirect()
-                ->route($this->baseRoute . '.index')
+                ->route($this->baseRoute.'.index')
                 ->with('failed', 'Failed to delete news.');
         }
     }
