@@ -7,7 +7,9 @@ WITH banner_news
                     news.image,
                     news.image_visible,
                     news.banner_position,
+                    news.slug,
                     categories.slug AS category_slug,
+                    reporters.name  AS reporter_name,
                     ROW_NUMBER()       OVER (PARTITION BY banner_position ORDER BY publish_date DESC) AS rn
              FROM np_news news
                       LEFT JOIN reporters ON news.reporter_id = reporters.id
