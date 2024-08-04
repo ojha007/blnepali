@@ -161,16 +161,20 @@ class NewsRepository
                 'date_line',
                 'category_id',
             ])
-            ->when($slug === 'anchor', fn (Builder $news) => $news->where('is_anchor', true))
-            ->when($slug === 'special', fn (Builder $news) => $news->where('is_special', true))
+            ->when($slug === 'anchor', fn(Builder $news) => $news->where('is_anchor', true))
+            ->when($slug === 'special', fn(Builder $news) => $news->where('is_special', true))
             ->whereNull(['deleted_at', 'deleted_by'])
             ->where('status', '=', StatusEnum::ACTIVE)
             ->orderByDesc('publish_date')
             ->paginate($perPage);
     }
 
-    public function getSimilarNewsBySlug(News $news): Collection
+    public function getSimilarNewsBySlug(?News $news): Collection
     {
+        if (is_null($news)) {
+            return collect();
+        }
+
         return News::with(['category:name,id,slug', 'reporter:id,name,slug'])
             ->select([
                 'title',
@@ -189,7 +193,7 @@ class NewsRepository
             ])
             ->when(
                 is_string($news->slug),
-                fn (Builder $query) => $query->where('slug', 'like', $news->slug)
+                fn(Builder $query) => $query->where('slug', 'like', $news->slug)
             )
             ->where('id', '!=', $news->id)
             ->whereNull(['deleted_at', 'deleted_by'])

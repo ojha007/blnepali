@@ -12,7 +12,9 @@ class HomeController extends Controller
 {
     protected string $viewPath = 'frontend.';
 
-    public function __construct(protected NewsRepository $newsRepository) {}
+    public function __construct(protected NewsRepository $newsRepository)
+    {
+    }
 
     public function index(): Renderable
     {
@@ -40,7 +42,7 @@ class HomeController extends Controller
         $jiwansaili = $allNews->where('category_slug', 'lifestyle'); //health
 
         return view(
-            $this->viewPath.'index',
+            $this->viewPath . 'index',
             compact(
                 'order1News',
                 'trendingNews',
@@ -91,7 +93,7 @@ class HomeController extends Controller
 
         $news = $allNews->where('c_id', '=', $cId)->first();
 
-        $news->increment('view_count');
+        optional($news)->increment('view_count');
 
         $sameCategoryNews = $allNews->where('c_id', '!=', $cId)->take(4);
 
@@ -194,7 +196,7 @@ class HomeController extends Controller
             ->get();
 
         return view(
-            $this->viewPath.'news-detail',
+            $this->viewPath . 'news-detail',
             compact(
                 'news',
                 'blSpecialNews',
