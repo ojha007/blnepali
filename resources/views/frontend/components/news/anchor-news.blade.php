@@ -25,7 +25,7 @@
                                     {!! $anchorFirst->title !!}
                                 </h1>
                                 <p class="post-description-sm">
-                                    {!! \Illuminate\Support\Str::limit($anchorFirst->short_description,261) !!}
+                                    {!! $anchorFirst->short_description !!}
                                 </p>
                             </a>
                         @endif
@@ -34,13 +34,14 @@
                         <div class="row">
                             @foreach($anchorNews->skip(1) as $key=>$news)
                                 <div class="col-md-6">
-                                    <figure class="position-relative">
-                                        <img src="{{getResizeImage($news->image)}}"
-                                             alt="{!! $news->title !!}"/>
-                                    </figure>
-                                    <a href="{{ route('category.news.show', [$news->category_slug, $news->c_id]) }}">
+                                    <a href="{{ route('category.news.show', [$news->category_slug, $news->c_id]) }}"
+                                       class="hover">
+                                        <figure class="position-relative">
+                                            <img src="{{getResizeImage($news->image)}}"
+                                                 alt="{!! $news->title !!}"/>
+                                        </figure>
                                         <h1 class="small-title">
-                                            {!! \Illuminate\Support\Str::limit($news->title) !!}
+                                            {!! $news->title !!}
                                         </h1>
                                     </a>
                                 </div>
