@@ -6,7 +6,7 @@
             </div>
             @foreach($trendingNews as $news)
                 <div class="col-md">
-                    <a href="{{ route('showDetail', ['c_id' => $news->c_id]) }}">
+                    <a href="{{ route('category.news.show', [$news->category_slug, $news->c_id]) }}">
                         <div class="media d-flex align-items-center">
                             <h1 class="p-1 numbering">{{__("messages.".$loop->iteration)}}</h1>
                             <div class="media-body">

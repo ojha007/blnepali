@@ -5,7 +5,6 @@
                 <div class="owl-carousel owl-theme" id="bl-hotScrolling">
                     <!--repeatable items-->
                     @foreach($breakingNews as $news)
-                        @dd($news)
                         <div class="item">
                             <div class="bl-newsPost bl-newsPost--small">
 
@@ -21,7 +20,7 @@
                                             {!! $news->title !!}
                                         </a>
                                     </h5>
-                                    <p>{{\Illuminate\Support\Str::limit($news->short_description, 50)}}</p>
+                                    <p>{!! $news->short_description !!}}</p>
                                 </div>
                             </div>
                         </div>

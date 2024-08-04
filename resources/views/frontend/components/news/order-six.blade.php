@@ -14,15 +14,15 @@
             <div class="bl-newsPost bl-newsPost--small">
                 <figure class="post_img">
 
-                    <a href="{{ route('showDetail', ['c_id' => $news->c_id]) }}">
+                    <a href="{{ route('category.news.show', [$news->category_slug, $news->c_id]) }}">
                         <img src="{{getResizeImage($news->image)}}"
                              alt="{{$news->image_alt ?? $news->image_description ?? ''}}"/>
                     </a>
                 </figure>
                 <div class="post_content">
                     <h5 class="post_title">
-                        <a href="{{ route('showDetail', ['c_id' => $news->c_id]) }}">
-                            {{$news->title??''}}
+                        <a href="{{ route('category.news.show', [$news->category_slug, $news->c_id]) }}">
+                            {!! $news->title !!}
                         </a>
                     </h5>
                     <p class="post_source">
