@@ -7,20 +7,17 @@
                 <div class="row">
                     <div class="col-md-12 mb-4">
                         <a href="{{route('newsByCategory','anchor')}}">
-
                             <h5 class="header-title">एंकर</h5>
                         </a>
                     </div>
                     <div class="col-md-6">
-
                         @if($anchorFirst)
-                            <figure class="position-relative cover-photo">
-                                <img
-                                    src="{{$anchorFirst->image}}"
-                                    alt="{!! $anchorFirst->title !!}"/>
-
-                            </figure>
                             <a href="{{ route('category.news.show', [$anchorFirst->category_slug, $anchorFirst->c_id]) }}">
+                                <figure class="position-relative cover-photo">
+                                    <img
+                                        src="{{$anchorFirst->image}}"
+                                        alt="{!! $anchorFirst->title !!}"/>
+                                </figure>
                                 <h1 class="small-title">
                                     {!! $anchorFirst->title !!}
                                 </h1>
