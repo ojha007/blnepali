@@ -9,7 +9,8 @@ class HeaderCategoryComposer
 {
     public function __construct(
         protected CategoryRepository $categoryRepository,
-    ) {}
+    ) {
+    }
 
     public function compose(View $view): void
     {
