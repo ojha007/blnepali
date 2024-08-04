@@ -34,11 +34,11 @@ function getResizeImage(string $imageUrl, ?string $filter = null): string
 {
     $urlParts = parse_url($imageUrl);
 
-    if (!$urlParts || !isset($urlParts['host'])) {
+    if (! $urlParts || ! isset($urlParts['host'])) {
         return $imageUrl;
     }
 
-    if (!Str::contains($urlParts['host'], 's3.amazonaws.com')) {
+    if (! Str::contains($urlParts['host'], 's3.amazonaws.com')) {
         return $imageUrl;
     }
 
@@ -66,13 +66,13 @@ function getImageSrcSet(string $imageUrl, array $dimensions): array
     foreach ($dimensions as $dimension) {
         $urlParts = parse_url($imageUrl);
 
-        if (!$urlParts) {
+        if (! $urlParts) {
             return [$imageUrl];
         }
 
         $urlParts['host'] = News::CLOUD_FRONT_URL;
 
-        if (!isset($dimension['filter'])) {
+        if (! isset($dimension['filter'])) {
             return [$imageUrl];
         }
 
@@ -80,7 +80,7 @@ function getImageSrcSet(string $imageUrl, array $dimensions): array
         $resizedUrls[] = sprintf(
             '%s://%s/%s',
             $urlParts['scheme'],
-            $urlParts['host'] . $urlParts['path'],
+            $urlParts['host'].$urlParts['path'],
             $urlParts['query']
         );
 
