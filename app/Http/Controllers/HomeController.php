@@ -91,6 +91,10 @@ class HomeController extends Controller
 
         $news = $allNews->where('c_id', '=', $cId)->first();
 
+        if (!$news) {
+            abort(404);
+        }
+
         optional($news)->increment('view_count');
 
         $sameCategoryNews = $allNews->where('c_id', '!=', $cId)->take(4);
