@@ -42,7 +42,7 @@ class HomeController extends Controller
         $jiwansaili = $allNews->where('category_slug', 'lifestyle'); //health
 
         return view(
-            $this->viewPath . 'index',
+            'frontend.index',
             compact(
                 'order1News',
                 'trendingNews',
