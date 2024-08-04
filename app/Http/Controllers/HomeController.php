@@ -91,7 +91,7 @@ class HomeController extends Controller
 
         $news = $allNews->where('c_id', '=', $cId)->first();
 
-        if (!$news) {
+        if (! $news) {
             abort(404);
         }
 
