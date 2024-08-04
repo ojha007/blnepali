@@ -161,8 +161,8 @@ class NewsRepository
                 'date_line',
                 'category_id',
             ])
-            ->when($slug === 'anchor', fn(Builder $news) => $news->where('is_anchor', true))
-            ->when($slug === 'special', fn(Builder $news) => $news->where('is_special', true))
+            ->when($slug === 'anchor', fn (Builder $news) => $news->where('is_anchor', true))
+            ->when($slug === 'special', fn (Builder $news) => $news->where('is_special', true))
             ->whereNull(['deleted_at', 'deleted_by'])
             ->where('status', '=', StatusEnum::ACTIVE)
             ->orderByDesc('publish_date')
@@ -193,7 +193,7 @@ class NewsRepository
             ])
             ->when(
                 is_string($news->slug),
-                fn(Builder $query) => $query->where('slug', 'like', $news->slug)
+                fn (Builder $query) => $query->where('slug', 'like', $news->slug)
             )
             ->where('id', '!=', $news->id)
             ->whereNull(['deleted_at', 'deleted_by'])
