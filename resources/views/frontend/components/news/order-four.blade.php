@@ -2,11 +2,11 @@
     @php($order4First = $order4News->first())
 
     @if($order4First)
-    <a href="{{route('newsByCategory','interview')}}">
-        <h5 class="header-title pb-3">
-            {{$order4First->category_name}}
-        </h5>
-    </a>
+        <a href="{{route('newsByCategory','interview')}}">
+            <h5 class="header-title pb-3">
+                {{$order4First->category_name}}
+            </h5>
+        </a>
         <div class="row">
             <div class="col-md-12">
                 <div class="text-center position-relative">
@@ -29,21 +29,21 @@
                 <div class="row mt-3">
                     @foreach($order4News->skip(1) as $key=>$news)
                         <div class="col-md-6">
-                            <div class="d-flex align-items-center  {{ $loop->remaining > 1 ? 'border-bottom' : '' }} mb-3">
+                            <div
+                                class="d-flex align-items-center  {{ $loop->remaining > 1 ? 'border-bottom' : '' }} mb-3">
                                 <figure
                                     class="post_img">
                                     <a href="{{ route('category.news.show', [$news->category_slug, $news->c_id]) }}">
                                         <img src="{{getResizeImage($news->image,'/fit-in/250x150')}}"
                                              class="card-img"
-                                        style="width: 100px;height: 80px;object-fit:cover"
-
+                                             style="width: 100px;height: 80px;object-fit:cover"
                                              alt="{{$news->image_alt ?? $news->image_description ?? ''}}"/>
                                     </a>
                                 </figure>
                                 <div class="ps-3">
                                     <h5 class="fw-bold medium-title fs-5">
                                         <a href="{{ route('category.news.show', [$news->category_slug, $news->c_id]) }}">
-                                            {{\Illuminate\Support\Str::limit($news->title, 74)}}
+                                            {!! $news->title !!}
                                         </a>
                                     </h5>
                                     <p class="text-muted fw-bold">

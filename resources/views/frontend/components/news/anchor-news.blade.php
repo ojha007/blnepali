@@ -18,9 +18,9 @@
                                 <img
                                     src="{{$anchorFirst->image}}"
                                     alt="{!! $anchorFirst->title !!}"/>
-                                
+
                             </figure>
-                            <a href="{{ route('showDetail', ['c_id' => $anchorFirst->c_id]) }}">
+                            <a href="{{ route('category.news.show', [$anchorFirst->category_slug, $anchorFirst->c_id]) }}">
                                 <h1 class="small-title">
                                     {!! $anchorFirst->title !!}
                                 </h1>
@@ -38,7 +38,7 @@
                                         <img src="{{getResizeImage($news->image)}}"
                                              alt="{!! $news->title !!}"/>
                                     </figure>
-                                    <a href="{{ route('showDetail', ['c_id' => $news->c_id]) }}">
+                                    <a href="{{ route('category.news.show', [$news->category_slug, $news->c_id]) }}">
                                         <h1 class="small-title">
                                             {!! \Illuminate\Support\Str::limit($news->title) !!}
                                         </h1>

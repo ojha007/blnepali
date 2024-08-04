@@ -5,7 +5,7 @@
         <div class="col-md-12 mb-4">
             <a href="{{route('newsByCategory',$order1First->category_slug)}}"
                class="a-hover">
-            <h5 class="header-title">{{$order1First->category_name}}</h5>
+                <h5 class="header-title">{{$order1First->category_name}}</h5>
             </a>
         </div>
         <div class="row g-0">
@@ -24,7 +24,7 @@
                     </h1>
                     <span class="text-muted fs-6 fw-bold px-3 text-info">{!! $order1First->reporter_name !!}</span>
                     <p class="post-description-sm p-3">
-                        {{\Illuminate\Support\Str::limit($order1First->short_description, 180)}}
+                        {!! $order1First->short_description !!}
                     </p>
                 </a>
             </div>
@@ -38,7 +38,8 @@
                             <img src="{{getResizeImage($news->image)}}"
                                  alt="{{$news->image_alt ?? $news->image_description ?? ''}}"/>
                         </figure>
-                        <a href="{{  route('category.news.show', [$news->category_slug, $news->c_id]) }}" class="a-hover">
+                        <a href="{{  route('category.news.show', [$news->category_slug, $news->c_id]) }}"
+                           class="a-hover">
                             <h1 class="small-title">
                                 {!! $news->title !!}
                             </h1>
@@ -49,5 +50,4 @@
             @endforeach
         </div>
     @endif
-
 @endisset

@@ -10,7 +10,8 @@
                 <img src="{{$breakFirst->image}}"
                      alt="{{$breakFirst->title}}">
             </figure>
-            <a href="{{ route('category.news.show', [$breakFirst->category_slug, $breakFirst->c_id]) }}" class="a-hover">
+            <a href="{{ route('category.news.show', [$breakFirst->category_slug, $breakFirst->c_id]) }}"
+               class="a-hover">
                 <h1 class="small-title py-1">
                     {!! $breakFirst->title !!}
                 </h1>

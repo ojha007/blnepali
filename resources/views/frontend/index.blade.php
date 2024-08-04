@@ -1,6 +1,5 @@
 @extends('frontend.layouts.master')
 @section('content')
-
     <section class="container">
         @include('frontend.components.news.featured-news')
     </section>
@@ -10,7 +9,6 @@
     <section class="container-fluid my-5 bl-special py-5" style="background-color: #50558b">
         @include('frontend.components.news.bl-special')
     </section>
-
     <section class="container-fluid">
         <div class="container">
             <div class="row">
@@ -58,86 +56,17 @@
 
     <section class="container-fluid">
         <div class="container my-2 artha-wrapper">
-                <div class="row">
-                    @include('frontend.components.news.artha')
-                    @include('frontend.components.news.khel')
-                    @include('frontend.components.news.jiwansaili')
-                </div>
-                </div>
+            <div class="row">
+                @include('frontend.components.news.artha')
+                @include('frontend.components.news.khel')
+                @include('frontend.components.news.jiwansaili')
+            </div>
         </div>
     </section>
 
     @include('frontend.components.news.ghumphir')
-<div class="container">
-
-    @include('frontend.components.news.sahitya')
-</div>
-    
-
-    {{-- <section class="container my-5">
-        <div class="row">
-    @include('frontend.components.news.brand-story')
-          
-    @include('frontend.components.news.sahitya')
-           
-        </div>
-     </section> --}}
-    
-
-    <!--ended general news and links news section-->
-
-    <!--start trending and brand story news section-->
-    {{--    <div class="container">--}}
-    {{--        <div class="news-row">--}}
-    {{--            <div class="row">--}}
-    {{--                <div class="col-sm-12 col-md-4 col-lg-3 col-xl-3 col-xxl-3">--}}
-    {{--                    @include('frontend.components.news.trending-news')--}}
-    {{--                </div>--}}
-    {{--                <div class="col-sm-12 col-md-8 col-lg-9 col-xl-9 col-xxl-9">--}}
-    {{--                    @include('frontend.components.news.order-four')--}}
-    {{--                </div>--}}
-
-    {{--            </div>--}}
-    {{--        </div>--}}
-    {{--    </div>--}}
-
-    <!--ended trending and brand story news section-->
-
-    <!--start economy and analysis news block-->
-    {{--    <section class="container">--}}
-    {{--        <div class="news-row">--}}
-    {{--            <div class="row">--}}
-    {{--                <div class="col-sm-12 col-md-8 col-lg-9 col-xl-9 col-xxl-9">--}}
-    {{--                    @include('frontend.components.news.order-five')--}}
-    {{--                </div>--}}
-    {{--                <div class="col-sm-12 col-md-4 col-lg-3 col-xl-3 col-xxl-3">--}}
-    {{--                    @include('frontend.components.news.order-six')--}}
-    {{--                </div>--}}
-    {{--            </div>--}}
-    {{--        </div>--}}
-    {{--    </section>--}}
-    <!--ended economy and analysis news block-->
-
-    <!--start Entertainment and Blog news block-->
-    {{--    <section class="container">--}}
-    {{--        <div class="news-row">--}}
-    {{--            <div class="row">--}}
-    {{--                <div class="col-sm-12 col-md-8 col-lg-9 col-xl-9 col-xxl-9">--}}
-    {{--                    @include('frontend.components.news.order-seven')--}}
-    {{--                </div>--}}
-    {{--                <div class="col-sm-12 col-md-4 col-lg-3 col-xl-3 col-xxl-3">--}}
-    {{--                    @include('frontend.components.news.order-eight')--}}
-    {{--                </div>--}}
-    {{--            </div>--}}
-    {{--        </div>--}}
-    {{--    </section>--}}
-    <!--ended Entertainment and Blog news block-->
-
-    <!--start Video News block-->
-    {{--    @include('frontend.components.news.videos')--}}
-    <!--ended Video News block-->
-
+    <div class="container">
+        @include('frontend.components.news.sahitya')
+    </div>
 @endsection
-
-<!--script loading-->
 
