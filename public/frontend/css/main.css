@@ -152,7 +152,7 @@ strong img{
     content: "";
     margin-right: 0.5rem;
     height: 1rem;
-    left: 0px;
+    left: 0;
     width: 0.75rem;
 }
 .post-description {
@@ -359,7 +359,7 @@ img {
 
 .bi-copy {
     cursor: pointer;
-    
+
 }
 .bi-copy:hover {
     color: rebeccapurple;
@@ -405,7 +405,7 @@ img{
     background: linear-gradient(360deg, black, transparent);
 }
 
-.overlay-postition-bttom{
+.overlay-position-bottom{
     position: absolute;
     bottom: 10px;
     padding: 10px;

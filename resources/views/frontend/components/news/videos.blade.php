@@ -17,7 +17,7 @@
                              alt="{{ $news->image_alt }}"/>
 
                         <div class="card-img-overlay bg-gradient-primary top-50 p-3 mt-5 text-white bottom-0">
-                            <div class="d-flex align-items-center gap-3 overlay-postition-bttom">
+                            <div class="d-flex align-items-center gap-3 overlay-position-bottom">
                                 @include('frontend.icons.video-icon')
                                 <h2 class="card-title fw-bold fs-3">
                                     {!! $news->title !!}
@@ -37,7 +37,7 @@
                                      src="{{ $news->image }}"
                                      alt="{{ $news->image_alt }}"/>
                                 <div class="card-img-overlay bg-gradient-primary text-white bottom-0">
-                                    <div class="d-flex overlay-postition-bttom align-items-center gap-3">
+                                    <div class="d-flex overlay-position-bottom align-items-center gap-3">
                                         <svg
                                             style="background-color: #f06023;width: 60px;padding: 10px;border-radius: 4px;"
                                             xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="white"
