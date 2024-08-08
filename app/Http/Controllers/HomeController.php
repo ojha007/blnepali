@@ -12,9 +12,7 @@ class HomeController extends Controller
 {
     protected string $viewPath = 'frontend.';
 
-    public function __construct(protected NewsRepository $newsRepository)
-    {
-    }
+    public function __construct(protected NewsRepository $newsRepository) {}
 
     public function index(): Renderable
     {

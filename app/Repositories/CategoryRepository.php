@@ -12,7 +12,8 @@ class CategoryRepository
     public function getCategories(): Collection
     {
         return Category::query()->get();
-        return Cache::remember('categories',1, fn () => Category::query()->get());
+
+        return Cache::remember('categories', 1, fn () => Category::query()->get());
     }
 
     public function getCategoryIdsBySlug(string $slug): array

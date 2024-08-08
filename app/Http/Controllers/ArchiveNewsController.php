@@ -15,9 +15,7 @@ class ArchiveNewsController extends Controller
 
     public function __construct(
         protected NewsRepository $newsRepository,
-        protected CategoryRepository $categoryRepository)
-    {
-    }
+        protected CategoryRepository $categoryRepository) {}
 
     public function show($id): Renderable|RedirectResponse
     {
