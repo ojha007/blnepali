@@ -8,6 +8,7 @@ WITH banner_news
                     news.image_visible,
                     news.banner_position,
                     news.slug,
+                    news.image_alt,
                     categories.slug AS category_slug,
                     reporters.name  AS reporter_name,
                     ROW_NUMBER()       OVER (PARTITION BY banner_position ORDER BY publish_date DESC) AS rn

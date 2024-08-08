@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <meta name="title" content="Media for all across the globe">
     <meta name="description" content="Media for all across the globe">
-    <meta name="keywords" content="{{ isset($allCategories)? $allCategories->implode(','):''}}">
+    <meta name="keywords" content="{{ isset($allCategories) ? $allCategories->implode(','):''}}">
     @hasSection('title')
         <title>@yield('title')</title>
     @else

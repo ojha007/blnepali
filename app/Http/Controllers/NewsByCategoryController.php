@@ -12,7 +12,9 @@ use Illuminate\Support\Facades\Log;
 
 class NewsByCategoryController extends Controller
 {
-    public function __construct(protected NewsRepository $newsRepository) {}
+    public function __construct(protected NewsRepository $newsRepository)
+    {
+    }
 
     public function __invoke(string $categorySlug): Renderable|RedirectResponse
     {

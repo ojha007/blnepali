@@ -11,25 +11,8 @@ class CategoryRepository
 {
     public function getCategories(): Collection
     {
-        return Cache::rememberForever(
-            'categories',
-            fn () => Category::query()
-                ->whereIn('slug', [
-                    'sports',
-                    'break',
-                    'bl-special',
-                    'economics',
-                    'news',
-                    'art-1',
-                    'literature',
-                    'blogs',
-                    'tourism',
-                    'anchor',
-                    'opinion',
-                    'video-report',
-                ])
-                ->get()
-        );
+        return Category::query()->get();
+        return Cache::remember('categories',1, fn () => Category::query()->get());
     }
 
     public function getCategoryIdsBySlug(string $slug): array

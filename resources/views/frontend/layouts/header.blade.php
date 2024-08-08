@@ -171,8 +171,7 @@
                     <ul class="navbar-nav me-auto mb-lg-0 align-items-center">
                         @foreach($headerCategories as $key=> $category)
                             <li class="nav-item">
-                                <a class="nav-link"
-                                   href="{{route('newsByCategory',$category->slug)}}">
+                                <a class="nav-link" href="{{route('newsByCategory',$category->slug)}}">
                                     {{$category->name}}
                                 </a>
                             </li>

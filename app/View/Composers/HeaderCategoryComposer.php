@@ -9,13 +9,29 @@ class HeaderCategoryComposer
 {
     public function __construct(
         protected CategoryRepository $categoryRepository,
-    ) {}
+    )
+    {
+    }
 
     public function compose(View $view): void
     {
-        $view->with(
-            'headerCategories',
-            $this->categoryRepository->getCategories()->sortBy('header_position')->take(10)
-        );
+        $allCategories = $this->categoryRepository->getCategories();
+
+        $headerCategories = $allCategories
+            ->where('new_design', '=', 1)
+            ->sortBy('header_position')
+            ->take(10);
+
+        $bodyCategories = $allCategories
+            ->where('new_design', '=', 1)
+            ->sortBy('body_position')
+            ->take(10);
+
+
+        $view->with([
+            'allCategories' => $allCategories,
+            'headerCategories' => $headerCategories,
+            'bodyCategories' => $bodyCategories,
+        ]);
     }
 }
